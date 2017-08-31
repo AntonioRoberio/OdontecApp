@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "417152606957",
+    "firebase_url": "https://odontec-61e8f.firebaseio.com",
+    "project_id": "odontec-61e8f",
+    "storage_bucket": "odontec-61e8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417152606957:android:b4943f4186332902",
+        "android_client_info": {
+          "package_name": "com.example.pc.odontec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417152606957-o2jdhbdus4o4bmeeu4dbq74av2ssm8o4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pc.odontec",
+            "certificate_hash": "c064dcd48c3e2caff2ae65a0bfcf02725859bf61"
+          }
+        },
+        {
+          "client_id": "417152606957-jrgvotpp5jdv6cp4f9n56ietoeiomfvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA26XypsDCt04-OOOmRfNl-VXQp6Rdcj_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417152606957-jrgvotpp5jdv6cp4f9n56ietoeiomfvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417152606957:android:37703389e952721e",
+        "android_client_info": {
+          "package_name": "com.des.odontec.equipe.odontec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417152606957-1cbijj1phqn4o0m4hbkucn265uaav1nv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.des.odontec.equipe.odontec",
+            "certificate_hash": "c83ad52127a12bb284a5945822c7dac307fe4bc7"
+          }
+        },
+        {
+          "client_id": "417152606957-jrgvotpp5jdv6cp4f9n56ietoeiomfvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA26XypsDCt04-OOOmRfNl-VXQp6Rdcj_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417152606957-jrgvotpp5jdv6cp4f9n56ietoeiomfvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
