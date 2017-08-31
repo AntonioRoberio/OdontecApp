@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.TelaPrincipal" />
-        <activity android:name=".View.CadastrarUsuario"></activity>
+        <activity android:name=".View.CadastrarUsuario" />
+        <activity android:name=".View.ResetSenha"></activity>
     </application>
 
 </manifest>

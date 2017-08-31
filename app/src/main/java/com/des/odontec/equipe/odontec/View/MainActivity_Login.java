@@ -57,8 +57,8 @@ public class MainActivity_Login extends AppCompatActivity {
         resetSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent= new Intent(MainActivity_Login.this,ResetSenha.class);
-                //startActivity(intent);
+                Intent intent= new Intent(MainActivity_Login.this,ResetSenha.class);
+                startActivity(intent);
             }
         });
 
