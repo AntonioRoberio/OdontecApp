@@ -8,9 +8,16 @@
     android:orientation="vertical"
     android:gravity="center">
     <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sair"
+    android:id="@+id/logoutSistema"/>
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sair"
-        android:id="@+id/logoutSistema"/>
+        android:text="Atualizar Dados"
+        android:id="@+id/atualizarInformacoes"/>
+
+
 
 </LinearLayout>

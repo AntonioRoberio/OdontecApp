@@ -1,7 +1,6 @@
 package com.des.odontec.equipe.odontec.Model;
 
 import com.google.firebase.database.Exclude;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ public class Usuario {
     private String sexo;
     private String idade;
     private String estado;
-
     @Exclude
     public Map<String,Object> toMap(){
         HashMap<String,Object> dadosSalvar=new HashMap<>();

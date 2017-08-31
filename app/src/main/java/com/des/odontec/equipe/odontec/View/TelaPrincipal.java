@@ -5,17 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
+import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.R;
 
 public class TelaPrincipal extends AppCompatActivity {
     private Button sair;
+    private Button atualizarDados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
         sair=(Button) findViewById(R.id.logoutSistema);
+        atualizarDados=(Button) findViewById(R.id.atualizarInformacoes);
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,5 +31,17 @@ public class TelaPrincipal extends AppCompatActivity {
                 finish();
             }
         });
+
+        atualizarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TelaPrincipal.this,AtualizarDados.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
     }
 }
