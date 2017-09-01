@@ -19,7 +19,8 @@
         <activity android:name=".View.TelaPrincipal" />
         <activity android:name=".View.CadastrarUsuario" />
         <activity android:name=".View.ResetSenha" />
-        <activity android:name=".View.AtualizarDados"></activity>
+        <activity android:name=".View.AtualizarDados" />
+        <activity android:name=".View.AtualizarSenha"></activity>
     </application>
 
 </manifest>

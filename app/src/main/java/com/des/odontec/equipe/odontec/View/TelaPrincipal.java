@@ -15,6 +15,7 @@ public class TelaPrincipal extends AppCompatActivity {
     private Button sair;
     private Button atualizarDados;
     private Button delatarConta;
+    private Button novaSenha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class TelaPrincipal extends AppCompatActivity {
         sair=(Button) findViewById(R.id.logoutSistema);
         atualizarDados=(Button) findViewById(R.id.atualizarInformacoes);
         delatarConta=(Button) findViewById(R.id.excluirConta);
+        novaSenha=(Button) findViewById(R.id.atualizarSenha);
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +56,13 @@ public class TelaPrincipal extends AppCompatActivity {
             }
         });
 
-
+        novaSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TelaPrincipal.this,AtualizarSenha.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
