@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,4 +55,10 @@ public class ResetSenha extends AppCompatActivity {
             }
         });
     }
-}
+
+
+    }
+
+
+
+

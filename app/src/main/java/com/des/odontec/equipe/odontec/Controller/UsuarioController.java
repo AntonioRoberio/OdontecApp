@@ -41,6 +41,18 @@ public class UsuarioController {
         return valores;
     }
 
+    public void atualizarDados(Usuario usuario){
+        usuarioRef.setNome(usuario.getNome());
+        usuarioRef.setEstado(usuario.getEstado());
+        usuarioRef.setCidade(usuario.getCidade());
+        usuarioDao.upDados(usuarioRef);
+    }
+
+    public void apagarConta(){
+        usuarioDao.deletar();
+    }
+
+
     public void fazerLgoutSistema(){
         usuarioDao.fazerLgout();
     }
