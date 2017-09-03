@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -21,7 +22,9 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -38,6 +41,7 @@ public class MainActivity_Login extends AppCompatActivity {
     private Usuario usuario;
     private String TAG;
     private CallbackManager callbackManager;
+    private Button loginFace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,14 @@ public class MainActivity_Login extends AppCompatActivity {
         aut= ConfiguracaoFirebase.autenticarDados();
         cadastrar=(TextView) findViewById(R.id.cadatrarUusario);
         resetSenha=(TextView) findViewById(R.id.recuperarSenha);
+        loginFace=(Button) findViewById(R.id.logarSistemaFacebook);
 
         callbackManager = CallbackManager.Factory.create();
 
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
+                facebooktToken(loginResult.getAccessToken());
             }
 
             @Override
@@ -99,6 +104,13 @@ public class MainActivity_Login extends AppCompatActivity {
             }
         });
 
+        loginFace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginFacebook();
+            }
+        });
+
         verificarUsuario = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -121,10 +133,28 @@ public class MainActivity_Login extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void loginFacebook(View view){
-
-
+    private void loginFacebook(){
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
+
+    }
+
+    private void facebooktToken(AccessToken accessToken){
+        final FirebaseAuth auten= ConfiguracaoFirebase.autenticarDados();
+        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        auten.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    FirebaseUser us=auten.getCurrentUser();
+                    logar(us);
+                    Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
     }
 
