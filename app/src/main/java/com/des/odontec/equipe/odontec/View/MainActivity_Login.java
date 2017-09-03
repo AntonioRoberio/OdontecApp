@@ -20,6 +20,12 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -30,7 +36,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
-public class MainActivity_Login extends AppCompatActivity {
+public class MainActivity_Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private TextView cadastrar;
     private TextView resetSenha;
     private Button logar;
@@ -41,7 +47,10 @@ public class MainActivity_Login extends AppCompatActivity {
     private Usuario usuario;
     private String TAG;
     private CallbackManager callbackManager;
+    private GoogleApiClient googleApiClient;
+    private static final int RC_SIGN_IN=777;
     private Button loginFace;
+    private Button loginGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +64,18 @@ public class MainActivity_Login extends AppCompatActivity {
         cadastrar=(TextView) findViewById(R.id.cadatrarUusario);
         resetSenha=(TextView) findViewById(R.id.recuperarSenha);
         loginFace=(Button) findViewById(R.id.logarSistemaFacebook);
+        loginGoogle=(Button) findViewById(R.id.logarSistemaGoog);
 
         callbackManager = CallbackManager.Factory.create();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this , this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
 
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -111,6 +130,14 @@ public class MainActivity_Login extends AppCompatActivity {
             }
         });
 
+        loginGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
+
         verificarUsuario = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -130,7 +157,20 @@ public class MainActivity_Login extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==RC_SIGN_IN){
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+
+        }
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        if(result.isSuccess()){
+            Toast.makeText(MainActivity_Login.this,"sucesso",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loginFacebook(){
@@ -154,6 +194,11 @@ public class MainActivity_Login extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    private void loginGoogle(){
 
 
     }
@@ -197,6 +242,11 @@ public class MainActivity_Login extends AppCompatActivity {
             startActivity(intent);
         }
 
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 }

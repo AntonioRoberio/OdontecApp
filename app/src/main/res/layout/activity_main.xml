@@ -43,6 +43,11 @@
         android:layout_height="wrap_content"
         android:text="Entrar com Facebook"
         android:id="@+id/logarSistemaFacebook"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrar com conta da google"
+        android:id="@+id/logarSistemaGoog"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
