@@ -14,11 +14,18 @@ import android.widget.Toast;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Arrays;
 
 public class MainActivity_Login extends AppCompatActivity {
     private TextView cadastrar;
@@ -30,6 +37,7 @@ public class MainActivity_Login extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener verificarUsuario;
     private Usuario usuario;
     private String TAG;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,27 @@ public class MainActivity_Login extends AppCompatActivity {
         aut= ConfiguracaoFirebase.autenticarDados();
         cadastrar=(TextView) findViewById(R.id.cadatrarUusario);
         resetSenha=(TextView) findViewById(R.id.recuperarSenha);
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+              Toast.makeText(MainActivity_Login.this,"Erro ao logar"+error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +113,21 @@ public class MainActivity_Login extends AppCompatActivity {
         };
     }
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void loginFacebook(View view){
+
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
+
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -116,6 +160,7 @@ public class MainActivity_Login extends AppCompatActivity {
             }
         });
     }
+
     private void logar(FirebaseUser user){
         if(user!=null){
             Intent intent= new Intent(MainActivity_Login.this,TelaPrincipal.class);
