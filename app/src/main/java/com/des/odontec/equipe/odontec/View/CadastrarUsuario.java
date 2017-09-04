@@ -32,6 +32,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     private EditText cidade;
     private RadioGroup sexo;
     private RadioButton mf;
+    private    UsuarioController usuarioController;
     private Button salvar;
     private Usuario usuario;
     private FirebaseAuth aut;
@@ -90,16 +91,29 @@ public class CadastrarUsuario extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(CadastrarUsuario.this,"Usuario cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
-                    FirebaseUser pegarId=aut.getCurrentUser();
-                    String id=pegarId.getUid();
+                    FirebaseUser user=aut.getCurrentUser();
+                    String id=user.getUid();
                     usuario.setId(id);
-                    UsuarioController usuarioController=new UsuarioController();
-                    usuarioController.cdtUsuario(usuario);
-                    finish();
-                    Intent intent=new Intent(CadastrarUsuario.this,TelaPrincipal.class);
-                    startActivity(intent);
+                    usuarioController=new UsuarioController();
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso",Toast.LENGTH_SHORT).show();
+                                usuarioController.cdtUsuario(usuario);
+                                finish();
+                                Intent intent=new Intent(CadastrarUsuario.this,TelaPrincipal.class);
+                                startActivity(intent);
+                            }else{
+                                usuarioController.apagarConta();
+                                Toast.makeText(CadastrarUsuario.this,"Esse endereço de E-mial não é valido",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
+
+                }else{
+                    Toast.makeText(CadastrarUsuario.this,"Erro ao cadastrar usuário",Toast.LENGTH_SHORT).show();
                 }
             }
         });
