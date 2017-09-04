@@ -45,6 +45,7 @@ public class UsuarioDao {
                 editor.putString("Nome", u.getNome().toString());
                 editor.putString("Estado", u.getEstado().toString());
                 editor.putString("Cidade", u.getCidade().toString());
+                editor.putString("Email", u.getEmail().toString());
                 editor.commit();
             }
 
@@ -57,10 +58,11 @@ public class UsuarioDao {
 
     public String[] renovarDados(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("PREFERENCIA", context.MODE_PRIVATE);
-        String[] valores = new String[3];
+        String[] valores = new String[4];
         valores[0] = sharedPreferences.getString("Nome", "");
         valores[1] = sharedPreferences.getString("Estado", "");
         valores[2] = sharedPreferences.getString("Cidade", "");
+        valores[3] = sharedPreferences.getString("Email", "");
 
         return valores;
     }
