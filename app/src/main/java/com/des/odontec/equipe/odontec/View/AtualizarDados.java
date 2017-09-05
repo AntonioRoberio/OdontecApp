@@ -27,7 +27,6 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
         cidade=(EditText) findViewById(R.id.pegarCidade);
         atualizar=(Button) findViewById(R.id.enviarAtualizacao);
         UsuarioController usuarioController=new UsuarioController();
-        usuarioController.pegarDados(AtualizarDados.this);
         s=usuarioController.renoDados(AtualizarDados.this);
         nome.setText(s[0].toString());
         estado.setText(s[1].toString());

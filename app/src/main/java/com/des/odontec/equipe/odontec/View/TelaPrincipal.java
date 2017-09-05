@@ -25,6 +25,9 @@ public class TelaPrincipal extends AppCompatActivity {
         delatarConta=(Button) findViewById(R.id.excluirConta);
         novaSenha=(Button) findViewById(R.id.atualizarSenha);
 
+        UsuarioController usuarioController=new UsuarioController();
+        usuarioController.pegarDados(TelaPrincipal.this);
+
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,12 +50,9 @@ public class TelaPrincipal extends AppCompatActivity {
         delatarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UsuarioController usuarioController=new UsuarioController();
-                usuarioController.apagarConta();
-                Intent intent=new Intent(TelaPrincipal.this,MainActivity_Login.class);
+                Intent intent=new Intent(TelaPrincipal.this,DeletarConta.class);
                 startActivity(intent);
-                usuarioController.fazerLgoutSistema();
-                finish();
+
             }
         });
 

@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/app_name" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
         <activity android:name=".View.MainActivity_Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +28,8 @@
         <activity android:name=".View.CadastrarUsuario" />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
-        <activity android:name=".View.AtualizarSenha"></activity>
+        <activity android:name=".View.AtualizarSenha" />
+        <activity android:name=".View.DeletarConta"></activity>
     </application>
 
 </manifest>
