@@ -17,6 +17,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:id="@+id/deletarConta"
+        android:inputType="textPassword"
         android:hint="Senha"/>
     <Button
         android:layout_width="wrap_content"

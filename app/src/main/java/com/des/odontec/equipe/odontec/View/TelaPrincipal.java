@@ -1,11 +1,14 @@
 package com.des.odontec.equipe.odontec.View;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
@@ -31,11 +34,25 @@ public class TelaPrincipal extends AppCompatActivity {
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UsuarioController usuarioController=new UsuarioController();
-                usuarioController.fazerLgoutSistema();
-                Intent intent=new Intent(TelaPrincipal.this,MainActivity_Login.class);
-                startActivity(intent);
-                finish();
+                AlertDialog.Builder alert= new AlertDialog.Builder(TelaPrincipal.this);
+                alert.setTitle("Sair?").setMessage("Tem certeza que deseja sair?").setCancelable(true)
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(TelaPrincipal.this,"Cancelado",Toast.LENGTH_SHORT).show();
+                            }
+                        }).setPositiveButton("Sair", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        UsuarioController usuarioController=new UsuarioController();
+                        usuarioController.fazerLgoutSistema();
+                        Intent intent=new Intent(TelaPrincipal.this,MainActivity_Login.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                alert.create();
+                alert.show();
             }
         });
 
