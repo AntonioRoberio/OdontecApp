@@ -32,6 +32,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -180,20 +183,25 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
+                    String mensagemErro="";
+
+                    try{
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        mensagemErro="Endereço de E-MAIL invalido.";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        mensagemErro="Este E-MAIL já está sendo usado";
+                    }catch (Exception e){
+                        mensagemErro="Erro ao se cadastrar";
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(MainActivity_Login.this,mensagemErro,Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-/*
-    private void handleSignInResult(GoogleSignInResult result) {
-        if(result.isSuccess()){
-            Toast.makeText(MainActivity_Login.this,"sucesso",Toast.LENGTH_SHORT).show();
-            //chama o método de login
-        }else{
-            Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
-        }
-    } */
 
     private void loginFacebook(){
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
@@ -211,7 +219,21 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
+                    String mensagemErro="";
+
+                    try{
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        mensagemErro="Endereço de E-MAIL invalido.";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        mensagemErro="Este E-MAIL já está sendo usado";
+                    }catch (Exception e){
+                        mensagemErro="Erro ao se cadastrar";
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(MainActivity_Login.this,mensagemErro,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -252,7 +274,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_LONG).show();
                 }
             }
         });

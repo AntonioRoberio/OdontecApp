@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class CadastrarUsuario extends AppCompatActivity {
@@ -106,7 +109,21 @@ public class CadastrarUsuario extends AppCompatActivity {
                                 startActivity(intent);
                             }else{
                                 usuarioController.apagarConta();
-                                Toast.makeText(CadastrarUsuario.this,"Esse endereço de E-mial não é valido",Toast.LENGTH_SHORT).show();
+                                String mensagemErro="";
+
+                                try{
+                                  throw task.getException();
+                                }catch (FirebaseAuthWeakPasswordException e){
+                                    mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
+                                }catch (FirebaseAuthInvalidCredentialsException e){
+                                    mensagemErro="Endereço de E-MAIL invalido.";
+                                }catch (FirebaseAuthUserCollisionException e){
+                                    mensagemErro="Este E-MAIL já está sendo usado";
+                                }catch (Exception e){
+                                    mensagemErro="Erro ao se cadastrar";
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(CadastrarUsuario.this,mensagemErro,Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
