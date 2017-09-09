@@ -187,10 +187,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
                     try{
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
-                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
-                        mensagemErro="Endereço de E-MAIL invalido.";
                     }catch (FirebaseAuthUserCollisionException e){
                         mensagemErro="Este E-MAIL já está sendo usado";
                     }catch (Exception e){
@@ -223,10 +219,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
                     try{
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
-                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
-                        mensagemErro="Endereço de E-MAIL invalido.";
                     }catch (FirebaseAuthUserCollisionException e){
                         mensagemErro="Este E-MAIL já está sendo usado";
                     }catch (Exception e){
