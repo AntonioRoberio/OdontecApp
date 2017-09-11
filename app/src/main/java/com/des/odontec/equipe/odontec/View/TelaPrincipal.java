@@ -71,8 +71,8 @@ public class TelaPrincipal extends AppCompatActivity {
         atualizarDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TelaPrincipal.this,AtualizarDados.class);
-                startActivity(intent);
+                Intent inten=new Intent(TelaPrincipal.this,AtualizarDados.class);
+                startActivity(inten);
             }
         });
 
