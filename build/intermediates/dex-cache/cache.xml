@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.android\build-cache\4fb8abf5b179a53d57429c9bdbaf69ff0c8c2ff2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ec94bba6a9bbd3461d90830e0a0752a6487f5484">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\classes_ce33ae3fbf57dcf821b509c35cb2ae8b19a77081.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_22bd6d336847d37899309981b2392d8146ff5d9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.android\build-cache\1ace11ecf2f3234d1bfd33a70e49d5aeae611d8f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e09663005d70dcedff0bb77211b9ac52d8b69421">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\classes_729134e6f095eff4f23e7088387716daca6e7643.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.android\build-cache\ce7d5216f4460c322104bba4e34e82d5fb495fd5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\classes_1c4632d1e6fba3827ad728f500fcba5a75364514.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.android\build-cache\e84eaf3373291bf052041461d9aba32867d67d07\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="807751a24cf96566fd8675517c94d8463cf364db">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\classes_6c9864e4ca00f52ead14a032e2160f6dd8d12f19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\core-3.3.0_b51b44aa32954b2e2862b39b8b0ca24b741cfa62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.android\build-cache\6b9e24ed742a977eaf6b36d3fcec83d2861a96d9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8a43729dd397e849f2a8bdc5d57a2f3170efb3ed">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\classes_2599e4a8d40e769bf0d82b1850ba5ac16a3a2a03.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Antonio\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\Antonio\AndroidStudioProjects\Odontec\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_9d4abb4fb1c4f74b46c386026ca2b95d7361e011.jar" />
+    </item>
+
+</items>

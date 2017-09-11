@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +36,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     private EditText cidade;
     private RadioGroup sexo;
     private RadioButton mf;
+    private String senhaCript;
     private    UsuarioController usuarioController;
     private Button salvar;
     private Usuario usuario;
@@ -63,11 +65,13 @@ public class CadastrarUsuario extends AppCompatActivity {
             public void onClick(View v) {
                 if(!nome.getText().toString().isEmpty() || !email.getText().toString().isEmpty() || !senha.getText().toString().isEmpty() || !idade.getText().toString().isEmpty() || !estado.getText().toString().isEmpty() || !cidade.getText().toString().isEmpty()){
                     if(senha.getText().toString().equals(confimarSenha.getText().toString())){
+
+                        senhaCript= Criptografia.md5(senha.getText().toString());
                         usuario=new Usuario();
                         aut= ConfiguracaoFirebase.autenticarDados();
                         usuario.setNome(nome.getText().toString());
                         usuario.setEmail(email.getText().toString());
-                        usuario.setSenha(senha.getText().toString());
+                        usuario.setSenha(senhaCript.toString());
                         usuario.setIdade(idade.getText().toString());
                         usuario.setEstado(estado.getText().toString());
                         usuario.setCidade(cidade.getText().toString());

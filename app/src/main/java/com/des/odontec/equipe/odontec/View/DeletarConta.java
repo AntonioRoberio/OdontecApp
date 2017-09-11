@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -57,7 +58,8 @@ public class DeletarConta extends AppCompatActivity {
     public void apagar(){
         auth= ConfiguracaoFirebase.autenticarDados();
        FirebaseUser user=auth.getCurrentUser();
-        AuthCredential authCredential= EmailAuthProvider.getCredential(user.getEmail().toString(),senha.getText().toString());
+        AuthCredential authCredential= EmailAuthProvider.getCredential(user.getEmail().toString(),
+                Criptografia.md5(senha.getText().toString()));
         user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

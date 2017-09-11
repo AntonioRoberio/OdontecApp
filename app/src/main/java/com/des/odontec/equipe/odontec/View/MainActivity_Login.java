@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 import com.facebook.AccessToken;
@@ -46,6 +47,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private Button logar;
     private EditText email;
     private EditText senha;
+    private String senhaCript;
     private FirebaseAuth aut;
     private FirebaseAuth.AuthStateListener verificarUsuario;
     private Usuario usuario;
@@ -105,9 +107,10 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                senhaCript= Criptografia.md5(senha.getText().toString());
                 usuario=new Usuario();
                 usuario.setEmail(email.getText().toString());
-                usuario.setSenha(senha.getText().toString());
+                usuario.setSenha(senhaCript.toString());
                 autenticarUsuario();
             }
 

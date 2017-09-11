@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,7 +42,7 @@ public class AtualizarSenha extends AppCompatActivity {
                 usuario=new Usuario();
                 if(!(senha.getText().toString().isEmpty() || confirmar.getText().toString().isEmpty() || atual.getText().toString().isEmpty())){
                     if (senha.getText().toString().equals(confirmar.getText().toString())){
-                        usuario.setSenha(senha.getText().toString());
+                        usuario.setSenha(Criptografia.md5(senha.getText().toString()));
                         atualizarSe();
                     }else{
                         Toast.makeText(AtualizarSenha.this,"As senhas são divergentes",Toast.LENGTH_LONG).show();
@@ -58,7 +59,8 @@ public class AtualizarSenha extends AppCompatActivity {
     public void atualizarSe(){
         FirebaseAuth auth= ConfiguracaoFirebase.autenticarDados();
         user=auth.getCurrentUser();
-        AuthCredential authCredential= EmailAuthProvider.getCredential(user.getEmail().toString(),atual.getText().toString());
+        AuthCredential authCredential= EmailAuthProvider.getCredential(user.getEmail().toString(),
+                Criptografia.md5(atual.getText().toString()));
         user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

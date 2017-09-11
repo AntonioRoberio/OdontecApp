@@ -28,7 +28,7 @@ public class UsuarioDao {
     //método que faz o cadastro dos dados de um novo usuário no banco de dados do firebase
     public void salvarBD(Usuario usuario) {
         DatabaseReference dados = ConfiguracaoFirebase.refernciaBancoFirebase();
-        dados.child("user").child(String.valueOf(usuario.getId())).setValue(usuario);
+        dados.child("user").child(String.valueOf(usuario.getId())).setValue(usuario.toMap());
     }
 
     public void pegarDados(final Context context) {
