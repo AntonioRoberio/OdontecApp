@@ -11,14 +11,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
+import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.R;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TelaPrincipal extends AppCompatActivity {
     private Button sair;
     private Button atualizarDados;
     private Button delatarConta;
     private Button novaSenha;
+    private GoogleApiClient googleApiClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +33,15 @@ public class TelaPrincipal extends AppCompatActivity {
         atualizarDados=(Button) findViewById(R.id.atualizarInformacoes);
         delatarConta=(Button) findViewById(R.id.excluirConta);
         novaSenha=(Button) findViewById(R.id.atualizarSenha);
-
         UsuarioController usuarioController=new UsuarioController();
-        usuarioController.pegarDados(TelaPrincipal.this);
+
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        if(bundle!=null){
+            if(bundle.getString("VALOR").toString().equals("odontec"))usuarioController.pegarDados(TelaPrincipal.this);
+
+        }
+
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override

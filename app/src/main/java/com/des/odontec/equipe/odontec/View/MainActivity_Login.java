@@ -50,6 +50,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private FirebaseAuth.AuthStateListener verificarUsuario;
     private Usuario usuario;
     private String TAG;
+    Bundle bundle=new Bundle();;
     private CallbackManager callbackManager;
     private GoogleApiClient googleApiClient;
     private static final int RC_SIGN_IN=777;
@@ -179,6 +180,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser us=aut.getCurrentUser();
+                    bundle.putString("VALOR","google");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
@@ -211,6 +213,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser us=aut.getCurrentUser();
+                    bundle.putString("VALOR","face");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
@@ -262,6 +265,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser us=aut.getCurrentUser();
+                    bundle.putString("VALOR","odontec");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
                     finish();
@@ -275,6 +279,9 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private void logar(FirebaseUser user){
         if(user!=null){
             Intent intent= new Intent(MainActivity_Login.this,TelaPrincipal.class);
+            if(bundle.getString("VALOR")!=null){
+                intent.putExtras(bundle);
+            }
             startActivity(intent);
         }
 
