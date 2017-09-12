@@ -23,6 +23,7 @@ public class TelaPrincipal extends AppCompatActivity {
     private Button sair;
     private Button atualizarDados;
     private Button delatarConta;
+    private Button btnAnestesico;
     private Button novaSenha;
     private GoogleApiClient googleApiClient;
     @Override
@@ -33,6 +34,7 @@ public class TelaPrincipal extends AppCompatActivity {
         atualizarDados=(Button) findViewById(R.id.atualizarInformacoes);
         delatarConta=(Button) findViewById(R.id.excluirConta);
         novaSenha=(Button) findViewById(R.id.atualizarSenha);
+        btnAnestesico=(Button) findViewById(R.id.btnAnestesico);
         UsuarioController usuarioController=new UsuarioController();
 
         Intent intent=getIntent();
@@ -71,8 +73,8 @@ public class TelaPrincipal extends AppCompatActivity {
         atualizarDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inten=new Intent(TelaPrincipal.this,AtualizarDados.class);
-                startActivity(inten);
+                Intent intent=new Intent(TelaPrincipal.this,AtualizarDados.class);
+                startActivity(intent);
             }
         });
 
@@ -89,6 +91,14 @@ public class TelaPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(TelaPrincipal.this,AtualizarSenha.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAnestesico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TelaPrincipal.this,TipoPaciente.class);
                 startActivity(intent);
             }
         });

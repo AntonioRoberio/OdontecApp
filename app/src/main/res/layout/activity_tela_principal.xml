@@ -27,6 +27,11 @@
         android:layout_height="wrap_content"
         android:text="Atualizar Senha"
         android:id="@+id/atualizarSenha"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anestésico"
+        android:id="@+id/btnAnestesico"/>
 
 
 

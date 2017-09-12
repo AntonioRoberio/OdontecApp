@@ -29,7 +29,9 @@
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
         <activity android:name=".View.AtualizarSenha" />
-        <activity android:name=".View.DeletarConta"></activity>
+        <activity android:name=".View.DeletarConta" />
+        <activity android:name=".View.TipoPaciente" />
+        <activity android:name=".View.AlteracaSistemica"></activity>
     </application>
 
 </manifest>

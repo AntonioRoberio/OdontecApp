@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.des.odontec.equipe.odontec.View.TipoPaciente">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seu Paciente é?"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"/>
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tipoCrianca"
+        android:text="Criança"
+        android:layout_marginTop="5dp"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tipoAdulto"
+        android:text="Adulto"
+        android:layout_marginTop="5dp"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tipoIdoso"
+        android:text="Idoso"
+        android:layout_marginTop="5dp"/>
+</RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="avançar"
+        android:id="@+id/btTipoPaciente"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
