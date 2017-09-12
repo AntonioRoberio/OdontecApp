@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.R;
 
@@ -16,6 +14,7 @@ public class TipoPaciente extends AppCompatActivity {
     private RadioButton tipoAdulto;
     private RadioButton tipoIdoso;
     private Button btTipoPaciente;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,20 +24,23 @@ public class TipoPaciente extends AppCompatActivity {
         tipoIdoso=(RadioButton) findViewById(R.id.tipoIdoso);
         btTipoPaciente=(Button) findViewById(R.id.btTipoPaciente);
 
+        bundle=new Bundle();
+        if(tipoCrianca.isChecked())
+            bundle.putString("Tipo","crianca");
+        if(tipoAdulto.isChecked())
+            bundle.putString("Tipo","adulto");
+        if(tipoIdoso.isChecked())
+            bundle.putString("Tipo","idoso");
+
         btTipoPaciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle=new Bundle();
-                if(tipoCrianca.isChecked())
-                    bundle.putString("Tipo","crianca");
-                if(tipoAdulto.isChecked())
-                    bundle.putString("Tipo","adulto");
-                if(tipoIdoso.isChecked())
-                    bundle.putString("Tipo","idoso");
+                if(!bundle.getString("Tipo").isEmpty()){
+                    Intent intent=new Intent(TipoPaciente.this,AlteracaoSistemica.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
 
-                Intent intent=new Intent(TipoPaciente.this,AlteracaSistemica.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
             }
         });
     }
