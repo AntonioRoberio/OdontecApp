@@ -5,50 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.des.odontec.equipe.odontec.View.AlteracaoSistemica">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seu Paciente tem alguma alteração?"
+        android:text="Qual o Tipo de alteração?"
         android:textSize="30dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"/>
-    <CheckBox
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cbxAnemia"
-        android:text="Anemia"
-        />
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxDiabete"
-        android:text="Diabete"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxAsma"
-        android:text="Asma"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxGestante"
-        android:text="Gestante"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxHipertensao"
-        android:text="Hipertensão"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxHipertireodismo"
-        android:text="Hipertireodismo"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbxNS"
-        android:text="Normo sistêmico"/>
+        android:id="@+id/selecioneAltera"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        ></Spinner>
 
     <Button
         android:layout_width="wrap_content"

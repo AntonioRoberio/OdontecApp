@@ -31,7 +31,8 @@
         <activity android:name=".View.AtualizarSenha" />
         <activity android:name=".View.DeletarConta" />
         <activity android:name=".View.TipoPaciente" />
-        <activity android:name=".View.AlteracaoSistemica"></activity>
+        <activity android:name=".View.AlteracaoSistemica" />
+        <activity android:name=".View.TipoAnestesico"></activity>
     </application>
 
 </manifest>
