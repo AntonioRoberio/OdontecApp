@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.R;
 
+import java.util.ArrayList;
+
 public class TipoAnestesico extends AppCompatActivity {
     private Button btnEnviar;
     private Bundle bundle;
@@ -31,5 +33,20 @@ public class TipoAnestesico extends AppCompatActivity {
                 Toast.makeText(TipoAnestesico.this,tipoPa+" "+tipoAlt,Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private ArrayList<String> listaAnestesico(){
+        String[] anestesicos={"Lidocaína 2% (com adrenalina)","Lidocaína 2% (Sem vasoconstritor)","Prilocaína 3% (com felipressina)",
+                "Mepivacaína 2% (com vasoconstritor)","Mepivacaína 3% (sem vasoconstritor)","Mepivacaína 2% (com adrelanina)",
+                "Bupivacaína 0.5%","Articaína 4% (com adrenalina)"};
+
+        ArrayList<String> listaAnes=new ArrayList<>();
+        if(tipoPa.equals("Criança") && tipoAlt.equals("Norma Sistêmica")){
+            listaAnes.add(anestesicos[0]);
+            listaAnes.add(anestesicos[2]);
+            listaAnes.add(anestesicos[5]);
+        }
+
+        return listaAnes;
     }
 }
