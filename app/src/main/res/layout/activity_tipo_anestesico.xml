@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.TipoAnestesico"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
-        android:id="@+id/listaDeAnestesicos"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione o anestéscio"
+        android:textSize="20dp"/>
+
+<Spinner
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/listaResultado"
+    android:layout_marginTop="15dp">
+
+</Spinner>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enviar"
         android:id="@+id/btnEnviar"
-        android:layout_alignParentBottom="true"
-        />
+        android:layout_marginTop="10dp"/>
 
-</RelativeLayout>
+</LinearLayout>
