@@ -37,7 +37,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     private RadioGroup sexo;
     private RadioButton mf;
     private String senhaCript;
-    private    UsuarioController usuarioController;
+    private UsuarioController usuarioController;
     private Button salvar;
     private Usuario usuario;
     private FirebaseAuth aut;
@@ -109,7 +109,7 @@ public class CadastrarUsuario extends AppCompatActivity {
                                 Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso",Toast.LENGTH_SHORT).show();
                                 usuarioController.cdtUsuario(usuario);
                                 finish();
-                                Intent intent=new Intent(CadastrarUsuario.this,TelaPrincipal.class);
+                                Intent intent=new Intent(CadastrarUsuario.this, InicialActivity.class);
                                 startActivity(intent);
                             }else{
                                 usuarioController.apagarConta();

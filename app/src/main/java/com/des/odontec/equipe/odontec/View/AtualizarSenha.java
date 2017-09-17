@@ -70,7 +70,7 @@ public class AtualizarSenha extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(AtualizarSenha.this,"Senha Alterada com sucesso!",Toast.LENGTH_SHORT).show();
-                                Intent intent= new Intent(AtualizarSenha.this,TelaPrincipal.class);
+                                Intent intent= new Intent(AtualizarSenha.this, InicialActivity.class);
                                 startActivity(intent);
                             }else{
                                 Toast.makeText(AtualizarSenha.this,"Falha na atualização da senha",Toast.LENGTH_LONG).show();

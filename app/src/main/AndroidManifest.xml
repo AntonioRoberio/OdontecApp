@@ -24,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.TelaPrincipal" />
         <activity android:name=".View.CadastrarUsuario" />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
@@ -32,7 +31,11 @@
         <activity android:name=".View.DeletarConta" />
         <activity android:name=".View.TipoPaciente" />
         <activity android:name=".View.AlteracaoSistemica" />
-        <activity android:name=".View.TipoAnestesico"></activity>
+        <activity android:name=".View.TipoAnestesico" />
+        <activity
+            android:name=".View.InicialActivity"
+            android:label="@string/title_activity_inicial"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -281,7 +281,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
     private void logar(FirebaseUser user){
         if(user!=null){
-            Intent intent= new Intent(MainActivity_Login.this,TelaPrincipal.class);
+            Intent intent= new Intent(MainActivity_Login.this,InicialActivity.class);
             if(bundle.getString("VALOR")!=null){
                 intent.putExtras(bundle);
             }
