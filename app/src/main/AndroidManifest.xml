@@ -32,7 +32,7 @@
         <activity android:name=".View.DeletarConta" />
         <activity android:name=".View.TipoPaciente" />
         <activity android:name=".View.AlteracaoSistemica" />
-        <activity android:name=".View.TipoAnestesico"></activity>
+        <activity android:name=".View.TipoAnestesico" />
     </application>
 
 </manifest>
