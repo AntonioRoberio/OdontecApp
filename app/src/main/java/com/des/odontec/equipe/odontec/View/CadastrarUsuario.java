@@ -63,7 +63,7 @@ public class CadastrarUsuario extends AppCompatActivity {
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!nome.getText().toString().isEmpty() || !email.getText().toString().isEmpty() || !senha.getText().toString().isEmpty() || !idade.getText().toString().isEmpty() || !estado.getText().toString().isEmpty() || !cidade.getText().toString().isEmpty()){
+                if(!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty() || idade.getText().toString().isEmpty() || estado.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())){
                     if(senha.getText().toString().equals(confimarSenha.getText().toString())){
 
                         senhaCript= Criptografia.md5(senha.getText().toString());
@@ -102,39 +102,41 @@ public class CadastrarUsuario extends AppCompatActivity {
                     String id=user.getUid();
                     usuario.setId(id);
                     usuarioController=new UsuarioController();
+                    usuarioController.cdtUsuario(usuario);
                     user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
+                        public void onComplete(@NonNull Task<Void> verificar) {
+                            if(verificar.isSuccessful()){
                                 Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso",Toast.LENGTH_SHORT).show();
-                                usuarioController.cdtUsuario(usuario);
                                 finish();
                                 Intent intent=new Intent(CadastrarUsuario.this, InicialActivity.class);
                                 startActivity(intent);
                             }else{
-                                usuarioController.apagarConta();
-                                String mensagemErro="";
-
-                                try{
-                                  throw task.getException();
-                                }catch (FirebaseAuthWeakPasswordException e){
-                                    mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
-                                }catch (FirebaseAuthInvalidCredentialsException e){
-                                    mensagemErro="Endereço de E-MAIL invalido.";
-                                }catch (FirebaseAuthUserCollisionException e){
-                                    mensagemErro="Este E-MAIL já está sendo usado";
-                                }catch (Exception e){
-                                    mensagemErro="Erro ao se cadastrar";
-                                    e.printStackTrace();
-                                }
-                                Toast.makeText(CadastrarUsuario.this,mensagemErro,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CadastrarUsuario.this,"Este esdereço de E-MAIL não existe. Digite um email valido",Toast.LENGTH_SHORT).show();
+                                
                             }
                         }
                     });
 
 
                 }else{
-                    Toast.makeText(CadastrarUsuario.this,"Erro ao cadastrar usuário",Toast.LENGTH_SHORT).show();
+
+                    String mensagemErro="";
+
+                    try{
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        mensagemErro="Endereço de E-MAIL invalido.";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        mensagemErro="Este E-MAIL já está sendo usado";
+                    }catch (Exception e){
+                        mensagemErro="Erro ao se cadastrar";
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(CadastrarUsuario.this,mensagemErro,Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

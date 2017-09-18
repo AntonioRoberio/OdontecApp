@@ -107,11 +107,16 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                senhaCript= Criptografia.md5(senha.getText().toString());
-                usuario=new Usuario();
-                usuario.setEmail(email.getText().toString());
-                usuario.setSenha(senhaCript.toString());
-                autenticarUsuario();
+                if(!(senha.getText().toString().isEmpty()) || !(email.getText().toString().isEmpty())){
+                    senhaCript= Criptografia.md5(senha.getText().toString());
+                    usuario=new Usuario();
+                    usuario.setEmail(email.getText().toString());
+                    usuario.setSenha(senhaCript.toString());
+                    autenticarUsuario();
+                }else{
+                    Toast.makeText(MainActivity_Login.this,"Preencha Todos os Campos Para Logar",Toast.LENGTH_LONG).show();
+                }
+
             }
 
 

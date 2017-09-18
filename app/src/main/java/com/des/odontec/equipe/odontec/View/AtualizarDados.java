@@ -17,7 +17,7 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
     private EditText estado;
     private EditText cidade;
     private Button atualizar;
-    private String[] s;
+    private String[] dados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +27,11 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
         cidade=(EditText) findViewById(R.id.pegarCidade);
         atualizar=(Button) findViewById(R.id.enviarAtualizacao);
         UsuarioController usuarioController=new UsuarioController();
-        s=usuarioController.renoDados(AtualizarDados.this);
-        nome.setText(s[0].toString());
-        estado.setText(s[1].toString());
-        cidade.setText(s[2].toString());
+        usuarioController.pegarDados(AtualizarDados.this);
+        dados=usuarioController.renoDados(AtualizarDados.this);
+        nome.setText(dados[0].toString());
+        estado.setText(dados[1].toString());
+        cidade.setText(dados[2].toString());
         boolean teste=nome.getText().toString().isEmpty();
         if(teste){
             Handler handler=new Handler();
@@ -50,10 +51,10 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
     @Override
     public void run() {
         UsuarioController usuarioController=new UsuarioController();
-        s=usuarioController.renoDados(AtualizarDados.this);
-        nome.setText(s[0].toString());
-        estado.setText(s[1].toString());
-        cidade.setText(s[2].toString());
+        dados=usuarioController.renoDados(AtualizarDados.this);
+        nome.setText(dados[0].toString());
+        estado.setText(dados[1].toString());
+        cidade.setText(dados[2].toString());
     }
 
     private void atualizarDados(){
