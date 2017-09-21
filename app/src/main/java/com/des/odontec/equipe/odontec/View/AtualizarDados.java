@@ -17,6 +17,7 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
     private EditText estado;
     private EditText cidade;
     private Button atualizar;
+    private boolean teste;
     private String[] dados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,19 @@ public class AtualizarDados extends AppCompatActivity implements Runnable{
         estado=(EditText) findViewById(R.id.pegarEstado);
         cidade=(EditText) findViewById(R.id.pegarCidade);
         atualizar=(Button) findViewById(R.id.enviarAtualizacao);
+
         UsuarioController usuarioController=new UsuarioController();
-        usuarioController.pegarDados(AtualizarDados.this);
+
         dados=usuarioController.renoDados(AtualizarDados.this);
+        teste=nome.getText().toString().isEmpty();
+        if(teste){
+            usuarioController.pegarDados(AtualizarDados.this);
+        }
+
         nome.setText(dados[0].toString());
         estado.setText(dados[1].toString());
         cidade.setText(dados[2].toString());
-        boolean teste=nome.getText().toString().isEmpty();
+        teste=nome.getText().toString().isEmpty();
         if(teste){
             Handler handler=new Handler();
             handler.postDelayed(this,10000);

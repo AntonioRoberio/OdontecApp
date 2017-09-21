@@ -75,11 +75,14 @@
         android:textColor="#ffffff"
         android:id="@+id/logarSistema"/>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Faça seu Cadastro"
         android:id="@+id/cadatrarUusario"
         android:textSize="15dp"/>
+
+
 
 </LinearLayout>
