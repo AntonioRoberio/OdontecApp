@@ -8,4 +8,10 @@
     tools:context="com.des.odontec.equipe.odontec.View.InicialActivity"
     tools:showIn="@layout/app_bar_inicial">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTesteAne"
+        android:text="ir"/>
+
 </android.support.constraint.ConstraintLayout>

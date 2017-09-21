@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.MainActivity_Login"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/fundoodontec">
+    android:gravity="center">
 
 
     <TextView
@@ -22,8 +21,7 @@
         android:background="@drawable/botaoface"
         android:textColor="#FFFFFF"
         android:layout_height="37dp"
-        android:text="   F  |            Entrar com Facebook"
-        />
+        android:text="             Entrar com Facebook" />
 
 
     <Button
@@ -33,9 +31,9 @@
         android:background="@drawable/botaogmail"
         android:textColor="#FFFFFF"
         android:layout_height="37dp"
-        android:text="G  |            Entrar com google" />
+        android:text="            Entrar com google" />
 
-    <TextView
+<TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -55,36 +53,34 @@
         android:inputType="textPassword"
         android:id="@+id/senhaLogin"
         android:hint="Digite sua senha"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
-
+        android:gravity="end">
         <TextView
-            android:id="@+id/recuperarSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
             android:text="Esqueceu sua senha?"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/cadatrarUusario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Faça seu Cadastro"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:id="@+id/recuperarSenha"
+            android:layout_marginRight="25dp"/>
     </LinearLayout>
-
     <Button
-        android:id="@+id/logarSistema"
         android:layout_width="281dp"
         android:layout_height="37dp"
         android:background="@drawable/botaoodontec"
-        android:text=" O  |            Entrar com Odonte"
-        android:textColor="#ffffff" />
+        android:text="                                        Entrar"
+        android:textColor="#ffffff"
+        android:id="@+id/logarSistema"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faça seu Cadastro"
+        android:id="@+id/cadatrarUusario"
+        android:textSize="15dp"/>
 
 
 

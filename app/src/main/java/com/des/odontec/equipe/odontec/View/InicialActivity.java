@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
@@ -22,14 +23,16 @@ import com.des.odontec.equipe.odontec.R;
 
 public class InicialActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+private Button botao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         UsuarioController usuarioController=new UsuarioController();
+        botao=(Button) findViewById(R.id.btnTesteAne);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,14 @@ public class InicialActivity extends AppCompatActivity
             if(bundle.getString("VALOR").toString().equals("odontec"))usuarioController.pegarDados(InicialActivity.this);
 
         }
+
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(InicialActivity.this,SalvarDados.class);
+                startActivity(intent1);
+            }
+        });
     }
 
     @Override
@@ -133,6 +144,8 @@ public class InicialActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 
 }
