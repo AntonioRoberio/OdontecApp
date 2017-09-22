@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
-import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
@@ -48,27 +48,27 @@ public class CadastrarUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_usuario);
 
 
-        nome=(EditText) findViewById(R.id.nomeUsuario);
-        email=(EditText) findViewById(R.id.emailUsuario);
-        senha=(EditText) findViewById(R.id.senhaUsuario);
-        idade=(EditText) findViewById(R.id.idadeUsuario);
-        estado=(EditText) findViewById(R.id.estadoUsuario);
-        cidade=(EditText) findViewById(R.id.cidadeUsuario);
-        sexo=(RadioGroup) findViewById(R.id.selecionarSexo);
-        confimarSenha=(EditText) findViewById(R.id.confirSenhaUsuario);
-        salvar=(Button) findViewById(R.id.btSalvar);
-        int escolha=sexo.getCheckedRadioButtonId();
-        mf=(RadioButton) findViewById(escolha);
+        nome = (EditText) findViewById(R.id.nomeUsuario);
+        email = (EditText) findViewById(R.id.emailUsuario);
+        senha = (EditText) findViewById(R.id.senhaUsuario);
+        idade = (EditText) findViewById(R.id.idadeUsuario);
+        estado = (EditText) findViewById(R.id.estadoUsuario);
+        cidade = (EditText) findViewById(R.id.cidadeUsuario);
+        sexo = (RadioGroup) findViewById(R.id.selecionarSexo);
+        confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
+        salvar = (Button) findViewById(R.id.btSalvar);
+        int escolha = sexo.getCheckedRadioButtonId();
+        mf = (RadioButton) findViewById(escolha);
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty() || idade.getText().toString().isEmpty() || estado.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())){
-                    if(senha.getText().toString().equals(confimarSenha.getText().toString())){
+                if (!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty() || idade.getText().toString().isEmpty() || estado.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())) {
+                    if (senha.getText().toString().equals(confimarSenha.getText().toString())) {
 
-                        senhaCript= Criptografia.md5(senha.getText().toString());
-                        usuario=new Usuario();
-                        aut= ConfiguracaoFirebase.autenticarDados();
+                        senhaCript = Criptografia.md5(senha.getText().toString());
+                        usuario = new Usuario();
+                        aut = ConfiguracaoFirebaseDao.autenticarDados();
                         usuario.setNome(nome.getText().toString());
                         usuario.setEmail(email.getText().toString());
                         usuario.setSenha(senhaCript.toString());
@@ -77,11 +77,11 @@ public class CadastrarUsuario extends AppCompatActivity {
                         usuario.setCidade(cidade.getText().toString());
                         usuario.setSexo(mf.getText().toString());
                         cadastraUsuario();
-                    }else{
-                        Toast.makeText(CadastrarUsuario.this,"As senhas são divergentes",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CadastrarUsuario.this, "As senhas são divergentes", Toast.LENGTH_LONG).show();
                     }
-                }else{
-                    Toast.makeText(CadastrarUsuario.this,"Preencha todos os campos!",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(CadastrarUsuario.this, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -89,53 +89,53 @@ public class CadastrarUsuario extends AppCompatActivity {
         });
     }
 
-    public void cadastraUsuario(){
-        aut= ConfiguracaoFirebase.autenticarDados();
+    public void cadastraUsuario() {
+        aut = ConfiguracaoFirebaseDao.autenticarDados();
 
         aut.createUserWithEmailAndPassword(
                 usuario.getEmail(),
                 usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    FirebaseUser user=aut.getCurrentUser();
-                    String id=user.getUid();
+                if (task.isSuccessful()) {
+                    FirebaseUser user = aut.getCurrentUser();
+                    String id = user.getUid();
                     usuario.setId(id);
-                    usuarioController=new UsuarioController();
+                    usuarioController = new UsuarioController();
                     usuarioController.cdtUsuario(usuario);
                     user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> verificar) {
-                            if(verificar.isSuccessful()){
-                                Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso",Toast.LENGTH_SHORT).show();
+                            if (verificar.isSuccessful()) {
+                                Toast.makeText(CadastrarUsuario.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                                 finish();
-                                Intent intent=new Intent(CadastrarUsuario.this, InicialActivity.class);
+                                Intent intent = new Intent(CadastrarUsuario.this, InicialActivity.class);
                                 startActivity(intent);
-                            }else{
-                                Toast.makeText(CadastrarUsuario.this,"Este esdereço de E-MAIL não existe. Digite um email valido",Toast.LENGTH_SHORT).show();
-                                
+                            } else {
+                                Toast.makeText(CadastrarUsuario.this, "Este esdereço de E-MAIL não existe. Digite um email valido", Toast.LENGTH_SHORT).show();
+
                             }
                         }
                     });
 
 
-                }else{
+                } else {
 
-                    String mensagemErro="";
+                    String mensagemErro = "";
 
-                    try{
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
-                        mensagemErro="Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
-                        mensagemErro="Endereço de E-MAIL invalido.";
-                    }catch (FirebaseAuthUserCollisionException e){
-                        mensagemErro="Este E-MAIL já está sendo usado";
-                    }catch (Exception e){
-                        mensagemErro="Erro ao se cadastrar";
+                    } catch (FirebaseAuthWeakPasswordException e) {
+                        mensagemErro = "Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        mensagemErro = "Endereço de E-MAIL invalido.";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        mensagemErro = "Este E-MAIL já está sendo usado";
+                    } catch (Exception e) {
+                        mensagemErro = "Erro ao se cadastrar";
                         e.printStackTrace();
                     }
-                    Toast.makeText(CadastrarUsuario.this,mensagemErro,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastrarUsuario.this, mensagemErro, Toast.LENGTH_SHORT).show();
 
                 }
             }

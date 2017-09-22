@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Criptografia {
 
-    public static String md5(String senha){
+    public static String md5(String senha) {
         String sen = "";
         MessageDigest md = null;
         try {

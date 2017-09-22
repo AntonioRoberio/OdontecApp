@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebase;
+import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
@@ -33,9 +33,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -52,10 +50,11 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private FirebaseAuth.AuthStateListener verificarUsuario;
     private Usuario usuario;
     private String TAG;
-    Bundle bundle=new Bundle();;
+    Bundle bundle = new Bundle();
+    ;
     private CallbackManager callbackManager;
     private GoogleApiClient googleApiClient;
-    private static final int RC_SIGN_IN=777;
+    private static final int RC_SIGN_IN = 777;
     private Button loginFace;
     private Button loginGoogle;
 
@@ -64,14 +63,14 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email=(EditText) findViewById(R.id.emialLogin);
-        senha=(EditText) findViewById(R.id.senhaLogin);
-        logar=(Button) findViewById(R.id.logarSistema);
-        aut= ConfiguracaoFirebase.autenticarDados();
-        cadastrar=(TextView) findViewById(R.id.cadatrarUusario);
-        resetSenha=(TextView) findViewById(R.id.recuperarSenha);
-        loginFace=(Button) findViewById(R.id.logarSistemaFacebook);
-        loginGoogle=(Button) findViewById(R.id.logarSistemaGoog);
+        email = (EditText) findViewById(R.id.emialLogin);
+        senha = (EditText) findViewById(R.id.senhaLogin);
+        logar = (Button) findViewById(R.id.logarSistema);
+        aut = ConfiguracaoFirebaseDao.autenticarDados();
+        cadastrar = (TextView) findViewById(R.id.cadatrarUusario);
+        resetSenha = (TextView) findViewById(R.id.recuperarSenha);
+        loginFace = (Button) findViewById(R.id.logarSistemaFacebook);
+        loginGoogle = (Button) findViewById(R.id.logarSistemaGoog);
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -81,7 +80,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                 .build();
 
         googleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this , this)
+                .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
@@ -98,23 +97,22 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
             @Override
             public void onError(FacebookException error) {
-              Toast.makeText(MainActivity_Login.this,"Erro ao logar"+error.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity_Login.this, "Erro ao logar" + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
 
 
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(senha.getText().toString().isEmpty()) || !(email.getText().toString().isEmpty())){
-                    senhaCript= Criptografia.md5(senha.getText().toString());
-                    usuario=new Usuario();
+                if (!(senha.getText().toString().isEmpty()) || !(email.getText().toString().isEmpty())) {
+                    senhaCript = Criptografia.md5(senha.getText().toString());
+                    usuario = new Usuario();
                     usuario.setEmail(email.getText().toString());
                     usuario.setSenha(senhaCript.toString());
                     autenticarUsuario();
-                }else{
-                    Toast.makeText(MainActivity_Login.this,"Preencha Todos os Campos Para Logar",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity_Login.this, "Preencha Todos os Campos Para Logar", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -124,7 +122,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         resetSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity_Login.this,ResetSenha.class);
+                Intent intent = new Intent(MainActivity_Login.this, ResetSenha.class);
                 startActivity(intent);
             }
         });
@@ -132,7 +130,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity_Login.this,CadastrarUsuario.class);
+                Intent intent = new Intent(MainActivity_Login.this, CadastrarUsuario.class);
                 startActivity(intent);
             }
         });
@@ -166,77 +164,76 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             GoogleSignInAccount account = result.getSignInAccount();
             firebaseAuthWithGoogle(account);
 
-        }else{
+        } else {
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
 
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        AuthCredential credential= GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         aut.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser us=aut.getCurrentUser();
-                    bundle.putString("VALOR","google");
+                if (task.isSuccessful()) {
+                    FirebaseUser us = aut.getCurrentUser();
+                    bundle.putString("VALOR", "google");
                     logar(us);
-                    Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
                     finish();
-                }else{
-                    String mensagemErro="";
+                } else {
+                    String mensagemErro = "";
 
-                    try{
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthUserCollisionException e){
-                        mensagemErro="Este E-MAIL já está sendo usado";
-                    }catch (Exception e){
-                        mensagemErro="Erro ao se cadastrar";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        mensagemErro = "Este E-MAIL já está sendo usado";
+                    } catch (Exception e) {
+                        mensagemErro = "Erro ao se cadastrar";
                         e.printStackTrace();
                     }
-                    Toast.makeText(MainActivity_Login.this,mensagemErro,Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity_Login.this, mensagemErro, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    private void loginFacebook(){
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","user_friends","email"));
+    private void loginFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends", "email"));
 
     }
 
-    private void facebooktToken(AccessToken accessToken){
+    private void facebooktToken(AccessToken accessToken) {
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         aut.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser us=aut.getCurrentUser();
-                    bundle.putString("VALOR","face");
+                if (task.isSuccessful()) {
+                    FirebaseUser us = aut.getCurrentUser();
+                    bundle.putString("VALOR", "face");
                     logar(us);
-                    Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
                     finish();
-                }else{
-                    String mensagemErro="";
+                } else {
+                    String mensagemErro = "";
 
-                    try{
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthUserCollisionException e){
-                        mensagemErro="Este E-MAIL já está sendo usado";
-                    }catch (Exception e){
-                        mensagemErro="Erro ao se cadastrar";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        mensagemErro = "Este E-MAIL já está sendo usado";
+                    } catch (Exception e) {
+                        mensagemErro = "Erro ao se cadastrar";
                         e.printStackTrace();
                     }
-                    Toast.makeText(MainActivity_Login.this,mensagemErro,Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity_Login.this, mensagemErro, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -244,7 +241,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
     }
 
-    private void loginGoogle(){
+    private void loginGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
@@ -259,35 +256,35 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         if (verificarUsuario != null) {
             aut.removeAuthStateListener(verificarUsuario);
         }
     }
 
-    private void autenticarUsuario(){
-        aut.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha()
+    private void autenticarUsuario() {
+        aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser us=aut.getCurrentUser();
-                    bundle.putString("VALOR","odontec");
+                if (task.isSuccessful()) {
+                    FirebaseUser us = aut.getCurrentUser();
+                    bundle.putString("VALOR", "odontec");
                     logar(us);
-                    Toast.makeText(MainActivity_Login.this,"Seja bem vindo",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
                     finish();
-                }else{
-                    Toast.makeText(MainActivity_Login.this,"Erro ao logar",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity_Login.this, "Erro ao logar", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    private void logar(FirebaseUser user){
-        if(user!=null){
-            Intent intent= new Intent(MainActivity_Login.this,InicialActivity.class);
-            if(bundle.getString("VALOR")!=null){
+    private void logar(FirebaseUser user) {
+        if (user != null) {
+            Intent intent = new Intent(MainActivity_Login.this, InicialActivity.class);
+            if (bundle.getString("VALOR") != null) {
                 intent.putExtras(bundle);
             }
             startActivity(intent);
@@ -298,6 +295,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(MainActivity_Login.this,"Erro ao logar"+connectionResult.getErrorMessage(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity_Login.this, "Erro ao logar" + connectionResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
 }

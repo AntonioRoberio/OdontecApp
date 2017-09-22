@@ -7,7 +7,7 @@ package com.des.odontec.equipe.odontec.Model;
 public class TipoPaciente {
     private String tipo;
 
-    public TipoPaciente(){
+    public TipoPaciente() {
 
     }
 

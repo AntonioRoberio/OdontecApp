@@ -27,13 +27,13 @@ public class UsuarioDao {
 
     //método que faz o cadastro dos dados de um novo usuário no banco de dados do firebase
     public void salvarBD(Usuario usuario) {
-        DatabaseReference dados = ConfiguracaoFirebase.refernciaBancoFirebase();
+        DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         dados.child("user").child(String.valueOf(usuario.getId())).setValue(usuario.toMap());
     }
 
     public void pegarDados(final Context context) {
-        DatabaseReference reference = ConfiguracaoFirebase.refernciaBancoFirebase();
-        FirebaseAuth auth = ConfiguracaoFirebase.autenticarDados();
+        DatabaseReference reference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+        FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
         FirebaseUser user = auth.getCurrentUser();
         String id = user.getUid().toString();
         reference.child("user").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -71,8 +71,8 @@ public class UsuarioDao {
     //atualização das informações do usuário contido em banco
 
     public void upDados(Usuario usuario) {
-        FirebaseAuth aut = ConfiguracaoFirebase.autenticarDados();
-        DatabaseReference atualizar = ConfiguracaoFirebase.refernciaBancoFirebase();
+        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+        DatabaseReference atualizar = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseUser user = aut.getCurrentUser();
         Map<String, Object> up = new HashMap<>();
         up.put("nome", usuario.getNome());
@@ -83,19 +83,18 @@ public class UsuarioDao {
 
 
     public void fazerLgout() {
-        FirebaseAuth sair = ConfiguracaoFirebase.autenticarDados();
+        FirebaseAuth sair = ConfiguracaoFirebaseDao.autenticarDados();
         sair.signOut();
     }
 
-    public void deletar(){
-        FirebaseAuth aut= ConfiguracaoFirebase.autenticarDados();
-        DatabaseReference remover=ConfiguracaoFirebase.refernciaBancoFirebase();
-        FirebaseUser user=aut.getCurrentUser();
+    public void deletar() {
+        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+        DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+        FirebaseUser user = aut.getCurrentUser();
         remover.child("user").child(user.getUid().toString()).removeValue();
         user.delete();
 
     }
-
 
 
 }
