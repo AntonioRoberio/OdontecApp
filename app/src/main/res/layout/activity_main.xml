@@ -6,82 +6,124 @@
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.MainActivity_Login"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/fundoodontec"
+    android:weightSum="1">
 
 
-    <TextView
+
+    <ImageView
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Informe seus dados de acesso para
-                       continuar"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_marginTop="15dp"
-        android:id="@+id/logarSistemaFacebook"
-        android:layout_width="281dp"
-        android:background="@drawable/botaoface"
-        android:textColor="#FFFFFF"
-        android:layout_height="37dp"
-        android:text="             Entrar com Facebook" />
+        android:layout_weight="0.39"
+        android:background="@drawable/logoodontec"/>
 
-
-    <Button
-        android:id="@+id/logarSistemaGoog"
-        android:layout_marginTop="10dp"
-        android:layout_width="281dp"
-        android:background="@drawable/botaogmail"
-        android:textColor="#FFFFFF"
-        android:layout_height="37dp"
-        android:text="            Entrar com google" />
-
-<TextView
+<RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:text="_______________________  ou  ________________________"
-    />
+    android:gravity="center"
+    >
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informe seus dados de acesso"
+        android:gravity="center"
+        android:id="@+id/textinfo"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="para continuar"
+        android:gravity="center"
+        android:layout_below="@+id/textinfo"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
 
     <EditText
+
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:id="@+id/emialLogin"
         android:inputType="textEmailAddress"
-        android:hint="Digite seu E-mail"/>
+        android:background="@drawable/edittext"
+        android:hint=" Digite seu E-mail" />
+
     <EditText
-        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:id="@+id/senhaLogin"
-        android:hint="Digite sua senha"/>
+        android:background="@drawable/edittext"
+        android:hint=" Digite sua senha" />
+
+    <Button
+        android:id="@+id/logarSistema"
+        android:layout_width="281dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/botaoodontec"
+        android:text="  O  |        Entrar com Odontec"
+        android:textColor="#ffffff" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="end">
+        android:gravity="center">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esqueceu sua senha?"
             android:textSize="15dp"
             android:id="@+id/recuperarSenha"
-            android:layout_marginRight="25dp"/>
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faça seu Cadastro"
+            android:id="@+id/cadatrarUusario"
+            android:textSize="15dp"/>
+
     </LinearLayout>
-    <Button
-        android:layout_width="281dp"
-        android:layout_height="37dp"
-        android:background="@drawable/botaoodontec"
-        android:text="                                        Entrar"
-        android:textColor="#ffffff"
-        android:id="@+id/logarSistema"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Faça seu Cadastro"
-        android:id="@+id/cadatrarUusario"
-        android:textSize="15dp"/>
+        android:layout_marginTop="5dp"
+        android:text="_______________________  ou  ________________________"
+        />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/logarSistemaFacebook"
+        android:layout_width="281dp"
+        android:background="@drawable/botaoface"
+        android:textColor="#FFFFFF"
+        android:layout_height="37dp"
+        android:fontFamily="@string/common_google_play_services_install_text"
+        android:text="    F  |         Entrar com Facebook" />
+
+
+    <Button
+        android:id="@+id/logarSistemaGoog"
+        android:layout_marginTop="5dp"
+        android:layout_width="281dp"
+        android:background="@drawable/botaogmail"
+        android:textColor="#FFFFFF"
+        android:layout_height="37dp"
+        android:fontFamily="@string/common_google_play_services_install_text"
+        android:text="G  |         Entrar com google" />
+
+
 
 
 

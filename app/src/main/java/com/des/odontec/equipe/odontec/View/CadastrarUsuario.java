@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -51,19 +52,16 @@ public class CadastrarUsuario extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomeUsuario);
         email = (EditText) findViewById(R.id.emailUsuario);
         senha = (EditText) findViewById(R.id.senhaUsuario);
-        idade = (EditText) findViewById(R.id.idadeUsuario);
-        estado = (EditText) findViewById(R.id.estadoUsuario);
         cidade = (EditText) findViewById(R.id.cidadeUsuario);
-        sexo = (RadioGroup) findViewById(R.id.selecionarSexo);
         confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
         salvar = (Button) findViewById(R.id.btSalvar);
-        int escolha = sexo.getCheckedRadioButtonId();
-        mf = (RadioButton) findViewById(escolha);
+        final FrameLayout fl = (FrameLayout) findViewById(R.id.fl2);
+
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty() || idade.getText().toString().isEmpty() || estado.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())) {
+                if (!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty()  || cidade.getText().toString().isEmpty())) {
                     if (senha.getText().toString().equals(confimarSenha.getText().toString())) {
 
                         senhaCript = Criptografia.md5(senha.getText().toString());
@@ -72,10 +70,8 @@ public class CadastrarUsuario extends AppCompatActivity {
                         usuario.setNome(nome.getText().toString());
                         usuario.setEmail(email.getText().toString());
                         usuario.setSenha(senhaCript.toString());
-                        usuario.setIdade(idade.getText().toString());
-                        usuario.setEstado(estado.getText().toString());
                         usuario.setCidade(cidade.getText().toString());
-                        usuario.setSexo(mf.getText().toString());
+                        fl.setVisibility(View.VISIBLE);
                         cadastraUsuario();
                     } else {
                         Toast.makeText(CadastrarUsuario.this, "As senhas são divergentes", Toast.LENGTH_LONG).show();
