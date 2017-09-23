@@ -30,16 +30,15 @@ public class Anestesico {
 
     private String id;
 
-    public Anestesico(){
+    public Anestesico() {
 
     }
 
 
-
     @Exclude
-    public Map<String,Object> dadosSalvar(){
-        HashMap<String,Object> dados=new HashMap<>();
-        dados.put("tipoAnestesico",getTipoAnestesico());
+    public Map<String, Object> dadosSalvar() {
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("tipoAnestesico", getTipoAnestesico());
         return dados;
     }
 

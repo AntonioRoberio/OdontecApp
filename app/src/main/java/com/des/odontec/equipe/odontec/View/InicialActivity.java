@@ -23,7 +23,8 @@ import com.des.odontec.equipe.odontec.R;
 
 public class InicialActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private Button botao;
+    private Button botao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,8 +32,8 @@ private Button botao;
         setContentView(R.layout.activity_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        UsuarioController usuarioController=new UsuarioController();
-        botao=(Button) findViewById(R.id.btnTesteAne);
+        UsuarioController usuarioController = new UsuarioController();
+        botao = (Button) findViewById(R.id.btnTesteAne);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,17 +54,18 @@ private Button botao;
         navigationView.setNavigationItemSelectedListener(this);
 
         //Recuperação de Dados
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
-        if(bundle!=null){
-            if(bundle.getString("VALOR").toString().equals("odontec"))usuarioController.pegarDados(InicialActivity.this);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            if (bundle.getString("VALOR").toString().equals("odontec"))
+                usuarioController.pegarDados(InicialActivity.this);
 
         }
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(InicialActivity.this,SalvarDados.class);
+                Intent intent1 = new Intent(InicialActivity.this, SalvarDados.class);
                 startActivity(intent1);
             }
         });
@@ -119,33 +121,31 @@ private Button botao;
             startActivity(intent);
         } else if (id == R.id.Sair) {
 
-                    AlertDialog.Builder alert= new AlertDialog.Builder(InicialActivity.this);
-                    alert.setTitle("Sair?").setMessage("Tem certeza que deseja sair?").setCancelable(true)
-                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(InicialActivity.this,"Cancelado",Toast.LENGTH_SHORT).show();
-                                }
-                            }).setPositiveButton("Sair", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder alert = new AlertDialog.Builder(InicialActivity.this);
+            alert.setTitle("Sair?").setMessage("Tem certeza que deseja sair?").setCancelable(true)
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            UsuarioController usuarioController=new UsuarioController();
-                            usuarioController.fazerLgoutSistema();
-                            Intent intent=new Intent(InicialActivity.this,MainActivity_Login.class);
-                            startActivity(intent);
-                            finish();
+                            Toast.makeText(InicialActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                    alert.create();
-                    alert.show();
+                    }).setPositiveButton("Sair", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    UsuarioController usuarioController = new UsuarioController();
+                    usuarioController.fazerLgoutSistema();
+                    Intent intent = new Intent(InicialActivity.this, MainActivity_Login.class);
+                    startActivity(intent);
+                    finish();
                 }
+            });
+            alert.create();
+            alert.show();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 
 
 }

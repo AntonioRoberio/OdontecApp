@@ -18,28 +18,29 @@ public class AlteracaoSistemica extends AppCompatActivity {
     private Bundle bundle;
     private Button btAlt;
     private String valorTipPaci;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alteraca_sistemica);
-        escolhaAlt=(Spinner) findViewById(R.id.selecioneAltera);
-        btAlt=(Button) findViewById(R.id.btnAlteracao);
+        escolhaAlt = (Spinner) findViewById(R.id.selecioneAltera);
+        btAlt = (Button) findViewById(R.id.btnAlteracao);
 
-        final String[] alteracao={"Norma Sistêmica","anemia","diabete","asma","gestante","hipertensão","hiperteriodismo"};
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,alteracao);
+        final String[] alteracao = {"Norma Sistêmica", "anemia", "diabete", "asma", "gestante", "hipertensão", "hiperteriodismo"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alteracao);
         escolhaAlt.setAdapter(adapter);
 
-        Intent pegarInt= getIntent();
-        Bundle tipoPaci=pegarInt.getExtras();
-        valorTipPaci=tipoPaci.getString("tipo");
+        Intent pegarInt = getIntent();
+        Bundle tipoPaci = pegarInt.getExtras();
+        valorTipPaci = tipoPaci.getString("tipo");
 
-        bundle=new Bundle();
-        bundle.putString("tipo",valorTipPaci);
+        bundle = new Bundle();
+        bundle.putString("tipo", valorTipPaci);
 
         escolhaAlt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                bundle.putString("alt",alteracao[position]);
+                bundle.putString("alt", alteracao[position]);
             }
 
             @Override
@@ -51,7 +52,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
         btAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Intent intent=new Intent(AlteracaoSistemica.this,TipoAnestesico.class);
+                Intent intent = new Intent(AlteracaoSistemica.this, TipoAnestesico.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
