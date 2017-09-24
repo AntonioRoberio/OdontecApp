@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_" date="1506025362936" recycled="true" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 21/09/2017 17:21 [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_/taskArtifacts.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_/fileSnapshots.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/fileHashes.bin" />
+    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/fileHashes.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_/fileHashes.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_09_2017_17_21__Default_/taskArtifacts.lock" />
+  </binary>
+</changelist>

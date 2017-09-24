@@ -1,0 +1,53 @@
+Index: app/src/main/res/drawable/corfundopadrao.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/corfundopadrao.xml	(revision )
++++ app/src/main/res/drawable/corfundopadrao.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++    <solid android:color="#ffffff"/>
++    <stroke android:width="1dp" android:color="#FFFFFF"/>
++    <corners android:radius="2dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(date 1505775120000)
++++ app/src/main/res/layout/activity_main.xml	(revision )
+@@ -6,8 +6,15 @@
+     android:layout_height="match_parent"
+     tools:context="com.des.odontec.equipe.odontec.View.MainActivity_Login"
+     android:orientation="vertical"
+-    android:gravity="center">
++    android:gravity="center"
++    android:background="@drawable/corfundopadrao"
++    >
+ 
++
++    <ImageButton
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:background="@drawable/logoodontec"/>
+ 
+     <TextView
+         android:layout_width="wrap_content"
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(date 1505775120000)
++++ app/src/main/res/values/colors.xml	(revision )
+@@ -4,5 +4,5 @@
+     <color name="colorPrimaryDark">#8F1735</color>
+     <color name="colorAccent">#FFFFFF</color>
+     <color name="limao">#FFFFFF</color>
+-    <color name="facebook">#000080</color>
++    <color name="facebook">#ffffff</color>
+ </resources>
