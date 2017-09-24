@@ -46,7 +46,7 @@ public class TipoAnestesico extends AppCompatActivity {
         tipoAlt = bundle.getString("alt");
 
         AnestesicoController anestesicoController = new AnestesicoController(TipoAnestesico.this);
-        ArrayList<Anestesico> listaAnestesicos = anestesicoController.buscar();
+        ArrayList<Anestesico> listaAnestesicos = anestesicoController.listarAnestesicos();
         String[] anestesicos = new String[listaAnestesicos.size()];
 
         for (Anestesico an : listaAnestesicos) {

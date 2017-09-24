@@ -12,15 +12,20 @@ import java.util.ArrayList;
  */
 
 public class AnestesicoController {
-    Context context;
 
+    AnestesicoDao anestesicoDao;
     public AnestesicoController(Context context) {
-        this.context = context;
+        anestesicoDao = new AnestesicoDao(context);
     }
 
-    AnestesicoDao anestesicoDao = new AnestesicoDao(context);
 
-    public ArrayList<Anestesico> buscar() {
+
+    public ArrayList<Anestesico> listarAnestesicos() {
         return anestesicoDao.listarAnestesicos();
+
+    }
+
+    public void pegarDadosBD(){
+        anestesicoDao.pegarDadosBD();
     }
 }

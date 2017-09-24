@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
+import com.des.odontec.equipe.odontec.Controller.PreferenciasController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
@@ -32,12 +32,10 @@ public class CadastrarUsuario extends AppCompatActivity {
     private EditText email;
     private EditText senha;
     private EditText confimarSenha;
-    private EditText idade;
     private EditText estado;
     private EditText cidade;
-    private RadioGroup sexo;
-    private RadioButton mf;
     private String senhaCript;
+    private int valor;
     private UsuarioController usuarioController;
     private Button salvar;
     private Usuario usuario;
@@ -103,6 +101,14 @@ public class CadastrarUsuario extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> verificar) {
                             if (verificar.isSuccessful()) {
+                                PreferenciasController preferenciasController=new PreferenciasController(CadastrarUsuario.this);
+                                valor=1;
+                                if(preferenciasController.conteUsuarioRetono()==0){
+                                   preferenciasController.conteUsuario(valor);
+                                   AnestesicoController anestesicoController=new AnestesicoController(CadastrarUsuario.this);
+                                    anestesicoController.pegarDadosBD();
+
+                               }
                                 Toast.makeText(CadastrarUsuario.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                                 finish();
                                 Intent intent = new Intent(CadastrarUsuario.this, InicialActivity.class);

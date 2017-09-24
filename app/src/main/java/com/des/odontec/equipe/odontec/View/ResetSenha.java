@@ -33,8 +33,13 @@ public class ResetSenha extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 usuario = new Usuario();
-                usuario.setEmail(email.getText().toString());
-                resetar();
+                if(!email.getText().toString().isEmpty()){
+                    usuario.setEmail(email.getText().toString());
+                    resetar();
+                }else{
+                    Toast.makeText(ResetSenha.this, "Preenchimento de campo obrigatório.", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

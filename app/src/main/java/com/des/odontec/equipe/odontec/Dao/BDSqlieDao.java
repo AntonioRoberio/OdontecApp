@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BDSqlieDao extends SQLiteOpenHelper {
     private static final String NOME_BD = "Anestesicos";
-    private static final int VERSAO = 2;
+    private static final int VERSAO = 3;
 
     public BDSqlieDao(Context context) {
         super(context, NOME_BD, null, VERSAO);

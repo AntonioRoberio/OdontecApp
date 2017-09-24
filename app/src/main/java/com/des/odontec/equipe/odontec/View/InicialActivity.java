@@ -33,6 +33,13 @@ private Button botao;
         setSupportActionBar(toolbar);
         UsuarioController usuarioController=new UsuarioController();
         botao=(Button) findViewById(R.id.btnTesteAne);
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(InicialActivity.this,SalvarDados.class);
+                startActivity(intent);
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

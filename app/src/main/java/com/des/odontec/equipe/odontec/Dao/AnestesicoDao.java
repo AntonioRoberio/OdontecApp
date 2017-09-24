@@ -4,10 +4,12 @@ package com.des.odontec.equipe.odontec.Dao;
 import android.content.ContentValues;
 import android.content.Context;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.des.odontec.equipe.odontec.Model.Anestesico;
+import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,17 +27,42 @@ public class AnestesicoDao {
     private SQLiteDatabase banco;
     private DatabaseReference databaseReference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
     private BDSqlieDao bdAnestesico;
+   private Context context;
 
     public AnestesicoDao() {
 
     }
 
     public AnestesicoDao(Context context) {
+        this.context=context;
         bdAnestesico = new BDSqlieDao(context);
         banco = bdAnestesico.getWritableDatabase();
     }
 
-    public void pegarDadosBD() {
+
+
+    public void pegarDadosBD(){
+
+     databaseReference.child("versoes").addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(DataSnapshot dataSnapshot) {
+             VersaoDados versaoDados=dataSnapshot.getValue(VersaoDados.class);
+             ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
+             if(!versaoDados.getAnestesico().toString().equals(String.valueOf(arquivosDePreferencia.versaoAnes()))){
+                 pegarDadosBD2();
+                 arquivosDePreferencia.salvarVersoaAnes(1);
+             }
+         }
+
+         @Override
+         public void onCancelled(DatabaseError databaseError) {
+
+         }
+     });
+
+    }
+
+    public void pegarDadosBD2() {
         databaseReference.child("anestesicos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
