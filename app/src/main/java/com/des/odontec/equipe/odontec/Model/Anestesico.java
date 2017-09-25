@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class Anestesico {
     private String tipoAnestesico;
+    private String id;
 
     public String getTipoAnestesico() {
         return tipoAnestesico;
@@ -28,7 +29,7 @@ public class Anestesico {
         this.id = id;
     }
 
-    private String id;
+
 
     public Anestesico() {
 

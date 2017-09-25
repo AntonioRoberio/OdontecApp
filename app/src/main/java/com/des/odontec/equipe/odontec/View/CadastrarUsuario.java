@@ -50,6 +50,7 @@ public class CadastrarUsuario extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomeUsuario);
         email = (EditText) findViewById(R.id.emailUsuario);
         senha = (EditText) findViewById(R.id.senhaUsuario);
+        estado=(EditText) findViewById(R.id.estadoUsuario);
         cidade = (EditText) findViewById(R.id.cidadeUsuario);
         confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
         salvar = (Button) findViewById(R.id.btSalvar);
@@ -68,6 +69,7 @@ public class CadastrarUsuario extends AppCompatActivity {
                         usuario.setNome(nome.getText().toString());
                         usuario.setEmail(email.getText().toString());
                         usuario.setSenha(senhaCript.toString());
+                        usuario.setEstado(estado.getText().toString());
                         usuario.setCidade(cidade.getText().toString());
                         fl.setVisibility(View.VISIBLE);
                         cadastraUsuario();
@@ -101,18 +103,10 @@ public class CadastrarUsuario extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> verificar) {
                             if (verificar.isSuccessful()) {
-                                PreferenciasController preferenciasController=new PreferenciasController(CadastrarUsuario.this);
-                                valor=1;
-                                if(preferenciasController.conteUsuarioRetono()==0){
-                                   preferenciasController.conteUsuario(valor);
-                                   AnestesicoController anestesicoController=new AnestesicoController(CadastrarUsuario.this);
-                                    anestesicoController.pegarDadosBD();
-
-                               }
-                                Toast.makeText(CadastrarUsuario.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                                finish();
+                                Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(CadastrarUsuario.this, InicialActivity.class);
                                 startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(CadastrarUsuario.this, "Este esdereço de E-MAIL não existe. Digite um email valido", Toast.LENGTH_SHORT).show();
 

@@ -35,7 +35,7 @@ public class AnestesicoDao {
 
     public AnestesicoDao(Context context) {
         this.context=context;
-        bdAnestesico = new BDSqlieDao(context);
+        bdAnestesico = new BDSqlieDao(context,"listaAnestesicos");
         banco = bdAnestesico.getWritableDatabase();
     }
 
@@ -48,7 +48,7 @@ public class AnestesicoDao {
          public void onDataChange(DataSnapshot dataSnapshot) {
              VersaoDados versaoDados=dataSnapshot.getValue(VersaoDados.class);
              ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
-             if(!versaoDados.getAnestesico().toString().equals(String.valueOf(arquivosDePreferencia.versaoAnes()))){
+             if(!versaoDados.getAnestesico().toString().equals(String.valueOf(arquivosDePreferencia.retornoVersao("anestesico")))){
                  pegarDadosBD2();
                  arquivosDePreferencia.salvarVersoaAnes(1);
              }

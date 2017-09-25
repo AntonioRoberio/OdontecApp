@@ -16,38 +16,35 @@ public class ArquivosDePreferencia {
         this.context = context;
     }
 
-
-    public void conteUsuario(int valor) {
-        SharedPreferences preferences = context.getSharedPreferences("totalUsuarios", context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        if (preferences.getInt("contador", 0) == 0) {
-            editor.putInt("contador", valor);
-        } else {
-            editor.putInt("contador", valor + preferences.getInt("contador", 0));
-        }
-
-        editor.commit();
-    }
-
-    public int conteUsuarioRetono() {
-        SharedPreferences preferences = context.getSharedPreferences("totalUsuarios", context.MODE_PRIVATE);
-        return preferences.getInt("contador", 0);
-    }
-
-
     public void salvarVersoaAnes(int versao) {
-        SharedPreferences preferences = context.getSharedPreferences("versaoAnes", context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        if(preferences.getInt("versao",0)==0){
-            editor.putInt("versao",versao);
+        if(preferences.getInt("versaoAnes",0)==0){
+            editor.putInt("versaoAnes",versao);
         }else {
-            editor.putInt("versao",versao+preferences.getInt("versao",0));
+            editor.putInt("versaoAnes",versao+preferences.getInt("versaoAnes",0));
         }
         editor.commit();
     }
 
-    public int versaoAnes() {
-        SharedPreferences preferences = context.getSharedPreferences("versaoAnes", context.MODE_PRIVATE);
-        return preferences.getInt("versao", 0);
+    public void salvarVersoaAlter(int versao) {
+        SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(preferences.getInt("versaoAlter",0)==0){
+            editor.putInt("versaoAlter",versao);
+        }else {
+            editor.putInt("versaoAlter",versao+preferences.getInt("versaoAlter",0));
+        }
+        editor.commit();
+    }
+
+    public int retornoVersao(String valor) {
+        SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
+        if (valor.equals("anestesico")){
+            return preferences.getInt("versaoAnes", 0);
+        }else{
+            return preferences.getInt("versaoAlter", 0);
+        }
+
     }
 }

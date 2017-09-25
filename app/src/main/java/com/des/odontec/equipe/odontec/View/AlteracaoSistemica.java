@@ -26,7 +26,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
         escolhaAlt = (Spinner) findViewById(R.id.selecioneAltera);
         btAlt = (Button) findViewById(R.id.btnAlteracao);
 
-        final String[] alteracao = {"Norma Sistêmica", "anemia", "diabete", "asma", "gestante", "hipertensão", "hiperteriodismo"};
+        final String[] alteracao = {"Norma Sistêmica", "anemia", "diabete", "asma","hipertensão", "hiperteriodismo"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alteracao);
         escolhaAlt.setAdapter(adapter);
 

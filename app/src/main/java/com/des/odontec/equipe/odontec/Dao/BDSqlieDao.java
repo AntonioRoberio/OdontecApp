@@ -9,21 +9,22 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BDSqlieDao extends SQLiteOpenHelper {
-    private static final String NOME_BD = "Anestesicos";
-    private static final int VERSAO = 3;
-
-    public BDSqlieDao(Context context) {
+    private static final String NOME_BD = "BancoTeste";
+    private static final int VERSAO = 1;
+    public BDSqlieDao(Context context,String nomeTable) {
         super(context, NOME_BD, null, VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table listaAnestesicos(_id integer primary key autoincrement ,tipoAnes text not null);");
+        db.execSQL("create table listaAlteracao(_id integer primary key autoincrement ,tipoAlter text not null);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table listaAnestesicos;");
+        db.execSQL("drop table listaAnestesicos");
+        db.execSQL("drop table listaAlteracao");
         onCreate(db);
     }
 }

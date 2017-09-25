@@ -18,11 +18,10 @@ public class PreferenciasController {
     ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
 
     public void conteUsuario(int valor){
-        arquivosDePreferencia.conteUsuario(valor);
     }
 
-    public int conteUsuarioRetono(){
-        return arquivosDePreferencia.conteUsuarioRetono();
+    public void conteUsuarioRetono(){
+
     }
 
     public void salvarVersoaAnes(int versao){

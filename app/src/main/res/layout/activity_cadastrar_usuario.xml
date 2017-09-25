@@ -50,13 +50,20 @@
             android:inputType="textPassword" />
 
         <EditText
+            android:id="@+id/estadoUsuario"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Estado"
+            android:inputType="text" />
+
+        <EditText
             android:id="@+id/cidadeUsuario"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Digite o nome de sua cidade"
+            android:hint="Cidade"
             android:inputType="text" />
-
 
 
 
