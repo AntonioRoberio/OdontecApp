@@ -1,8 +1,0 @@
-Index: .idea/misc.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
---- .idea/misc.xml	(revision 5a1dd5401fd2ce2a12d0faf54abcafe4e54cc5e1)
-+++ .idea/misc.xml	(revision )
-@@ -1,0 +1,0 @@

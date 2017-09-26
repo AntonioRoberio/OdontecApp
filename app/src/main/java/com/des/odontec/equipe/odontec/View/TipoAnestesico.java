@@ -56,20 +56,20 @@ public class TipoAnestesico extends AppCompatActivity {
 
         ArrayList<String> listaAnes = new ArrayList<>();
 
-        if (tipoPa.equals("Criança") && tipoAlt.equals("Norma Sistêmica")) {
+        if (tipoPa.equals("Criança") && tipoAlt.equals("Norma Sistêmica ")) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[7]);
             listaAnes.add(anestesicos[4]);
-        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && (tipoAlt.equals("diabete") || tipoAlt.equals("hipertensão"))) {
+        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && (tipoAlt.equals("Diabete ") || tipoAlt.equals("Hipertensão "))) {
             listaAnes.add(anestesicos[7]);
-        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && tipoAlt.equals("hiperteriodismo")) {
+        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && tipoAlt.equals("Hipertireoidismo ")) {
             listaAnes.add(anestesicos[7]);
             listaAnes.add(anestesicos[6]);
 
-        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && (tipoAlt.equals("anemia") || tipoAlt.equals("asma"))) {
+        } else if ((tipoPa.equals("Criança") || tipoPa.equals("Adulto") || tipoPa.equals("Idoso")) && (tipoAlt.equals("Anemia") || tipoAlt.equals("Asma"))) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[7]);
-        } else if (tipoPa.equals("Adulto") && tipoAlt.equals("Norma Sistêmica")) {
+        } else if (tipoPa.equals("Adulto") && tipoAlt.equals("Norma Sistêmica ")) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[3]);
             listaAnes.add(anestesicos[7]);
@@ -78,7 +78,7 @@ public class TipoAnestesico extends AppCompatActivity {
             listaAnes.add(anestesicos[6]);
             listaAnes.add(anestesicos[1]);
             listaAnes.add(anestesicos[0]);
-        } else if (tipoPa.equals("Idoso") && tipoAlt.equals("Norma Sistêmica")) {
+        } else if (tipoPa.equals("Idoso") && tipoAlt.equals("Norma Sistêmica ")) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[4]);
         }

@@ -36,7 +36,7 @@ private Button botao;
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(InicialActivity.this,SalvarDados.class);
+                Intent intent=new Intent(InicialActivity.this,TipoPaciente.class);
                 startActivity(intent);
             }
         });

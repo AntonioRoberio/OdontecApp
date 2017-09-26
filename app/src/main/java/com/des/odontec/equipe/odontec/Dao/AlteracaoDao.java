@@ -57,7 +57,7 @@ public class AlteracaoDao {
 
     }
 
-    public void pegarDadosBD2() {
+    private void pegarDadosBD2() {
         databaseReference.child("alteracao").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -11,10 +11,15 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
+import com.des.odontec.equipe.odontec.Model.Alteracao;
 import com.des.odontec.equipe.odontec.R;
+
+import java.util.ArrayList;
 
 public class AlteracaoSistemica extends AppCompatActivity {
     private Spinner escolhaAlt;
+    private int i = 0;
     private Bundle bundle;
     private Button btAlt;
     private String valorTipPaci;
@@ -26,7 +31,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
         escolhaAlt = (Spinner) findViewById(R.id.selecioneAltera);
         btAlt = (Button) findViewById(R.id.btnAlteracao);
 
-        final String[] alteracao = {"Norma Sistêmica", "anemia", "diabete", "asma","hipertensão", "hiperteriodismo"};
+        final String[] alteracao = listaAlteracoes();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alteracao);
         escolhaAlt.setAdapter(adapter);
 
@@ -57,5 +62,18 @@ public class AlteracaoSistemica extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public String[] listaAlteracoes() {
+        String[] alter;
+        AlteracaoController alteracaoController = new AlteracaoController(AlteracaoSistemica.this);
+        ArrayList<Alteracao> alteracaos = alteracaoController.listarAlteracoes();
+        alter = new String[alteracaos.size()];
+
+        for (Alteracao alt : alteracaos) {
+            alter[i] = alt.getTipoAlteracao();
+            i++;
+        }
+        return alter;
     }
 }

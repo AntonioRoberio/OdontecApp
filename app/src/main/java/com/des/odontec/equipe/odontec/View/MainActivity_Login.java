@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
+import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
@@ -51,7 +53,8 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private Usuario usuario;
     private String TAG;
     Bundle bundle = new Bundle();
-    ;
+    private AlteracaoController alteracaoController;
+    private AnestesicoController anestesicoController;
     private CallbackManager callbackManager;
     private GoogleApiClient googleApiClient;
     private static final int RC_SIGN_IN = 777;
@@ -71,6 +74,11 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         resetSenha = (TextView) findViewById(R.id.recuperarSenha);
         loginFace = (Button) findViewById(R.id.logarSistemaFacebook);
         loginGoogle = (Button) findViewById(R.id.logarSistemaGoog);
+
+        alteracaoController=new AlteracaoController(MainActivity_Login.this);
+        alteracaoController.pegarDadosBD();
+        anestesicoController=new AnestesicoController(MainActivity_Login.this);
+        anestesicoController.pegarDadosBD();
 
         callbackManager = CallbackManager.Factory.create();
 
