@@ -1,0 +1,43 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/shelved.patch	(revision 684a8b3c3420c6a1dd9e5881e32c6659545ff088)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/shelved.patch	(revision 684a8b3c3420c6a1dd9e5881e32c6659545ff088)
+@@ -1,8 +0,0 @@
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/misc.xml	(revision 5a1dd5401fd2ce2a12d0faf54abcafe4e54cc5e1)
+-+++ .idea/misc.xml	(revision )
+-@@ -1,0 +1,0 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_.xml	(revision 684a8b3c3420c6a1dd9e5881e32c6659545ff088)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_.xml	(revision 684a8b3c3420c6a1dd9e5881e32c6659545ff088)
+@@ -1,24 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_" date="1505772194448" recycled="true" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 18/09/2017 19:03 [Default]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+-    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/taskArtifacts.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+-    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/fileSnapshots.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/fileHashes.bin" />
+-    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/fileHashes.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/fileHashes.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+-    <option name="AFTER_PATH" value=".gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_09_2017_19_03__Default_/taskArtifacts.lock" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
