@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +75,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         resetSenha = (TextView) findViewById(R.id.recuperarSenha);
         loginFace = (Button) findViewById(R.id.logarSistemaFacebook);
         loginGoogle = (Button) findViewById(R.id.logarSistemaGoog);
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.f2l);
 
         alteracaoController=new AlteracaoController(MainActivity_Login.this);
         alteracaoController.pegarDadosBD();
@@ -118,6 +120,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     usuario = new Usuario();
                     usuario.setEmail(email.getText().toString());
                     usuario.setSenha(senhaCript.toString());
+                    frameLayout.setVisibility(View.VISIBLE);
                     autenticarUsuario();
                 } else {
                     Toast.makeText(MainActivity_Login.this, "Preencha Todos os Campos Para Logar", Toast.LENGTH_LONG).show();
