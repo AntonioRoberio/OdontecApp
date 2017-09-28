@@ -32,7 +32,7 @@ private Button botao;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         UsuarioController usuarioController=new UsuarioController();
-
+        botao=(Button) findViewById(R.id.btnTesteAne);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
