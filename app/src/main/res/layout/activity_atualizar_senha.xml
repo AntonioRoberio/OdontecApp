@@ -5,25 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.AtualizarSenha"
-    android:orientation="vertical"
-    android:gravity="center">
-
+    android:orientation="vertical">
     <EditText
-        android:id="@+id/senhaAtual"
-        android:layout_width="355dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Senha Atual"
-        android:inputType="textPassword" />
+        android:id="@+id/senhaAtual"
+        android:inputType="textPassword"
+        android:hint="Senha Atual"/>
 
     <EditText
-        android:layout_width="355dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/novaSenha"
         android:inputType="textPassword"
         android:hint="Nova Senha"/>
 
     <EditText
-        android:layout_width="361dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/confirmaSenha"
         android:inputType="textPassword"

@@ -32,12 +32,11 @@
         <activity android:name=".View.TipoPaciente" />
         <activity android:name=".View.AlteracaoSistemica" />
         <activity android:name=".View.TipoAnestesico" />
-        <activity android:name=".View.SalvarDados" />
         <activity
             android:name=".View.InicialActivity"
             android:label="@string/title_activity_inicial"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".View.PesoPaciente"></activity>
     </application>
 
 </manifest>

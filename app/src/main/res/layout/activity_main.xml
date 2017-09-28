@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario"
-    android:orientation="vertical"
-    android:gravity="center">
-
-
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.MainActivity_Login"
@@ -17,6 +9,9 @@
     android:gravity="center"
     android:background="@drawable/fundoodontec"
     android:weightSum="1">
+
+
+
     <ImageView
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
@@ -129,19 +124,7 @@
         android:text="G  |         Entrar com google" />
 
 
+
+
+
 </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/f2l"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/transparencia"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progresslo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </FrameLayout>
-</FrameLayout>
