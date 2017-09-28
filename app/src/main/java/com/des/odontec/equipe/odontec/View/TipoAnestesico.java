@@ -4,7 +4,10 @@ package com.des.odontec.equipe.odontec.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,22 +21,50 @@ import java.util.ArrayList;
 
 
 public class TipoAnestesico extends AppCompatActivity {
-    private int i = 0;
     private Spinner list;
     private String tipoPa;
     private String tipoAlt;
+    private Button enviar;
+    private int i=0;
     private ArrayList<String> lista;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipo_anestesico);
         list = (Spinner) findViewById(R.id.listaResultado);
+        enviar=(Button) findViewById(R.id.btnEnviarAnestesico);
 
         lista = listaAnestesico();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
 
+
         list.setAdapter(adapter);
+
+        list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bundle=new Bundle();
+                bundle.putString("tipoAnestesico",lista.get(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TipoAnestesico.this,PesoPaciente.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }
