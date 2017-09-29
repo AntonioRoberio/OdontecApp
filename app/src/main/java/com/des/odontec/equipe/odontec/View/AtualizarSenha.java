@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
@@ -24,7 +25,7 @@ public class AtualizarSenha extends AppCompatActivity {
     private EditText atual;
     private EditText senha;
     private EditText confirmar;
-    private Button envair;
+    private Button enviar;
     private Usuario usuario;
     private FirebaseUser user;
 
@@ -35,15 +36,17 @@ public class AtualizarSenha extends AppCompatActivity {
         atual = (EditText) findViewById(R.id.senhaAtual);
         senha = (EditText) findViewById(R.id.novaSenha);
         confirmar = (EditText) findViewById(R.id.confirmaSenha);
-        envair = (Button) findViewById(R.id.salvarNovaSenha);
+        enviar = (Button) findViewById(R.id.salvarNovaSenha);
+        final FrameLayout fl = (FrameLayout) findViewById(R.id.f2l);
 
-        envair.setOnClickListener(new View.OnClickListener() {
+        enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 usuario = new Usuario();
                 if (!(senha.getText().toString().isEmpty() || confirmar.getText().toString().isEmpty() || atual.getText().toString().isEmpty())) {
                     if (senha.getText().toString().equals(confirmar.getText().toString())) {
                         usuario.setSenha(Criptografia.md5(senha.getText().toString()));
+                        fl.setVisibility(View.VISIBLE);
                         atualizarSe();
                     } else {
                         Toast.makeText(AtualizarSenha.this, "As senhas são divergentes", Toast.LENGTH_LONG).show();

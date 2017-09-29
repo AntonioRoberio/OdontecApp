@@ -8,22 +8,7 @@
      >
 
 
-    <FrameLayout
-        android:id="@+id/f2l"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/transparencia"
-        android:visibility="gone"
-        android:layout_gravity="center">
-
-        <ProgressBar
-            android:id="@+id/progresslo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </FrameLayout>
-
-    <LinearLayout
+     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +51,8 @@
             android:background="@drawable/botaoodontec"
             android:text="  O  |        Entrar com Odontec"
             android:textColor="#ffffff"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:onClick="logar"/>
 
         <TextView
             android:layout_marginTop="10dp"
@@ -105,6 +91,22 @@
 
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/f2l"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/transparencia"
+        android:visibility="gone"
+        android:layout_gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progresslo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
