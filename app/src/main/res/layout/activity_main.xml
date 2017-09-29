@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
+     >
 
 
     <FrameLayout
@@ -15,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/transparencia"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:layout_gravity="center">
 
         <ProgressBar
             android:id="@+id/progresslo"
@@ -29,32 +28,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/fundoodontec"
-        android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1"
         >
 
         <ImageView
+            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/logoodontec" />
+            android:src="@drawable/logoodontec"
+            android:layout_gravity="center"/>
 
 
         <EditText
-
             android:id="@+id/emialLogin"
             android:layout_width="334dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:hint="E-mail"
-            android:inputType="textEmailAddress" />
+            android:layout_gravity="center"
+            android:inputType="textEmailAddress"
+            android:textColorLink="#802A2E"/>
 
         <EditText
             android:id="@+id/senhaLogin"
             android:layout_width="335dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
             android:hint="Senha"
             android:inputType="textPassword" />
 
@@ -65,7 +65,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/botaoodontec"
             android:text="  O  |        Entrar com Odontec"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_marginTop="10dp"
@@ -73,6 +74,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="________________________OU________________________"
+            android:textColor="#802A2E"
+            android:layout_gravity="center"
             />
 
         <Button
@@ -84,7 +87,8 @@
             android:background="@drawable/botaoface"
             android:fontFamily="@string/common_google_play_services_install_text"
             android:text="    F  |         Entrar com Facebook"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
 
 
         <Button
@@ -95,37 +99,44 @@
             android:background="@drawable/botaogmail"
             android:fontFamily="@string/common_google_play_services_install_text"
             android:text="G  |         Entrar com google"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
 
 
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
 
         <TextView
             android:id="@+id/cadatrarUusario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#802A2E"
+            android:textAlignment="center"
             android:fontFamily="sans-serif-condensed"
-            android:text="NÃO TEM UMA CONTA? FAÇA AGORA"
-            android:textColor="#000000"
-            android:textSize="12sp" />
+            android:text="NÃO TEM UMA CONTA ODONTEC? FAÇA AGORA"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginTop="20dp"
+            />
 
-        <TextView
-            android:id="@+id/recuperarSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="ESQUECEU SUA SENHA? RECUPERAR"
-            android:textColor="#000000"
-            android:textSize="12dp" />
+    <TextView
+        android:id="@+id/recuperarSenha"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#802A2E"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed"
+        android:text="ESQUECEU SUA SENHA? RECUPERAR"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+
+        />
 
 
-    </LinearLayout>
-
+    </FrameLayout>
 </FrameLayout>
