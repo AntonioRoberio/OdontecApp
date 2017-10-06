@@ -20,7 +20,6 @@ import java.util.Map;
  */
 
 public class UsuarioDao {
-    private boolean verificar;
 
     public UsuarioDao() {
     }

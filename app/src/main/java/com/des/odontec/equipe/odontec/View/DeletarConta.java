@@ -55,7 +55,7 @@ public class DeletarConta extends AppCompatActivity {
             }
         });
     }
-
+//vai para o model
     public void apagar() {
         auth = ConfiguracaoFirebaseDao.autenticarDados();
         FirebaseUser user = auth.getCurrentUser();

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class AlteracaoController {
     AlteracaoDao alteracaoDao;
+    private int i = 0;
 
     public AlteracaoController(Context context){
         alteracaoDao=new AlteracaoDao(context);
@@ -22,7 +23,16 @@ public class AlteracaoController {
         alteracaoDao.pegarDadosBD();
     }
 
-    public ArrayList<Alteracao> listarAlteracoes(){
-        return alteracaoDao.listarAlteracoes();
+    public String[] listarAlteracoes(){
+        String[] alter;
+        ArrayList<Alteracao> alteracaos = alteracaoDao.listarAlteracoes();
+        alter = new String[alteracaos.size()];
+
+        for (Alteracao alt : alteracaos) {
+            alter[i] = alt.getTipoAlteracao();
+            i++;
+        }
+
+        return alter;
     }
 }

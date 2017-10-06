@@ -44,6 +44,7 @@ public class ResetSenha extends AppCompatActivity {
         });
     }
 
+    //vai para o model ou arquivo tipo fire
     private void resetar() {
         auth.sendPasswordResetEmail(usuario.getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

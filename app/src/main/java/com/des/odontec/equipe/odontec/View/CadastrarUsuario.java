@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
-import com.des.odontec.equipe.odontec.Controller.PreferenciasController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
@@ -85,6 +83,8 @@ public class CadastrarUsuario extends AppCompatActivity {
         });
     }
 
+
+    //vai para o model ou outro arqivo firebase
     public void cadastraUsuario() {
         aut = ConfiguracaoFirebaseDao.autenticarDados();
 

@@ -2,8 +2,11 @@ package com.des.odontec.equipe.odontec.Controller;
 
 import android.content.Context;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
+import com.des.odontec.equipe.odontec.Dao.UsuarioDaoFirebase;
 import com.des.odontec.equipe.odontec.Model.Usuario;
+import com.des.odontec.equipe.odontec.View.AtualizarSenha;
 
 
 /**
@@ -55,6 +58,14 @@ public class UsuarioController {
 
     public void fazerLgoutSistema() {
         usuarioDao.fazerLgout();
+    }
+
+    public String atualizarSenha(Context context,String atual,Usuario usuario){
+
+        UsuarioDaoFirebase usuarioDaoFirebase=new UsuarioDaoFirebase(context);
+        usuarioDaoFirebase.atualizarSe(atual,usuario);
+        ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
+        return arquivosDePreferencia.retornostatusDeVerificacao();
     }
 
 

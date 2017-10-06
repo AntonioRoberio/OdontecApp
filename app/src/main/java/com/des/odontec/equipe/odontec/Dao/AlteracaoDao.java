@@ -2,10 +2,10 @@ package com.des.odontec.equipe.odontec.Dao;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Model.Alteracao;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
@@ -43,9 +43,9 @@ public class AlteracaoDao {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 VersaoDados versaoDados = dataSnapshot.getValue(VersaoDados.class);
                 ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
-                if (!versaoDados.getAlteracao().toString().equals(String.valueOf(arquivosDePreferencia.retornoVersao("alteracao")))) {
+                if (!versaoDados.getAlteracao().toString().equals(arquivosDePreferencia.retornoVersao("alteracao"))) {
                     pegarDadosBD2();
-                    arquivosDePreferencia.salvarVersoaAlter(1);
+                    arquivosDePreferencia.salvarVersoaAlter(versaoDados.getAlteracao().toString());
                 }
             }
 

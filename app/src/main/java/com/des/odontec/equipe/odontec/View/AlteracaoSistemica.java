@@ -64,16 +64,11 @@ public class AlteracaoSistemica extends AppCompatActivity {
         });
     }
 
+
+
     public String[] listaAlteracoes() {
         String[] alter;
         AlteracaoController alteracaoController = new AlteracaoController(AlteracaoSistemica.this);
-        ArrayList<Alteracao> alteracaos = alteracaoController.listarAlteracoes();
-        alter = new String[alteracaos.size()];
-
-        for (Alteracao alt : alteracaos) {
-            alter[i] = alt.getTipoAlteracao();
-            i++;
-        }
-        return alter;
+        return alter=alteracaoController.listarAlteracoes();
     }
 }

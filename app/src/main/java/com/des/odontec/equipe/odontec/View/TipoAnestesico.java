@@ -86,7 +86,7 @@ public class TipoAnestesico extends AppCompatActivity {
         }
 
         ArrayList<String> listaAnes = new ArrayList<>();
-
+        //daqui pra cima vai pro controller
         if (tipoPa.equals("Criança") && tipoAlt.equals("Norma Sistêmica ")) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[7]);
