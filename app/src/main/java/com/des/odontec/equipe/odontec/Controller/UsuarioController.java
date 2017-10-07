@@ -68,5 +68,11 @@ public class UsuarioController {
         return arquivosDePreferencia.retornostatusDeVerificacao();
     }
 
+    public void resetSenha(Usuario usuario,Context context){
+        UsuarioDaoFirebase usuarioDaoFirebase=new UsuarioDaoFirebase(context);
+        usuarioDaoFirebase.resetar(usuario);
+
+    }
+
 
 }
