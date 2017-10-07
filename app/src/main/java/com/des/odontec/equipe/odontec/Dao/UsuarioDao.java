@@ -3,8 +3,12 @@ package com.des.odontec.equipe.odontec.Dao;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -93,6 +97,21 @@ public class UsuarioDao {
         remover.child("user").child(user.getUid().toString()).removeValue();
         user.delete();
 
+    }
+
+    public Task<Void> resetar(Usuario usuario) {
+        FirebaseAuth auth; auth= ConfiguracaoFirebaseDao.autenticarDados();
+        return auth.sendPasswordResetEmail(usuario.getEmail());
+    }
+
+    public Task<Void> atualizarSe(String atual, final Usuario usuario) {
+        FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
+        FirebaseUser user = auth.getCurrentUser();
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
+                Criptografia.md5(atual.toString()));
+        user.reauthenticate(authCredential);
+
+        return user.updatePassword(usuario.getSenha().toString());
     }
 
 

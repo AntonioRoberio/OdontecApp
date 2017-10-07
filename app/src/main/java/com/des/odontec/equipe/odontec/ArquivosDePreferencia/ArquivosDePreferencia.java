@@ -41,17 +41,4 @@ public class ArquivosDePreferencia {
         }
 
     }
-
-    public void statusDeVerificacao(String versao) {
-        SharedPreferences preferences = context.getSharedPreferences("status", context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("resultado",versao);
-        editor.commit();
-    }
-
-    public String retornostatusDeVerificacao() {
-        SharedPreferences preferences = context.getSharedPreferences("status", context.MODE_PRIVATE);
-        return preferences.getString("resultado","Sem status");
-
-    }
 }
