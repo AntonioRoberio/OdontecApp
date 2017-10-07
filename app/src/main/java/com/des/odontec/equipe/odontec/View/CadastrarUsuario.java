@@ -1,7 +1,6 @@
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,18 +10,9 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
-import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 
 public class CadastrarUsuario extends AppCompatActivity {
 
@@ -34,10 +24,8 @@ public class CadastrarUsuario extends AppCompatActivity {
     private EditText cidade;
     private String senhaCript;
     private int valor;
-    private UsuarioController usuarioController;
     private Button salvar;
     private Usuario usuario;
-    private FirebaseAuth aut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +51,15 @@ public class CadastrarUsuario extends AppCompatActivity {
 
                         senhaCript = Criptografia.md5(senha.getText().toString());
                         usuario = new Usuario();
-                        aut = ConfiguracaoFirebaseDao.autenticarDados();
                         usuario.setNome(nome.getText().toString());
                         usuario.setEmail(email.getText().toString());
                         usuario.setSenha(senhaCript.toString());
                         usuario.setEstado(estado.getText().toString());
                         usuario.setCidade(cidade.getText().toString());
                         fl.setVisibility(View.VISIBLE);
-                        cadastraUsuario();
+                        UsuarioController usuarioController=new UsuarioController();
+                        usuarioController.cdtUsuario(usuario,CadastrarUsuario.this);
+
                     } else {
                         Toast.makeText(CadastrarUsuario.this, "As senhas são divergentes", Toast.LENGTH_LONG).show();
                     }
@@ -83,58 +72,10 @@ public class CadastrarUsuario extends AppCompatActivity {
         });
     }
 
-
-    //vai para o model ou outro arqivo firebase
-    public void cadastraUsuario() {
-        aut = ConfiguracaoFirebaseDao.autenticarDados();
-
-        aut.createUserWithEmailAndPassword(
-                usuario.getEmail(),
-                usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = aut.getCurrentUser();
-                    String id = user.getUid();
-                    usuario.setId(id);
-                    usuarioController = new UsuarioController();
-                    usuarioController.cdtUsuario(usuario);
-                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> verificar) {
-                            if (verificar.isSuccessful()) {
-                                Toast.makeText(CadastrarUsuario.this,"Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CadastrarUsuario.this, InicialActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(CadastrarUsuario.this, "Este esdereço de E-MAIL não existe. Digite um email valido", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-
-
-                } else {
-
-                    String mensagemErro = "";
-
-                    try {
-                        throw task.getException();
-                    } catch (FirebaseAuthWeakPasswordException e) {
-                        mensagemErro = "Senha fraca. digite uma senha contendo no mínimo 6 caracteres.";
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        mensagemErro = "Endereço de E-MAIL invalido.";
-                    } catch (FirebaseAuthUserCollisionException e) {
-                        mensagemErro = "Este E-MAIL já está sendo usado";
-                    } catch (Exception e) {
-                        mensagemErro = "Erro ao se cadastrar";
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(CadastrarUsuario.this, mensagemErro, Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
+    public void cadastraUsuario(String resultado) {
+       if(resultado.contains("Usuário cadastrado")){
+           startActivity(new Intent(CadastrarUsuario.this,InicialActivity.class));
+       }
+        Toast.makeText(CadastrarUsuario.this,resultado, Toast.LENGTH_LONG).show();
     }
 }

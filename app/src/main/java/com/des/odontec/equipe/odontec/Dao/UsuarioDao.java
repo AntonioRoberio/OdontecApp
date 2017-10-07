@@ -2,12 +2,15 @@ package com.des.odontec.equipe.odontec.Dao;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +33,11 @@ public class UsuarioDao {
 
     //método que faz o cadastro dos dados de um novo usuário no banco de dados do firebase
     public void salvarBD(Usuario usuario) {
+        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+        FirebaseUser user = aut.getCurrentUser();
+        user.sendEmailVerification();
+        String id = user.getUid();
+        usuario.setId(id);
         DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         dados.child("user").child(String.valueOf(usuario.getId())).setValue(usuario.toMap());
     }
@@ -90,12 +98,25 @@ public class UsuarioDao {
         sair.signOut();
     }
 
-    public void deletar() {
+    public Task<Void> deletar(String senha) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-        DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseUser user = aut.getCurrentUser();
-        remover.child("user").child(user.getUid().toString()).removeValue();
-        user.delete();
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
+                Criptografia.md5(senha.toString()));
+        return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+                    FirebaseUser user = aut.getCurrentUser();
+                    DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+                    remover.child("user").child(user.getUid().toString()).removeValue();
+                    user.delete();
+                }
+            }
+        });
+
+
 
     }
 
@@ -114,5 +135,9 @@ public class UsuarioDao {
         return user.updatePassword(usuario.getSenha().toString());
     }
 
+    public Task<AuthResult> cadastraUsuario(Usuario usuario) {
+        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+        return aut.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha());
+    }
 
 }

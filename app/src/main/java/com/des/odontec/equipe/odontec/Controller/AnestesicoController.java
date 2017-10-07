@@ -20,9 +20,16 @@ public class AnestesicoController {
 
 
 
-    public ArrayList<Anestesico> listarAnestesicos() {
-        return anestesicoDao.listarAnestesicos();
+    public String[] listarAnestesicos() {
+        int i=0;
+        ArrayList<Anestesico> listaAnestesicos= anestesicoDao.listarAnestesicos();
+        String[] anestesicos = new String[listaAnestesicos.size()];
 
+        for (Anestesico an : listaAnestesicos) {
+            anestesicos[i] = an.getTipoAnestesico();
+            i++;
+        }
+        return anestesicos;
     }
 
     public void pegarDadosBD(){

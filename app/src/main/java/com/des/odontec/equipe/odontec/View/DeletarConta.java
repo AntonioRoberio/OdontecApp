@@ -47,7 +47,8 @@ public class DeletarConta extends AppCompatActivity {
                 }).setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        apagar();
+                        UsuarioController usuarioController = new UsuarioController();
+                        usuarioController.apagarConta(senha.getText().toString(),DeletarConta.this);
                     }
                 });
                 alertaConfirmacao.create();
@@ -55,26 +56,12 @@ public class DeletarConta extends AppCompatActivity {
             }
         });
     }
-//vai para o model
+
     public void apagar() {
-        auth = ConfiguracaoFirebaseDao.autenticarDados();
-        FirebaseUser user = auth.getCurrentUser();
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
-                Criptografia.md5(senha.getText().toString()));
-        user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
                     UsuarioController usuarioController = new UsuarioController();
-                    usuarioController.apagarConta();
                     usuarioController.fazerLgoutSistema();
-                    Intent intent = new Intent(DeletarConta.this, MainActivity_Login.class);
-                    startActivity(intent);
+                    startActivity( new Intent(DeletarConta.this, MainActivity_Login.class));
                     finish();
-                } else {
-                    Toast.makeText(DeletarConta.this, "Erro na exclusão da conta", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+
     }
 }

@@ -77,16 +77,10 @@ public class TipoAnestesico extends AppCompatActivity {
         tipoAlt = bundle.getString("alt");
 
         AnestesicoController anestesicoController = new AnestesicoController(TipoAnestesico.this);
-        ArrayList<Anestesico> listaAnestesicos = anestesicoController.listarAnestesicos();
-        String[] anestesicos = new String[listaAnestesicos.size()];
-
-        for (Anestesico an : listaAnestesicos) {
-            anestesicos[i] = an.getTipoAnestesico();
-            i++;
-        }
+        String[] anestesicos=anestesicoController.listarAnestesicos();
 
         ArrayList<String> listaAnes = new ArrayList<>();
-        //daqui pra cima vai pro controller
+
         if (tipoPa.equals("Criança") && tipoAlt.equals("Norma Sistêmica ")) {
             listaAnes.add(anestesicos[2]);
             listaAnes.add(anestesicos[7]);
