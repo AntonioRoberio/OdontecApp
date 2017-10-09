@@ -26,6 +26,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     private int valor;
     private Button salvar;
     private Usuario usuario;
+    FrameLayout fl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +37,32 @@ public class CadastrarUsuario extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomeUsuario);
         email = (EditText) findViewById(R.id.emailUsuario);
         senha = (EditText) findViewById(R.id.senhaUsuario);
-        estado=(EditText) findViewById(R.id.estadoUsuario);
+        estado = (EditText) findViewById(R.id.estadoUsuario);
         cidade = (EditText) findViewById(R.id.cidadeUsuario);
         confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
         salvar = (Button) findViewById(R.id.btSalvar);
-        final FrameLayout fl = (FrameLayout) findViewById(R.id.fl2);
+        fl = (FrameLayout) findViewById(R.id.fl2);
 
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty()  || cidade.getText().toString().isEmpty())) {
+                if (!(nome.getText().toString().isEmpty() || email.getText().toString().isEmpty() || senha.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())) {
                     if (senha.getText().toString().equals(confimarSenha.getText().toString())) {
-
-                        senhaCript = Criptografia.md5(senha.getText().toString());
-                        usuario = new Usuario();
-                        usuario.setNome(nome.getText().toString());
-                        usuario.setEmail(email.getText().toString());
-                        usuario.setSenha(senhaCript.toString());
-                        usuario.setEstado(estado.getText().toString());
-                        usuario.setCidade(cidade.getText().toString());
-                        fl.setVisibility(View.VISIBLE);
-                        UsuarioController usuarioController=new UsuarioController();
-                        usuarioController.cdtUsuario(usuario,CadastrarUsuario.this);
-
+                        if (!(senha.getText().toString().length() < 6)) {
+                            senhaCript = Criptografia.md5(senha.getText().toString());
+                            usuario = new Usuario();
+                            usuario.setNome(nome.getText().toString());
+                            usuario.setEmail(email.getText().toString());
+                            usuario.setSenha(senhaCript.toString());
+                            usuario.setEstado(estado.getText().toString());
+                            usuario.setCidade(cidade.getText().toString());
+                            fl.setVisibility(View.VISIBLE);
+                            UsuarioController usuarioController = new UsuarioController();
+                            usuarioController.cdtUsuario(usuario, CadastrarUsuario.this);
+                        } else {
+                            Toast.makeText(CadastrarUsuario.this, "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         Toast.makeText(CadastrarUsuario.this, "As senhas são divergentes", Toast.LENGTH_LONG).show();
                     }
@@ -73,9 +76,11 @@ public class CadastrarUsuario extends AppCompatActivity {
     }
 
     public void cadastraUsuario(String resultado) {
-       if(resultado.contains("Usuário cadastrado")){
-           startActivity(new Intent(CadastrarUsuario.this,InicialActivity.class));
-       }
-        Toast.makeText(CadastrarUsuario.this,resultado, Toast.LENGTH_LONG).show();
+        if (resultado.contains("Usuário cadastrado")) {
+            startActivity(new Intent(CadastrarUsuario.this, InicialActivity.class));
+        } else {
+            fl.setVisibility(View.GONE);
+        }
+        Toast.makeText(CadastrarUsuario.this, resultado, Toast.LENGTH_LONG).show();
     }
 }

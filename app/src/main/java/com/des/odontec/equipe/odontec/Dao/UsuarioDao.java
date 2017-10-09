@@ -127,12 +127,17 @@ public class UsuarioDao {
 
     public Task<Void> atualizarSe(String atual, final Usuario usuario) {
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
-        FirebaseUser user = auth.getCurrentUser();
+        final FirebaseUser user = auth.getCurrentUser();
         AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
                 Criptografia.md5(atual.toString()));
-        user.reauthenticate(authCredential);
+        return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                user.updatePassword(usuario.getSenha().toString());
+            }
+        });
 
-        return user.updatePassword(usuario.getSenha().toString());
+
     }
 
     public Task<AuthResult> cadastraUsuario(Usuario usuario) {
