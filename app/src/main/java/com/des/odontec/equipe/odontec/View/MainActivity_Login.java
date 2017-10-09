@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
 import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
+import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
@@ -123,7 +124,9 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     usuario.setEmail(email.getText().toString());
                     usuario.setSenha(senhaCript.toString());
                     frama.setVisibility(View.VISIBLE);
-                    autenticarUsuario();
+                    UsuarioController usuarioController=new UsuarioController();
+                    usuarioController.logarOdontec(usuario,MainActivity_Login.this);
+
 
                 } else {
 
@@ -204,7 +207,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     bundle.putString("VALOR", "google");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
-                    finish();
                 } else {
                     String mensagemErro = "";
 
@@ -279,23 +281,17 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         }
     }
 
-    private void autenticarUsuario() {
-        aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()
-        ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser us = aut.getCurrentUser();
-                    bundle.putString("VALOR", "odontec");
-                    logar(us);
-                    Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(MainActivity_Login.this, "Erro ao logar", Toast.LENGTH_LONG).show();
-                    frama.setVisibility(View.GONE);
-                }
-            }
-        });
+    public void autenticarUsuario(FirebaseUser user,String resultado) {
+        if(resultado.contains("Seja")){
+            bundle.putString("VALOR", "odontec");
+            logar(user);
+            Toast.makeText(MainActivity_Login.this,resultado, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity_Login.this,resultado, Toast.LENGTH_SHORT).show();
+            frama.setVisibility(View.GONE);
+        }
+
+
     }
 
     private void logar(FirebaseUser user) {
@@ -305,6 +301,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                 intent.putExtras(bundle);
             }
             startActivity(intent);
+            finish();
         }
 
 

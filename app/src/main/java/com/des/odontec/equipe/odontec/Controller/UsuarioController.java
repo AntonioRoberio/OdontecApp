@@ -4,19 +4,22 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 
-
+import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.View.AtualizarSenha;
 import com.des.odontec.equipe.odontec.View.CadastrarUsuario;
 import com.des.odontec.equipe.odontec.View.DeletarConta;
+import com.des.odontec.equipe.odontec.View.MainActivity_Login;
 import com.des.odontec.equipe.odontec.View.ResetSenha;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
@@ -126,6 +129,23 @@ public class UsuarioController{
             }
         });
 
+    }
+
+    public void logarOdontec(Usuario usuario, final MainActivity_Login login){
+        UsuarioDao usuarioDao=new UsuarioDao();
+        usuarioDao.logar(usuario).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+                FirebaseUser us = aut.getCurrentUser();
+                if(task.isSuccessful()){
+                    login.autenticarUsuario(us,"Seja bem vindo");
+
+                }else{
+                    login.autenticarUsuario(us,"Erro ao tentar logar");
+                }
+            }
+        });
     }
 
 }

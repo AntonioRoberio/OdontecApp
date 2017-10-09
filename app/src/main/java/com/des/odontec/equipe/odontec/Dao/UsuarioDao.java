@@ -145,4 +145,9 @@ public class UsuarioDao {
         return aut.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha());
     }
 
+    public Task<AuthResult> logar(Usuario usuario){
+        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+      return aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha());
+    }
+
 }
