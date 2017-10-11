@@ -31,7 +31,7 @@ private Button botao;
         setContentView(R.layout.activity_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        UsuarioController usuarioController=new UsuarioController();
+        UsuarioController usuarioController=new UsuarioController(InicialActivity.this);
         botao=(Button) findViewById(R.id.btnTesteAne);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ private Button botao;
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         if(bundle!=null){
-            if(bundle.getString("VALOR").toString().equals("odontec"))usuarioController.pegarDados(InicialActivity.this);
+            if(bundle.getString("VALOR").toString().equals("odontec"))usuarioController.pegarDados();
 
         }
 

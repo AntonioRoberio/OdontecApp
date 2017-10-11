@@ -30,10 +30,15 @@ public class UsuarioController{
 
     private Usuario usuarioRef;
     private UsuarioDao usuarioDao;
+    private UsuarioDao usuarioDaoCont;
     public UsuarioController() {
         usuarioRef = new Usuario();
         usuarioDao = new UsuarioDao();
 
+    }
+
+    public UsuarioController(Context context) {
+        usuarioDaoCont=new UsuarioDao(context);
     }
 
     public void cdtUsuario(final Usuario usuario, final CadastrarUsuario cadastrarUsuario) {
@@ -67,13 +72,13 @@ public class UsuarioController{
         });
     }
 
-    public void pegarDados(Context context) {
-        usuarioDao.pegarDados(context);
+    public void pegarDados() {
+        usuarioDaoCont.pegarDados();
     }
 
-    public String[] renoDados(Context context) {
-        String[] valores = usuarioDao.renovarDados(context);
-        return valores;
+    public Usuario exibirDados() {
+       Usuario usuario=usuarioDaoCont.listarDados();
+        return usuario;
     }
 
     public void atualizarDados(Usuario usuario) {

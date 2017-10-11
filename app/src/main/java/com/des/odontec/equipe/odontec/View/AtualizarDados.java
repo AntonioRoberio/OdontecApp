@@ -7,18 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 
-public class AtualizarDados extends AppCompatActivity implements Runnable {
+public class AtualizarDados extends AppCompatActivity{
     private EditText nome;
     private EditText estado;
     private EditText cidade;
     private Button atualizar;
-    private boolean teste;
-    private String[] dados;
+    private Usuario usuario;
+    private UsuarioController usuarioController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +30,12 @@ public class AtualizarDados extends AppCompatActivity implements Runnable {
         cidade = (EditText) findViewById(R.id.pegarCidade);
         atualizar = (Button) findViewById(R.id.enviarAtualizacao);
 
-        UsuarioController usuarioController = new UsuarioController();
-
-        dados = usuarioController.renoDados(AtualizarDados.this);
-        teste = nome.getText().toString().isEmpty();
-        if (teste) {
-            usuarioController.pegarDados(AtualizarDados.this);
-        }
-
-        nome.setText(dados[0].toString());
-        estado.setText(dados[1].toString());
-        cidade.setText(dados[2].toString());
-        teste = nome.getText().toString().isEmpty();
-        if (teste) {
-            Handler handler = new Handler();
-            handler.postDelayed(this, 10000);
-        }
+        usuarioController = new UsuarioController(AtualizarDados.this);
+        usuarioController.pegarDados();
+        usuario = usuarioController.exibirDados();
+        nome.setText(usuario.getNome());
+        estado.setText(usuario.getEstado());
+        cidade.setText(usuario.getCidade());
 
         atualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,17 +47,9 @@ public class AtualizarDados extends AppCompatActivity implements Runnable {
 
     }
 
-    @Override
-    public void run() {
-        UsuarioController usuarioController = new UsuarioController();
-        dados = usuarioController.renoDados(AtualizarDados.this);
-        nome.setText(dados[0].toString());
-        estado.setText(dados[1].toString());
-        cidade.setText(dados[2].toString());
-    }
-
     private void atualizarDados() {
-        Usuario usuario = new Usuario();
+        usuarioController = new UsuarioController(AtualizarDados.this);
+        usuario = new Usuario();
         usuario.setNome(nome.getText().toString());
         usuario.setEstado(estado.getText().toString());
         usuario.setCidade(cidade.getText().toString());

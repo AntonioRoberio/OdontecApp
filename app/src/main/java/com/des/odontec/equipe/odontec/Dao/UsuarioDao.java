@@ -1,7 +1,10 @@
 package com.des.odontec.equipe.odontec.Dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
@@ -19,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +31,16 @@ import java.util.Map;
  */
 
 public class UsuarioDao {
-
+    private SQLiteDatabase banco;
+    private BDSqlieDao bdUsuario;
+    private Context context;
     public UsuarioDao() {
+
+    }
+    public UsuarioDao(Context context) {
+        this.context=context;
+        bdUsuario=new BDSqlieDao(context,"usuarios");
+        banco=bdUsuario.getWritableDatabase();
     }
 
     //método que faz o cadastro dos dados de um novo usuário no banco de dados do firebase
@@ -42,22 +54,27 @@ public class UsuarioDao {
         dados.child("user").child(String.valueOf(usuario.getId())).setValue(usuario.toMap());
     }
 
-    public void pegarDados(final Context context) {
+    public void pegarDados() {
         DatabaseReference reference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
-        FirebaseUser user = auth.getCurrentUser();
+        final FirebaseUser user = auth.getCurrentUser();
         String id = user.getUid().toString();
         reference.child("user").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Usuario u = dataSnapshot.getValue(Usuario.class);
-                SharedPreferences sharedPreferences = context.getSharedPreferences("PREFERENCIA", context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("Nome", u.getNome().toString());
-                editor.putString("Estado", u.getEstado().toString());
-                editor.putString("Cidade", u.getCidade().toString());
-                editor.putString("Email", u.getEmail().toString());
-                editor.commit();
+
+                    Usuario u = dataSnapshot.getValue(Usuario.class);
+                    ContentValues contentValues=new ContentValues();
+                    contentValues.put("nome", u.getNome().toString());
+                    contentValues.put("estado", u.getEstado().toString());
+                    contentValues.put("cidade", u.getCidade().toString());
+                    contentValues.put("email", u.getEmail().toString());
+                    contentValues.put("_id",user.getUid().toString());
+                    banco.insert("usuarios",null,contentValues);
+
+
+
+                banco.close();
             }
 
             @Override
@@ -67,16 +84,28 @@ public class UsuarioDao {
         });
     }
 
-    public String[] renovarDados(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("PREFERENCIA", context.MODE_PRIVATE);
-        String[] valores = new String[4];
-        valores[0] = sharedPreferences.getString("Nome", "");
-        valores[1] = sharedPreferences.getString("Estado", "");
-        valores[2] = sharedPreferences.getString("Cidade", "");
-        valores[3] = sharedPreferences.getString("Email", "");
+    public Usuario listarDados() {
+        Usuario usuario=new Usuario();
+        String[] tabela={"_id","nome","estado","cidade","email"};
+       Cursor cursor= banco.query("usuarios",tabela,null,null,null,null,null);
+        if(cursor.moveToFirst()){
+            FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
+            final FirebaseUser user = auth.getCurrentUser();
+            do{
+                if(cursor.getString(0).equals(user.getUid().toString())){
+                    usuario.setId(cursor.getString(0));
+                    usuario.setNome(cursor.getString(1));
+                    usuario.setEstado(cursor.getString(2));
+                    usuario.setCidade(cursor.getString(3));
+                    usuario.setEmail(cursor.getString(4));
+                    break;
+                }
 
-        return valores;
+            }while (cursor.moveToNext());
+        }
+        return usuario;
     }
+
 
 
     //atualização das informações do usuário contido em banco
@@ -91,7 +120,6 @@ public class UsuarioDao {
         up.put("cidade", usuario.getCidade());
         atualizar.child("user").child(String.valueOf(user.getUid().toString())).updateChildren(up);
     }
-
 
     public void fazerLgout() {
         FirebaseAuth sair = ConfiguracaoFirebaseDao.autenticarDados();
