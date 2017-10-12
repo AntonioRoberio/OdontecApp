@@ -34,13 +34,15 @@ public class UsuarioDao {
     private SQLiteDatabase banco;
     private BDSqlieDao bdUsuario;
     private Context context;
+
     public UsuarioDao() {
 
     }
+
     public UsuarioDao(Context context) {
-        this.context=context;
-        bdUsuario=new BDSqlieDao(context,"usuarios");
-        banco=bdUsuario.getWritableDatabase();
+        this.context = context;
+        bdUsuario = new BDSqlieDao(context, "usuarios");
+        banco = bdUsuario.getWritableDatabase();
     }
 
     //método que faz o cadastro dos dados de um novo usuário no banco de dados do firebase
@@ -55,6 +57,7 @@ public class UsuarioDao {
     }
 
     public void pegarDados() {
+        final Usuario usuario=listarDados();
         DatabaseReference reference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
         final FirebaseUser user = auth.getCurrentUser();
@@ -62,18 +65,20 @@ public class UsuarioDao {
         reference.child("user").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Usuario u = dataSnapshot.getValue(Usuario.class);
-                    ContentValues contentValues=new ContentValues();
-                    contentValues.put("nome", u.getNome().toString());
-                    contentValues.put("estado", u.getEstado().toString());
-                    contentValues.put("cidade", u.getCidade().toString());
-                    contentValues.put("email", u.getEmail().toString());
-                    contentValues.put("_id",user.getUid().toString());
-                    banco.insert("usuarios",null,contentValues);
-
-
-
+                Usuario u = dataSnapshot.getValue(Usuario.class);
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("nome", u.getNome().toString());
+                contentValues.put("estado", u.getEstado().toString());
+                contentValues.put("cidade", u.getCidade().toString());
+                contentValues.put("email", u.getEmail().toString());
+                if(!(user.getUid().toString().equals(usuario.getId()))){
+                    contentValues.put("_id", user.getUid().toString());
+                    banco.insert("usuarios", null, contentValues);
+                }else{
+                    if((!(u.getNome().equals(usuario.getNome())) || !(u.getCidade().equals(usuario.getCidade())) || !(u.getEstado().equals(usuario.getEstado())))){
+                        banco.update("usuarios",contentValues,"_id = ?",new String[]{user.getUid().toString()});
+                    }
+                }
                 banco.close();
             }
 
@@ -85,14 +90,14 @@ public class UsuarioDao {
     }
 
     public Usuario listarDados() {
-        Usuario usuario=new Usuario();
-        String[] tabela={"_id","nome","estado","cidade","email"};
-       Cursor cursor= banco.query("usuarios",tabela,null,null,null,null,null);
-        if(cursor.moveToFirst()){
+        Usuario usuario = new Usuario();
+        String[] tabela = {"_id", "nome", "estado", "cidade", "email"};
+        Cursor cursor = banco.query("usuarios", tabela, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
             FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
             final FirebaseUser user = auth.getCurrentUser();
-            do{
-                if(cursor.getString(0).equals(user.getUid().toString())){
+            do {
+                if (cursor.getString(0).equals(user.getUid().toString())) {
                     usuario.setId(cursor.getString(0));
                     usuario.setNome(cursor.getString(1));
                     usuario.setEstado(cursor.getString(2));
@@ -101,11 +106,10 @@ public class UsuarioDao {
                     break;
                 }
 
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return usuario;
     }
-
 
 
     //atualização das informações do usuário contido em banco
@@ -134,7 +138,7 @@ public class UsuarioDao {
         return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
                     FirebaseUser user = aut.getCurrentUser();
                     DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
@@ -145,11 +149,11 @@ public class UsuarioDao {
         });
 
 
-
     }
 
     public Task<Void> resetar(Usuario usuario) {
-        FirebaseAuth auth; auth= ConfiguracaoFirebaseDao.autenticarDados();
+        FirebaseAuth auth;
+        auth = ConfiguracaoFirebaseDao.autenticarDados();
         return auth.sendPasswordResetEmail(usuario.getEmail());
     }
 
@@ -170,12 +174,12 @@ public class UsuarioDao {
 
     public Task<AuthResult> cadastraUsuario(Usuario usuario) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-        return aut.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha());
+        return aut.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha());
     }
 
-    public Task<AuthResult> logar(Usuario usuario){
+    public Task<AuthResult> logar(Usuario usuario) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-      return aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha());
+        return aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha());
     }
 
 }

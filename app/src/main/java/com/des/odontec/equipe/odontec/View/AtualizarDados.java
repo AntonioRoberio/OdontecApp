@@ -1,6 +1,7 @@
 package com.des.odontec.equipe.odontec.View;
 
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,5 +56,11 @@ public class AtualizarDados extends AppCompatActivity{
         usuario.setCidade(cidade.getText().toString());
         UsuarioController usuarioController = new UsuarioController();
         usuarioController.atualizarDados(usuario);
+        Bundle bundle=new Bundle();
+        bundle.putString("VALOR","odontec");
+        Intent intent=new Intent(AtualizarDados.this,InicialActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }
