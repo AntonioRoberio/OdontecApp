@@ -15,15 +15,15 @@ public class AlteracaoController {
     AlteracaoDao alteracaoDao;
     private int i = 0;
 
-    public AlteracaoController(Context context){
-        alteracaoDao=new AlteracaoDao(context);
+    public AlteracaoController(Context context) {
+        alteracaoDao = new AlteracaoDao(context);
     }
 
-    public void pegarDadosBD(){
+    public void pegarDadosBD() {
         alteracaoDao.pegarDadosBD();
     }
 
-    public String[] listarAlteracoes(){
+    public String[] listarAlteracoes() {
         String[] alter;
         ArrayList<Alteracao> alteracaos = alteracaoDao.listarAlteracoes();
         alter = new String[alteracaos.size()];

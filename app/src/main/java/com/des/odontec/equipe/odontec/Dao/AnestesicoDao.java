@@ -49,8 +49,15 @@ public class AnestesicoDao {
              VersaoDados versaoDados=dataSnapshot.getValue(VersaoDados.class);
              ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
              if(!versaoDados.getAnestesico().toString().equals(arquivosDePreferencia.retornoVersao("anestesico"))){
+                 int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contAnes"));
+                 if (contador != 0) {
+                     for (int i = contador; i >= 1; i--) {
+                         String id = String.valueOf(i);
+                        banco.delete("listaAnestesicos", "_id = ?", new String[]{id});
+                     }
+                 }
                  pegarDadosBD2();
-                 arquivosDePreferencia.salvarVersoaAnes(versaoDados.getAnestesico().toString());
+                 arquivosDePreferencia.salvarVersoaAnes(versaoDados.getAnestesico().toString(),"verAnes");
              }
          }
 
@@ -67,12 +74,16 @@ public class AnestesicoDao {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ContentValues contentValues = new ContentValues();
+                int cont = 0;
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    cont++;
                     Anestesico anestesico = d.getValue(Anestesico.class);
                     contentValues.put("tipoAnes", anestesico.getTipoAnestesico());
+                    contentValues.put("_id", cont + "");
                     banco.insert("listaAnestesicos", null, contentValues);
                 }
-
+                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                arquivosDePreferencia.salvarVersoaAnes(new String(cont + ""), "cont");
                 banco.close();
             }
 
@@ -91,7 +102,7 @@ public class AnestesicoDao {
         if (cursor.moveToFirst()) {
             do {
                 Anestesico anes = new Anestesico();
-                anes.setId(String.valueOf(cursor.getLong(0)));
+                anes.setId(cursor.getString(0));
                 anes.setTipoAnestesico(cursor.getString(1));
                 anestesicos.add(anes);
 

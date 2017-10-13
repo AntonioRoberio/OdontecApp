@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Model.Alteracao;
+import com.des.odontec.equipe.odontec.Model.Anestesico;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,15 +38,22 @@ public class AlteracaoDao {
     }
 
     public void pegarDadosBD() {
-
         databaseReference.child("versoes").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 VersaoDados versaoDados = dataSnapshot.getValue(VersaoDados.class);
                 ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
                 if (!versaoDados.getAlteracao().toString().equals(arquivosDePreferencia.retornoVersao("alteracao"))) {
+                    int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contAlt"));
+                    if (contador != 0) {
+                        for (int i = contador; i >= 1; i--) {
+                            String id = String.valueOf(i);
+                            banco.delete("listaAlteracao", "_id = ?", new String[]{id});
+                        }
+
+                    }
                     pegarDadosBD2();
-                    arquivosDePreferencia.salvarVersoaAlter(versaoDados.getAlteracao().toString());
+                    arquivosDePreferencia.salvarVersoaAlter(versaoDados.getAlteracao().toString(), "verAlt");
                 }
             }
 
@@ -62,12 +70,16 @@ public class AlteracaoDao {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ContentValues contentValues = new ContentValues();
+                int cont = 0;
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    cont++;
                     Alteracao alteracao = d.getValue(Alteracao.class);
                     contentValues.put("tipoAlter", alteracao.getTipoAlteracao());
+                    contentValues.put("_id", cont + "");
                     banco.insert("listaAlteracao", null, contentValues);
                 }
-
+                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                arquivosDePreferencia.salvarVersoaAlter(new String(cont + ""), "cont");
                 banco.close();
             }
 
@@ -86,7 +98,7 @@ public class AlteracaoDao {
         if (cursor.moveToFirst()) {
             do {
                 Alteracao alteracao = new Alteracao();
-                alteracao.setId(String.valueOf(cursor.getLong(0)));
+                alteracao.setId(cursor.getString(0));
                 alteracao.setTipoAlteracao(cursor.getString(1));
                 alteracaos.add(alteracao);
             } while (cursor.moveToNext());

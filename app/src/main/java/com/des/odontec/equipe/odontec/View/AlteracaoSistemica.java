@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 public class AlteracaoSistemica extends AppCompatActivity {
     private Spinner escolhaAlt;
-    private int i = 0;
     private Bundle bundle;
     private Button btAlt;
     private String valorTipPaci;

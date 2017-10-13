@@ -17,9 +17,9 @@ public class BDSqlieDao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table listaAnestesicos(_id integer primary key autoincrement ,tipoAnes text not null);");
-        db.execSQL("create table listaAlteracao(_id integer primary key autoincrement ,tipoAlter text not null);");
-        db.execSQL("create table usuarios(_id text primary key  ,nome text not null,estado text not null,cidade text not null,email text not null);");
+        db.execSQL("create table listaAnestesicos(_id text primary key ,tipoAnes text not null);");
+        db.execSQL("create table listaAlteracao(_id text primary key ,tipoAlter text not null);");
+        db.execSQL("create table usuarios(_id text primary key ,nome text not null,estado text not null,cidade text not null,email text not null);");
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-
 /**
  * Created by Antonio on 24/09/2017.
  */
@@ -16,27 +15,39 @@ public class ArquivosDePreferencia {
         this.context = context;
     }
 
-    public void salvarVersoaAnes(String versao) {
+    public void salvarVersoaAnes(String valor, String tipo) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("versaoAnes",versao);
+        if (tipo.equals("verAnes")) {
+            editor.putString("versaoAnes", valor);
+        } else {
+            editor.putString("quantidadeAnes", valor);
+        }
         editor.commit();
     }
 
-    public void salvarVersoaAlter(String versao) {
+    public void salvarVersoaAlter(String valor, String tipo) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("versaoAlter",versao);
+        if (tipo.equals("verAlt")) {
+            editor.putString("versaoAlter", valor);
+        } else {
+            editor.putString("quantidadeAlt", valor);
+        }
         editor.commit();
     }
 
     public String retornoVersao(String valor) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
-        if (valor.equals("alteracao")){
-            return preferences.getString("versaoAlter","sem valor");
-        }else if(valor.equals("anestesico")){
-            return preferences.getString("versaoAnes","sem valor");
-        }else{
+        if (valor.equals("alteracao")) {
+            return preferences.getString("versaoAlter", "sem valor");
+        } else if (valor.equals("anestesico")) {
+            return preferences.getString("versaoAnes", "sem valor");
+        } else if (valor.equals("contAlt")) {
+            return preferences.getString("quantidadeAlt", "0");
+        } else if (valor.equals("contAnes")) {
+            return preferences.getString("quantidadeAnes", "0");
+        } else {
             return "";
         }
 
