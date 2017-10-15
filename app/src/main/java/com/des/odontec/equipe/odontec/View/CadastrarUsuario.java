@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -31,6 +32,8 @@ public class CadastrarUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_cadastrar_usuario);
 
 
@@ -43,6 +46,16 @@ public class CadastrarUsuario extends AppCompatActivity {
         salvar = (Button) findViewById(R.id.btSalvar);
         fl = (FrameLayout) findViewById(R.id.fl2);
 
+        nome.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b)
+                    nome.setHint("");
+                else{
+                    nome.setHint("Nome");
+                }
+            }
+        } );
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override

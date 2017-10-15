@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CadastrarUsuario" />
+        <activity android:name=".View.CadastrarUsuario" android:label="                Cadastro Odontec" />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
         <activity android:name=".View.AtualizarSenha" />
