@@ -24,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CadastrarUsuario" android:label="                Cadastro Odontec" />
+        <activity
+            android:name=".View.CadastrarUsuario"
+            android:label="                Cadastro Odontec" />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
         <activity android:name=".View.AtualizarSenha" />
@@ -36,7 +38,8 @@
             android:name=".View.InicialActivity"
             android:label="@string/title_activity_inicial"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.PesoPaciente"></activity>
+        <activity android:name=".View.PesoPaciente" />
+        <activity android:name=".View.ResultadoFinal"></activity>
     </application>
 
 </manifest>

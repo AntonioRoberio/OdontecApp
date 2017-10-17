@@ -52,7 +52,6 @@
                 android:background="@drawable/edittextfundo"
                 android:inputType="text"
                 android:textColorHint="#FFFFFF"
-                android:drawableLeft="@drawable/nome"
                 android:layout_weight="0.11" />
 
             <EditText

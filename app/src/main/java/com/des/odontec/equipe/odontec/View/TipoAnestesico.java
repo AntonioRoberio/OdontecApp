@@ -28,6 +28,8 @@ public class TipoAnestesico extends AppCompatActivity {
     private int i=0;
     private ArrayList<String> lista;
     private Bundle bundle;
+    private Bundle valores;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,18 @@ public class TipoAnestesico extends AppCompatActivity {
         setContentView(R.layout.activity_tipo_anestesico);
         list = (Spinner) findViewById(R.id.listaResultado);
         enviar=(Button) findViewById(R.id.btnEnviarAnestesico);
+
+        intent = getIntent();
+        if(intent != null){
+            valores = intent.getExtras();
+            if(valores!=null){
+                tipoPa = valores.getString("tipo");
+                tipoAlt = valores.getString("alt");
+            }else{
+                tipoPa = "sem valor";
+                tipoAlt = "sem valor";
+            }
+        }
 
         lista = listaAnestesico();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
@@ -59,6 +73,8 @@ public class TipoAnestesico extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(TipoAnestesico.this,PesoPaciente.class);
+                bundle.putString("alt",tipoAlt);
+                bundle.putString("tipo",tipoPa);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -71,10 +87,7 @@ public class TipoAnestesico extends AppCompatActivity {
 
     private ArrayList<String> listaAnestesico() {
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        tipoPa = bundle.getString("tipo");
-        tipoAlt = bundle.getString("alt");
+
 
         AnestesicoController anestesicoController = new AnestesicoController(TipoAnestesico.this);
         String[] anestesicos=anestesicoController.listarAnestesicos();
