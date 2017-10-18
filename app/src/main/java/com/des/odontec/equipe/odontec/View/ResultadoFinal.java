@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.des.odontec.equipe.odontec.Controller.ResultadoFinalController;
 import com.des.odontec.equipe.odontec.R;
 
 public class ResultadoFinal extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class ResultadoFinal extends AppCompatActivity {
     private TextView tubetes;
     private Intent intent;
     private Bundle valores;
+    private String resultado;
+    private double peso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,50 +34,17 @@ public class ResultadoFinal extends AppCompatActivity {
             if(valores!=null){
                 tipoPa.setText("Tipo de Paciente: "+valores.get("tipo").toString());
                 tipoAlt.setText("Alteração Sistemica: "+valores.get("alt").toString());
-                tipoAnes.setText("Anestésico Indicado: "+valores.get("tipoAnestesico").toString());
+                tipoAnes.setText("Anestésico Selecionado: "+valores.get("tipoAnestesico").toString());
                 pesoPaciente.setText("Peso do Paciente: "+valores.get("peso").toString());
             }
         }
 
-        tubetes.setText("Quantidade de Tubetes: "+resutado());
+        ResultadoFinalController resultadoFinalController=new ResultadoFinalController();
+        peso=Double.parseDouble(valores.get("peso").toString());
+        resultado=resultadoFinalController.resutado(valores.get("tipoAnestesico").toString(),peso);
+
+        tubetes.setText("Quantidade de Tubetes: "+resultado);
     }
 
-    private String resutado(){
-        String rst="";
 
-        String anestesico=valores.getString("tipoAnestesico").toString();
-        char[] arrayAnestesico=anestesico.toCharArray();
-        char caracteres=' ';
-        String valor="";
-        double peso=Double.parseDouble(valores.get("peso").toString());
-        double mg;
-        double dosagemMaxima;
-        double resultado;
-
-        for(int i=0;i<arrayAnestesico.length-1;i++){
-            caracteres=arrayAnestesico[i];
-            String n=String.valueOf(caracteres);
-            if(n.matches("\\d")){
-                valor+=n;
-            }else if(n.equalsIgnoreCase(".")){
-                valor+=n;
-            }
-        }
-
-        mg=Double.parseDouble(valor);
-        mg=(mg*10)*1.8;
-
-        if(anestesico.contains("Articaína")){
-            dosagemMaxima=7.0;
-        }else if(anestesico.contains("Prilocaína")){
-            dosagemMaxima=6.0;
-        }else if(anestesico.contains("Bupivacaína")){
-            dosagemMaxima=1.3;
-        }else{
-            dosagemMaxima=4.4;
-        }
-        resultado=(dosagemMaxima*peso)/mg;
-
-        return rst=String.valueOf(Math.floor(resultado));
-    }
 }
