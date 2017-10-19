@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class PatologiaDao {
+
     private DatabaseReference databaseReference=ConfiguracaoFirebaseDao.refernciaBancoFirebase();
 
     private void pegarPatologias(){
