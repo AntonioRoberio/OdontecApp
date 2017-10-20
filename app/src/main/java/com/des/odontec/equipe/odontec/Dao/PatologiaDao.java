@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Model.Patologia;
+import com.des.odontec.equipe.odontec.Model.Tratamento;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,6 @@ public class PatologiaDao {
         banco=bd.getWritableDatabase();
     }
 
-//
     public void pegarDadosBD() {
         databaseReference.child("versoes").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -46,7 +46,7 @@ public class PatologiaDao {
                     if (contador != 0) {
                         for (int i = contador; i >= 1; i--) {
                             String id = String.valueOf(i);
-                            banco.delete("patologias", "_id = ?", new String[]{id});
+                            banco.delete("listaPatologias", "_id = ?", new String[]{id});
                         }
 
                     }
@@ -63,7 +63,7 @@ public class PatologiaDao {
 
     }
 
-    public void pegarPatologias(){
+    private void pegarPatologias(){
         databaseReference.child("patologias").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -106,11 +106,11 @@ public class PatologiaDao {
         banco.close();
         return patologias;
     }
-    //
 
-    //-----------------------------------------------------------------
-    public void salvarBD(Patologia patologia) {
+    /*
+    public void salvarBD(Tratamento tratamento) {
         DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-        dados.child("patologias").child(patologia.getId()).setValue(patologia.patologia());
+        dados.child("tratamentos").child(tratamento.getId()).setValue(tratamento.tratamento());
     }
+    */
 }

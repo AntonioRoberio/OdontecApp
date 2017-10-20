@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BDSqlieDao extends SQLiteOpenHelper {
-    private static final String NOME_BD = "BancoTesti";
+    private static final String NOME_BD = "Bancoteste";
     private static final int VERSAO = 1;
     public BDSqlieDao(Context context) {
         super(context, NOME_BD, null, VERSAO);
@@ -21,6 +21,7 @@ public class BDSqlieDao extends SQLiteOpenHelper {
         db.execSQL("create table listaAlteracao(_id text primary key ,tipoAlter text not null);");
         db.execSQL("create table usuarios(_id text primary key ,nome text not null,estado text not null,cidade text not null,email text not null);");
         db.execSQL("create table listaPatologias(_id text primary key ,tipoPatologia text not null);");
+        db.execSQL("create table listaTratamento(_id text primary key ,tipoTratamento text not null);");
     }
 
     @Override
@@ -29,6 +30,7 @@ public class BDSqlieDao extends SQLiteOpenHelper {
         db.execSQL("drop table listaAlteracao");
         db.execSQL("drop table usuarios");
         db.execSQL("drop table patologias");
+        db.execSQL("drop table listaTratamento");
         onCreate(db);
     }
 }

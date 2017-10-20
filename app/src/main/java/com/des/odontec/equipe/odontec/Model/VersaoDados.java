@@ -13,6 +13,7 @@ public class VersaoDados {
     private String anestesico;
     private String alteracao;
     private String patologia;
+    private String tratamento;
 
 
     public VersaoDados() {
@@ -24,6 +25,7 @@ public class VersaoDados {
         d.put("anestesico",getAnestesico());
         d.put("alteracao",getAlteracao());
         d.put("patologia",getPatologia());
+        d.put("tratamento",getTratamento());
         return d;
     }
 
@@ -49,5 +51,14 @@ public class VersaoDados {
 
     public void setPatologia(String patologia) {
         this.patologia = patologia;
+    }
+
+    public String getTratamento(){
+        return tratamento;
+    }
+
+    public void setTratamento(String tratamento){
+        this.tratamento=tratamento;
+
     }
 }

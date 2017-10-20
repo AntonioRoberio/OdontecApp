@@ -40,7 +40,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.PesoPaciente" />
         <activity android:name=".View.ResultadoFinal" />
-        <activity android:name=".View.SelecionarPatologia"></activity>
+        <activity android:name=".View.SelecionarPatologia" />
+        <activity android:name=".View.SelecionarTratamento"></activity>
     </application>
 
 </manifest>

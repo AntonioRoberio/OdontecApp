@@ -21,7 +21,6 @@ public class PatologiaController {
     public void pegarDados(){
         patologiaDao.pegarDadosBD();
     }
-
     public String[] listarPatologias(){
         String[] patologias;
 
