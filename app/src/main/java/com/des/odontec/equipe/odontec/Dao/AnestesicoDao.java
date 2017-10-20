@@ -27,7 +27,7 @@ public class AnestesicoDao {
     private SQLiteDatabase banco;
     private DatabaseReference databaseReference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
     private BDSqlieDao bdAnestesico;
-   private Context context;
+    private Context context;
 
     public AnestesicoDao() {
 

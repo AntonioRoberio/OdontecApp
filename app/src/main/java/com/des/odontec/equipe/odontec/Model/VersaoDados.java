@@ -12,6 +12,8 @@ import java.util.Map;
 public class VersaoDados {
     private String anestesico;
     private String alteracao;
+    private String patologia;
+
 
     public VersaoDados() {
     }
@@ -21,6 +23,7 @@ public class VersaoDados {
         HashMap<String,Object> d=new HashMap<>();
         d.put("anestesico",getAnestesico());
         d.put("alteracao",getAlteracao());
+        d.put("patologia",getPatologia());
         return d;
     }
 
@@ -38,5 +41,13 @@ public class VersaoDados {
 
     public void setAlteracao(String alteracao) {
         this.alteracao = alteracao;
+    }
+
+    public String getPatologia() {
+        return patologia;
+    }
+
+    public void setPatologia(String patologia) {
+        this.patologia = patologia;
     }
 }

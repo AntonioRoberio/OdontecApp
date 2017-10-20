@@ -10,20 +10,29 @@ import java.util.Map;
  */
 
 public class Patologia {
-    private String selectPatologia;
+    private String tipoPatologia;
+    private String id;
 
-    public String getSelectPatologia(){
-        return selectPatologia;
+    public String getTipoPatologia() {
+        return tipoPatologia;
     }
 
-    public void setSelectPatologia(String selectPatologia){
-        this.selectPatologia=selectPatologia;
+    public void setTipoPatologia(String tipoPatologia) {
+        this.tipoPatologia = tipoPatologia;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Exclude
     public Map<String,Object> patologia(){
         HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("patologia",getSelectPatologia());
+        hashMap.put("patologia",getTipoPatologia());
         return hashMap;
     }
 }
