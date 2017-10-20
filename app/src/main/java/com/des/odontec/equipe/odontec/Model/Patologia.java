@@ -32,7 +32,7 @@ public class Patologia {
     @Exclude
     public Map<String,Object> patologia(){
         HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("patologia",getTipoPatologia());
+        hashMap.put("tipoPatologia",getTipoPatologia());
         return hashMap;
     }
 }

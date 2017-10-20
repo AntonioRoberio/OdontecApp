@@ -54,13 +54,13 @@ public class ArquivosDePreferencia {
         } else if (valor.equals("anestesico")) {
             return preferences.getString("versaoAnes", "sem valor");
         } else if (valor.equals("patologia")) {
-            return preferences.getString("versaoAnes", "sem valor");
+            return preferences.getString("versaoPatol", "sem valor");
         } else if (valor.equals("contAlt")) {
             return preferences.getString("quantidadeAlt", "0");
         } else if (valor.equals("contAnes")) {
             return preferences.getString("quantidadeAnes", "0");
         }else if (valor.equals("contPatol")) {
-            return preferences.getString("quantidadeAnes", "0");
+            return preferences.getString("quantidadePtl", "0");
         } else {
             return "";
         }

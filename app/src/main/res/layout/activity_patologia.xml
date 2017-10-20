@@ -11,4 +11,15 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:id="@+id/opcaoPatologia"></Spinner>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/salvarPato"
+        android:hint="patologias"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="salvar"
+        android:id="@+id/btnSalvarPtl"/>
 </LinearLayout>

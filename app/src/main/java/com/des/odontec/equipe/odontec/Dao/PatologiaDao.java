@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Model.Patologia;
+import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,11 +30,11 @@ public class PatologiaDao {
 
     public PatologiaDao(Context context){
         this.context=context;
-        bd=new BDSqlieDao(context,"");
+        bd=new BDSqlieDao(context);
         banco=bd.getWritableDatabase();
     }
 
-
+//
     public void pegarDadosBD() {
         databaseReference.child("versoes").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -48,7 +51,7 @@ public class PatologiaDao {
 
                     }
                     pegarPatologias();
-                    arquivosDePreferencia.salvarVersaoPatologia(versaoDados.getAlteracao().toString(), "verPat");
+                    arquivosDePreferencia.salvarVersaoPatologia(versaoDados.getPatologia().toString(), "verPat");
                 }
             }
 
@@ -60,7 +63,7 @@ public class PatologiaDao {
 
     }
 
-    private void pegarPatologias(){
+    public void pegarPatologias(){
         databaseReference.child("patologias").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -71,7 +74,7 @@ public class PatologiaDao {
                     Patologia p=dataSnapshot1.getValue(Patologia.class);
                     contentValues.put("tipoPatologia",p.getTipoPatologia());
                     contentValues.put("_id",String.valueOf(cont));
-                    banco.insert("patologias",null,contentValues);
+                    banco.insert("listaPatologias",null,contentValues);
                 }
                 ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
                 arquivosDePreferencia.salvarVersaoPatologia(new String(cont + ""), "cont");
@@ -89,7 +92,7 @@ public class PatologiaDao {
         ArrayList<Patologia> patologias=new ArrayList<>();
 
         String[] colunas={"_id","tipoPatologia"};
-        Cursor cursor=banco.query("patologias",colunas,null,null,null,null,null);
+        Cursor cursor=banco.query("listaPatologias",colunas,null,null,null,null,null);
 
         if(cursor.moveToFirst()){
             do{
@@ -102,5 +105,12 @@ public class PatologiaDao {
 
         banco.close();
         return patologias;
+    }
+    //
+
+    //-----------------------------------------------------------------
+    public void salvarBD(Patologia patologia) {
+        DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+        dados.child("patologias").child(patologia.getId()).setValue(patologia.patologia());
     }
 }

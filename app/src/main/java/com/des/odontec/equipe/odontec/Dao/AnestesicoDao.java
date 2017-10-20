@@ -35,7 +35,7 @@ public class AnestesicoDao {
 
     public AnestesicoDao(Context context) {
         this.context=context;
-        bdAnestesico = new BDSqlieDao(context,"listaAnestesicos");
+        bdAnestesico = new BDSqlieDao(context);
         banco = bdAnestesico.getWritableDatabase();
     }
 

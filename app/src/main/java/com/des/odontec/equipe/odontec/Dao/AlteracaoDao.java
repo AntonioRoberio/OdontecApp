@@ -33,7 +33,7 @@ public class AlteracaoDao {
 
     public AlteracaoDao(Context context) {
         this.context = context;
-        bdAlteracao = new BDSqlieDao(context, "listaAlteracao");
+        bdAlteracao = new BDSqlieDao(context);
         banco = bdAlteracao.getWritableDatabase();
     }
 

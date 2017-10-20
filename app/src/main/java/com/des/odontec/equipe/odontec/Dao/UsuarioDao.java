@@ -41,7 +41,7 @@ public class UsuarioDao {
 
     public UsuarioDao(Context context) {
         this.context = context;
-        bdUsuario = new BDSqlieDao(context, "usuarios");
+        bdUsuario = new BDSqlieDao(context);
         banco = bdUsuario.getWritableDatabase();
     }
 

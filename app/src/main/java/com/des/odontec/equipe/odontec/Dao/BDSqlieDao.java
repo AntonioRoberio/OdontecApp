@@ -9,19 +9,18 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BDSqlieDao extends SQLiteOpenHelper {
-    private static final String NOME_BD = "BancoTeste";
+    private static final String NOME_BD = "BancoTesti";
     private static final int VERSAO = 1;
-    public BDSqlieDao(Context context,String nomeTable) {
+    public BDSqlieDao(Context context) {
         super(context, NOME_BD, null, VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table listaAnestesicos(_id text primary key ,tipoAnes text not null);");
-        db.execSQL("create table li" +
-                "staAlteracao(_id text primary key ,tipoAlter text not null);");
+        db.execSQL("create table listaAlteracao(_id text primary key ,tipoAlter text not null);");
         db.execSQL("create table usuarios(_id text primary key ,nome text not null,estado text not null,cidade text not null,email text not null);");
-        db.execSQL("create table patologias(_id text primary key ,tipoPatologia text not null);");
+        db.execSQL("create table listaPatologias(_id text primary key ,tipoPatologia text not null);");
     }
 
     @Override
