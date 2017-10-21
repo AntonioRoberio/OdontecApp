@@ -19,36 +19,40 @@
 
         <ImageView
             android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logoodontec"
-            android:layout_gravity="center"/>
+            android:layout_width="156dp"
+            android:layout_height="150dp"
+            android:src="@drawable/odonteclogo"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
 
 
         <EditText
             android:id="@+id/emialLogin"
-            android:layout_width="334dp"
+            android:layout_width="287dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="E-mail"
             android:layout_gravity="center"
             android:inputType="textEmailAddress"
-            android:textColorLink="#802A2E"/>
+            android:textColorLink="#00AFEF"/>
 
-        <EditText
-            android:id="@+id/senhaLogin"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="Senha"
-            android:inputType="textPassword" />
+         <EditText
+             android:id="@+id/senhaLogin"
+             android:layout_width="287dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:hint="Senha"
+             android:inputType="textPassword"
+             android:textColorLink="#00AFEF" />
 
-        <Button
+         <Button
             android:id="@+id/logarSistema"
-            android:layout_width="242dp"
+            android:layout_width="287dp"
             android:layout_height="37dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/botaoodontec"
+            android:fontFamily="@string/common_google_play_services_install_text"
             android:text="  O  |        Entrar com Odontec"
             android:textColor="#ffffff"
             android:layout_gravity="center"
@@ -60,26 +64,28 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="________________________OU________________________"
-            android:textColor="#802A2E"
+            android:textColor="#00AFEF"
             android:layout_gravity="center"
             />
 
-        <Button
+         <Button
 
-            android:id="@+id/logarSistemaFacebook"
-            android:layout_width="242dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/botaoface"
-            android:fontFamily="@string/common_google_play_services_install_text"
-            android:text="    F  |         Entrar com Facebook"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center"/>
+             android:id="@+id/logarSistemaFacebook"
+             android:layout_width="287dp"
+             android:layout_height="37dp"
+             android:layout_gravity="center"
+             android:gravity="center"
+             android:layout_marginTop="10dp"
+             android:background="@drawable/botaoface"
+             android:fontFamily="@string/common_google_play_services_install_text"
+             android:text="Entrar com Facebook"
+             android:textColor="#FFFFFF"
+             android:drawableLeft="@drawable/face"/>
 
 
-        <Button
+         <Button
             android:id="@+id/logarSistemaGoog"
-            android:layout_width="242dp"
+            android:layout_width="287dp"
             android:layout_height="37dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/botaogmail"
@@ -117,11 +123,11 @@
             android:id="@+id/cadatrarUusario"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="#802A2E"
+
             android:textAlignment="center"
             android:fontFamily="sans-serif-condensed"
             android:text="NÃO TEM UMA CONTA ODONTEC? FAÇA AGORA"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="12sp"
             android:layout_marginTop="20dp"
             />
@@ -130,11 +136,10 @@
         android:id="@+id/recuperarSenha"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#802A2E"
         android:textAlignment="center"
         android:fontFamily="sans-serif-condensed"
         android:text="ESQUECEU SUA SENHA? RECUPERAR"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="12dp"
 
         />
