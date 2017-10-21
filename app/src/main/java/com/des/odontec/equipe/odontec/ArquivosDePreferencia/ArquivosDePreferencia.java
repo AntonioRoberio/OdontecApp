@@ -48,16 +48,7 @@ public class ArquivosDePreferencia {
         editor.commit();
     }
 
-    public void salvarVersaoTratamento(String valor, String tipo) {
-        SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        if (tipo.equals("verTrat")) {
-            editor.putString("versaoTrata", valor);
-        } else {
-            editor.putString("quantidadeTrata", valor);
-        }
-        editor.commit();
-    }
+
 
     public String retornoVersao(String valor) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
@@ -67,16 +58,12 @@ public class ArquivosDePreferencia {
             return preferences.getString("versaoAnes", "sem valor");
         } else if (valor.equals("patologia")) {
             return preferences.getString("versaoPatol", "sem valor");
-        }else if (valor.equals("tratamento")) {
-            return preferences.getString("versaoTrata", "sem valor");
-        } else if (valor.equals("contAlt")) {
+        }else if (valor.equals("contAlt")) {
             return preferences.getString("quantidadeAlt", "0");
         } else if (valor.equals("contAnes")) {
             return preferences.getString("quantidadeAnes", "0");
         }else if (valor.equals("contPatol")) {
             return preferences.getString("quantidadePtl", "0");
-        }else if (valor.equals("contTrata")) {
-            return preferences.getString("quantidadeTrata", "0");
         } else {
             return "";
         }

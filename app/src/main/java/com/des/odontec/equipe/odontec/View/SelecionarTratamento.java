@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.des.odontec.equipe.odontec.Controller.TratamentoController;
+import com.des.odontec.equipe.odontec.Controller.PatologiaController;
 import com.des.odontec.equipe.odontec.R;
 
 public class SelecionarTratamento extends AppCompatActivity {
     private TextView patologia;
     private TextView tratamento;
+    private String id;
+    private String escolha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +23,10 @@ public class SelecionarTratamento extends AppCompatActivity {
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         patologia.setText(bundle.getString("ptlg"));
-
-        TratamentoController tratamentoController=new TratamentoController(SelecionarTratamento.this);
-        tratamento.setText(tratamentoController.listarTratamento(patologia.getText().toString()));
+        id=bundle.get("id").toString();
+        PatologiaController patologiaController=new PatologiaController(SelecionarTratamento.this);
+        escolha=patologiaController.tratamento(id);
+        tratamento.setText(escolha);
 
     }
 }

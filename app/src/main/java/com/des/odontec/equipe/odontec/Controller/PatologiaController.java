@@ -21,17 +21,42 @@ public class PatologiaController {
     public void pegarDados(){
         patologiaDao.pegarDadosBD();
     }
-    public String[] listarPatologias(){
-        String[] patologias;
+
+    public ArrayList<String[]> listarPatologias(){
+
+        String patologias;
+        String id;
+
+        ArrayList<String[]> listaTratamento=new ArrayList<>();
 
         ArrayList<Patologia> ptlg=patologiaDao.listarPatologias();
-       patologias=new String[ptlg.size()];
+
 
         for (Patologia ptl : ptlg) {
-            patologias[i] = ptl.getTipoPatologia();
-            i++;
+            patologias=ptl.getTipoPatologia();
+            id=ptl.getId();
+            String[] valores=new String[2];
+            valores[0]=patologias;
+            valores[1]=id;
+            listaTratamento.add(valores);
+
         }
 
-        return patologias;
+        return listaTratamento;
     }
+
+    public String tratamento(String valor){
+        String tratamento="";
+
+        ArrayList<Patologia> ptlg=patologiaDao.listarPatologias();
+
+        for(Patologia ptl : ptlg){
+            if(ptl.getId().equals(valor)){
+                tratamento=ptl.getTipoTratamento();
+            }
+        }
+
+        return tratamento;
+    }
+
 }

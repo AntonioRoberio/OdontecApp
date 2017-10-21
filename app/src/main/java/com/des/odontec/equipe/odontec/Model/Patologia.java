@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class Patologia {
     private String tipoPatologia;
+    private String tipoTratamento;
     private String id;
 
     public String getTipoPatologia() {
@@ -21,6 +22,13 @@ public class Patologia {
         this.tipoPatologia = tipoPatologia;
     }
 
+    public String getTipoTratamento() {
+        return tipoTratamento;
+    }
+
+    public void setTipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
+    }
     public String getId() {
         return id;
     }
@@ -33,6 +41,7 @@ public class Patologia {
     public Map<String,Object> patologia(){
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("tipoPatologia",getTipoPatologia());
+        hashMap.put("tipoTratamento",getTipoTratamento());
         return hashMap;
     }
 }

@@ -9,41 +9,53 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.PatologiaController;
-import com.des.odontec.equipe.odontec.Controller.TratamentoController;
 import com.des.odontec.equipe.odontec.Dao.PatologiaDao;
 import com.des.odontec.equipe.odontec.Model.Patologia;
-import com.des.odontec.equipe.odontec.Model.Tratamento;
 import com.des.odontec.equipe.odontec.R;
+
+import java.util.ArrayList;
 
 public class SelecionarPatologia extends AppCompatActivity {
     private Spinner spinnerPatologia;
-    private EditText editText;
+    private EditText patologias;
+    private EditText tratamento;
     private Button button;
+    private Button salvar;
     private Bundle bundle;
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patologia);
         spinnerPatologia=(Spinner) findViewById(R.id.opcaoPatologia);
-        editText=(EditText) findViewById(R.id.salvarPato);
+        patologias=(EditText) findViewById(R.id.salvarPato);
+        tratamento=(EditText) findViewById(R.id.salvarTratamento);
         button=(Button) findViewById(R.id.btnEscolher);
+        salvar=(Button) findViewById(R.id.btnEscolher);
 
         PatologiaController patologiaController=new PatologiaController(SelecionarPatologia.this);
         patologiaController.pegarDados();
-        TratamentoController tratamentoController=new TratamentoController(SelecionarPatologia.this);
-        tratamentoController.pegarDados();
 
-        final String[] patologia=patologis();
+        ArrayList<String[]> tra=patologis();
+        final String[] patologia=new String[tra.size()];
+        final String[] ids=new String[tra.size()];
+        for(String[] s:tra){
+            patologia[i]=s[0];
+            ids[i]=s[1];
+            i++;
+        }
+
+
         ArrayAdapter<String> pt=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,patologia);
         spinnerPatologia.setAdapter(pt);
-
+        bundle=new Bundle();
         spinnerPatologia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                bundle.putString("ptlg",patologia[position]);
+               bundle.putString("ptlg",patologia[position]);
+                bundle.putString("id",ids[position]);
             }
 
             @Override
@@ -63,13 +75,16 @@ public class SelecionarPatologia extends AppCompatActivity {
         });
 
 
+
     }
 
-    private String[] patologis(){
+    private ArrayList<String[]> patologis(){
         String[] ptls;
 
         PatologiaController patologiaController=new PatologiaController(SelecionarPatologia.this);
+        ArrayList<String[]> listaTratamento=patologiaController.listarPatologias();
 
-        return  ptls=patologiaController.listarPatologias();
+        return listaTratamento;
     }
+
 }

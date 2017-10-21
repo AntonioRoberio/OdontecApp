@@ -7,11 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Model.Patologia;
-import com.des.odontec.equipe.odontec.Model.Tratamento;
-import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +20,7 @@ import java.util.ArrayList;
  */
 
 public class PatologiaDao {
+
     private DatabaseReference databaseReference=ConfiguracaoFirebaseDao.refernciaBancoFirebase();
     private SQLiteDatabase banco;
     private BDSqlieDao bd;
@@ -73,6 +70,7 @@ public class PatologiaDao {
                     cont++;
                     Patologia p=dataSnapshot1.getValue(Patologia.class);
                     contentValues.put("tipoPatologia",p.getTipoPatologia());
+                    contentValues.put("tipoTratamento",p.getTipoTratamento());
                     contentValues.put("_id",String.valueOf(cont));
                     banco.insert("listaPatologias",null,contentValues);
                 }
@@ -91,7 +89,7 @@ public class PatologiaDao {
     public ArrayList<Patologia> listarPatologias(){
         ArrayList<Patologia> patologias=new ArrayList<>();
 
-        String[] colunas={"_id","tipoPatologia"};
+        String[] colunas={"_id","tipoPatologia","tipoTratamento"};
         Cursor cursor=banco.query("listaPatologias",colunas,null,null,null,null,null);
 
         if(cursor.moveToFirst()){
@@ -99,6 +97,7 @@ public class PatologiaDao {
                 Patologia patologia=new Patologia();
                 patologia.setId(cursor.getString(0));
                 patologia.setTipoPatologia(cursor.getString(1));
+                patologia.setTipoTratamento(cursor.getString(2));
                 patologias.add(patologia);
             }while (cursor.moveToNext());
         }
@@ -107,10 +106,11 @@ public class PatologiaDao {
         return patologias;
     }
 
-    /*
-    public void salvarBD(Tratamento tratamento) {
+  /*
+    public void salvarBD(Patologia patologia) {
         DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-        dados.child("tratamentos").child(tratamento.getId()).setValue(tratamento.tratamento());
+        dados.child("patologias").child(patologia.getId()).setValue(patologia.patologia());
     }
     */
+
 }
