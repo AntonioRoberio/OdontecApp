@@ -46,16 +46,6 @@ public class CadastrarUsuario extends AppCompatActivity {
         salvar = (Button) findViewById(R.id.btSalvar);
         fl = (FrameLayout) findViewById(R.id.fl2);
 
-        nome.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b)
-                    nome.setHint("");
-                else{
-                    nome.setHint("Nome");
-                }
-            }
-        } );
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override

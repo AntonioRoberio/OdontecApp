@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario"
-    android:background="@drawable/fundolinecada"
+    android:background="#FFFFFF"
 
 
    >
@@ -22,104 +22,98 @@
             android:orientation="vertical"
             android:gravity="center"
             android:foregroundGravity="center"
-            >
+            android:weightSum="1">
 
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
 
                 android:id="@+id/nomeUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:hint="Digite seu nome"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
-                android:background="@drawable/edittextfundo"
+                android:hint="   Digite seu nome"
                 android:inputType="text"
-                android:drawableLeft="@drawable/usuario"
-                android:drawingCacheQuality="high"
+                android:drawableLeft="@drawable/usuario"/>
+
+            </android.support.design.widget.TextInputLayout>
 
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-               />
-
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/emailUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
-                android:background="@drawable/edittextfundo"
                 android:hint="Digite seu email"
                 android:inputType="textEmailAddress"
                 android:drawableLeft="@drawable/email"
                 />
 
-            <EditText
+        </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/senhaUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edittextfundo"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
                 android:hint="Digite sua senha"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/senha"
                 />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/confirSenhaUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edittextfundo"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
                 android:hint="Confirmar senha"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/senha"
                />
 
+            </android.support.design.widget.TextInputLayout>
+
             <Spinner
                 android:id="@+id/estadoUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edittextfundo"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
                 android:entries="@array/estados"
-                android:inputType="text"
                 android:textAlignment="center"
-                android:drawableLeft="@drawable/mapa"
-               />
+                />
 
-            <EditText
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/cidadeUsuario"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edittextfundo"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:ellipsize="start"
                 android:hint="Cidade"
                 android:inputType="text"
                 android:drawableLeft="@drawable/cidade"
                 />
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btSalvar"
@@ -135,29 +129,24 @@
                 android:textStyle="bold"
                 android:fontFamily="@string/common_google_play_services_install_text"/>
 
-
-
-
-
-
-        <FrameLayout
-            android:id="@+id/fl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/transparencia"
-            android:layout_gravity="center"
-            android:visibility="gone">
-
-            <ProgressBar
-                android:id="@+id/progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-        </FrameLayout>
-
-
-
             </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl2"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="@drawable/transparencia"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true">
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
         </RelativeLayout>
     </ScrollView>
 
