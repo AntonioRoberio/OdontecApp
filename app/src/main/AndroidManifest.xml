@@ -27,7 +27,7 @@
         <activity
             android:name=".View.CadastrarUsuario"
             android:label="                Cadastro Odontec"
-            android:windowSoftInputMode="adjustResize"
+            android:windowSoftInputMode="adjustUnspecified"
             />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
