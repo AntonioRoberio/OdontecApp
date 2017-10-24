@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
@@ -21,10 +22,9 @@ public class CadastrarUsuario extends AppCompatActivity {
     private EditText email;
     private EditText senha;
     private EditText confimarSenha;
-    private EditText estado;
+    private Spinner estado;
     private EditText cidade;
     private String senhaCript;
-    private int valor;
     private Button salvar;
     private Usuario usuario;
     FrameLayout fl;
@@ -40,7 +40,7 @@ public class CadastrarUsuario extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomeUsuario);
         email = (EditText) findViewById(R.id.emailUsuario);
         senha = (EditText) findViewById(R.id.senhaUsuario);
-        estado = (EditText) findViewById(R.id.estadoUsuario);
+        estado = (Spinner) findViewById(R.id.estadoUsuario);
         cidade = (EditText) findViewById(R.id.cidadeUsuario);
         confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
         salvar = (Button) findViewById(R.id.btSalvar);
@@ -68,7 +68,7 @@ public class CadastrarUsuario extends AppCompatActivity {
                             usuario.setNome(nome.getText().toString());
                             usuario.setEmail(email.getText().toString());
                             usuario.setSenha(senhaCript.toString());
-                            usuario.setEstado(estado.getText().toString());
+                            usuario.setEstado(estado.getSelectedItem().toString());
                             usuario.setCidade(cidade.getText().toString());
                             fl.setVisibility(View.VISIBLE);
                             UsuarioController usuarioController = new UsuarioController();
