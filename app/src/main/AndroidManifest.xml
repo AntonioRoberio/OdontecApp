@@ -17,7 +17,7 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-        <activity android:name=".View.MainActivity_Login">
+        <activity android:name=".View.SplashScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +27,7 @@
         <activity
             android:name=".View.CadastrarUsuario"
             android:label="                Cadastro Odontec"
-            android:windowSoftInputMode="adjustUnspecified"
-            />
+            android:windowSoftInputMode="adjustUnspecified" />
         <activity android:name=".View.ResetSenha" />
         <activity android:name=".View.AtualizarDados" />
         <activity android:name=".View.AtualizarSenha" />
@@ -43,7 +42,8 @@
         <activity android:name=".View.PesoPaciente" />
         <activity android:name=".View.ResultadoFinal" />
         <activity android:name=".View.SelecionarPatologia" />
-        <activity android:name=".View.SelecionarTratamento"></activity>
+        <activity android:name=".View.SelecionarTratamento" />
+        <activity android:name=".View.MainActivity_Login"/>
     </application>
 
 </manifest>
