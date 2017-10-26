@@ -14,7 +14,7 @@ import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 
-public class ResetSenha extends AppCompatActivity{
+public class ResetSenha extends AppCompatActivity {
     private Button salvar;
     private EditText email;
     private Usuario usuario;
@@ -29,11 +29,11 @@ public class ResetSenha extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 usuario = new Usuario();
-                if(!email.getText().toString().isEmpty()){
+                if (!email.getText().toString().isEmpty()) {
                     usuario.setEmail(email.getText().toString());
                     UsuarioController usuarioController = new UsuarioController();
-                    usuarioController.resetSenha(usuario,ResetSenha.this);
-                }else{
+                    usuarioController.resetSenha(usuario, ResetSenha.this, ResetSenha.this);
+                } else {
                     Toast.makeText(ResetSenha.this, "Preenchimento de campo obrigatório.", Toast.LENGTH_LONG).show();
                 }
 
@@ -41,13 +41,12 @@ public class ResetSenha extends AppCompatActivity{
         });
     }
 
-    public void resetar(String resultado){
-        if(resultado.contains("Um E-mail")){
-            startActivity(new Intent(ResetSenha.this,MainActivity_Login.class));
+    public void resetar(String resultado) {
+        if (resultado.contains("Um E-mail")) {
+            startActivity(new Intent(ResetSenha.this, MainActivity_Login.class));
         }
-        Toast.makeText(ResetSenha.this,resultado, Toast.LENGTH_LONG).show();
+        Toast.makeText(ResetSenha.this, resultado, Toast.LENGTH_LONG).show();
     }
-
 
 
 }
