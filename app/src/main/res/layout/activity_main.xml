@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario"
-     >
+    tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario">
 
 
      <LinearLayout
@@ -80,7 +78,7 @@
              android:fontFamily="@string/common_google_play_services_install_text"
              android:text="Entrar com Facebook"
              android:textColor="#FFFFFF"
-             android:drawableLeft="@drawable/face"/>
+             />
 
 
          <Button
