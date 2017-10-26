@@ -15,15 +15,15 @@ import java.util.ArrayList;
 public class AnestesicoController {
 
     AnestesicoDao anestesicoDao;
+
     public AnestesicoController(Context context) {
         anestesicoDao = new AnestesicoDao(context);
     }
 
 
-
     private String[] listarAnestesicos() {
-        int i=0;
-        ArrayList<Anestesico> listaAnestesicos= anestesicoDao.listarAnestesicos();
+        int i = 0;
+        ArrayList<Anestesico> listaAnestesicos = anestesicoDao.listarAnestesicos();
         String[] anestesicos = new String[listaAnestesicos.size()];
 
         for (Anestesico an : listaAnestesicos) {
@@ -34,9 +34,9 @@ public class AnestesicoController {
     }
 
 
-    public ArrayList<String> listaAnestesico(String tipoPa,String tipoAlt) {
+    public String[] listaAnestesico(String tipoPa, String tipoAlt) {
 
-        String[] anestesicos=listarAnestesicos();
+        String[] anestesicos = listarAnestesicos();
 
         ArrayList<String> listaAnes = new ArrayList<>();
 
@@ -67,12 +67,17 @@ public class AnestesicoController {
             listaAnes.add(anestesicos[4]);
         }
 
-
-        return listaAnes;
+        String[] valores = new String[listaAnes.size()];
+        int i = 0;
+        for (String lista : listaAnes) {
+            valores[i] = lista;
+            i++;
+        }
+        return valores;
     }
 
 
-    public void pegarDadosBD(){
+    public void pegarDadosBD() {
         anestesicoDao.pegarDadosBD();
     }
 }

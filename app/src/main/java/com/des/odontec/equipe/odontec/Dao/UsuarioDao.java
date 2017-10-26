@@ -122,6 +122,7 @@ public class UsuarioDao {
         up.put("nome", usuario.getNome());
         up.put("estado", usuario.getEstado());
         up.put("cidade", usuario.getCidade());
+        up.put("senha", usuario.getSenha());
         atualizar.child("user").child(String.valueOf(user.getUid().toString())).updateChildren(up);
     }
 

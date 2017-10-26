@@ -6,28 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.des.odontec.equipe.odontec.View.SelecionarPatologia">
-<Spinner
+<ListView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:id="@+id/opcaoPatologia"></Spinner>
+    android:id="@+id/opcaoPatologia"
+    />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/salvarPato"
-        android:hint="patologias"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/salvarTratamento"
-        android:hint="tratamento"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:id="@+id/btnSalavarBD"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

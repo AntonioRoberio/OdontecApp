@@ -108,14 +108,15 @@ public class UsuarioController {
         usuarioDao.fazerLgout();
     }
 
-    public void atualizarSenha(String atual, Usuario usuario, final AtualizarSenha atualizarSenha) {
-        UsuarioDao usuarioDao = new UsuarioDao();
+    public void atualizarSenha(String atual, final Usuario usuario, final AtualizarSenha atualizarSenha) {
+        final UsuarioDao usuarioDao = new UsuarioDao();
         usuarioDao.atualizarSe(atual, usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 AtualizarSenha atSenha = atualizarSenha;
                 if (task.isSuccessful()) {
                     atSenha.atualizarSe("Senha Alterada com sucesso");
+                    usuarioDao.upDados(usuario);
                 } else {
                     atSenha.atualizarSe("Erro ao alterar senha. Confira sua senha atual.");
                 }
@@ -159,7 +160,7 @@ public class UsuarioController {
     }
 
     public void loginOdontec(final Usuario usuario, final MainActivity_Login login, final Context context) {
-        UsuarioDao usuarioDao = new UsuarioDao();
+        final UsuarioDao usuarioDao = new UsuarioDao();
 
         usuarioDao.logar(usuario).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -170,6 +171,8 @@ public class UsuarioController {
                 if (task.isSuccessful()) {
                     login.autenticarUsuario(us, "Seja bem vindo");
                     arquivosDePreferencia.alterSenha("false");
+                    usuarioDao.upDados(usuario);
+
                 } else {
                     usuario.setSenha(Criptografia.md5(usuario.getSenha()));
                     logarOdontec(usuario, login);

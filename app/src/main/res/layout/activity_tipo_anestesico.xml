@@ -14,13 +14,13 @@
         android:text="Selecione o anestéscio"
         android:textSize="20dp"/>
 
-<Spinner
+<ListView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/listaResultado"
     android:layout_marginTop="15dp">
 
-</Spinner>
+</ListView>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

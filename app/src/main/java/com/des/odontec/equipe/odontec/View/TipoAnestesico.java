@@ -2,6 +2,7 @@ package com.des.odontec.equipe.odontec.View;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,12 +22,12 @@ import java.util.ArrayList;
 
 
 public class TipoAnestesico extends AppCompatActivity {
-    private Spinner list;
+    private ListView list;
     private String tipoPa;
     private String tipoAlt;
     private Button enviar;
     private int i=0;
-    private ArrayList<String> lista;
+    private String[] lista;
     private Bundle bundle;
     private Bundle valores;
     private Intent intent;
@@ -35,7 +36,7 @@ public class TipoAnestesico extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipo_anestesico);
-        list = (Spinner) findViewById(R.id.listaResultado);
+        list = (ListView) findViewById(R.id.listaResultado);
         enviar=(Button) findViewById(R.id.btnEnviarAnestesico);
 
         intent = getIntent();
@@ -52,32 +53,35 @@ public class TipoAnestesico extends AppCompatActivity {
 
         AnestesicoController anestesicoController=new AnestesicoController(this);
         lista = anestesicoController.listaAnestesico(tipoPa,tipoAlt);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
-
-
-        list.setAdapter(adapter);
-
-        list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        list.setAdapter(new LayoutsAdpater(TipoAnestesico.this,lista));
+        final View[] v = {new View(this)};
+        bundle=new Bundle();
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                bundle=new Bundle();
-                bundle.putString("tipoAnestesico",lista.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (v[0] != null) {
+                    v[0].setBackgroundColor(Color.TRANSPARENT);
+                }
+                view.setBackgroundColor(Color.parseColor("#d3eef5"));
+                bundle.putString("tipoAnestesico", lista[position]);
+                v[0] = view;
             }
         });
+
 
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TipoAnestesico.this,PesoPaciente.class);
-                bundle.putString("alt",tipoAlt);
-                bundle.putString("tipo",tipoPa);
-                intent.putExtras(bundle);
-                startActivity(intent);
+               if(bundle.containsKey("tipoAnestesico")){
+                   Intent intent=new Intent(TipoAnestesico.this,PesoPaciente.class);
+                   bundle.putString("alt",tipoAlt);
+                   bundle.putString("tipo",tipoPa);
+                   intent.putExtras(bundle);
+                   startActivity(intent);
+               }else{
+                   Toast.makeText(TipoAnestesico.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
+               }
+
             }
         });
 

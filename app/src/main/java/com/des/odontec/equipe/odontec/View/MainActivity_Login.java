@@ -80,8 +80,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         loginGoogle = (Button) findViewById(R.id.logarSistemaGoog);
         frama = (FrameLayout) findViewById(R.id.f2l);
 
-        ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(MainActivity_Login.this);
-        email.setText(arquivosDePreferencia.retornoAlterSenha().toString());
+
 
         alteracaoController = new AlteracaoController(MainActivity_Login.this);
         alteracaoController.pegarDadosBD();

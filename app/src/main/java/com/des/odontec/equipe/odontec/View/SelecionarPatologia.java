@@ -1,6 +1,7 @@
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.PatologiaController;
 import com.des.odontec.equipe.odontec.Dao.PatologiaDao;
@@ -18,9 +21,7 @@ import com.des.odontec.equipe.odontec.R;
 import java.util.ArrayList;
 
 public class SelecionarPatologia extends AppCompatActivity {
-    private Spinner spinnerPatologia;
-    private EditText patologias;
-    private EditText tratamento;
+    private ListView listView;
     private Button button;
     private Button salvar;
     private Bundle bundle;
@@ -29,9 +30,7 @@ public class SelecionarPatologia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patologia);
-        spinnerPatologia=(Spinner) findViewById(R.id.opcaoPatologia);
-        patologias=(EditText) findViewById(R.id.salvarPato);
-        tratamento=(EditText) findViewById(R.id.salvarTratamento);
+        listView=(ListView) findViewById(R.id.opcaoPatologia);
         button=(Button) findViewById(R.id.btnEscolher);
         salvar=(Button) findViewById(R.id.btnEscolher);
 
@@ -46,31 +45,34 @@ public class SelecionarPatologia extends AppCompatActivity {
             ids[i]=s[1];
             i++;
         }
-
-
-        ArrayAdapter<String> pt=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,patologia);
-        spinnerPatologia.setAdapter(pt);
+        listView.setAdapter(new LayoutsAdpater(SelecionarPatologia.this,patologia));
+        final View[] v = {new View(this)};
         bundle=new Bundle();
-        spinnerPatologia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               bundle.putString("ptlg",patologia[position]);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(v[0] != null){
+                    v[0].setBackgroundColor(Color.TRANSPARENT);
+                }
+                view.setBackgroundColor(Color.parseColor("#d3eef5"));
+                bundle.putString("ptlg",patologia[position]);
                 bundle.putString("id",ids[position]);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                v[0] =view;
             }
         });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SelecionarPatologia.this,SelecionarTratamento.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
+                if(bundle.containsKey("id")){
+
+                    Intent intent=new Intent(SelecionarPatologia.this,SelecionarTratamento.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(SelecionarPatologia.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
