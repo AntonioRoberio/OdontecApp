@@ -49,7 +49,6 @@ public class ArquivosDePreferencia {
     }
 
 
-
     public String retornoVersao(String valor) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
         if (valor.equals("alteracao")) {
@@ -58,15 +57,27 @@ public class ArquivosDePreferencia {
             return preferences.getString("versaoAnes", "sem valor");
         } else if (valor.equals("patologia")) {
             return preferences.getString("versaoPatol", "sem valor");
-        }else if (valor.equals("contAlt")) {
+        } else if (valor.equals("contAlt")) {
             return preferences.getString("quantidadeAlt", "0");
         } else if (valor.equals("contAnes")) {
             return preferences.getString("quantidadeAnes", "0");
-        }else if (valor.equals("contPatol")) {
+        } else if (valor.equals("contPatol")) {
             return preferences.getString("quantidadePtl", "0");
         } else {
             return "";
         }
 
+    }
+
+    public void alterSenha(String status) {
+        SharedPreferences preferences = context.getSharedPreferences("statusSenhaAlterada", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("status", Boolean.parseBoolean(status));
+        editor.commit();
+    }
+
+    public Boolean retornoAlterSenha() {
+        SharedPreferences preferences = context.getSharedPreferences("statusSenhaAlterada", context.MODE_PRIVATE);
+        return preferences.getBoolean("status", false);
     }
 }

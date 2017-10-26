@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
 import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
@@ -79,9 +80,12 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         loginGoogle = (Button) findViewById(R.id.logarSistemaGoog);
         frama = (FrameLayout) findViewById(R.id.f2l);
 
-        alteracaoController=new AlteracaoController(MainActivity_Login.this);
+        ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(MainActivity_Login.this);
+        email.setText(arquivosDePreferencia.retornoAlterSenha().toString());
+
+        alteracaoController = new AlteracaoController(MainActivity_Login.this);
         alteracaoController.pegarDadosBD();
-        anestesicoController=new AnestesicoController(MainActivity_Login.this);
+        anestesicoController = new AnestesicoController(MainActivity_Login.this);
         anestesicoController.pegarDadosBD();
 
         callbackManager = CallbackManager.Factory.create();
@@ -119,14 +123,21 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             @Override
             public void onClick(View v) {
                 if (!(senha.getText().toString().isEmpty()) || !(email.getText().toString().isEmpty())) {
-                    senhaCript = Criptografia.md5(senha.getText().toString());
+
                     usuario = new Usuario();
                     usuario.setEmail(email.getText().toString());
-                    usuario.setSenha(senhaCript.toString());
                     frama.setVisibility(View.VISIBLE);
-                    UsuarioController usuarioController=new UsuarioController();
-                    usuarioController.logarOdontec(usuario,MainActivity_Login.this);
+                    UsuarioController usuarioController = new UsuarioController();
 
+                    ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(MainActivity_Login.this);
+                    if (!(arquivosDePreferencia.retornoAlterSenha())) {
+                        senhaCript = Criptografia.md5(senha.getText().toString());
+                        usuario.setSenha(senhaCript.toString());
+                        usuarioController.logarOdontec(usuario, MainActivity_Login.this);
+                    } else {
+                        usuario.setSenha(senha.getText().toString());
+                        usuarioController.loginOdontec(usuario, MainActivity_Login.this, MainActivity_Login.this);
+                    }
 
                 } else {
 
@@ -281,13 +292,13 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         }
     }
 
-    public void autenticarUsuario(FirebaseUser user,String resultado) {
-        if(resultado.contains("Seja")){
+    public void autenticarUsuario(FirebaseUser user, String resultado) {
+        if (resultado.contains("Seja")) {
             bundle.putString("VALOR", "odontec");
             logar(user);
-            Toast.makeText(MainActivity_Login.this,resultado, Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(MainActivity_Login.this,resultado, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity_Login.this, resultado, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity_Login.this, resultado, Toast.LENGTH_SHORT).show();
             frama.setVisibility(View.GONE);
         }
 
