@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/AlterarSenha"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/senha"
             android:title="Alterar Senha" />
         <item
             android:id="@+id/EditarInformacoes"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/editinfo"
             android:title="Editar Informações" />
 
     </group>
@@ -17,11 +17,11 @@
         <menu>
             <item
                 android:id="@+id/ExcluirConta"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/delete"
                 android:title="Excluir Conta" />
             <item
                 android:id="@+id/Sair"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/sair"
                 android:title="Sair" />
         </menu>
     </item>

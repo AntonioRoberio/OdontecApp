@@ -28,22 +28,22 @@
             android:name=".View.CadastrarUsuario"
             android:label="                Cadastro Odontec"
             android:windowSoftInputMode="adjustUnspecified" />
-        <activity android:name=".View.ResetSenha" />
-        <activity android:name=".View.AtualizarDados" />
-        <activity android:name=".View.AtualizarSenha" />
-        <activity android:name=".View.DeletarConta" />
-        <activity android:name=".View.TipoPaciente" />
-        <activity android:name=".View.AlteracaoSistemica" />
-        <activity android:name=".View.TipoAnestesico" />
+        <activity android:name=".View.ResetSenha" android:label="                Resetar Senha" />
+        <activity android:name=".View.AtualizarDados" android:label="              Atualização de Dados" />
+        <activity android:name=".View.AtualizarSenha" android:label="              Atualização de Senha"/>
+        <activity android:name=".View.DeletarConta" android:label="                Exclusão de Conta"/>
+        <activity android:name=".View.TipoPaciente" android:label="                "/>
+        <activity android:name=".View.AlteracaoSistemica" android:label="                " />
+        <activity android:name=".View.TipoAnestesico" android:label="                " />
         <activity
             android:name=".View.InicialActivity"
-            android:label="@string/title_activity_inicial"
+            android:label="                Inicio"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.PesoPaciente" />
-        <activity android:name=".View.ResultadoFinal" />
-        <activity android:name=".View.SelecionarPatologia" />
-        <activity android:name=".View.SelecionarTratamento" />
-        <activity android:name=".View.MainActivity_Login"/>
+        <activity android:name=".View.PesoPaciente" android:label="                "/>
+        <activity android:name=".View.ResultadoFinal" android:label="                "/>
+        <activity android:name=".View.SelecionarPatologia" android:label="                "/>
+        <activity android:name=".View.SelecionarTratamento" android:label="                "/>
+        <activity android:name=".View.MainActivity_Login" android:label="                "/>
     </application>
 
 </manifest>

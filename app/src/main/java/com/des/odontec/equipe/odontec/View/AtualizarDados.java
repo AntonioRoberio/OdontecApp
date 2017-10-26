@@ -2,13 +2,12 @@ package com.des.odontec.equipe.odontec.View;
 
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Model.Usuario;
@@ -21,6 +20,7 @@ public class AtualizarDados extends AppCompatActivity{
     private Button atualizar;
     private Usuario usuario;
     private UsuarioController usuarioController;
+    private FrameLayout frame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class AtualizarDados extends AppCompatActivity{
         estado = (EditText) findViewById(R.id.pegarEstado);
         cidade = (EditText) findViewById(R.id.pegarCidade);
         atualizar = (Button) findViewById(R.id.enviarAtualizacao);
+        frame = (FrameLayout) findViewById(R.id.fl3);
 
         usuarioController = new UsuarioController(AtualizarDados.this);
         usuarioController.pegarDados();
@@ -59,6 +60,7 @@ public class AtualizarDados extends AppCompatActivity{
         Bundle bundle=new Bundle();
         bundle.putString("VALOR","odontec");
         Intent intent=new Intent(AtualizarDados.this,InicialActivity.class);
+        frame.setVisibility(View.VISIBLE);
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
