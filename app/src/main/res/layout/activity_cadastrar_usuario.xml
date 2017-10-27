@@ -6,15 +6,15 @@
     android:background="#FFFFFF"
     tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario">
 
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:layout_height="fill_parent">
 
         <FrameLayout
             android:id="@+id/fl2"
             android:layout_width="fill_parent"
-            android:layout_height="565dp"
+            android:layout_height="fill_parent"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:background="@drawable/transparencia"
@@ -26,6 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
+        1
+
 
         <LinearLayout
 
@@ -226,6 +228,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </FrameLayout>
 </ScrollView>
 

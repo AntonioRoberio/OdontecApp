@@ -30,7 +30,7 @@
             <EditText
                 android:id="@+id/pegarNome"
                 android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:hint="Carregando seus dados...Aguarde..." />
         </LinearLayout>
 
@@ -47,7 +47,7 @@
             <EditText
                 android:id="@+id/pegarEstado"
                 android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:hint="Carregando seus dados...Aguarde..." />
 
         </LinearLayout>
@@ -65,7 +65,7 @@
             <EditText
                 android:id="@+id/pegarCidade"
                 android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:hint="Carregando seus dados...Aguarde..." />
 
         </LinearLayout>
@@ -85,7 +85,7 @@
             android:layout_width="310dp"
             android:layout_height="45dp"
             android:background="@drawable/botaosavacad"
-            android:text="Enviar"
+            android:text="SALVAR"
             android:textColor="#00AFEF" />
     </LinearLayout>
 
