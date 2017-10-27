@@ -77,7 +77,10 @@ public class TipoAnestesico extends AppCompatActivity {
                    bundle.putString("alt",tipoAlt);
                    bundle.putString("tipo",tipoPa);
                    intent.putExtras(bundle);
+                   startActivityForResult(intent,1);
                    startActivity(intent);
+
+                   //finish();
                }else{
                    Toast.makeText(TipoAnestesico.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
                }
@@ -88,6 +91,17 @@ public class TipoAnestesico extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(resultCode)
+        {
+            case 0:
+                setResult(resultCode);
+                finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }

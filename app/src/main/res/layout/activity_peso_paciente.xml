@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/anestesicoEscolhido"
-        android:text="Anestesico"
+        android:text="Informe o Peso do Paciente"
         android:textSize="20dp"/>
     <EditText
         android:layout_width="match_parent"

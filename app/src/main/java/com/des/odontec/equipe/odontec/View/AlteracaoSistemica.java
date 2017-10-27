@@ -55,7 +55,8 @@ public class AlteracaoSistemica extends AppCompatActivity {
                 if(bundle.containsKey("alt")){
                     Intent intent = new Intent(AlteracaoSistemica.this, TipoAnestesico.class);
                     intent.putExtras(bundle);
-                    startActivity(intent);
+                    startActivityForResult(intent,1);
+                    //finish();
                 }else{
                     Toast.makeText(AlteracaoSistemica.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
                 }
@@ -69,5 +70,16 @@ public class AlteracaoSistemica extends AppCompatActivity {
         String[] alter;
         AlteracaoController alteracaoController = new AlteracaoController(AlteracaoSistemica.this);
         return alter = alteracaoController.listarAlteracoes();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(resultCode)
+        {
+            case 0:
+                setResult(resultCode);
+                finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

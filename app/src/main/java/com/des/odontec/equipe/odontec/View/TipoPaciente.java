@@ -52,12 +52,24 @@ public class TipoPaciente extends AppCompatActivity {
                 if (bundle.containsKey("tipo")) {
                     Intent intent = new Intent(TipoPaciente.this, AlteracaoSistemica.class);
                     intent.putExtras(bundle);
-                    startActivity(intent);
+                    startActivityForResult(intent,1);
+                    //finish();
                 } else {
                     Toast.makeText(TipoPaciente.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(resultCode)
+        {
+            case 0:
+                setResult(resultCode);
+                finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
