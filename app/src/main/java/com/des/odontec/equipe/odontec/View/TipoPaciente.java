@@ -53,7 +53,6 @@ public class TipoPaciente extends AppCompatActivity {
                     Intent intent = new Intent(TipoPaciente.this, AlteracaoSistemica.class);
                     intent.putExtras(bundle);
                     startActivityForResult(intent,1);
-                    //finish();
                 } else {
                     Toast.makeText(TipoPaciente.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
                 }
@@ -64,10 +63,9 @@ public class TipoPaciente extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(resultCode)
-        {
-            case 0:
-                setResult(resultCode);
+        if(resultCode==1){
+
+                setResult(1,data);
                 finish();
         }
         super.onActivityResult(requestCode, resultCode, data);

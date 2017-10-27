@@ -21,7 +21,7 @@ public class PesoPaciente extends AppCompatActivity {
     private Bundle bundle;
     private Intent intent;
     private Bundle valores;
-    private static final int RESULT_CLOSE_ALL=0;
+    private static final int RESULT_CLOSE_ALL=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +56,8 @@ public class PesoPaciente extends AppCompatActivity {
                     bundle.putString("peso",peso.getText().toString());
                     Intent intent=new Intent(PesoPaciente.this,ResultadoFinal.class);
                     intent.putExtras(bundle);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivityForResult(intent,RESULT_CLOSE_ALL);
-                    setResult(RESULT_CLOSE_ALL);
-                    finish();
+
                 }else{
                     Toast.makeText(PesoPaciente.this,"Informe o peso do paciente.",Toast.LENGTH_LONG).show();
                 }
@@ -67,5 +65,14 @@ public class PesoPaciente extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==RESULT_CLOSE_ALL && resultCode==1){
+            setResult(1,data);
+            finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

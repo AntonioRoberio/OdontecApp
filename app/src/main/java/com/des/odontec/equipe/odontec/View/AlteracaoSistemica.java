@@ -55,8 +55,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
                 if(bundle.containsKey("alt")){
                     Intent intent = new Intent(AlteracaoSistemica.this, TipoAnestesico.class);
                     intent.putExtras(bundle);
-                    startActivityForResult(intent,1);
-                    //finish();
+                    startActivityForResult(intent,2);
                 }else{
                     Toast.makeText(AlteracaoSistemica.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
                 }
@@ -74,11 +73,10 @@ public class AlteracaoSistemica extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(resultCode)
-        {
-            case 0:
-                setResult(resultCode);
-                finish();
+        if(resultCode==1){
+
+            setResult(1,data);
+            finish();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

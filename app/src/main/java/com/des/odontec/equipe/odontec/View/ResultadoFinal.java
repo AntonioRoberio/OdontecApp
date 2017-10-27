@@ -44,7 +44,10 @@ public class ResultadoFinal extends AppCompatActivity {
         resultado=resultadoFinalController.resutado(valores.get("tipoAnestesico").toString(),peso);
 
         tubetes.setText("Quantidade de Tubetes: "+resultado);
-    }
 
+        Intent intent=getIntent();
+
+        setResult(1,intent);
+    }
 
 }
