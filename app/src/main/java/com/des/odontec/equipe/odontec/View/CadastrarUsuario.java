@@ -45,8 +45,6 @@ public class CadastrarUsuario extends AppCompatActivity {
         confimarSenha = (EditText) findViewById(R.id.confirSenhaUsuario);
         salvar = (Button) findViewById(R.id.btSalvar);
         fl = (FrameLayout) findViewById(R.id.fl2);
-
-
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +79,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     public void cadastraUsuario(String resultado) {
         if (resultado.contains("Usuário cadastrado")) {
             startActivity(new Intent(CadastrarUsuario.this, InicialActivity.class));
+            finish();
         } else {
             fl.setVisibility(View.GONE);
         }
