@@ -49,7 +49,7 @@ public class AtualizarSenha extends AppCompatActivity {
                             usuario.setSenha(Criptografia.md5(senha.getText().toString()));
                             fl.setVisibility(View.VISIBLE);
                             usuarioController = new UsuarioController();
-                            usuarioController.atualizarSenha(atual.getText().toString(), usuario, AtualizarSenha.this,"senha");
+                            usuarioController.atualizarSenha(atual.getText().toString(), usuario, AtualizarSenha.this,"senha","att");
 
                         } else {
                             Toast.makeText(AtualizarSenha.this, "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_LONG).show();

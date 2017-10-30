@@ -161,11 +161,16 @@ public class UsuarioDao {
         return auth.sendPasswordResetEmail(usuario.getEmail());
     }
 
-    public Task<Void> atualizarSe(String atual, final Usuario usuario) {
+    public Task<Void> atualizarSe(String atual, final Usuario usuario,String valor) {
+        String senha="";
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
         final FirebaseUser user = auth.getCurrentUser();
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
-                Criptografia.md5(atual.toString()));
+        if(valor.equals("att")){
+            senha=Criptografia.md5(atual);
+        }else{
+            senha=atual;
+        }
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),senha);
         return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

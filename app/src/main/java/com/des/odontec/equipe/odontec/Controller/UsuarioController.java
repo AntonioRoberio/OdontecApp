@@ -107,9 +107,9 @@ public class UsuarioController {
         usuarioDao.fazerLgout();
     }
 
-    public void atualizarSenha(String atual, final Usuario usuario, final AtualizarSenha atualizarSenha,final String valor) {
+    public void atualizarSenha(String atual, final Usuario usuario, final AtualizarSenha atualizarSenha,final String valor,final String valor2) {
         final UsuarioDao usuarioDao = new UsuarioDao();
-        usuarioDao.atualizarSe(atual, usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
+        usuarioDao.atualizarSe(atual, usuario,valor2).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 AtualizarSenha atSenha = atualizarSenha;
@@ -170,8 +170,9 @@ public class UsuarioController {
                 if (task.isSuccessful()) {
                    login.autenticarUsuario(us, "Seja bem vindo");
                     arquivosDePreferencia.alterSenha("false");
-                    //usuarioDao.upDados(usuario);
-                    //atualizarSenha(usuario.getSenha(), final Usuario usuario, final AtualizarSenha atualizarSenha);
+                    usuario.setSenha(Criptografia.md5(usuario.getSenha()));
+                    usuarioDao.upDados(usuario,"senha");
+                    usuarioDao.atualizarSe(usuario.getSenha(), usuario,"senha");
 
                 } else {
                     usuario.setSenha(Criptografia.md5(usuario.getSenha()));
