@@ -79,8 +79,9 @@ public class AtualizarDados extends AppCompatActivity{
         usuario.setNome(nome.getText().toString());
         usuario.setEstado(estado.getSelectedItem().toString());
         usuario.setCidade(cidade.getText().toString());
+        usuario.setSenha("");
         UsuarioController usuarioController = new UsuarioController();
-        usuarioController.atualizarDados(usuario);
+        usuarioController.atualizarDados(usuario,"dados");
         Bundle bundle=new Bundle();
         bundle.putString("VALOR","odontec");
         Intent intent=new Intent(AtualizarDados.this,InicialActivity.class);

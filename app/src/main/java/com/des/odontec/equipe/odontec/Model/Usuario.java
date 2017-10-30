@@ -14,7 +14,6 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String sexo;
     private String idade;
     private String estado;
 
@@ -24,7 +23,6 @@ public class Usuario {
         dadosSalvar.put("nome", getNome());
         dadosSalvar.put("email", getEmail());
         dadosSalvar.put("senha", getSenha());
-        dadosSalvar.put("sexo", getSexo());
         dadosSalvar.put("estado", getEstado());
         dadosSalvar.put("cidade", getCidade());
         return dadosSalvar;
@@ -60,14 +58,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
     }
 
     public String getIdade() {

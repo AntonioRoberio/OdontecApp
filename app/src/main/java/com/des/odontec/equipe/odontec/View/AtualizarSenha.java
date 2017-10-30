@@ -23,6 +23,7 @@ public class AtualizarSenha extends AppCompatActivity {
     private EditText confirmar;
     private Button enviar;
     private Usuario usuario;
+    private UsuarioController usuarioController;
     private FrameLayout fl;
 
     @Override
@@ -38,15 +39,17 @@ public class AtualizarSenha extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usuario = new Usuario();
+                usuarioController = new UsuarioController(AtualizarSenha.this);
+                usuarioController.pegarDados();
+                usuario = usuarioController.exibirDados();
                 if (!(senha.getText().toString().isEmpty() || confirmar.getText().toString().isEmpty() || atual.getText().toString().isEmpty())) {
                     if (senha.getText().toString().equals(confirmar.getText().toString())) {
                         if (!(senha.getText().toString().length() < 6)) {
 
                             usuario.setSenha(Criptografia.md5(senha.getText().toString()));
                             fl.setVisibility(View.VISIBLE);
-                            UsuarioController usuarioController = new UsuarioController();
-                            usuarioController.atualizarSenha(atual.getText().toString(), usuario, AtualizarSenha.this);
+                            usuarioController = new UsuarioController();
+                            usuarioController.atualizarSenha(atual.getText().toString(), usuario, AtualizarSenha.this,"senha");
 
                         } else {
                             Toast.makeText(AtualizarSenha.this, "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_LONG).show();

@@ -52,7 +52,6 @@ public class UsuarioController {
                 CadastrarUsuario cadastrar = cadastrarUsuario;
                 if (task.isSuccessful()) {
                     usuarioDao.salvarBD(usuario);
-
                     cadastrar.cadastraUsuario("Usuário cadastrado com sucesso");
                 } else {
                     String mensagemErro = "";
@@ -84,11 +83,11 @@ public class UsuarioController {
         return usuario;
     }
 
-    public void atualizarDados(Usuario usuario) {
+    public void atualizarDados(Usuario usuario, String valor) {
         usuarioRef.setNome(usuario.getNome());
         usuarioRef.setEstado(usuario.getEstado());
         usuarioRef.setCidade(usuario.getCidade());
-        usuarioDao.upDados(usuarioRef);
+        usuarioDao.upDados(usuarioRef,valor);
     }
 
     public void apagarConta(String senha, final DeletarConta deletarConta) {
@@ -108,7 +107,7 @@ public class UsuarioController {
         usuarioDao.fazerLgout();
     }
 
-    public void atualizarSenha(String atual, final Usuario usuario, final AtualizarSenha atualizarSenha) {
+    public void atualizarSenha(String atual, final Usuario usuario, final AtualizarSenha atualizarSenha,final String valor) {
         final UsuarioDao usuarioDao = new UsuarioDao();
         usuarioDao.atualizarSe(atual, usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -116,7 +115,7 @@ public class UsuarioController {
                 AtualizarSenha atSenha = atualizarSenha;
                 if (task.isSuccessful()) {
                     atSenha.atualizarSe("Senha Alterada com sucesso");
-                    usuarioDao.upDados(usuario);
+                    usuarioDao.upDados(usuario,valor);
                 } else {
                     atSenha.atualizarSe("Erro ao alterar senha. Confira sua senha atual.");
                 }
@@ -169,9 +168,10 @@ public class UsuarioController {
                 FirebaseUser us = aut.getCurrentUser();
                 ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
                 if (task.isSuccessful()) {
-                    login.autenticarUsuario(us, "Seja bem vindo");
+                   login.autenticarUsuario(us, "Seja bem vindo");
                     arquivosDePreferencia.alterSenha("false");
-                    usuarioDao.upDados(usuario);
+                    //usuarioDao.upDados(usuario);
+                    //atualizarSenha(usuario.getSenha(), final Usuario usuario, final AtualizarSenha atualizarSenha);
 
                 } else {
                     usuario.setSenha(Criptografia.md5(usuario.getSenha()));

@@ -114,15 +114,18 @@ public class UsuarioDao {
 
     //atualização das informações do usuário contido em banco
 
-    public void upDados(Usuario usuario) {
+    public void upDados(Usuario usuario, String valor) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
         DatabaseReference atualizar = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseUser user = aut.getCurrentUser();
         Map<String, Object> up = new HashMap<>();
-        up.put("nome", usuario.getNome());
-        up.put("estado", usuario.getEstado());
-        up.put("cidade", usuario.getCidade());
-        up.put("senha", usuario.getSenha());
+        if(valor.equals("dados")){
+            up.put("nome", usuario.getNome());
+            up.put("estado", usuario.getEstado());
+            up.put("cidade", usuario.getCidade());
+        }else if(valor.equals("senha")){
+            up.put("senha", usuario.getSenha());
+        }
         atualizar.child("user").child(String.valueOf(user.getUid().toString())).updateChildren(up);
     }
 
