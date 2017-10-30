@@ -94,9 +94,12 @@ public class UsuarioController {
         usuarioDao.deletar(senha).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                DeletarConta deletar = deletarConta;
                 if (task.isSuccessful()) {
-                    DeletarConta deletar = deletarConta;
-                    deletar.apagar();
+                    deletar.apagar("sucesso");
+                    fazerLgoutSistema();
+                }else{
+                    deletar.apagar("Erro na exclusão da conta. Confira sua senha.");
                 }
             }
         });

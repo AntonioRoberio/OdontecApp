@@ -57,11 +57,16 @@ public class DeletarConta extends AppCompatActivity {
         });
     }
 
-    public void apagar() {
-                    UsuarioController usuarioController = new UsuarioController();
-                    usuarioController.fazerLgoutSistema();
-                    startActivity( new Intent(DeletarConta.this, MainActivity_Login.class));
-                    finish();
+    public void apagar(String resultado) {
+                    //UsuarioController usuarioController = new UsuarioController();
+                    //usuarioController.fazerLgoutSistema();
+                   if(resultado.contains("sucesso")){
+                       startActivity( new Intent(DeletarConta.this, MainActivity_Login.class));
+                       finish();
+                   }else{
+                       Toast.makeText(DeletarConta.this,resultado,Toast.LENGTH_LONG).show();
+                   }
+
 
     }
 }

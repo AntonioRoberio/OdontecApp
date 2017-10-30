@@ -48,7 +48,7 @@ public class AtualizarDados extends AppCompatActivity{
         String atual=es[0];
         for(int i=0;i<es.length-1;i++){
            if(es[i].equals(usuario.getEstado())){
-               if(es[i].equals(es[0])){
+               if(usuario.getEstado().equals(es[0])){
                    break;
                }else{
                    es[0]=es[i];
