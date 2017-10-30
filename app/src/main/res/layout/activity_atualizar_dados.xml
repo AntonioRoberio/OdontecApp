@@ -44,11 +44,11 @@
                 android:layout_height="35dp"
                 android:src="@drawable/mapa" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/pegarEstado"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:hint="Carregando seus dados...Aguarde..." />
+                />
 
         </LinearLayout>
 

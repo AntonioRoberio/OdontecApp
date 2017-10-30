@@ -121,7 +121,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(senha.getText().toString().isEmpty()) || !(email.getText().toString().isEmpty())) {
+                if (!((senha.getText().toString().isEmpty()) || (email.getText().toString().isEmpty()))) {
 
                     usuario = new Usuario();
                     usuario.setEmail(email.getText().toString());
@@ -139,7 +139,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     }
 
                 } else {
-
                     Toast.makeText(MainActivity_Login.this, "Preencha Todos os Campos Para Logar", Toast.LENGTH_LONG).show();
 
                 }
