@@ -21,7 +21,6 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:src="@drawable/anestesico"
             android:text="Anestésico" />
 
         <TextView
