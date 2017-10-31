@@ -9,6 +9,7 @@ import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
+import com.des.odontec.equipe.odontec.View.AtualizarDados;
 import com.des.odontec.equipe.odontec.View.AtualizarSenha;
 import com.des.odontec.equipe.odontec.View.CadastrarUsuario;
 import com.des.odontec.equipe.odontec.View.DeletarConta;
@@ -83,11 +84,20 @@ public class UsuarioController {
         return usuario;
     }
 
-    public void atualizarDados(Usuario usuario, String valor) {
+    public void atualizarDados(Usuario usuario, String valor, final AtualizarDados atualizarDados) {
         usuarioRef.setNome(usuario.getNome());
         usuarioRef.setEstado(usuario.getEstado());
         usuarioRef.setCidade(usuario.getCidade());
-        usuarioDao.upDados(usuarioRef,valor);
+        usuarioDao.upDados(usuarioRef,valor).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    atualizarDados.atualizarDados("Dados alterados com sucesso.");
+                }else{
+                    atualizarDados.atualizarDados("Erro. Tente novamente mais tarde.");
+                }
+            }
+        });
     }
 
     public void apagarConta(String senha, final DeletarConta deletarConta) {

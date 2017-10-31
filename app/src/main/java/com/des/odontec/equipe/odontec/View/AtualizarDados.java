@@ -12,12 +12,13 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 
-public class AtualizarDados extends AppCompatActivity{
+public class AtualizarDados extends AppCompatActivity {
     private EditText nome;
     private Spinner estado;
     private EditText cidade;
@@ -37,27 +38,26 @@ public class AtualizarDados extends AppCompatActivity{
         frame = (FrameLayout) findViewById(R.id.fl3);
 
 
-
         usuarioController = new UsuarioController(AtualizarDados.this);
         usuarioController.pegarDados();
         usuario = usuarioController.exibirDados();
         nome.setText(usuario.getNome());
         //-------------------------------------------------------------------------
-        Resources r=getResources();
-        String[] es=r.getStringArray(R.array.estados);
-        String atual=es[0];
-        for(int i=0;i<es.length-1;i++){
-           if(es[i].equals(usuario.getEstado())){
-               if(usuario.getEstado().equals(es[0])){
-                   break;
-               }else{
-                   es[0]=es[i];
-                   es[i]=atual;
-                   break;
-               }
-           }
+        Resources r = getResources();
+        String[] es = r.getStringArray(R.array.estados);
+        String atual = es[0];
+        for (int i = 0; i < es.length - 1; i++) {
+            if (es[i].equals(usuario.getEstado())) {
+                if (usuario.getEstado().equals(es[0])) {
+                    break;
+                } else {
+                    es[0] = es[i];
+                    es[i] = atual;
+                    break;
+                }
+            }
         }
-        ArrayAdapter<String> valores=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,es);
+        ArrayAdapter<String> valores = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, es);
         estado.setAdapter(valores);
 
         //-------------------------------------------------------------------------
@@ -66,28 +66,37 @@ public class AtualizarDados extends AppCompatActivity{
         atualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                atualizarDados();
+                usuarioController = new UsuarioController(AtualizarDados.this);
+                usuario = new Usuario();
+                if (!(nome.getText().toString().isEmpty() || cidade.getText().toString().isEmpty())) {
+                    usuario.setNome(nome.getText().toString());
+                    usuario.setEstado(estado.getSelectedItem().toString());
+                    usuario.setCidade(cidade.getText().toString());
+                    UsuarioController usuarioController = new UsuarioController();
+                    usuarioController.atualizarDados(usuario, "dados", AtualizarDados.this);
+                }else{
+                    Toast.makeText(AtualizarDados.this,"Não é permitido deixar campos em branco.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
 
     }
 
-    private void atualizarDados() {
-        usuarioController = new UsuarioController(AtualizarDados.this);
-        usuario = new Usuario();
-        usuario.setNome(nome.getText().toString());
-        usuario.setEstado(estado.getSelectedItem().toString());
-        usuario.setCidade(cidade.getText().toString());
-        usuario.setSenha("");
-        UsuarioController usuarioController = new UsuarioController();
-        usuarioController.atualizarDados(usuario,"dados");
-        Bundle bundle=new Bundle();
-        bundle.putString("VALOR","odontec");
-        Intent intent=new Intent(AtualizarDados.this,InicialActivity.class);
-        frame.setVisibility(View.VISIBLE);
-        intent.putExtras(bundle);
-        startActivity(intent);
-        finish();
+    public void atualizarDados(String resultado) {
+        Bundle bundle = new Bundle();
+        bundle.putString("VALOR", "odontec");
+        if (resultado.contains("sucesso")) {
+            Intent intent = new Intent(AtualizarDados.this, InicialActivity.class);
+            frame.setVisibility(View.VISIBLE);
+            intent.putExtras(bundle);
+            Toast.makeText(AtualizarDados.this, resultado, Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+            setResult(10);
+            finish();
+        } else {
+            Toast.makeText(AtualizarDados.this, resultado, Toast.LENGTH_LONG).show();
+            frame.setVisibility(View.GONE);
+        }
     }
 }

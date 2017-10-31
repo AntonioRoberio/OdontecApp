@@ -43,7 +43,10 @@ public class ResetSenha extends AppCompatActivity {
 
     public void resetar(String resultado) {
         if (resultado.contains("Um E-mail")) {
-            startActivity(new Intent(ResetSenha.this, MainActivity_Login.class));
+            Intent intent=new Intent(ResetSenha.this, MainActivity_Login.class);
+            startActivity(intent);
+            setResult(8,intent);
+            finish();
         }
         Toast.makeText(ResetSenha.this, resultado, Toast.LENGTH_LONG).show();
     }

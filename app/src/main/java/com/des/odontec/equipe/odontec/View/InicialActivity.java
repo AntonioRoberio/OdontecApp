@@ -1,11 +1,14 @@
 package com.des.odontec.equipe.odontec.View;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,13 +21,16 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
 
-public class InicialActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.security.acl.Group;
+
+public class InicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button botao;
     private Button btnPatologia;
+    NavigationView escolhaMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +41,8 @@ public class InicialActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         UsuarioController usuarioController = new UsuarioController(InicialActivity.this);
         botao = (Button) findViewById(R.id.btnTesteAne);
-        btnPatologia=(Button) findViewById(R.id.btnPatologia);
-
+        btnPatologia = (Button) findViewById(R.id.btnPatologia);
+        escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +69,7 @@ public class InicialActivity extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -72,14 +79,21 @@ public class InicialActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Recuperação de Dados
+
+        ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(this);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             if (bundle.getString("VALOR").toString().equals("odontec"))
                 usuarioController.pegarDados();
-
+            usuarioController.exibirDados();
+            arquivosDePreferencia.login(bundle.getString("VALOR").toString());
         }
-
+        if (arquivosDePreferencia.retornaLogin().equals("odontec")) {
+            escolhaMenu.inflateMenu(R.menu.activity_inicial_drawer);
+        } else {
+            escolhaMenu.inflateMenu(R.menu.activity_inicio_drawer);
+        }
     }
 
     @Override
@@ -95,7 +109,7 @@ public class InicialActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inicial, menu);
+        //getMenuInflater().inflate(R.menu.activity_inicial_drawer, menu);
         return true;
     }
 
@@ -119,14 +133,12 @@ public class InicialActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.AlterarSenha) {
             Intent intent = new Intent(InicialActivity.this, AtualizarSenha.class);
-            startActivity(intent);
-            ;
+            startActivityForResult(intent,10);
         } else if (id == R.id.EditarInformacoes) {
             Intent intent = new Intent(InicialActivity.this, AtualizarDados.class);
-            startActivity(intent);
+            startActivityForResult(intent,10);
         } else if (id == R.id.ExcluirConta) {
             Intent intent = new Intent(InicialActivity.this, DeletarConta.class);
             startActivity(intent);
@@ -156,6 +168,13 @@ public class InicialActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==10){
+            finish();
+        }
     }
 
 

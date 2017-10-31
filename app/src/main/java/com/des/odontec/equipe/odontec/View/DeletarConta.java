@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
@@ -33,6 +34,11 @@ public class DeletarConta extends AppCompatActivity {
         setContentView(R.layout.activity_deletar_conta);
         senha = (EditText) findViewById(R.id.deletarConta);
         apagarConta = (Button) findViewById(R.id.confirmeExclusao);
+        ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(this);
+        if(!arquivosDePreferencia.retornaLogin().equals("odontec")){
+            senha.setEnabled(false);
+            senha.setText("Campo desabilitado.");
+        }
 
         apagarConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +64,6 @@ public class DeletarConta extends AppCompatActivity {
     }
 
     public void apagar(String resultado) {
-                    //UsuarioController usuarioController = new UsuarioController();
-                    //usuarioController.fazerLgoutSistema();
                    if(resultado.contains("sucesso")){
                        startActivity( new Intent(DeletarConta.this, MainActivity_Login.class));
                        finish();

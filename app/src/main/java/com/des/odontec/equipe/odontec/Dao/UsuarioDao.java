@@ -57,7 +57,7 @@ public class UsuarioDao {
     }
 
     public void pegarDados() {
-        final Usuario usuario=listarDados();
+        final Usuario usuario = listarDados();
         DatabaseReference reference = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
         final FirebaseUser user = auth.getCurrentUser();
@@ -71,12 +71,12 @@ public class UsuarioDao {
                 contentValues.put("estado", u.getEstado().toString());
                 contentValues.put("cidade", u.getCidade().toString());
                 contentValues.put("email", u.getEmail().toString());
-                if(!(user.getUid().toString().equals(usuario.getId()))){
+                if (!(user.getUid().toString().equals(usuario.getId()))) {
                     contentValues.put("_id", user.getUid().toString());
                     banco.insert("usuarios", null, contentValues);
-                }else{
-                    if((!(u.getNome().equals(usuario.getNome())) || !(u.getCidade().equals(usuario.getCidade())) || !(u.getEstado().equals(usuario.getEstado())))){
-                        banco.update("usuarios",contentValues,"_id = ?",new String[]{user.getUid().toString()});
+                } else {
+                    if ((!(u.getNome().equals(usuario.getNome())) || !(u.getCidade().equals(usuario.getCidade())) || !(u.getEstado().equals(usuario.getEstado())))) {
+                        banco.update("usuarios", contentValues, "_id = ?", new String[]{user.getUid().toString()});
                     }
                 }
                 banco.close();
@@ -114,19 +114,19 @@ public class UsuarioDao {
 
     //atualização das informações do usuário contido em banco
 
-    public void upDados(Usuario usuario, String valor) {
+    public Task<Void> upDados(Usuario usuario, String valor) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
         DatabaseReference atualizar = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
         FirebaseUser user = aut.getCurrentUser();
         Map<String, Object> up = new HashMap<>();
-        if(valor.equals("dados")){
+        if (valor.equals("dados")) {
             up.put("nome", usuario.getNome());
             up.put("estado", usuario.getEstado());
             up.put("cidade", usuario.getCidade());
-        }else if(valor.equals("senha")){
+        } else if (valor.equals("senha")) {
             up.put("senha", usuario.getSenha());
         }
-        atualizar.child("user").child(String.valueOf(user.getUid().toString())).updateChildren(up);
+        return atualizar.child("user").child(String.valueOf(user.getUid().toString())).updateChildren(up);
     }
 
     public void fazerLgout() {
@@ -137,20 +137,26 @@ public class UsuarioDao {
     public Task<Void> deletar(String senha) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
         FirebaseUser user = aut.getCurrentUser();
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
-                Criptografia.md5(senha.toString()));
-        return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-                    FirebaseUser user = aut.getCurrentUser();
-                    DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-                    remover.child("user").child(user.getUid().toString()).removeValue();
-                    user.delete();
+        if (!senha.equals("Campo desabilitado.")) {
+            AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
+                    Criptografia.md5(senha.toString()));
+            return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
+                        FirebaseUser user = aut.getCurrentUser();
+                        DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+                        remover.child("user").child(user.getUid().toString()).removeValue();
+                        user.delete();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+            remover.child("user").child(user.getUid().toString()).removeValue();
+            return user.delete();
+        }
 
 
     }
@@ -161,16 +167,16 @@ public class UsuarioDao {
         return auth.sendPasswordResetEmail(usuario.getEmail());
     }
 
-    public Task<Void> atualizarSe(String atual, final Usuario usuario,String valor) {
-        String senha="";
+    public Task<Void> atualizarSe(String atual, final Usuario usuario, String valor) {
+        String senha = "";
         FirebaseAuth auth = ConfiguracaoFirebaseDao.autenticarDados();
         final FirebaseUser user = auth.getCurrentUser();
-        if(valor.equals("att")){
-            senha=Criptografia.md5(atual);
-        }else{
-            senha=atual;
+        if (valor.equals("att")) {
+            senha = Criptografia.md5(atual);
+        } else {
+            senha = atual;
         }
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),senha);
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(), senha);
         return user.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

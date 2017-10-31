@@ -151,7 +151,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity_Login.this, ResetSenha.class);
-                startActivity(intent);
+                startActivityForResult(intent,8);
             }
         });
 
@@ -202,6 +202,10 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
         } else {
             callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+
+        if(resultCode==8){
+            finish();
         }
 
     }

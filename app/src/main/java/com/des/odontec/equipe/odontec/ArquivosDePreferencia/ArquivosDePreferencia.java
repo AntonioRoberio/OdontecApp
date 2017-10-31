@@ -80,4 +80,16 @@ public class ArquivosDePreferencia {
         SharedPreferences preferences = context.getSharedPreferences("statusSenhaAlterada", context.MODE_PRIVATE);
         return preferences.getBoolean("status", false);
     }
+
+    public void login(String tipo) {
+        SharedPreferences preferences = context.getSharedPreferences("statusLogin", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("login",tipo);
+        editor.commit();
+    }
+
+    public String retornaLogin() {
+        SharedPreferences preferences = context.getSharedPreferences("statusLogin", context.MODE_PRIVATE);
+        return preferences.getString("login","");
+    }
 }

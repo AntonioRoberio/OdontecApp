@@ -31,7 +31,7 @@
                 android:id="@+id/pegarNome"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:hint="Carregando seus dados...Aguarde..." />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -66,7 +66,7 @@
                 android:id="@+id/pegarCidade"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:hint="Carregando seus dados...Aguarde..." />
+                />
 
         </LinearLayout>
 

@@ -70,7 +70,10 @@ public class AtualizarSenha extends AppCompatActivity {
 
     public void atualizarSe(String resultado) {
         if (resultado.contains("Senha Alterada")) {
-            startActivity(new Intent(AtualizarSenha.this, InicialActivity.class));
+            Intent intent=new Intent(AtualizarSenha.this, InicialActivity.class);
+            startActivity(intent);
+            setResult(10);
+            finish();
         } else {
             fl.setVisibility(View.GONE);
         }
