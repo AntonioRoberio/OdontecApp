@@ -5,20 +5,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.des.odontec.equipe.odontec.View.InicialActivity"
     tools:showIn="@layout/app_bar_inicial">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TableRow
         android:id="@+id/btnTesteAne"
-        android:text="Anestésico"/>
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#9000AFEF">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:src="@drawable/anestesico"
+            android:text="Anestésico" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="end"
+            android:lines="2"
+            android:text="Calculo dosagem
+                       de anestésico"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:typeface="serif"
+
+            />
+
+    </TableRow>
+
+    <TableRow
         android:id="@+id/btnPatologia"
-        android:text="Farmacologia"/>
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#7000AFEF">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmacologia" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:gravity="start"
+            android:text="Tratamentos
+Patologicos "
+            android:lines="2"
+            android:textColor="#000000"
+            android:textSize="20dp"
+
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#5000AFEF">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmacologia" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:text="Calculo dose máxima de anestésico"
+            android:textColor="#000000"
+            android:textSize="20dp"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#3000AFEF">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmacologia" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:text="Calculo dose máxima de anestésico"
+            android:textColor="#000000"
+            android:textSize="20dp"/>
+
+    </TableRow>
 
 </LinearLayout>
