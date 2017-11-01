@@ -39,5 +39,6 @@
         <item>SE</item>
         <item>TO</item>
     </string-array>
+    <string name="title_activity_salvar_bd">SalvarBD</string>
 
 </resources>

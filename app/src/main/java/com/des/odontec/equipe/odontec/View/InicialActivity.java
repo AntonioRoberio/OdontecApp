@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
@@ -28,8 +29,8 @@ import com.des.odontec.equipe.odontec.R;
 import java.security.acl.Group;
 
 public class InicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Button botao;
-    private Button btnPatologia;
+    private TableRow botao;
+    private TableRow btnPatologia;
     NavigationView escolhaMenu;
 
     @Override
@@ -40,8 +41,8 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         UsuarioController usuarioController = new UsuarioController(InicialActivity.this);
-        botao = (Button) findViewById(R.id.btnTesteAne);
-        btnPatologia = (Button) findViewById(R.id.btnPatologia);
+        botao = (TableRow) findViewById(R.id.btnTesteAne);
+        btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +164,9 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             });
             alert.create();
             alert.show();
+        }else if(id == R.id.quiz){
+            Intent intent = new Intent(InicialActivity.this, SalvarBD.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -17,7 +17,9 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-        <activity android:name=".View.SplashScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".View.SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,22 +30,50 @@
             android:name=".View.CadastrarUsuario"
             android:label="                Cadastro Odontec"
             android:windowSoftInputMode="adjustUnspecified" />
-        <activity android:name=".View.ResetSenha" android:label="                Resetar Senha" />
-        <activity android:name=".View.AtualizarDados" android:label="              Atualização de Dados" />
-        <activity android:name=".View.AtualizarSenha" android:label="              Atualização de Senha"/>
-        <activity android:name=".View.DeletarConta" android:label="                Exclusão de Conta"/>
-        <activity android:name=".View.TipoPaciente" android:label="                "/>
-        <activity android:name=".View.AlteracaoSistemica" android:label="                " />
-        <activity android:name=".View.TipoAnestesico" android:label="                " />
+        <activity
+            android:name=".View.ResetSenha"
+            android:label="                Resetar Senha" />
+        <activity
+            android:name=".View.AtualizarDados"
+            android:label="              Atualização de Dados" />
+        <activity
+            android:name=".View.AtualizarSenha"
+            android:label="              Atualização de Senha" />
+        <activity
+            android:name=".View.DeletarConta"
+            android:label="                Exclusão de Conta" />
+        <activity
+            android:name=".View.TipoPaciente"
+            android:label="                " />
+        <activity
+            android:name=".View.AlteracaoSistemica"
+            android:label="                " />
+        <activity
+            android:name=".View.TipoAnestesico"
+            android:label="                " />
         <activity
             android:name=".View.InicialActivity"
             android:label="                Inicio"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.PesoPaciente" android:label="                "/>
-        <activity android:name=".View.ResultadoFinal" android:label="                "/>
-        <activity android:name=".View.SelecionarPatologia" android:label="                "/>
-        <activity android:name=".View.SelecionarTratamento" android:label="                "/>
-        <activity android:name=".View.MainActivity_Login" android:label="                "/>
+        <activity
+            android:name=".View.PesoPaciente"
+            android:label="                " />
+        <activity
+            android:name=".View.ResultadoFinal"
+            android:label="                " />
+        <activity
+            android:name=".View.SelecionarPatologia"
+            android:label="                " />
+        <activity
+            android:name=".View.SelecionarTratamento"
+            android:label="                " />
+        <activity
+            android:name=".View.MainActivity_Login"
+            android:label="                " />
+        <activity
+            android:name=".View.SalvarBD"
+            android:label="@string/title_activity_salvar_bd"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

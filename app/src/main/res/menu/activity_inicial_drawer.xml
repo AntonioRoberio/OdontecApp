@@ -23,6 +23,10 @@
                 android:id="@+id/Sair"
                 android:icon="@drawable/sair"
                 android:title="Sair" />
+            <item
+                android:id="@+id/quiz"
+                android:icon="@drawable/editinfo"
+                android:title="Pergunta Quiz" />
         </menu>
     </item>
 
