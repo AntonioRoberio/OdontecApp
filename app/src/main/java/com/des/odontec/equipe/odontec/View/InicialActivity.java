@@ -25,6 +25,7 @@ import com.des.odontec.equipe.odontec.R;
 public class InicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TableRow botao;
     private TableRow btnPatologia;
+    private TableRow jogo;
     NavigationView escolhaMenu;
 
     @Override
@@ -37,6 +38,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         UsuarioController usuarioController = new UsuarioController(InicialActivity.this);
         botao = (TableRow) findViewById(R.id.btnTesteAne);
         btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
+        jogo = (TableRow) findViewById(R.id.btnQuizP);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,14 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, SelecionarPatologia.class);
+                startActivity(intent);
+            }
+        });
+
+        jogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InicialActivity.this, Quizz.class);
                 startActivity(intent);
             }
         });

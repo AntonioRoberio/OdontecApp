@@ -70,6 +70,7 @@ Patologicos "
     </TableRow>
 
     <TableRow
+        android:id="@+id/btnQuizP"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="#5000AFEF">
@@ -86,7 +87,7 @@ Patologicos "
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="end"
-            android:text="Calculo dose máxima de anestésico"
+            android:text="Jogo do Quiz"
             android:textColor="#000000"
             android:textSize="20dp"/>
 
