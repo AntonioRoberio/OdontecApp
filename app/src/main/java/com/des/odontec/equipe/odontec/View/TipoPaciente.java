@@ -19,7 +19,6 @@ public class TipoPaciente extends AppCompatActivity {
     private Button btTipoPaciente;
     private ListView escolhaTipo;
     private Bundle bundle = new Bundle();
-    ;
 
 
     @Override

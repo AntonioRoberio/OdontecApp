@@ -26,7 +26,6 @@ public class TipoAnestesico extends AppCompatActivity {
     private String tipoPa;
     private String tipoAlt;
     private Button enviar;
-    private int i=0;
     private String[] lista;
     private Bundle bundle;
     private Bundle valores;

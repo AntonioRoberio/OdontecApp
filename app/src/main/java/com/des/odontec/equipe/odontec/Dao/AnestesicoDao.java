@@ -7,7 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Model.Anestesico;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
@@ -47,7 +47,7 @@ public class AnestesicoDao {
          @Override
          public void onDataChange(DataSnapshot dataSnapshot) {
              VersaoDados versaoDados=dataSnapshot.getValue(VersaoDados.class);
-             ArquivosDePreferencia arquivosDePreferencia=new ArquivosDePreferencia(context);
+             Preferencias arquivosDePreferencia=new Preferencias(context);
              if(!versaoDados.getAnestesico().toString().equals(arquivosDePreferencia.retornoVersao("anestesico"))){
                  int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contAnes"));
                  if (contador != 0) {
@@ -82,7 +82,7 @@ public class AnestesicoDao {
                     contentValues.put("_id", cont + "");
                     banco.insert("listaAnestesicos", null, contentValues);
                 }
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 arquivosDePreferencia.salvarVersoaAnes(new String(cont + ""), "cont");
                 banco.close();
             }

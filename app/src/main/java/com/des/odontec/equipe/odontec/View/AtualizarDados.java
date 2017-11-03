@@ -43,8 +43,8 @@ public class AtualizarDados extends AppCompatActivity {
         usuario = usuarioController.exibirDados();
         nome.setText(usuario.getNome());
         //-------------------------------------------------------------------------
-        Resources r = getResources();
-        String[] es = r.getStringArray(R.array.estados);
+        //Resources r = getResources();
+        String[] es = getResources().getStringArray(R.array.estados);
         String atual = es[0];
         for (int i = 0; i < es.length - 1; i++) {
             if (es[i].equals(usuario.getEstado())) {

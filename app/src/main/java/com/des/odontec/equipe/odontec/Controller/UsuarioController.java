@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
 import com.des.odontec.equipe.odontec.Dao.UsuarioDao;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
@@ -142,7 +142,7 @@ public class UsuarioController {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 ResetSenha rest = resetSenha;
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 if (task.isSuccessful()) {
                     arquivosDePreferencia.alterSenha("true");
                     rest.resetar("Um E-mail foi enviado para você. Confira sua caixa de entrada!");
@@ -179,7 +179,7 @@ public class UsuarioController {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
                 FirebaseUser us = aut.getCurrentUser();
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 if (task.isSuccessful()) {
                    login.autenticarUsuario(us, "Seja bem vindo");
                     arquivosDePreferencia.alterSenha("false");

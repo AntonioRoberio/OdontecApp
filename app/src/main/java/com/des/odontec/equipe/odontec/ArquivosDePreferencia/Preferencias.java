@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
  * Created by Antonio on 24/09/2017.
  */
 
-public class ArquivosDePreferencia {
+public class Preferencias {
     private Context context;
 
-    public ArquivosDePreferencia(Context context) {
+    public Preferencias(Context context) {
         this.context = context;
     }
 

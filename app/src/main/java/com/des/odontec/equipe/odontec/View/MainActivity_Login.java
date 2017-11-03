@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
 import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
@@ -128,7 +128,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     frama.setVisibility(View.VISIBLE);
                     UsuarioController usuarioController = new UsuarioController();
 
-                    ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(MainActivity_Login.this);
+                    Preferencias arquivosDePreferencia = new Preferencias(MainActivity_Login.this);
                     if (!(arquivosDePreferencia.retornoAlterSenha())) {
                         senhaCript = Criptografia.md5(senha.getText().toString());
                         usuario.setSenha(senhaCript.toString());

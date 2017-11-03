@@ -2,7 +2,6 @@ package com.des.odontec.equipe.odontec.View;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,17 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
-import com.des.odontec.equipe.odontec.Dao.ConfiguracaoFirebaseDao;
-import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class DeletarConta extends AppCompatActivity {
     private Button apagarConta;
@@ -34,7 +26,7 @@ public class DeletarConta extends AppCompatActivity {
         setContentView(R.layout.activity_deletar_conta);
         senha = (EditText) findViewById(R.id.deletarConta);
         apagarConta = (Button) findViewById(R.id.confirmeExclusao);
-        ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(this);
+        Preferencias arquivosDePreferencia = new Preferencias(this);
         if(!arquivosDePreferencia.retornaLogin().equals("odontec")){
             senha.setEnabled(false);
             senha.setText("Campo desabilitado.");

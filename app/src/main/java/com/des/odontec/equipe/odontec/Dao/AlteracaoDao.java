@@ -5,9 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Model.Alteracao;
-import com.des.odontec.equipe.odontec.Model.Anestesico;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +41,7 @@ public class AlteracaoDao {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 VersaoDados versaoDados = dataSnapshot.getValue(VersaoDados.class);
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 if (!versaoDados.getAlteracao().toString().equals(arquivosDePreferencia.retornoVersao("alteracao"))) {
                     int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contAlt"));
                     if (contador != 0) {
@@ -78,7 +77,7 @@ public class AlteracaoDao {
                     contentValues.put("_id", cont + "");
                     banco.insert("listaAlteracao", null, contentValues);
                 }
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 arquivosDePreferencia.salvarVersoaAlter(new String(cont + ""), "cont");
                 banco.close();
             }

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.ArquivosDePreferencia;
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Model.Patologia;
 import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.google.firebase.database.DataSnapshot;
@@ -37,7 +37,7 @@ public class PatologiaDao {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 VersaoDados versaoDados = dataSnapshot.getValue(VersaoDados.class);
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 if (!versaoDados.getPatologia().toString().equals(arquivosDePreferencia.retornoVersao("patologia"))) {
                     int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contPatol"));
                     if (contador != 0) {
@@ -74,7 +74,7 @@ public class PatologiaDao {
                     contentValues.put("_id",String.valueOf(cont));
                     banco.insert("listaPatologias",null,contentValues);
                 }
-                ArquivosDePreferencia arquivosDePreferencia = new ArquivosDePreferencia(context);
+                Preferencias arquivosDePreferencia = new Preferencias(context);
                 arquivosDePreferencia.salvarVersaoPatologia(new String(cont + ""), "cont");
                 banco.close();
             }
