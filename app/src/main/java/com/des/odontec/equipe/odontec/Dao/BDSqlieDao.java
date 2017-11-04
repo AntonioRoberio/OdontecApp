@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BDSqlieDao extends SQLiteOpenHelper {
-    private static final String NOME_BD = "Bancoteste";
+    private static final String NOME_BD = "BancoNovo1";
     private static final int VERSAO = 1;
     public BDSqlieDao(Context context) {
         super(context, NOME_BD, null, VERSAO);
@@ -21,9 +21,9 @@ public class BDSqlieDao extends SQLiteOpenHelper {
         db.execSQL("create table listaAlteracao(_id text primary key ,tipoAlter text not null);");
         db.execSQL("create table usuarios(_id text primary key ,nome text not null,estado text not null,cidade text not null,email text not null);");
         db.execSQL("create table listaPatologias(_id text primary key ,tipoPatologia text not null,tipoTratamento text not null);");
-        //db.execSQL("create table quiz(_id text primary key ,pergunta text not null,alterA text not null,alterB text not null,alterC text not null" +
-               // ",alterD text not null,alterE text not null,alterCorreta text not null);");
+        db.execSQL("create table quiz(_id text primary key ,pergunta text not null,respostaA text not null,respostaB text not null,respostaC text not null,respostaD text not null,respostaE text not null,altCorreta text not null);");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -31,7 +31,7 @@ public class BDSqlieDao extends SQLiteOpenHelper {
         db.execSQL("drop table listaAlteracao");
         db.execSQL("drop table usuarios");
         db.execSQL("drop table patologias");
-        //db.execSQL("drop table quiz");
+        db.execSQL("drop table quiz");
         onCreate(db);
     }
 }

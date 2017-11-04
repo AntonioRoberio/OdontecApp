@@ -29,7 +29,6 @@ public class DeletarConta extends AppCompatActivity {
         Preferencias arquivosDePreferencia = new Preferencias(this);
         if(!arquivosDePreferencia.retornaLogin().equals("odontec")){
             senha.setEnabled(false);
-            senha.setText("Campo desabilitado.");
         }
 
         apagarConta.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +45,7 @@ public class DeletarConta extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         UsuarioController usuarioController = new UsuarioController();
+                        senha.setText("Campo desabilitado.");
                         usuarioController.apagarConta(senha.getText().toString(),DeletarConta.this);
                     }
                 });

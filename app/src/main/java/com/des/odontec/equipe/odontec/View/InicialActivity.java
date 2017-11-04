@@ -140,10 +140,10 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         int id = item.getItemId();
         if (id == R.id.AlterarSenha) {
             Intent intent = new Intent(InicialActivity.this, AtualizarSenha.class);
-            startActivityForResult(intent,10);
+            startActivityForResult(intent, 10);
         } else if (id == R.id.EditarInformacoes) {
             Intent intent = new Intent(InicialActivity.this, AtualizarDados.class);
-            startActivityForResult(intent,10);
+            startActivityForResult(intent, 10);
         } else if (id == R.id.ExcluirConta) {
             Intent intent = new Intent(InicialActivity.this, DeletarConta.class);
             startActivity(intent);
@@ -168,7 +168,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             });
             alert.create();
             alert.show();
-        }else if(id == R.id.quiz){
+        } else if (id == R.id.quiz) {
             Intent intent = new Intent(InicialActivity.this, SalvarBD.class);
             startActivity(intent);
         }
@@ -180,7 +180,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==10){
+        if (resultCode == 10) {
             finish();
         }
     }

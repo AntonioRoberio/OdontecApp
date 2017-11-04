@@ -26,6 +26,7 @@ import java.util.Collections;
  */
 
 public class QuizDao {
+
     private Context context;
     private SQLiteDatabase bd;
     private BDSqlieDao bdSqlieDao;
@@ -38,7 +39,7 @@ public class QuizDao {
     }
 
 
-    private void pegarDadosBD2() {
+    public void pegarDadosBD2() {
         databaseReference.child("quiz").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -48,12 +49,12 @@ public class QuizDao {
                     cont++;
                     Quiz quiz = d.getValue(Quiz.class);
                     contentValues.put("pergunta", quiz.getPergunta());
-                    contentValues.put("alterA", quiz.getRespostaA());
-                    contentValues.put("alterB", quiz.getRespostaB());
-                    contentValues.put("alterC", quiz.getRespostaC());
-                    contentValues.put("alterD", quiz.getRespostaD());
-                    contentValues.put("alterE", quiz.getRespostaE());
-                    contentValues.put("alterCorreta", quiz.getAltCorreta());
+                    contentValues.put("respostaA", quiz.getRespostaA());
+                    contentValues.put("respostaB", quiz.getRespostaB());
+                    contentValues.put("respostaC", quiz.getRespostaC());
+                    contentValues.put("respostaD", quiz.getRespostaD());
+                    contentValues.put("respostaE", quiz.getRespostaE());
+                    contentValues.put("altCorreta", quiz.getAltCorreta());
                     contentValues.put("_id", cont + "");
                     bd.insert("quiz", null, contentValues);
                 }
@@ -72,7 +73,7 @@ public class QuizDao {
     public ArrayList<Quiz> listarPerguntas() {
         ArrayList<Quiz> quizzes = new ArrayList<>();
 
-        String[] colunas = {"_id", "pergunta", "alterA", "alterB", "alterC", "alterD", "alterE", "alterCorreta"};
+        String[] colunas = {"_id", "pergunta", "respostaA", "respostaB", "respostaC", "respostaD", "respostaE", "altCorreta"};
         Cursor cursor = bd.query("quiz", colunas, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
@@ -93,7 +94,7 @@ public class QuizDao {
         Collections.shuffle(quizzes);
         return quizzes;
     }
-
+/*
     public void alternarPerguntas() {
 
         ArrayList<Quiz> quizzes=listarPerguntas();
@@ -171,5 +172,5 @@ public class QuizDao {
             }
         });
     }
-
+*/
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.Model.Quiz;
@@ -49,18 +50,56 @@ public class Quizz extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.status);
 
         progressBar.setBackgroundColor(Color.WHITE);
-        QuizDao quizDao = new QuizDao(this);
+        QuizDao quizDao = new QuizDao(Quizz.this);
+        //quizDao.pegarDadosBD2();
         ArrayList<Quiz> quizzes = quizDao.listarPerguntas();
 
-        for (Quiz q : quizzes) {
-          pergunta.setText(q.getPergunta());
-          alterA.setText(q.getRespostaA());
-          alterB.setText(q.getRespostaB());
-          alterC.setText(q.getRespostaC());
-          alterD.setText(q.getRespostaD());
-          alterE.setText(q.getRespostaE());
+        for (final Quiz q : quizzes) {
+            pergunta.setText(q.getPergunta());
+            alterA.setText(q.getRespostaA());
+            alterB.setText(q.getRespostaB());
+            alterC.setText(q.getRespostaC());
+            alterD.setText(q.getRespostaD());
+            alterE.setText(q.getRespostaE());
+
+            alterA.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    t(v.toString());
+                }
+            });
+            alterB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    t(v.toString());
+                }
+            });
+            alterC.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    t(v.toString());
+                }
+            });
+            alterD.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    t(v.toString());
+                }
+            });
+            alterE.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    t(v.toString());
+                }
+            });
         }
+
+
     }
 
+    public void t(String resultado) {
 
+            Toast.makeText(Quizz.this, resultado, Toast.LENGTH_SHORT).show();
+
+    }
 }
