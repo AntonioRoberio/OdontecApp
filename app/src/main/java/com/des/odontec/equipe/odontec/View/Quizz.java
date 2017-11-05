@@ -55,7 +55,8 @@ public class Quizz extends AppCompatActivity {
         QuizDao quizDao = new QuizDao(Quizz.this);
         //quizDao.pegarDadosBD2();
         Preferencias preferencias=new Preferencias(this);
-        perguntas(preferencias.retornaQuiz());
+        //perguntas(preferencias.retornaQuiz());
+        alterA.setText("hahahuahauahuahauhauahauhaua auhauahauhauahuaha hauahauhauahuahauhauahauhauahau aahauhauahauhauhauahau ajhaahuahauahuahauahuahauhaua");
     }
 
     public void perguntas(final int valor) {
@@ -177,6 +178,7 @@ public class Quizz extends AppCompatActivity {
         }else{
             Intent intent=new Intent(Quizz.this,InicialActivity.class);
             startActivity(intent);
+            setResult(10);
             finish();
             preferencias.quiz(0);
         }

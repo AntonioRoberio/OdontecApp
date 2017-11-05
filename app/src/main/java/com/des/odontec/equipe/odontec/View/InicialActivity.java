@@ -60,7 +60,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, Quizz.class);
-                startActivity(intent);
+                startActivityForResult(intent,10);
             }
         });
 
