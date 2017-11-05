@@ -7,8 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
-import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
-import com.des.odontec.equipe.odontec.Model.Alteracao;
 import com.des.odontec.equipe.odontec.Model.Quiz;
 import com.des.odontec.equipe.odontec.View.SalvarBD;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by Antonio on 01/11/2017.
@@ -70,11 +67,16 @@ public class QuizDao {
         });
     }
 
+
+
+
     public ArrayList<Quiz> listarPerguntas() {
+
         ArrayList<Quiz> quizzes = new ArrayList<>();
 
         String[] colunas = {"_id", "pergunta", "respostaA", "respostaB", "respostaC", "respostaD", "respostaE", "altCorreta"};
         Cursor cursor = bd.query("quiz", colunas, null, null, null, null, null);
+
         if (cursor.moveToFirst()) {
             do {
                 Quiz quiz = new Quiz();
@@ -91,69 +93,7 @@ public class QuizDao {
 
         }
         bd.close();
-        Collections.shuffle(quizzes);
         return quizzes;
-    }
-/*
-    public void alternarPerguntas() {
-
-        ArrayList<Quiz> quizzes=listarPerguntas();
-        int i = (int) Math.random() * 4;
-        for(int j=0;j<quizzes.size()-1;j++){
-            Quiz quiz = new Quiz();
-            quiz.setId(quizzes.get(i).getId());
-            quiz.setAltCorreta(quizzes.get(i).getAltCorreta());
-            ContentValues contentValues=new ContentValues();
-            switch (i){
-                case 0:
-                    quiz.setRespostaA(quizzes.get(j).getRespostaE());
-                    quiz.setRespostaB(quizzes.get(j).getRespostaD());
-                    quiz.setRespostaC(quizzes.get(j).getRespostaC());
-                    quiz.setRespostaD(quizzes.get(j).getRespostaB());
-                    quiz.setRespostaE(quizzes.get(j).getRespostaA());
-                    break;
-                case 1:
-                    quiz.setRespostaA(quizzes.get(j).getRespostaA());
-                    quiz.setRespostaB(quizzes.get(j).getRespostaC());
-                    quiz.setRespostaC(quizzes.get(j).getRespostaE());
-                    quiz.setRespostaD(quizzes.get(j).getRespostaD());
-                    quiz.setRespostaE(quizzes.get(j).getRespostaB());
-                    break;
-                case 2:
-                    quiz.setRespostaA(quizzes.get(j).getRespostaA());
-                    quiz.setRespostaB(quizzes.get(j).getRespostaB());
-                    quiz.setRespostaC(quizzes.get(j).getRespostaE());
-                    quiz.setRespostaD(quizzes.get(j).getRespostaC());
-                    quiz.setRespostaE(quizzes.get(j).getRespostaD());
-                    break;
-                case 3:
-                    quiz.setRespostaA(quizzes.get(j).getRespostaB());
-                    quiz.setRespostaB(quizzes.get(j).getRespostaA());
-                    quiz.setRespostaC(quizzes.get(j).getRespostaE());
-                    quiz.setRespostaD(quizzes.get(j).getRespostaC());
-                    quiz.setRespostaE(quizzes.get(j).getRespostaD());
-                    break;
-                default:
-                    quiz.setRespostaA(quizzes.get(j).getRespostaD());
-                    quiz.setRespostaB(quizzes.get(j).getRespostaB());
-                    quiz.setRespostaC(quizzes.get(j).getRespostaA());
-                    quiz.setRespostaD(quizzes.get(j).getRespostaC());
-                    quiz.setRespostaE(quizzes.get(j).getRespostaE());;
-
-            }
-
-            contentValues.put("pergunta", quiz.getPergunta());
-            contentValues.put("alterA", quiz.getRespostaA());
-            contentValues.put("alterB", quiz.getRespostaB());
-            contentValues.put("alterC", quiz.getRespostaC());
-            contentValues.put("alterD", quiz.getRespostaD());
-            contentValues.put("alterE", quiz.getRespostaE());
-            contentValues.put("alterCorreta", quiz.getAltCorreta());
-            contentValues.put("_id",quiz.getId());
-            bd.update("quiz", contentValues, "_id = ?", new String[]{quiz.getId()});
-        }
-        bd.close();
-
     }
 
 
@@ -172,5 +112,5 @@ public class QuizDao {
             }
         });
     }
-*/
+
 }

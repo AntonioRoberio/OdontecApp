@@ -92,4 +92,16 @@ public class Preferencias {
         SharedPreferences preferences = context.getSharedPreferences("statusLogin", context.MODE_PRIVATE);
         return preferences.getString("login","");
     }
+
+    public void quiz(int valor) {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("qst",valor);
+        editor.commit();
+    }
+
+    public int retornaQuiz() {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        return preferences.getInt("qst",0);
+    }
 }
