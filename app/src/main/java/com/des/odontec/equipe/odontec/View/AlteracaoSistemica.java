@@ -18,6 +18,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
     private Bundle bundle;
     private Button btAlt;
     private String valorTipPaci;
+    private int idade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,22 @@ public class AlteracaoSistemica extends AppCompatActivity {
         escolhaAlt.setAdapter(new LayoutsAdpater(AlteracaoSistemica.this,alteracao));
 
         Intent pegarInt = getIntent();
-        Bundle tipoPaci = pegarInt.getExtras();
-        valorTipPaci = tipoPaci.getString("tipo");
+        Bundle dadosPaciente = pegarInt.getExtras();
+        idade=Integer.parseInt(dadosPaciente.getString("idade"));
+        if(idade <= 14){
+            valorTipPaci="Criança";
+        }else if(idade >= 15 || idade <= 64){
+            valorTipPaci="Adulto";
+        }else{
+            valorTipPaci="Idoso";
+        }
 
         bundle = new Bundle();
         bundle.putString("tipo", valorTipPaci);
+        bundle.putString("nome",dadosPaciente.getString("nome"));
+        bundle.putString("idade",dadosPaciente.getString("idade"));
+        bundle.putString("peso",dadosPaciente.getString("peso"));
+        bundle.putString("sexo",dadosPaciente.getString("sexo"));
         final View[] v = {new View(this)};
 
         escolhaAlt.setOnItemClickListener(new AdapterView.OnItemClickListener() {

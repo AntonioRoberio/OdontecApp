@@ -32,7 +32,7 @@ public class PacienteDao {
         contentValues.put("dataDeAtendimento",paciente.getDataDeAtendimento());
         contentValues.put("alteracao",paciente.getAlteracao());
         contentValues.put("anestesico",paciente.getAnestesico());
-        contentValues.put("_id",paciente.getId());
+        contentValues.put("qtdTubetes",paciente.getQtdTubetes());
         bd.insert("pacientes",null,contentValues);
         bd.close();
     }
@@ -46,23 +46,24 @@ public class PacienteDao {
         contentValues.put("dataDeAtendimento",paciente.getDataDeAtendimento());
         contentValues.put("alteracao",paciente.getAlteracao());
         contentValues.put("anestesico",paciente.getAnestesico());
-        bd.update("pacientes",contentValues,"_id = ?",new String[]{paciente.getId()});
+        contentValues.put("qtdTubetes",paciente.getQtdTubetes());
+        bd.update("pacientes",contentValues,"_id = ?",new String[]{""+paciente.getId()});
         bd.close();
     }
 
     public void deletarPaciente(Paciente paciente){
-        bd.delete("pacientes","_id = ?",new String[]{paciente.getId()});
+        bd.delete("pacientes","_id = ?",new String[]{""+paciente.getId()});
     }
 
     public ArrayList<Paciente> exibirDadosPacientes(){
         ArrayList<Paciente> pacientes=new ArrayList<>();
-        String[] colunas={"_id","nome","idade","peso","sexo","dataDeAtendimento","alteracao","anestesico"};
+        String[] colunas={"_id","nome","idade","peso","sexo","dataDeAtendimento","alteracao","anestesico","qtdTubetes"};
         Cursor cursor=bd.query("pacientes",colunas,null,null,null,null,"nome ASC");
 
         if(cursor.moveToFirst()){
             do{
                 Paciente paciente=new Paciente();
-                paciente.setId(cursor.getString(0));
+                paciente.setId(cursor.getInt(0));
                 paciente.setNome(cursor.getString(1));
                 paciente.setIdade(cursor.getInt(2));
                 paciente.setPeso(cursor.getDouble(3));
@@ -70,6 +71,7 @@ public class PacienteDao {
                 paciente.setDataDeAtendimento(cursor.getString(5));
                 paciente.setAlteracao(cursor.getString(6));
                 paciente.setAnestesico(cursor.getString(7));
+                paciente.setQtdTubetes(cursor.getDouble(8));
                 pacientes.add(paciente);
             }while (cursor.moveToNext());
         }

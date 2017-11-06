@@ -37,13 +37,17 @@ public class TipoAnestesico extends AppCompatActivity {
         setContentView(R.layout.activity_tipo_anestesico);
         list = (ListView) findViewById(R.id.listaResultado);
         enviar=(Button) findViewById(R.id.btnEnviarAnestesico);
-
+        bundle=new Bundle();
         intent = getIntent();
         if(intent != null){
             valores = intent.getExtras();
             if(valores!=null){
                 tipoPa = valores.getString("tipo");
                 tipoAlt = valores.getString("alt");
+                bundle.putString("nome",valores.getString("nome"));
+                bundle.putString("idade",valores.getString("idade"));
+                bundle.putString("peso",valores.getString("peso"));
+                bundle.putString("sexo",valores.getString("sexo"));
             }else{
                 tipoPa = "sem valor";
                 tipoAlt = "sem valor";
@@ -54,7 +58,7 @@ public class TipoAnestesico extends AppCompatActivity {
         lista = anestesicoController.listaAnestesico(tipoPa,tipoAlt);
         list.setAdapter(new LayoutsAdpater(TipoAnestesico.this,lista));
         final View[] v = {new View(this)};
-        bundle=new Bundle();
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -72,7 +76,7 @@ public class TipoAnestesico extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                if(bundle.containsKey("tipoAnestesico")){
-                   Intent intent=new Intent(TipoAnestesico.this,PesoPaciente.class);
+                   Intent intent=new Intent(TipoAnestesico.this,ResultadoFinal.class);
                    bundle.putString("alt",tipoAlt);
                    bundle.putString("tipo",tipoPa);
                    intent.putExtras(bundle);

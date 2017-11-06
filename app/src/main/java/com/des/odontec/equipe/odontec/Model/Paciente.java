@@ -16,7 +16,8 @@ public class Paciente {
     private String dataDeAtendimento;
     private String alteracao;
     private String anestesico;
-    private String id;
+    private double qtdTubetes;
+    private int id;
 
     public Paciente(){
 
@@ -31,6 +32,7 @@ public class Paciente {
         hashMap.put("dataDeAtendimento",getDataDeAtendimento());
         hashMap.put("alteracao",getAlteracao());
         hashMap.put("anestesico",getAnestesico());
+        hashMap.put("qtdTubetes",getQtdTubetes());
         return hashMap;
     }
 
@@ -90,13 +92,19 @@ public class Paciente {
         this.anestesico = anestesico;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    public double getQtdTubetes() {
+        return qtdTubetes;
+    }
 
+    public void setQtdTubetes(double qtdTubetes) {
+        this.qtdTubetes = qtdTubetes;
+    }
 }

@@ -19,6 +19,7 @@ public class DeletarConta extends AppCompatActivity {
     private Button apagarConta;
     private EditText senha;
     private FirebaseAuth auth;
+    private Preferencias arquivosDePreferencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class DeletarConta extends AppCompatActivity {
         setContentView(R.layout.activity_deletar_conta);
         senha = (EditText) findViewById(R.id.deletarConta);
         apagarConta = (Button) findViewById(R.id.confirmeExclusao);
-        Preferencias arquivosDePreferencia = new Preferencias(this);
+        arquivosDePreferencia = new Preferencias(this);
         if(!arquivosDePreferencia.retornaLogin().equals("odontec")){
             senha.setEnabled(false);
         }
@@ -45,7 +46,10 @@ public class DeletarConta extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         UsuarioController usuarioController = new UsuarioController();
-                        senha.setText("Campo desabilitado.");
+                        arquivosDePreferencia = new Preferencias(DeletarConta.this);
+                        if(!arquivosDePreferencia.retornaLogin().equals("odontec")) {
+                            senha.setText("Campo desabilitado.");
+                        }
                         usuarioController.apagarConta(senha.getText().toString(),DeletarConta.this);
                     }
                 });
