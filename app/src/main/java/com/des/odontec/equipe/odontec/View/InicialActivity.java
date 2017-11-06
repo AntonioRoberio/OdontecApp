@@ -3,18 +3,16 @@ package com.des.odontec.equipe.odontec.View;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TableRow;
 import android.widget.Toast;
 
@@ -40,8 +38,8 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         botao = (TableRow) findViewById(R.id.btnTesteAne);
         btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
         jogo = (TableRow) findViewById(R.id.btnQuizP);
-        pacientes = (TableRow) findViewById(R.id.testePaciente);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
+
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,26 +60,10 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, Quizz.class);
-                startActivityForResult(intent,10);
+                startActivityForResult(intent, 10);
             }
         });
 
-        pacientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InicialActivity.this, CadastrarPaciente.class);
-                startActivityForResult(intent,10);
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -136,9 +118,6 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

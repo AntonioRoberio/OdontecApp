@@ -56,9 +56,6 @@
             android:label="                Inicio"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.PesoPaciente"
-            android:label="                " />
-        <activity
             android:name=".View.ResultadoFinal"
             android:label="                " />
         <activity

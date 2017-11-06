@@ -24,25 +24,31 @@ public class ResultadoFinal extends AppCompatActivity {
     private String resultado;
     private double peso;
     private Paciente paciente;
+    private TextView nome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_resultado_final);
         tipoPa = (TextView) findViewById(R.id.TipodePaciente);
         tipoAlt = (TextView) findViewById(R.id.alteracao);
         tipoAnes = (TextView) findViewById(R.id.anestesico);
         pesoPaciente = (TextView) findViewById(R.id.peso);
         tubetes = (TextView) findViewById(R.id.quantidade);
+        nome = (TextView) findViewById(R.id.textnome);
         paciente = new Paciente();
         intent = getIntent();
+
         if (intent != null) {
             valores = intent.getExtras();
             if (valores != null) {
-                tipoPa.setText("Tipo de Paciente: " + valores.get("tipo").toString());
-                tipoAlt.setText("Alteração Sistemica: " + valores.get("alt").toString());
-                tipoAnes.setText("Anestésico Selecionado: " + valores.get("tipoAnestesico").toString());
-                pesoPaciente.setText("Peso do Paciente: " + valores.get("peso").toString());
+                nome.setText("Paciente " + valores.get("nome").toString());
+                tipoPa.setText(" (" + valores.get("tipo").toString() + ")");
+                pesoPaciente.setText("com " + valores.get("peso").toString() + " quilos");
+                tipoAlt.setText("e possui : " + valores.get("alt").toString());
+                tipoAnes.setText("e mediante sua escolha receberá " + valores.get("tipoAnestesico").toString() + " como anestésico");
+
 
                 paciente.setNome(valores.getString("nome"));
                 paciente.setAlteracao(valores.get("alt").toString());
