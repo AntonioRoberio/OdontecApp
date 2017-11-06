@@ -45,9 +45,9 @@ public class ResultadoFinal extends AppCompatActivity {
             if (valores != null) {
                 nome.setText("Paciente " + valores.get("nome").toString());
                 tipoPa.setText(" (" + valores.get("tipo").toString() + ")");
-                pesoPaciente.setText("com " + valores.get("peso").toString() + " quilos");
-                tipoAlt.setText("e possui : " + valores.get("alt").toString());
-                tipoAnes.setText("e mediante sua escolha receberá " + valores.get("tipoAnestesico").toString() + " como anestésico");
+                pesoPaciente.setText("Peso" + valores.get("peso").toString() + "Kg");
+                tipoAlt.setText("Condições Sistêmica : " + valores.get("alt").toString());
+                tipoAnes.setText("Anestésico escolhido: " + valores.get("tipoAnestesico").toString());
 
 
                 paciente.setNome(valores.getString("nome"));
