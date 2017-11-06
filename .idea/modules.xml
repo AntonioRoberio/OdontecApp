@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Odontec.iml" filepath="$PROJECT_DIR$/Odontec.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OdontecApp.iml" filepath="$PROJECT_DIR$/OdontecApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OdontecApp.iml" filepath="$PROJECT_DIR$/OdontecApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Antonio/AndroidStudioProjects/Odontec/OdontecApp.iml" filepath="$PROJECT_DIR$/../../../Antonio/AndroidStudioProjects/Odontec/OdontecApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Antonio\AndroidStudioProjects\Odontec\OdontecApp.iml" filepath="C:\Users\Antonio\AndroidStudioProjects\Odontec\OdontecApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
