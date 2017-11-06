@@ -78,7 +78,12 @@ public class CadastrarUsuario extends AppCompatActivity {
 
     public void cadastraUsuario(String resultado) {
         if (resultado.contains("Usuário cadastrado")) {
-            startActivity(new Intent(CadastrarUsuario.this, InicialActivity.class));
+            Bundle bundle=new Bundle();
+            bundle.putString("VALOR", "odontec");
+            Intent intent=new Intent(CadastrarUsuario.this, MainActivity_Login.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            setResult(8,intent);
             finish();
         } else {
             fl.setVisibility(View.GONE);

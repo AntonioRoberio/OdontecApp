@@ -74,7 +74,8 @@
             android:name=".View.SalvarBD"
             android:label="@string/title_activity_salvar_bd"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.Quizz"></activity>
+        <activity android:name=".View.Quizz" />
+        <activity android:name=".View.CadastrarPaciente"></activity>
     </application>
 
 </manifest>

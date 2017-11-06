@@ -52,8 +52,8 @@ public class SalvarBD extends AppCompatActivity {
                     quiz.setRespostaE(respostaE.getText().toString().trim());
                     quiz.setAltCorreta(altCorreta.getText().toString().trim());
                     quiz.setId(Criptografia.md5(pergunta.getText().toString().trim()));
-                    //QuizDao quizDao=new QuizDao();
-                    //quizDao.salvarDados(quiz,SalvarBD.this);
+                    QuizDao quizDao=new QuizDao(SalvarBD.this);
+                    quizDao.salvarDados(quiz,SalvarBD.this);
                 }else {
                     Toast.makeText(SalvarBD.this,"Campo em branco",Toast.LENGTH_SHORT).show();
                 }
