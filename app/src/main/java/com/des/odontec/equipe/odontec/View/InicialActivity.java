@@ -24,7 +24,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
     private TableRow botao;
     private TableRow btnPatologia;
     private TableRow jogo;
-    private TableRow pacientes;
+    private TableRow listPacientes;
     NavigationView escolhaMenu;
 
     @Override
@@ -38,6 +38,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         botao = (TableRow) findViewById(R.id.btnTesteAne);
         btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
         jogo = (TableRow) findViewById(R.id.btnQuizP);
+        listPacientes =(TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
 
         botao.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +61,14 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, Quizz.class);
+                startActivityForResult(intent, 10);
+            }
+        });
+
+        listPacientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InicialActivity.this, ListaDePacientes.class);
                 startActivityForResult(intent, 10);
             }
         });

@@ -55,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_margin="0.2dp"
-            android:background="#F4F1F0">
+            android:background="#F4F1F0"
+            android:id="@+id/tbPstPacientes">
 
 
             <TextView
