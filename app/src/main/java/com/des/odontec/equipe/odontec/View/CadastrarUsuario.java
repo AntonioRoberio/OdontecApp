@@ -84,6 +84,8 @@ public class CadastrarUsuario extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
             setResult(8,intent);
+            UsuarioController usuarioController = new UsuarioController(CadastrarUsuario.this);
+            usuarioController.pegarDados();
             finish();
         } else {
             fl.setVisibility(View.GONE);
