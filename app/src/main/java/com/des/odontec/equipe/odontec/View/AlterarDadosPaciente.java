@@ -67,7 +67,7 @@ private EditText nome;
         }
 
 
-        nome.setText(i+"");
+        nome.setText(paciente.getNome());
         idade.setText(paciente.getIdade()+"");
         peso.setText(paciente.getPeso()+"");
 
