@@ -3,6 +3,8 @@ package com.des.odontec.equipe.odontec.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.des.odontec.equipe.odontec.Controller.ResultadoFinalController;
@@ -25,6 +27,7 @@ public class ResultadoFinal extends AppCompatActivity {
     private double peso;
     private Paciente paciente;
     private TextView nome;
+    private Button voltaInicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,18 @@ public class ResultadoFinal extends AppCompatActivity {
         pesoPaciente = (TextView) findViewById(R.id.peso);
         tubetes = (TextView) findViewById(R.id.quantidade);
         nome = (TextView) findViewById(R.id.textnome);
+        voltaInicio = (Button) findViewById(R.id.voltaInicio);
+
+
+        voltaInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultadoFinal.this, InicialActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         paciente = new Paciente();
         intent = getIntent();
 
