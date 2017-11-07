@@ -44,10 +44,14 @@ public class TipoAnestesico extends AppCompatActivity {
             if(valores!=null){
                 tipoPa = valores.getString("tipo");
                 tipoAlt = valores.getString("alt");
-                bundle.putString("nome",valores.getString("nome"));
-                bundle.putString("idade",valores.getString("idade"));
-                bundle.putString("peso",valores.getString("peso"));
-                bundle.putString("sexo",valores.getString("sexo"));
+                if((valores.containsKey("nome") && valores.containsKey("idade") && valores.containsKey("peso") && valores.containsKey("sexo"))){
+                    bundle.putString("nome",valores.getString("nome"));
+                    bundle.putString("idade",valores.getString("idade"));
+                    bundle.putString("peso",valores.getString("peso"));
+                    bundle.putString("sexo",valores.getString("sexo"));
+                }else{
+                    bundle.putInt("id",valores.getInt("id"));
+                }
             }else{
                 tipoPa = "sem valor";
                 tipoAlt = "sem valor";

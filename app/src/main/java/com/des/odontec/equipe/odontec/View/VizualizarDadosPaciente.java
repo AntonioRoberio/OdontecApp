@@ -1,14 +1,17 @@
 package com.des.odontec.equipe.odontec.View;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.PacienteController;
 import com.des.odontec.equipe.odontec.Model.Paciente;
@@ -26,7 +29,7 @@ public class VizualizarDadosPaciente extends AppCompatActivity {
     private TextView anestesico;
     private TextView qtdTubetes;
     private Button atualizarDados;
-    private Button utlzAtuais;
+    private Button deletar;
     PacienteController pacienteController;
     Paciente paciente;
     @Override
@@ -42,7 +45,7 @@ public class VizualizarDadosPaciente extends AppCompatActivity {
         anestesico=(TextView) findViewById(R.id.anesPass);
         qtdTubetes=(TextView) findViewById(R.id.qntTubsPass);
         atualizarDados=(Button) findViewById(R.id.btnDadosAtualizar);
-        utlzAtuais=(Button) findViewById(R.id.btnDadosAtuais);
+        deletar=(Button) findViewById(R.id.btnDltDados);
 
         pacienteController=new PacienteController(this);
         final ArrayList<Paciente> pacientes = pacienteController.listaPacientes();
@@ -71,6 +74,26 @@ public class VizualizarDadosPaciente extends AppCompatActivity {
                 Intent intent=new Intent(VizualizarDadosPaciente.this,AlterarDadosPaciente.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,9);
+            }
+        });
+
+        deletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder conf=new AlertDialog.Builder(VizualizarDadosPaciente.this);
+                conf.setTitle("Deletar?").setMessage("Deseja deletar os dados desse paciente?")
+                .setCancelable(true).setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pacienteController.deletar(paciente.getId());
+                        finish();
+                    }
+                }).create().show();
             }
         });
     }

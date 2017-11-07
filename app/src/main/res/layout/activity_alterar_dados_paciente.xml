@@ -25,8 +25,7 @@
                 android:background="@drawable/botaosavacad"
                 android:fontFamily="@string/common_google_play_services_install_text"
                 android:gravity="center"
-                android:onClick="salvar"
-                android:text="salvar"
+                android:text="salvar e prosseguir"
                 android:textColor="#00AFEF"
                 android:textStyle="bold" />
 

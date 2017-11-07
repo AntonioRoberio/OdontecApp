@@ -25,4 +25,8 @@ public class PacienteController {
         ArrayList<Paciente> pcnts = pacienteDao.exibirDadosPacientes();
         return pcnts;
     }
+
+    public void deletar(int id){
+        pacienteDao.deletarPaciente(id);
+    }
 }

@@ -51,8 +51,8 @@ public class PacienteDao {
         bd.close();
     }
 
-    public void deletarPaciente(Paciente paciente){
-        bd.delete("pacientes","_id = ?",new String[]{""+paciente.getId()});
+    public void deletarPaciente(int id){
+        bd.delete("pacientes","_id = ?",new String[]{""+id});
     }
 
     public ArrayList<Paciente> exibirDadosPacientes(){

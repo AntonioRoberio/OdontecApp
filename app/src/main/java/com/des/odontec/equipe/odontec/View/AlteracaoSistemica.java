@@ -47,6 +47,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
         bundle.putString("idade",dadosPaciente.getString("idade"));
         bundle.putString("peso",dadosPaciente.getString("peso"));
         bundle.putString("sexo",dadosPaciente.getString("sexo"));
+        bundle.putInt("id",0);
         final View[] v = {new View(this)};
 
         escolhaAlt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
