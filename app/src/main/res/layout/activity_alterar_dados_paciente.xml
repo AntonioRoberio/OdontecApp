@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,43 +7,141 @@
     android:orientation="vertical"
     tools:context="com.des.odontec.equipe.odontec.View.AlterarDadosPaciente">
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Dados Paciente"
-       android:textSize="20dp"
-       android:layout_gravity="center"
-       android:layout_marginTop="10dp"/>
-    <EditText
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:id="@+id/nomePacienteEdt"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Idade"
-        android:id="@+id/idadePacienteEdt"
-        android:layout_marginTop="10dp"
-        android:inputType="date"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Peso"
-        android:id="@+id/psPacienteEdt"
-        android:layout_marginTop="10dp"
-        android:inputType="number"/>
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spnAlter"></Spinner>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnSalvarEdt"
-        android:text="Salvar"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp">
+
+            <Button
+                android:id="@+id/btnSalvarEdt"
+                android:layout_width="310dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/botaosavacad"
+                android:fontFamily="@string/common_google_play_services_install_text"
+                android:gravity="center"
+                android:onClick="salvar"
+                android:text="salvar"
+                android:textColor="#00AFEF"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="511dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Dados Paciente"
+                android:textColor="#000000"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgNoPac"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pacuser" />
+
+                <EditText
+                    android:id="@+id/nomePacienteEdt"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nome"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgIdade"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/idade" />
+
+                <EditText
+                    android:id="@+id/idadePacienteEdt"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Idade"
+                    android:inputType="date" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgPePa"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/pesopac" />
+
+                <EditText
+                    android:id="@+id/psPacienteEdt"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Peso"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgAltSis"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/altsispac" />
+
+                <Spinner
+                    android:id="@+id/spnAlter"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="270dp"
+                android:layout_height="0.6dp"
+                android:layout_marginLeft="21dp"
+                android:background="#000000" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+</ScrollView>
