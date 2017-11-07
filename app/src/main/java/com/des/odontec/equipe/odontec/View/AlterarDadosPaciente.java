@@ -62,10 +62,10 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                 }
            }
         }
-        alteracaos[j]="auhauaha";
+        //alteracaos[j]="auhauaha";
 
 
-        nome.setText(paciente.getNome()+" "+alteracaos[j]);
+        nome.setText(paciente.getNome());
         idade.setText(paciente.getIdade() + "");
         peso.setText(paciente.getPeso() + "");
 
