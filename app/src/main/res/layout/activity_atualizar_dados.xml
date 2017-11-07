@@ -7,8 +7,7 @@
     android:background="#FFFFFF"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.des.odontec.equipe.odontec.View.AtualizarDados"
-    >
+    tools:context="com.des.odontec.equipe.odontec.View.AtualizarDados">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,8 +30,7 @@
             <EditText
                 android:id="@+id/pegarNome"
                 android:layout_width="280dp"
-                android:layout_height="50dp"
-                />
+                android:layout_height="50dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,8 +46,7 @@
             <Spinner
                 android:id="@+id/pegarEstado"
                 android:layout_width="280dp"
-                android:layout_height="50dp"
-                />
+                android:layout_height="50dp" />
 
         </LinearLayout>
 
@@ -66,8 +63,7 @@
             <EditText
                 android:id="@+id/pegarCidade"
                 android:layout_width="280dp"
-                android:layout_height="50dp"
-                />
+                android:layout_height="50dp" />
 
         </LinearLayout>
 

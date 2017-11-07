@@ -9,7 +9,8 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF">
 
         <FrameLayout
             android:id="@+id/fl2"
@@ -26,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
-
 
 
         <LinearLayout

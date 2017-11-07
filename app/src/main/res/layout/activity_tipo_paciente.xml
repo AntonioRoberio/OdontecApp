@@ -4,29 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#FFFFFF"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.des.odontec.equipe.odontec.View.TipoPaciente">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seu Paciente é?"
-        android:textSize="30dp"
+        android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:layout_gravity="center"/>
+        android:text="Seu Paciente é?"
+        android:textSize="30dp" />
 
     <ListView
+        android:id="@+id/escolhaTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/escolhaTipo"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"></ListView>
+
     <Button
+        android:id="@+id/btTipoPaciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="avançar"
-        android:id="@+id/btTipoPaciente"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:text="avançar" />
 
 </LinearLayout>

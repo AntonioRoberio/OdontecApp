@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.des.odontec.equipe.odontec.View.AlterarDadosPaciente">
+    tools:context="com.des.odontec.equipe.odontec.View.AlterarDadosPaciente"
+    android:background="#FFFFFF">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -46,7 +48,9 @@
                 android:layout_marginTop="10dp"
                 android:text="Dados Paciente"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="normal"
+                android:typeface="monospace"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"

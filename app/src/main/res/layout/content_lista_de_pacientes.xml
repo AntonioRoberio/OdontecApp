@@ -4,14 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.des.odontec.equipe.odontec.View.ListaDePacientes"
     tools:showIn="@layout/activity_lista_de_pacientes">
-    <ListView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lsvPass">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    </ListView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pacientes Salvos"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:typeface="monospace" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+
+        <ListView
+            android:id="@+id/lsvPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context="com.des.odontec.equipe.odontec.View.ResetSenha"
-
 
     >
 
@@ -34,23 +34,23 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="-155dp"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="-155dp"
         android:text="Insira seu e-mail para resetar a senha."
         android:textColor="#000000" />
 
 
     <Button
         android:id="@+id/envairReset"
-        android:layout_marginTop="190dp"
         android:layout_width="310dp"
         android:layout_height="45dp"
         android:layout_gravity="bottom|center"
+        android:layout_marginTop="190dp"
         android:background="@drawable/botaosavacad"
         android:text="Enviar"
-        android:textColor="#00AFEF"/>
+        android:textColor="#00AFEF" />
 
 </LinearLayout>
