@@ -43,7 +43,7 @@ public class ListaDePacientes extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bundle=new Bundle();
                 bundle.putInt("id",pacientes.get(position).getId());
-                Intent intent=new Intent(ListaDePacientes.this,AlterarDadosPaciente.class);
+                Intent intent=new Intent(ListaDePacientes.this,VizualizarDadosPaciente.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,9);
             }

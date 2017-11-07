@@ -41,5 +41,6 @@
     </string-array>
     <string name="title_activity_salvar_bd">SalvarBD</string>
     <string name="title_activity_lista_de_pacientes">ListaDePacientes</string>
+    <string name="title_activity_vizualizar_dados_paciente">VizualizarDadosPaciente</string>
 
 </resources>

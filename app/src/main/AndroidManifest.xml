@@ -77,7 +77,11 @@
             android:name=".View.ListaDePacientes"
             android:label="@string/title_activity_lista_de_pacientes"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.AlterarDadosPaciente"></activity>
+        <activity android:name=".View.AlterarDadosPaciente" />
+        <activity
+            android:name=".View.VizualizarDadosPaciente"
+            android:label="@string/title_activity_vizualizar_dados_paciente"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
