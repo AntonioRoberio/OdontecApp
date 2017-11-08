@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
@@ -28,7 +29,10 @@ public class AlterarDadosPaciente extends AppCompatActivity {
     private Paciente paciente;
     private Bundle bnd;
     private Spinner spinner;
-    private int j;
+    private String s="";
+    private TextView textView;
+    String atual="";
+    int j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
         peso = (EditText) findViewById(R.id.psPacienteEdt);
         btnAtl = (Button) findViewById(R.id.btnSalvarEd);
         spinner = (Spinner) findViewById(R.id.spnAlter);
+        textView = (TextView) findViewById(R.id.ttt);
         pacienteController = new PacienteController(this);
         alteracaoController = new AlteracaoController(this);
         String[] alteracaos = alteracaoController.listarAlteracoes();
@@ -52,18 +57,27 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                 paciente = p;
             }
         }
-        String atual = alteracaos[0];
-        if (!paciente.getAlteracao().equals(alteracaos[0])) {
-            for (int i = 1; i < alteracaos.length - 1; i++) {
+
+        atual = alteracaos[0];
+
+
+        //if (!paciente.getAlteracao().equals(alteracaos[0])) {
+            for (int i = 0; i < alteracaos.length; i++) {
                 if (!alteracaos[i].equals(paciente.getAlteracao())) {
                     alteracaos[0] = paciente.getAlteracao();
-                    j++;
-                    break;
+                    alteracaos[3]=atual;
+                    //break;
                 }
+                j++;
            }
-        }
-        //alteracaos[j]="auhauaha";
+        //}
 
+        for(int i = 0; i < alteracaos.length; i++){
+            //s+=i+" "+alteracaos[i];
+            //j++;
+        }
+
+        textView.setText(j+" valor atual=");
 
         nome.setText(paciente.getNome());
         idade.setText(paciente.getIdade() + "");

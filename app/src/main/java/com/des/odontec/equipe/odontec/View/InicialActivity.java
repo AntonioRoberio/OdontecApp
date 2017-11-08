@@ -26,6 +26,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
     private TableRow jogo;
     private TableRow listPacientes;
     NavigationView escolhaMenu;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         botao = (TableRow) findViewById(R.id.btnTesteAne);
         btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
         jogo = (TableRow) findViewById(R.id.btnQuizP);
-        listPacientes =(TableRow) findViewById(R.id.tbPstPacientes);
+        listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
 
         botao.setOnClickListener(new View.OnClickListener() {
@@ -88,15 +89,20 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
 
         Preferencias arquivosDePreferencia = new Preferencias(this);
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            if (bundle.getString("VALOR").toString().equals("odontec"))
-                usuarioController.pegarDados();
-            usuarioController.exibirDados();
-            arquivosDePreferencia.login(bundle.getString("VALOR").toString());
+        if (intent.getExtras() != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle.containsKey("VALOR")) {
+                if (bundle.getString("VALOR").toString().equals("odontec")) {
+                    usuarioController.pegarDados();
+                }
+
+                arquivosDePreferencia.login(bundle.getString("VALOR").toString());
+            }
         }
+
         if (arquivosDePreferencia.retornaLogin().equals("odontec")) {
             escolhaMenu.inflateMenu(R.menu.activity_inicial_drawer);
+            usuarioController.exibirDados();
         } else {
             escolhaMenu.inflateMenu(R.menu.activity_inicio_drawer);
         }
@@ -131,6 +137,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         return super.onOptionsItemSelected(item);
     }
 
+    //-------------------------------------------------------0k
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
