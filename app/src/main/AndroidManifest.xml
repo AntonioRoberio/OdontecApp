@@ -43,9 +43,6 @@
             android:name=".View.DeletarConta"
             android:label="                Exclusão de Conta" />
         <activity
-            android:name=".View.TipoPaciente"
-            android:label="                " />
-        <activity
             android:name=".View.AlteracaoSistemica"
             android:label="                " />
         <activity

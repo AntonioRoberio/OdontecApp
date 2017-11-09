@@ -37,7 +37,6 @@ public class ResultadoFinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_resultado_final);
-        tipoPa = (TextView) findViewById(R.id.TipodePaciente);
         tipoAlt = (TextView) findViewById(R.id.alteracao);
         tipoAnes = (TextView) findViewById(R.id.anestesico);
         pesoPaciente = (TextView) findViewById(R.id.peso);
@@ -67,10 +66,9 @@ public class ResultadoFinal extends AppCompatActivity {
 
             valores = intent.getExtras();
             if (valores.getInt("id")==0) {
-                nome.setText("Paciente " + valores.get("nome").toString());
-                tipoPa.setText(" (" + valores.get("tipo").toString() + ")");
-                pesoPaciente.setText("Peso" + valores.get("peso").toString() + "Kg");
-                tipoAlt.setText("Condições Sistêmica : " + valores.get("alt").toString());
+                nome.setText("Paciente: " + valores.get("nome").toString() + " (" + valores.get("tipo").toString() + ")");
+                pesoPaciente.setText("Peso: " + valores.get("peso").toString() + "Kg");
+                tipoAlt.setText("Condições Sistêmica: " + valores.get("alt").toString());
                 tipoAnes.setText("Anestésico escolhido: " + valores.get("tipoAnestesico").toString());
                 ResultadoFinalController resultadoFinalController = new ResultadoFinalController();
                 peso = Double.parseDouble(valores.get("peso").toString());
