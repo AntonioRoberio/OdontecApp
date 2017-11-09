@@ -77,7 +77,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
             //j++;
         }
 
-        textView.setText(j+" valor atual=");
+        //textView.setText(j+" valor atual=");
 
         nome.setText(paciente.getNome());
         idade.setText(paciente.getIdade() + "");
