@@ -104,4 +104,29 @@ public class Preferencias {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
         return preferences.getInt("qst",0);
     }
+
+    public void pontosQuiz(int valor,String opcao) {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(opcao.equals("pontos")){
+            editor.putInt("pontos",valor);
+        }else if(opcao.equals("acertos")){
+            editor.putInt("acertos",valor);
+        }else{
+            editor.putInt("erros",valor);
+        }
+
+        editor.commit();
+    }
+
+    public int retornaPontosQuiz(String opcao) {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        if(opcao.equals("pontos")){
+            return preferences.getInt("pontos",0);
+        }else if(opcao.equals("acertos")){
+            return preferences.getInt("acertos",0);
+        }else{
+            return preferences.getInt("erros",0);
+        }
+    }
 }

@@ -1,8 +1,10 @@
 package com.des.odontec.equipe.odontec.View;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
+import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.Model.Quiz;
 import com.des.odontec.equipe.odontec.R;
@@ -32,7 +35,7 @@ public class Quizz extends AppCompatActivity {
     private Button pular;
     private Button sair;
     private ProgressBar progressBar;
-
+    private Preferencias preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,12 @@ public class Quizz extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.status);
         progressBar.setBackgroundColor(Color.WHITE);
         QuizDao quizDao = new QuizDao(Quizz.this);
-        //quizDao.pegarDadosBD2();
-        Preferencias preferencias=new Preferencias(this);
-        //perguntas(preferencias.retornaQuiz());
-        alterA.setText("hahahuahauahuahauhauahauhaua auhauahauhauahuaha hauahauhauahuahauhauahauhauahau aahauhauahauhauhauahau ajhaahuahauahuahauahuahauhaua");
+        quizDao.pegarDadosBD2();
+        preferencias=new Preferencias(this);
+        perguntas(preferencias.retornaQuiz());
+        pontuacao.setText("Pontos: "+preferencias.retornaPontosQuiz("pontos")+"");
+        acertos.setText("Acertos: "+preferencias.retornaPontosQuiz("acertos")+"");
+        erros.setText("Erros: "+preferencias.retornaPontosQuiz("erros")+"");
     }
 
     public void perguntas(final int valor) {
@@ -128,47 +133,67 @@ public class Quizz extends AppCompatActivity {
         alterA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confResposta(quizz.getRespostaA(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaA(), quizz.getAltCorreta());
             }
         });
         alterB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confResposta(quizz.getRespostaB(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaB(), quizz.getAltCorreta());
             }
         });
         alterC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confResposta(quizz.getRespostaC(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaC(), quizz.getAltCorreta());
             }
         });
         alterD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confResposta(quizz.getRespostaD(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaD(), quizz.getAltCorreta());
             }
         });
         alterE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confResposta(quizz.getRespostaE(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaE(), quizz.getAltCorreta());
             }
         });
 
 
     }
 
+    public void confirmarResposta(final String resposta,final String altCorreta){
+        AlertDialog.Builder alertaConfirmacao = new AlertDialog.Builder(Quizz.this);
+        alertaConfirmacao.setTitle("Confirmar resposta").setMessage("Resposta: "+resposta+"\n\n"+"É sua resposta final?")
+                .setCancelable(false).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(Quizz.this, "Cancelado", Toast.LENGTH_SHORT).show();
+            }
+        }).setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                confResposta(resposta,altCorreta);
+            }
+        });
+        alertaConfirmacao.create();
+        alertaConfirmacao.show();
+    }
 
-    public void confResposta(String resposta, String correta) {
+    public void confResposta(final String resposta, String correta) {
         QuizDao quizDao = new QuizDao(Quizz.this);
         ArrayList<Quiz> quizzes = quizDao.listarPerguntas();
         if (resposta.equalsIgnoreCase(correta)) {
             Toast.makeText(Quizz.this, "Correta", Toast.LENGTH_SHORT).show();
+            preferencias.pontosQuiz(preferencias.retornaPontosQuiz("pontos")+1,"pontos");
+            preferencias.pontosQuiz(preferencias.retornaPontosQuiz("acertos")+1,"acertos");
         } else {
             Toast.makeText(Quizz.this,"Errado", Toast.LENGTH_SHORT).show();
+            preferencias.pontosQuiz(preferencias.retornaPontosQuiz("erros")+1,"erros");
         }
-        Preferencias preferencias=new Preferencias(Quizz.this);
+        final Preferencias preferencias=new Preferencias(Quizz.this);
         if (quizzes.size()-1 > (preferencias.retornaQuiz())) {
             Intent intent=new Intent(Quizz.this,Quizz.class);
             startActivity(intent);
@@ -176,11 +201,26 @@ public class Quizz extends AppCompatActivity {
             preferencias.quiz(preferencias.retornaQuiz()+1);
 
         }else{
-            Intent intent=new Intent(Quizz.this,InicialActivity.class);
-            startActivity(intent);
-            setResult(10);
-            finish();
-            preferencias.quiz(0);
+            AlertDialog.Builder alertaConfirmacao = new AlertDialog.Builder(Quizz.this);
+            alertaConfirmacao.setTitle("Resultado Quiz Odontec").setMessage("Pontos: "+preferencias.retornaPontosQuiz("pontos")+"\n"+
+                    "Acertos: "+preferencias.retornaPontosQuiz("acertos")+"\n"+
+                    "Erros: "+preferencias.retornaPontosQuiz("erros")+"")
+                    .setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent=new Intent(Quizz.this,InicialActivity.class);
+                    startActivity(intent);
+                    setResult(10);
+                    finish();
+                    preferencias.quiz(0);
+                    preferencias.pontosQuiz(0,"pontos");
+                    preferencias.pontosQuiz(0,"acertos");
+                    preferencias.pontosQuiz(0,"erros");
+                }
+            });
+            alertaConfirmacao.create();
+            alertaConfirmacao.show();
+
         }
 
 
