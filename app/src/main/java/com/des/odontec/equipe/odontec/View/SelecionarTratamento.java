@@ -30,6 +30,7 @@ public class SelecionarTratamento extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SelecionarTratamento.this, SelecionarPatologia.class);
                 startActivity(intent);
+                finish();
             }
         });
 
