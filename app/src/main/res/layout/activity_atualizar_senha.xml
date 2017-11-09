@@ -1,111 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario"
-    android:background="#FFFFFF">
+    tools:context="com.des.odontec.equipe.odontec.View.CadastrarUsuario">
 
     <FrameLayout
-        android:id="@+id/f2l"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/transparencia"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/progress"
+        <FrameLayout
+            android:id="@+id/f2l"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-    </FrameLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="397dp"
-        android:layout_weight="0.63"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context="com.des.odontec.equipe.odontec.View.AtualizarSenha">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/senha" />
-
-            <EditText
-                android:id="@+id/senhaAtual"
-                android:layout_width="280dp"
-                android:layout_height="50dp"
-                android:hint="Senha Atual"
-                android:inputType="textPassword" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/novasenha" />
-
-            <EditText
-                android:id="@+id/novaSenha"
-                android:layout_width="280dp"
-                android:layout_height="50dp"
-                android:hint="Nova Senha"
-                android:inputType="textPassword" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/novasenha" />
-
-            <EditText
-                android:id="@+id/confirmaSenha"
-                android:layout_width="280dp"
-                android:layout_height="50dp"
-                android:hint="Confirmar Senha"
-                android:inputType="textPassword" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <Button
-            android:id="@+id/salvarNovaSenha"
-            android:layout_width="310dp"
-            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:background="@drawable/botaosavacad"
-            android:text="SALVAR"
-            android:textColor="#00AFEF" />
-    </LinearLayout>
+            android:visibility="gone">
 
-</LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="210dp"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/salvarNovaSenha"
+                android:layout_width="310dp"
+                android:layout_height="45dp"
+                android:background="@drawable/botaosavacad"
+                android:text="salvar"
+                android:textColor="#00AFEF" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="511dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="397dp"
+                android:layout_weight="0.63"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:context="com.des.odontec.equipe.odontec.View.AtualizarSenha">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/senha" />
+
+                    <EditText
+                        android:id="@+id/senhaAtual"
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
+                        android:hint="Senha Atual"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/novasenha" />
+
+                    <EditText
+                        android:id="@+id/novaSenha"
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
+                        android:hint="Nova Senha"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/novasenha" />
+
+                    <EditText
+                        android:id="@+id/confirmaSenha"
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
+                        android:hint="Confirmar Senha"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+</ScrollView>
