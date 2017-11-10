@@ -35,6 +35,7 @@ public class Quizz extends AppCompatActivity {
     private Quiz quiz;
     private ProgressBar progressBar;
     private Preferencias preferencias;
+    private TextView statusProgresso;
 
     private QuizDao quizDao;
     private ArrayList<Quiz> quizzes;
@@ -56,7 +57,9 @@ public class Quizz extends AppCompatActivity {
         ajuda = (Button) findViewById(R.id.ajuda);
         sair = (Button) findViewById(R.id.sair);
         progressBar = (ProgressBar) findViewById(R.id.status);
-        progressBar.setBackgroundColor(Color.WHITE);
+        statusProgresso = (TextView) findViewById(R.id.statusProgresso);
+        int cor=Color.parseColor("#DCDCDC");
+        progressBar.setBackgroundColor(cor);
         quizDao = new QuizDao(Quizz.this);
         quizzes = quizDao.listarPerguntas();
 
@@ -64,6 +67,7 @@ public class Quizz extends AppCompatActivity {
         quizDao.pegarDadosBD();
         preferencias = new Preferencias(this);
         progressBar.setProgress(preferencias.retornaPontosQuiz("status"));
+        statusProgresso.setText(preferencias.retornaPontosQuiz("status")+"%");
         perguntas(preferencias.retornaQuiz());
         pontuacao.setText(preferencias.retornaPontosQuiz("pontos") + "");
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
@@ -84,6 +88,15 @@ public class Quizz extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Quizz.this, InicialActivity.class);
                         startActivity(intent);
+                       finish();
+                       setResult(10);
+                        preferencias.quiz(0);
+                        preferencias.pontosQuiz(0, "pontos");
+                        preferencias.pontosQuiz(0, "acertos");
+                        preferencias.pontosQuiz(0, "erros");
+                        preferencias.pontosQuiz(2, "status");
+                        preferencias.statusBotoes(true, "proxima");
+                        preferencias.statusBotoes(true, "altCorreta");
 
                     }
                 });
@@ -92,7 +105,10 @@ public class Quizz extends AppCompatActivity {
             }
         });
 
-        pular.setEnabled(preferencias.retornaStatusBotoes("proxima"));
+        if(!preferencias.retornaStatusBotoes("proxima")){
+            pular.setEnabled(false);
+            pular.setBackground(getResources().getDrawable(R.drawable.botaodesabilitado));
+        }
         pular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +122,11 @@ public class Quizz extends AppCompatActivity {
                 }
             }
         });
-        ajuda.setEnabled(preferencias.retornaStatusBotoes("altCorreta"));
+
+        if(!preferencias.retornaStatusBotoes("altCorreta")){
+            ajuda.setEnabled(false);
+            ajuda.setBackground(getResources().getDrawable(R.drawable.botaodesabilitado));
+        }
     }
 
 
@@ -166,11 +186,11 @@ public class Quizz extends AppCompatActivity {
         quizz.setAltCorreta(quiz.getAltCorreta());
 
         pergunta.setText(quizz.getPergunta());
-        alterA.setText(quizz.getRespostaA());
-        alterB.setText(quizz.getRespostaB());
-        alterC.setText(quizz.getRespostaC());
-        alterD.setText(quizz.getRespostaD());
-        alterE.setText(quizz.getRespostaE());
+        alterA.setText("A) "+quizz.getRespostaA());
+        alterB.setText("B) "+quizz.getRespostaB());
+        alterC.setText("C) "+quizz.getRespostaC());
+        alterD.setText("D) "+quizz.getRespostaD());
+        alterE.setText("E) "+quizz.getRespostaE());
 
         alterA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,7 +226,7 @@ public class Quizz extends AppCompatActivity {
         ajuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Quizz.this,"A resposta correta é "+quizz.getAltCorreta(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Quizz.this,"A resposta correta é "+quizz.getAltCorreta(), Toast.LENGTH_LONG).show();
                 preferencias.statusBotoes(false, "altCorreta");
             }
         });

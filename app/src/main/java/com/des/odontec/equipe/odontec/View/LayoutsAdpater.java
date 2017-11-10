@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.des.odontec.equipe.odontec.R;
@@ -13,16 +14,18 @@ import com.des.odontec.equipe.odontec.R;
  * Created by Antonio on 26/10/2017.
  */
 
-public class LayoutsAdpater extends BaseAdapter{
+public class LayoutsAdpater extends BaseAdapter {
 
     private String[] dados;
     private LayoutInflater layoutInflater;
     private View layout;
+    private int img;
 
-    public LayoutsAdpater(Context context,String[] dados){
-        layoutInflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        layout=layoutInflater.inflate(R.layout.adapter_layout,null);
-        this.dados=dados;
+    public LayoutsAdpater(Context context, String[] dados, int img) {
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layout = layoutInflater.inflate(R.layout.adapter_layout, null);
+        this.dados = dados;
+        this.img = img;
     }
 
     @Override
@@ -42,13 +45,25 @@ public class LayoutsAdpater extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
-            layout=layoutInflater.inflate(R.layout.adapter_layout,null);
-        }else {
-            layout=convertView;
+        if (convertView == null) {
+            layout = layoutInflater.inflate(R.layout.adapter_layout, null);
+        } else {
+            layout = convertView;
         }
         layout.setMinimumWidth(1000);
-        TextView textView=(TextView) layout.findViewById(R.id.va);
+        //ImageView imageView = (ImageView) layout.findViewById(R.id.imgAdapter);
+        switch (img) {
+            case 0:
+                imageView.setImageResource(R.drawable.patologia);
+                break;
+            case 1:
+               imageView.setImageResource(R.drawable.alteracao);
+                break;
+            default:
+                imageView.setImageResource(R.drawable.anestesico);
+        }
+        layout.setBackgroundResource(R.drawable.fundolayouts);
+        TextView textView = (TextView) layout.findViewById(R.id.va);
         textView.setText(dados[position]);
         return layout;
     }

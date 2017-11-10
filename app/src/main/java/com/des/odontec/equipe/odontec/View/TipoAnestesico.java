@@ -60,14 +60,14 @@ public class TipoAnestesico extends AppCompatActivity {
 
         AnestesicoController anestesicoController=new AnestesicoController(this);
         lista = anestesicoController.listaAnestesico(tipoPa,tipoAlt);
-        list.setAdapter(new LayoutsAdpater(TipoAnestesico.this,lista));
+        list.setAdapter(new LayoutsAdpater(TipoAnestesico.this,lista,2));
         final View[] v = {new View(this)};
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (v[0] != null) {
-                    v[0].setBackgroundColor(Color.TRANSPARENT);
+                    v[0].setBackgroundResource(R.drawable.fundolayouts);
                 }
                 view.setBackgroundColor(Color.parseColor("#d3eef5"));
                 bundle.putString("tipoAnestesico", lista[position]);

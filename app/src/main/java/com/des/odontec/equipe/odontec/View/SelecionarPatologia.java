@@ -45,14 +45,17 @@ public class SelecionarPatologia extends AppCompatActivity {
             ids[i]=s[1];
             i++;
         }
-        listView.setAdapter(new LayoutsAdpater(SelecionarPatologia.this,patologia));
+        listView.setAdapter(new LayoutsAdpater(SelecionarPatologia.this,patologia,0));
         final View[] v = {new View(this)};
         bundle=new Bundle();
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(v[0] != null){
-                    v[0].setBackgroundColor(Color.TRANSPARENT);
+                    v[0].setBackgroundResource(R.drawable.fundolayouts);
+
                 }
                 view.setBackgroundColor(Color.parseColor("#d3eef5"));
                 bundle.putString("ptlg",patologia[position]);

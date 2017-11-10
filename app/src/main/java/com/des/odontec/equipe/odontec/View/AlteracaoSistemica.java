@@ -28,7 +28,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
         btAlt = (Button) findViewById(R.id.btnAlteracao);
 
         final String[] alteracao = listaAlteracoes();
-        escolhaAlt.setAdapter(new LayoutsAdpater(AlteracaoSistemica.this,alteracao));
+        escolhaAlt.setAdapter(new LayoutsAdpater(AlteracaoSistemica.this,alteracao,1));
 
         Intent pegarInt = getIntent();
         Bundle dadosPaciente = pegarInt.getExtras();
@@ -54,7 +54,7 @@ public class AlteracaoSistemica extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(v[0] != null){
-                    v[0].setBackgroundColor(Color.TRANSPARENT);
+                    v[0].setBackgroundResource(R.drawable.fundolayouts);
                 }
                 view.setBackgroundColor(Color.parseColor("#d3eef5"));
                 bundle.putString("alt", alteracao[position]);
