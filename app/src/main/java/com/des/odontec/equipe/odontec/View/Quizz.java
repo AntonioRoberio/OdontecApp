@@ -287,7 +287,7 @@ public class Quizz extends AppCompatActivity {
                     preferencias.pontosQuiz(0, "pontos");
                     preferencias.pontosQuiz(0, "acertos");
                     preferencias.pontosQuiz(0, "erros");
-                    preferencias.pontosQuiz(2, "status");
+                    preferencias.pontosQuiz(0, "status");
                     preferencias.statusBotoes(true, "proxima");
                     preferencias.statusBotoes(true, "altCorreta");
                 }

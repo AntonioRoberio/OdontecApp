@@ -43,7 +43,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
         preferencias=new Preferencias(this);
-        preferencias.pontosQuiz(2,"status");
+        preferencias.pontosQuiz(0,"status");
         preferencias.statusBotoes(true, "proxima");
         preferencias.statusBotoes(true, "altCorreta");
 

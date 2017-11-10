@@ -104,7 +104,7 @@ public class ResultadoFinal extends AppCompatActivity {
                 paciente.setQtdTubetes(Double.parseDouble(resultado));
                 paciente.setDataDeAtendimento(df.format(dataAtual));
                 paciente.setAnestesico(valores.get("tipoAnestesico").toString());
-                pacienteDao.atualizarDadosPaciente(paciente);
+                pacienteDao.atualizarDadosPaciente(paciente,"finais");
             }
         }
 

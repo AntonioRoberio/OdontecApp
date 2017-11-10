@@ -51,7 +51,7 @@ public class LayoutsAdpater extends BaseAdapter {
             layout = convertView;
         }
         layout.setMinimumWidth(1000);
-        //ImageView imageView = (ImageView) layout.findViewById(R.id.imgAdapter);
+        ImageView imageView = (ImageView) layout.findViewById(R.id.imgAdapter);
         switch (img) {
             case 0:
                 imageView.setImageResource(R.drawable.patologia);

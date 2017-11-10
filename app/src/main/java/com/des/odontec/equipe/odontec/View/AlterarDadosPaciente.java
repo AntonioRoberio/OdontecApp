@@ -95,7 +95,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                     paciente.setIdade(Integer.parseInt(idade.getText().toString()));
                     paciente.setAlteracao(spinner.getSelectedItem().toString());
                     PacienteDao pacienteDao = new PacienteDao(AlterarDadosPaciente.this);
-                    pacienteDao.atualizarDadosPaciente(paciente);
+                    pacienteDao.atualizarDadosPaciente(paciente,"andamento");
                     Intent intent = new Intent(AlterarDadosPaciente.this, TipoAnestesico.class);
                     bnd = new Bundle();
                     bnd.putInt("id", paciente.getId());
