@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape>
                 <corners android:radius="5dip" />
 
-                <solid android:color="#00AFEF" />
+                <solid android:color="#ffffff" />
             </shape>
         </clip>
 
@@ -17,11 +17,11 @@
             <shape>
                 <corners android:radius="5dip" />
 
-                <solid android:color="#00AFEF" />
+                <solid android:color="#25B7D3" />
             </shape>
         </clip>
 
-        <color android:color="#00AFEF" />
+        <color android:color="#000000" />
     </item>
 
 </layer-list>

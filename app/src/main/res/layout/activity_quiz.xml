@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#25B7D3"
     android:orientation="vertical"
     tools:context="com.des.odontec.equipe.odontec.View.Quizz">
 
@@ -22,46 +22,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:gravity="end"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_margin="4dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/pontos"
-                        android:layout_width="45dp"
+                        android:layout_width="65dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="10dp"
+                        android:gravity="center"
                         android:inputType="number"
                         android:text="0"
+                        android:textColor="#ffffff"
                         android:textSize="25dp" />
 
                     <View
                         android:id="@+id/separator"
-                        android:layout_width="45dp"
+                        android:layout_width="65dp"
                         android:layout_height="1dp"
-                        android:background="#00AFEF" />
+                        android:background="#ffffff" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="monospace"
                         android:text="PONTOS"
-                        android:textColor="#00AFEF"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_margin="4dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -69,31 +71,32 @@
                         android:id="@+id/acertos"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="10dp"
+                        android:gravity="center"
                         android:inputType="number"
                         android:text="0"
+                        android:textColor="#ffffff"
                         android:textSize="25dp" />
 
                     <View
                         android:id="@+id/separator1"
-                        android:layout_width="45dp"
+                        android:layout_width="65dp"
                         android:layout_height="1dp"
-                        android:background="#00AFEF" />
+                        android:background="#ffffff" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="monospace"
                         android:text="ACERTOS"
-                        android:textColor="#00AFEF"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_margin="4dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -101,25 +104,25 @@
                         android:id="@+id/erros"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="10dp"
+                        android:gravity="center"
                         android:inputType="number"
                         android:text="0"
+                        android:textColor="#ffffff"
                         android:textSize="25dp" />
 
                     <View
                         android:id="@+id/separator2"
-                        android:layout_width="45dp"
+                        android:layout_width="65dp"
                         android:layout_height="1dp"
-                        android:background="#00AFEF" />
+                        android:background="#ffffff" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="monospace"
                         android:text="ERROS"
-                        android:textColor="#00AFEF"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
 
@@ -140,81 +143,108 @@
                         android:layout_height="300dp"
                         android:orientation="vertical">
 
-                        <View
-                            android:id="@+id/separator4"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#000000" />
-
-                        <TextView
-                            android:id="@+id/pgt"
+                        <ScrollView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center|bottom"
-                            android:layout_marginTop="2dp"
-                            android:textSize="15dp" />
+                            android:layout_gravity="center">
 
-                        <View
-                            android:id="@+id/separator3"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#000000" />
+                            <LinearLayout
+                                android:layout_width="370dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:background="#39C1DD"
+                                android:padding="20dp">
 
-                        <TextView
-                            android:id="@+id/alterA"
+                                <TextView
+                                    android:id="@+id/pgt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginTop="2dp"
+                                    android:textColor="#ffffff"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                        </ScrollView>
+
+                        <FrameLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="20dp"
-                            android:textSize="15dp" />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/alterB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="20dp"
-                            android:textSize="15dp" />
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
 
-                        <TextView
-                            android:id="@+id/alterC"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="20dp"
-                            android:textSize="15dp" />
 
-                        <TextView
-                            android:id="@+id/alterD"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="20dp"
-                            android:textSize="15dp" />
+                                <LinearLayout
+                                    android:layout_width="370dp"
+                                    android:layout_height="450dp"
+                                    android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/alterE"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="20dp"
-                            android:textSize="15dp" />
+                                    <TextView
+                                        android:id="@+id/alterA"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/botaoquiz"
+                                        android:padding="10dp"
+                                        android:textSize="15dp" />
 
-                        <View
-                            android:id="@+id/separator5"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#000000" />
+                                    <TextView
+                                        android:id="@+id/alterB"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/botaoquiz"
+                                        android:padding="10dp"
+                                        android:textSize="15dp" />
+
+                                    <TextView
+                                        android:id="@+id/alterC"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/botaoquiz"
+                                        android:padding="10dp"
+                                        android:textSize="15dp" />
+
+                                    <TextView
+                                        android:id="@+id/alterD"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/botaoquiz"
+                                        android:padding="10dp"
+                                        android:textSize="15dp" />
+
+                                    <TextView
+                                        android:id="@+id/alterE"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/botaoquiz"
+                                        android:padding="10dp"
+                                        android:textSize="15dp" />
+                                </LinearLayout>
+
+                            </ScrollView>
+                        </FrameLayout>
 
                     </LinearLayout>
 
@@ -228,7 +258,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
-
                 android:progressDrawable="@drawable/progressquiz" />
 
 
@@ -236,7 +265,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -245,10 +273,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/botaosavacad"
+                    android:background="@drawable/botaoquiz"
                     android:fontFamily="monospace"
                     android:text="ajuda"
-                    android:textColor="#00AFEF" />
+                    android:textColor="#25B7D3" />
 
 
                 <Button
@@ -256,10 +284,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/botaosavacad"
+                    android:background="@drawable/botaoquiz"
                     android:fontFamily="monospace"
                     android:text="pular"
-                    android:textColor="#00AFEF" />
+                    android:textColor="#25B7D3" />
 
 
                 <Button
@@ -267,10 +295,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/botaosavacad"
+                    android:background="@drawable/botaoquiz"
                     android:fontFamily="monospace"
                     android:text="sair"
-                    android:textColor="#00AFEF" />
+                    android:textColor="#25B7D3" />
 
             </LinearLayout>
         </LinearLayout>

@@ -17,8 +17,6 @@ import android.widget.TableRow;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
-import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
-import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
 
@@ -68,7 +66,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         jogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InicialActivity.this, Quizz.class);
+                Intent intent = new Intent(InicialActivity.this, quizplay.class);
                 startActivityForResult(intent, 10);
             }
         });

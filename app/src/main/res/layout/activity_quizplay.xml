@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#25B7D3"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.des.odontec.equipe.odontec.View.quizplay">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/game" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="QUIZ ODONTEC"
+                android:textColor="#ffffff"
+                android:textSize="30dp"
+                android:textStyle="bold"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp">
+
+            <Button
+                android:id="@+id/inicioquiz"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:background="@drawable/botaoquiz"
+                android:text="Play Quiz"
+                />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp">
+
+            <Button
+                android:id="@+id/placar"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:background="@drawable/botaoquiz"
+                android:text="placar"
+                />
+
+        </FrameLayout>
+
+
+
+    </FrameLayout>
+
+
+
+
+</LinearLayout>
