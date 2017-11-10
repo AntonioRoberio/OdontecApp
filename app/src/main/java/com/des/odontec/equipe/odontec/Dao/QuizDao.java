@@ -7,7 +7,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Model.Quiz;
+import com.des.odontec.equipe.odontec.Model.VersaoDados;
 import com.des.odontec.equipe.odontec.View.SalvarBD;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +38,35 @@ public class QuizDao {
     }
 
 
+    public void pegarDadosBD(){
+
+        databaseReference.child("versoes").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                VersaoDados versaoDados=dataSnapshot.getValue(VersaoDados.class);
+                Preferencias arquivosDePreferencia=new Preferencias(context);
+                if(!versaoDados.getJogo().toString().equals(arquivosDePreferencia.retornoVersao("quiz"))){
+                    int contador = Integer.parseInt(arquivosDePreferencia.retornoVersao("contQuiz"));
+                    if (contador != 0) {
+                        for (int i = contador; i >= 1; i--) {
+                            String id = String.valueOf(i);
+                            bd.delete("quiz", "_id = ?", new String[]{id});
+                        }
+                    }
+                    pegarDadosBD2();
+                    arquivosDePreferencia.salvarVersaoQuiz(versaoDados.getJogo().toString(),"verQuiz");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
     public void pegarDadosBD2() {
         databaseReference.child("quiz").addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,8 +86,8 @@ public class QuizDao {
                     contentValues.put("_id", cont + "");
                     bd.insert("quiz", null, contentValues);
                 }
-                //Preferencias arquivosDePreferencia = new Preferencias(context);
-                //arquivosDePreferencia.salvarVersoaAlter(new String(cont + ""), "cont");
+                Preferencias arquivosDePreferencia = new Preferencias(context);
+                arquivosDePreferencia.salvarVersaoQuiz(new String(cont + ""), "cont");
                 bd.close();
             }
 
@@ -112,5 +143,4 @@ public class QuizDao {
             }
         });
     }
-
 }

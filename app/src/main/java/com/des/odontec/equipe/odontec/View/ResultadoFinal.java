@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ResultadoFinal extends AppCompatActivity {
-    private TextView tipoPa;
     private TextView tipoAlt;
     private TextView tipoAnes;
     private TextView pesoPaciente;
@@ -94,8 +93,7 @@ public class ResultadoFinal extends AppCompatActivity {
                     }
                 }
 
-                nome.setText("Paciente " + paciente.getNome());
-                tipoPa.setText(" (" + valores.get("tipo").toString() + ")");
+                nome.setText("Paciente " + paciente.getNome()  + " (" + valores.get("tipo").toString() + ")");
                 pesoPaciente.setText("Peso" + paciente.getPeso() + "Kg");
                 tipoAlt.setText("Condições Sistêmica : " + paciente.getAlteracao());
                 tipoAnes.setText("Anestésico escolhido: " + valores.get("tipoAnestesico").toString());

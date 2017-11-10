@@ -36,9 +36,10 @@
                         android:id="@+id/pontos"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
                         android:inputType="number"
+                        android:text="0"
                         android:textSize="25dp" />
 
                     <View
@@ -68,10 +69,11 @@
                         android:id="@+id/acertos"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
                         android:inputType="number"
-                        android:textSize="15dp" />
+                        android:text="0"
+                        android:textSize="25dp" />
 
                     <View
                         android:id="@+id/separator1"
@@ -99,10 +101,11 @@
                         android:id="@+id/erros"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
                         android:inputType="number"
-                        android:textSize="15dp" />
+                        android:text="0"
+                        android:textSize="25dp" />
 
                     <View
                         android:id="@+id/separator2"
@@ -225,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
-                android:progress="75"
+
                 android:progressDrawable="@drawable/progressquiz" />
 
 
@@ -238,13 +241,13 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/metade"
+                    android:id="@+id/ajuda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:background="@drawable/botaosavacad"
                     android:fontFamily="monospace"
-                    android:text="50/50"
+                    android:text="ajuda"
                     android:textColor="#00AFEF" />
 
 

@@ -17,6 +17,8 @@ import android.widget.TableRow;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
+import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
+import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
 
@@ -26,6 +28,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
     private TableRow jogo;
     private TableRow listPacientes;
     NavigationView escolhaMenu;
+    private Preferencias preferencias;
     Bundle bundle;
 
     @Override
@@ -41,6 +44,10 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         jogo = (TableRow) findViewById(R.id.btnQuizP);
         listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
+        preferencias=new Preferencias(this);
+        preferencias.pontosQuiz(2,"status");
+        preferencias.statusBotoes(true, "proxima");
+        preferencias.statusBotoes(true, "altCorreta");
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +144,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         return super.onOptionsItemSelected(item);
     }
 
-    //-------------------------------------------------------0k
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

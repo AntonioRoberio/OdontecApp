@@ -13,19 +13,18 @@ public class VersaoDados {
     private String anestesico;
     private String alteracao;
     private String patologia;
-    private String tratamento;
-
+    private String jogo;
 
     public VersaoDados() {
     }
 
     @Exclude
-    public Map<String,Object> dados(){
-        HashMap<String,Object> d=new HashMap<>();
-        d.put("anestesico",getAnestesico());
-        d.put("alteracao",getAlteracao());
-        d.put("patologia",getPatologia());
-        d.put("tratamento",getTratamento());
+    public Map<String, Object> dados() {
+        HashMap<String, Object> d = new HashMap<>();
+        d.put("anestesico", getAnestesico());
+        d.put("alteracao", getAlteracao());
+        d.put("patologia", getPatologia());
+        d.put("jogo", getJogo());
         return d;
     }
 
@@ -53,12 +52,14 @@ public class VersaoDados {
         this.patologia = patologia;
     }
 
-    public String getTratamento(){
-        return tratamento;
+    public String getJogo() {
+        return jogo;
     }
 
-    public void setTratamento(String tratamento){
-        this.tratamento=tratamento;
-
+    public void setJogo(String jogo) {
+        this.jogo = jogo;
     }
+
+
+
 }

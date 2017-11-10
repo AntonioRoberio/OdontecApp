@@ -5,17 +5,28 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
+import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
+import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.R;
 
 public class SplashScreen extends AppCompatActivity {
 
+    private AlteracaoController alteracaoController;
+    private AnestesicoController anestesicoController;
 
-        private static int SPLASH_TIME_OUT = 2000;
+        private  int tempo = 5500;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_splash_screen);
+            QuizDao quizDao = new QuizDao(SplashScreen.this);
+            quizDao.pegarDadosBD();
+            alteracaoController = new AlteracaoController(SplashScreen.this);
+            alteracaoController.pegarDadosBD();
+            anestesicoController = new AnestesicoController(SplashScreen.this);
+            anestesicoController.pegarDadosBD();
 
             new Handler().postDelayed(new Runnable() {
                 /*
@@ -31,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
                     // Fecha esta activity
                     finish();
                 }
-            }, SPLASH_TIME_OUT);
+            }, tempo);
         }
     }
 

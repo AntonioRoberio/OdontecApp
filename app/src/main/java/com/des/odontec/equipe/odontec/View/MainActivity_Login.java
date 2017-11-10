@@ -56,8 +56,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private Usuario usuario;
     private String TAG;
     Bundle bundle = new Bundle();
-    private AlteracaoController alteracaoController;
-    private AnestesicoController anestesicoController;
     private CallbackManager callbackManager;
     private GoogleApiClient googleApiClient;
     private static final int RC_SIGN_IN = 777;
@@ -82,10 +80,8 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
 
 
-        alteracaoController = new AlteracaoController(MainActivity_Login.this);
-        alteracaoController.pegarDadosBD();
-        anestesicoController = new AnestesicoController(MainActivity_Login.this);
-        anestesicoController.pegarDadosBD();
+
+
 
         callbackManager = CallbackManager.Factory.create();
 

@@ -37,6 +37,17 @@ public class Preferencias {
         editor.commit();
     }
 
+    public void salvarVersaoQuiz(String valor, String tipo) {
+        SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if (tipo.equals("verQuiz")) {
+            editor.putString("versaoQuiz", valor);
+        } else {
+            editor.putString("quantidadeQuiz", valor);
+        }
+        editor.commit();
+    }
+
     public void salvarVersaoPatologia(String valor, String tipo) {
         SharedPreferences preferences = context.getSharedPreferences("gerarAnestesico", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -55,6 +66,8 @@ public class Preferencias {
             return preferences.getString("versaoAlter", "sem valor");
         } else if (valor.equals("anestesico")) {
             return preferences.getString("versaoAnes", "sem valor");
+        }else if (valor.equals("quiz")) {
+            return preferences.getString("versaoQuiz", "sem valor");
         } else if (valor.equals("patologia")) {
             return preferences.getString("versaoPatol", "sem valor");
         } else if (valor.equals("contAlt")) {
@@ -63,6 +76,8 @@ public class Preferencias {
             return preferences.getString("quantidadeAnes", "0");
         } else if (valor.equals("contPatol")) {
             return preferences.getString("quantidadePtl", "0");
+        } else if (valor.equals("contQuiz")) {
+            return preferences.getString("quantidadeQuiz", "0");
         } else {
             return "";
         }
@@ -112,8 +127,10 @@ public class Preferencias {
             editor.putInt("pontos",valor);
         }else if(opcao.equals("acertos")){
             editor.putInt("acertos",valor);
-        }else{
+        }else if(opcao.equals("erros")){
             editor.putInt("erros",valor);
+        }else if(opcao.equals("status")){
+            editor.putInt("status",valor);
         }
 
         editor.commit();
@@ -125,8 +142,32 @@ public class Preferencias {
             return preferences.getInt("pontos",0);
         }else if(opcao.equals("acertos")){
             return preferences.getInt("acertos",0);
-        }else{
+        }else if(opcao.equals("erros")){
             return preferences.getInt("erros",0);
+        }else{
+            return preferences.getInt("status",2);
         }
     }
+
+    public void statusBotoes(boolean valor,String opcao) {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(opcao.equals("proxima")){
+            editor.putBoolean("btPular",valor);
+        }else{
+            editor.putBoolean("btMetade",valor);
+        }
+        editor.commit();
+    }
+
+    public boolean retornaStatusBotoes(String opcao) {
+        SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
+        if(opcao.equals("proxima")){
+            return preferences.getBoolean("btPular",true);
+        }else{
+            return preferences.getBoolean("btMetade",true);
+        }
+
+    }
+
 }
