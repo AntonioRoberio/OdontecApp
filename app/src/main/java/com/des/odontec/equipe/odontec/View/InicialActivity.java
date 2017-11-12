@@ -17,6 +17,9 @@ import android.widget.TableRow;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
+import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
+import com.des.odontec.equipe.odontec.Controller.PacienteController;
+import com.des.odontec.equipe.odontec.Controller.PatologiaController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
 
@@ -42,10 +45,16 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         jogo = (TableRow) findViewById(R.id.btnQuizP);
         listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
-        preferencias=new Preferencias(this);
-        preferencias.pontosQuiz(0,"status");
+        preferencias = new Preferencias(this);
+        preferencias.pontosQuiz(0, "status");
         preferencias.statusBotoes(true, "proxima");
         preferencias.statusBotoes(true, "altCorreta");
+        if (preferencias.retornoPrimeiroAcesso() == 0) {
+            Intent intent = new Intent(InicialActivity.this, SplashScreen.class);
+            startActivity(intent);
+            preferencias.primeiroAcesso(1);
+            finish();
+        }
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override

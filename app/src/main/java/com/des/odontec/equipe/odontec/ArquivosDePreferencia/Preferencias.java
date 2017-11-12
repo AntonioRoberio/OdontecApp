@@ -66,7 +66,7 @@ public class Preferencias {
             return preferences.getString("versaoAlter", "sem valor");
         } else if (valor.equals("anestesico")) {
             return preferences.getString("versaoAnes", "sem valor");
-        }else if (valor.equals("quiz")) {
+        } else if (valor.equals("quiz")) {
             return preferences.getString("versaoQuiz", "sem valor");
         } else if (valor.equals("patologia")) {
             return preferences.getString("versaoPatol", "sem valor");
@@ -99,38 +99,38 @@ public class Preferencias {
     public void login(String tipo) {
         SharedPreferences preferences = context.getSharedPreferences("statusLogin", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("login",tipo);
+        editor.putString("login", tipo);
         editor.commit();
     }
 
     public String retornaLogin() {
         SharedPreferences preferences = context.getSharedPreferences("statusLogin", context.MODE_PRIVATE);
-        return preferences.getString("login","");
+        return preferences.getString("login", "");
     }
 
     public void quiz(int valor) {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("qst",valor);
+        editor.putInt("qst", valor);
         editor.commit();
     }
 
     public int retornaQuiz() {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
-        return preferences.getInt("qst",0);
+        return preferences.getInt("qst", 0);
     }
 
-    public void pontosQuiz(int valor,String opcao) {
+    public void pontosQuiz(int valor, String opcao) {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        if(opcao.equals("pontos")){
-            editor.putInt("pontos",valor);
-        }else if(opcao.equals("acertos")){
-            editor.putInt("acertos",valor);
-        }else if(opcao.equals("erros")){
-            editor.putInt("erros",valor);
-        }else if(opcao.equals("status")){
-            editor.putInt("status",valor);
+        if (opcao.equals("pontos")) {
+            editor.putInt("pontos", valor);
+        } else if (opcao.equals("acertos")) {
+            editor.putInt("acertos", valor);
+        } else if (opcao.equals("erros")) {
+            editor.putInt("erros", valor);
+        } else if (opcao.equals("status")) {
+            editor.putInt("status", valor);
         }
 
         editor.commit();
@@ -138,36 +138,48 @@ public class Preferencias {
 
     public int retornaPontosQuiz(String opcao) {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
-        if(opcao.equals("pontos")){
-            return preferences.getInt("pontos",0);
-        }else if(opcao.equals("acertos")){
-            return preferences.getInt("acertos",0);
-        }else if(opcao.equals("erros")){
-            return preferences.getInt("erros",0);
-        }else{
-            return preferences.getInt("status",2);
+        if (opcao.equals("pontos")) {
+            return preferences.getInt("pontos", 0);
+        } else if (opcao.equals("acertos")) {
+            return preferences.getInt("acertos", 0);
+        } else if (opcao.equals("erros")) {
+            return preferences.getInt("erros", 0);
+        } else {
+            return preferences.getInt("status", 2);
         }
     }
 
-    public void statusBotoes(boolean valor,String opcao) {
+    public void statusBotoes(boolean valor, String opcao) {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        if(opcao.equals("proxima")){
-            editor.putBoolean("btPular",valor);
-        }else{
-            editor.putBoolean("btMetade",valor);
+        if (opcao.equals("proxima")) {
+            editor.putBoolean("btPular", valor);
+        } else {
+            editor.putBoolean("btMetade", valor);
         }
         editor.commit();
     }
 
     public boolean retornaStatusBotoes(String opcao) {
         SharedPreferences preferences = context.getSharedPreferences("jogoQuiz", context.MODE_PRIVATE);
-        if(opcao.equals("proxima")){
-            return preferences.getBoolean("btPular",true);
-        }else{
-            return preferences.getBoolean("btMetade",true);
+        if (opcao.equals("proxima")) {
+            return preferences.getBoolean("btPular", true);
+        } else {
+            return preferences.getBoolean("btMetade", true);
         }
 
+    }
+
+    public void primeiroAcesso(int valor) {
+        SharedPreferences preferences = context.getSharedPreferences("acesso", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("contAcesso", valor);
+        editor.commit();
+    }
+
+    public int retornoPrimeiroAcesso() {
+        SharedPreferences preferences = context.getSharedPreferences("acesso", context.MODE_PRIVATE);
+        return preferences.getInt("contAcesso", 0);
     }
 
 }
