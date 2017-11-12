@@ -136,7 +136,7 @@ public class UsuarioDao {
 
     public Task<Void> deletar(String senha) {
         FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-        FirebaseUser user = aut.getCurrentUser();
+        final FirebaseUser user = aut.getCurrentUser();
         if (!senha.equals("Campo desabilitado.")) {
             AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail().toString(),
                     Criptografia.md5(senha.toString()));
@@ -144,17 +144,11 @@ public class UsuarioDao {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        FirebaseAuth aut = ConfiguracaoFirebaseDao.autenticarDados();
-                        FirebaseUser user = aut.getCurrentUser();
-                        DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-                        remover.child("user").child(user.getUid().toString()).removeValue();
                         user.delete();
                     }
                 }
             });
         } else {
-            DatabaseReference remover = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-            remover.child("user").child(user.getUid().toString()).removeValue();
             return user.delete();
         }
 

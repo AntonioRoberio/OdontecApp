@@ -155,7 +155,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity_Login.this, CadastrarUsuario.class);
-                startActivityForResult(intent,8);
+                startActivity(intent);
             }
         });
 
@@ -240,7 +240,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
     private void facebooktToken(AccessToken accessToken) {
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        //aut.signInWithCustomToke;
         aut.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

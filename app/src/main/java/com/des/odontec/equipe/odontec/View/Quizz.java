@@ -2,7 +2,6 @@ package com.des.odontec.equipe.odontec.View;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +17,8 @@ import com.des.odontec.equipe.odontec.Model.Quiz;
 import com.des.odontec.equipe.odontec.R;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Quizz extends AppCompatActivity {
     private TextView pontuacao;
@@ -36,6 +37,9 @@ public class Quizz extends AppCompatActivity {
     private ProgressBar progressBar;
     private Preferencias preferencias;
     private TextView statusProgresso;
+    private Timer tempo;
+    private int conteTempo = 0;
+    private String opc="";
 
     private QuizDao quizDao;
     private ArrayList<Quiz> quizzes;
@@ -58,8 +62,6 @@ public class Quizz extends AppCompatActivity {
         sair = (Button) findViewById(R.id.sair);
         progressBar = (ProgressBar) findViewById(R.id.status);
         statusProgresso = (TextView) findViewById(R.id.statusProgresso);
-        int cor=Color.parseColor("#DCDCDC");
-        progressBar.setBackgroundColor(cor);
         quizDao = new QuizDao(Quizz.this);
         quizzes = quizDao.listarPerguntas();
 
@@ -67,7 +69,7 @@ public class Quizz extends AppCompatActivity {
         quizDao.pegarDadosBD();
         preferencias = new Preferencias(this);
         progressBar.setProgress(preferencias.retornaPontosQuiz("status"));
-        statusProgresso.setText(preferencias.retornaPontosQuiz("status")+"%");
+        statusProgresso.setText(preferencias.retornaPontosQuiz("status") + "%");
         perguntas(preferencias.retornaQuiz());
         pontuacao.setText(preferencias.retornaPontosQuiz("pontos") + "");
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
@@ -88,8 +90,8 @@ public class Quizz extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Quizz.this, InicialActivity.class);
                         startActivity(intent);
-                       finish();
-                       setResult(10);
+                        finish();
+                        setResult(10);
                         preferencias.quiz(0);
                         preferencias.pontosQuiz(0, "pontos");
                         preferencias.pontosQuiz(0, "acertos");
@@ -105,7 +107,7 @@ public class Quizz extends AppCompatActivity {
             }
         });
 
-        if(!preferencias.retornaStatusBotoes("proxima")){
+        if (!preferencias.retornaStatusBotoes("proxima")) {
             pular.setEnabled(false);
             pular.setBackground(getResources().getDrawable(R.drawable.botaodesabilitado));
         }
@@ -123,7 +125,7 @@ public class Quizz extends AppCompatActivity {
             }
         });
 
-        if(!preferencias.retornaStatusBotoes("altCorreta")){
+        if (!preferencias.retornaStatusBotoes("altCorreta")) {
             ajuda.setEnabled(false);
             ajuda.setBackground(getResources().getDrawable(R.drawable.botaodesabilitado));
         }
@@ -186,47 +188,47 @@ public class Quizz extends AppCompatActivity {
         quizz.setAltCorreta(quiz.getAltCorreta());
 
         pergunta.setText(quizz.getPergunta());
-        alterA.setText("A) "+quizz.getRespostaA());
-        alterB.setText("B) "+quizz.getRespostaB());
-        alterC.setText("C) "+quizz.getRespostaC());
-        alterD.setText("D) "+quizz.getRespostaD());
-        alterE.setText("E) "+quizz.getRespostaE());
+        alterA.setText("A) " + quizz.getRespostaA());
+        alterB.setText("B) " + quizz.getRespostaB());
+        alterC.setText("C) " + quizz.getRespostaC());
+        alterD.setText("D) " + quizz.getRespostaD());
+        alterE.setText("E) " + quizz.getRespostaE());
 
         alterA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarResposta(quizz.getRespostaA(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaA(), quizz.getAltCorreta(), v);
             }
         });
         alterB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarResposta(quizz.getRespostaB(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaB(), quizz.getAltCorreta(), v);
             }
         });
         alterC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarResposta(quizz.getRespostaC(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaC(), quizz.getAltCorreta(), v);
             }
         });
         alterD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarResposta(quizz.getRespostaD(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaD(), quizz.getAltCorreta(), v);
             }
         });
         alterE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmarResposta(quizz.getRespostaE(), quizz.getAltCorreta());
+                confirmarResposta(quizz.getRespostaE(), quizz.getAltCorreta(), v);
             }
         });
 
         ajuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Quizz.this,"A resposta correta é "+quizz.getAltCorreta(), Toast.LENGTH_LONG).show();
+                Toast.makeText(Quizz.this, "A resposta correta é " + quizz.getAltCorreta(), Toast.LENGTH_LONG).show();
                 preferencias.statusBotoes(false, "altCorreta");
             }
         });
@@ -234,7 +236,7 @@ public class Quizz extends AppCompatActivity {
     }
 
 
-    public void confirmarResposta(final String resposta, final String altCorreta) {
+    public void confirmarResposta(final String resposta, final String altCorreta, final View v) {
         AlertDialog.Builder alertaConfirmacao = new AlertDialog.Builder(Quizz.this);
         alertaConfirmacao.setTitle("Confirmar resposta").setMessage("Resposta: " + resposta + "\n\n" + "É sua resposta final?")
                 .setCancelable(false).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -245,32 +247,65 @@ public class Quizz extends AppCompatActivity {
         }).setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                confResposta(resposta, altCorreta);
+                opc="conf";
+                contTempo(resposta, altCorreta, v);
             }
         });
         alertaConfirmacao.create();
         alertaConfirmacao.show();
     }
 
-    public void confResposta(final String resposta, String correta) {
+    public void contTempo(final String resposta, final String correta, final View v) {
+        tempo = new Timer();
+        tempo.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(opc.equals("conf")){
+                            if (conteTempo == 3) {
+                                v.setBackgroundResource(R.drawable.botaoquiz);
+                                confResposta(resposta, correta, v);
+                                tempo.cancel();
+                                conteTempo=0;
+                            }else if (conteTempo % 2 == 0) {
+                                v.setBackgroundResource(R.drawable.botaoquizconf);
+                            } else if (conteTempo % 2 == 1) {
+                                v.setBackgroundResource(R.drawable.botaoquiz);
+                            }
+                        }else{
+                            if(conteTempo == 1){
+                                Intent intent = new Intent(Quizz.this, Quizz.class);
+                                startActivity(intent);
+                                finish();
+                                tempo.cancel();
+                            }
+                        }
+                        conteTempo++;
+                    }
+                });
+            }
+        }, 500, 1000);
+    }
+
+    public void confResposta(final String resposta, String correta, final View v) {
         QuizDao quizDao = new QuizDao(Quizz.this);
         ArrayList<Quiz> quizzes = quizDao.listarPerguntas();
         if (resposta.equalsIgnoreCase(correta)) {
-            Toast.makeText(Quizz.this, "Correta", Toast.LENGTH_SHORT).show();
+            v.setBackgroundResource(R.drawable.botaoquizcorreta);
             preferencias.pontosQuiz(preferencias.retornaPontosQuiz("pontos") + 100, "pontos");
             preferencias.pontosQuiz(preferencias.retornaPontosQuiz("acertos") + 1, "acertos");
             preferencias.pontosQuiz(preferencias.retornaPontosQuiz("status") + 25, "status");
         } else {
-            Toast.makeText(Quizz.this, "Errado", Toast.LENGTH_SHORT).show();
+            v.setBackgroundResource(R.drawable.botaoquizerrada);
             preferencias.pontosQuiz(preferencias.retornaPontosQuiz("erros") + 1, "erros");
         }
         final Preferencias preferencias = new Preferencias(Quizz.this);
         if (quizzes.size() - 1 > (preferencias.retornaQuiz())) {
-            Intent intent = new Intent(Quizz.this, Quizz.class);
-            startActivity(intent);
-            finish();
             preferencias.quiz(preferencias.retornaQuiz() + 1);
-
+            opc="nojaPergunta";
+            contTempo("", "", v);
         } else {
             AlertDialog.Builder alertaConfirmacao = new AlertDialog.Builder(Quizz.this);
             alertaConfirmacao.setTitle("Resultado Quiz Odontec").setMessage("Pontos: " + preferencias.retornaPontosQuiz("pontos") + "\n" +

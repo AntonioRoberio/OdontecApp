@@ -4,24 +4,24 @@
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape>
-                <corners android:radius="5dip" />
+                <corners android:radius="100dp" />
 
-                <solid android:color="#ffffff" />
+                <solid android:color="#00FF00" />
             </shape>
         </clip>
 
-        <color android:color="#00AFEF" />
+        <color android:color="#00FF00" />
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners android:radius="5dip" />
+                <corners android:radius="100dp" />
 
-                <solid android:color="#25B7D3" />
+                <solid android:color="#00FF00" />
             </shape>
         </clip>
 
-        <color android:color="#000000" />
+        <color android:color="#00FF00" />
     </item>
 
 </layer-list>

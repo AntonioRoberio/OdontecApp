@@ -78,12 +78,6 @@ public class CadastrarUsuario extends AppCompatActivity {
 
     public void cadastraUsuario(String resultado) {
         if (resultado.contains("Usuário cadastrado")) {
-            Bundle bundle=new Bundle();
-            bundle.putString("VALOR", "odontec");
-            Intent intent=new Intent(CadastrarUsuario.this, MainActivity_Login.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            setResult(8,intent);
             UsuarioController usuarioController = new UsuarioController(CadastrarUsuario.this);
             usuarioController.pegarDados();
             finish();

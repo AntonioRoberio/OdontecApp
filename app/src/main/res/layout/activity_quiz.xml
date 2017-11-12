@@ -159,7 +159,7 @@
                                     android:id="@+id/pgt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="top"
+                                    android:layout_gravity="center"
                                     android:layout_marginTop="2dp"
                                     android:textColor="#ffffff"
                                     android:textSize="15dp" />
@@ -254,6 +254,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:textColor="#ffffff"
     android:id="@+id/statusProgresso"
     android:layout_marginBottom="-35dp"/>
             <ProgressBar
@@ -263,6 +264,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
+                android:progress="50"
+                android:background="@drawable/botaoprogess"
                 android:progressDrawable="@drawable/progressquiz" />
 
 
