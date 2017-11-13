@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.MD5Cripto.Criptografia;
 import com.des.odontec.equipe.odontec.Model.Usuario;
@@ -79,7 +80,15 @@ public class CadastrarUsuario extends AppCompatActivity {
     public void cadastraUsuario(String resultado) {
         if (resultado.contains("Usuário cadastrado")) {
             UsuarioController usuarioController = new UsuarioController(CadastrarUsuario.this);
+            Preferencias preferencias=new Preferencias(CadastrarUsuario.this);
+            preferencias.login("odontec");
             usuarioController.pegarDados();
+            Bundle bundle=new Bundle();
+            bundle.putString("VALOR", "odontec");
+            Intent intent=new Intent(CadastrarUsuario.this, MainActivity_Login.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            setResult(8,intent);
             finish();
         } else {
             fl.setVisibility(View.GONE);

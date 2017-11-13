@@ -61,23 +61,17 @@ public class AlterarDadosPaciente extends AppCompatActivity {
         atual = alteracaos[0];
 
 
-        //if (!paciente.getAlteracao().equals(alteracaos[0])) {
+
             for (int i = 0; i < alteracaos.length; i++) {
                 if (!alteracaos[i].equals(paciente.getAlteracao())) {
                     alteracaos[0] = paciente.getAlteracao();
-                    alteracaos[3]=atual;
-                    //break;
+                    alteracaos[j]=atual;
+                    break;
                 }
                 j++;
            }
-        //}
 
-        for(int i = 0; i < alteracaos.length; i++){
-            //s+=i+" "+alteracaos[i];
-            //j++;
-        }
 
-        //textView.setText(j+" valor atual=");
 
         nome.setText(paciente.getNome());
         idade.setText(paciente.getIdade() + "");
@@ -94,8 +88,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                     paciente.setPeso(Double.parseDouble(peso.getText().toString()));
                     paciente.setIdade(Integer.parseInt(idade.getText().toString()));
                     paciente.setAlteracao(spinner.getSelectedItem().toString());
-                    PacienteDao pacienteDao = new PacienteDao(AlterarDadosPaciente.this);
-                    pacienteDao.atualizarDadosPaciente(paciente,"andamento");
+                    pacienteController.atualizar(paciente,"andamento");
                     Intent intent = new Intent(AlterarDadosPaciente.this, TipoAnestesico.class);
                     bnd = new Bundle();
                     bnd.putInt("id", paciente.getId());

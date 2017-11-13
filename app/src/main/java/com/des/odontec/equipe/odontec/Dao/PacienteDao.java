@@ -96,13 +96,6 @@ public class PacienteDao {
 
         FirebaseUser user = auth.getCurrentUser();
         String idUser = user.getUid();
-        /*
-        char[] pegaId = idUser.toCharArray();
-        String id = "";
-        for (int i = 0; i < 16; i++) {
-            id += pegaId[i];
-        }
-        */
         char c = ' ';
         char[] pgData = paciente.getDataDeAtendimento().toCharArray();
         String novaData = "";

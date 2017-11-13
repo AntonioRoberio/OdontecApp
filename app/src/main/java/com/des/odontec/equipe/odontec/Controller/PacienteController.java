@@ -29,4 +29,12 @@ public class PacienteController {
     public void deletar(int id){
         pacienteDao.deletarPaciente(id);
     }
+
+    public void cadastrar(Paciente paciente){
+        pacienteDao.salvarPaciente(paciente);
+    }
+
+    public void atualizar(Paciente paciente,String resultado){
+        pacienteDao.atualizarDadosPaciente(paciente,resultado);
+    }
 }

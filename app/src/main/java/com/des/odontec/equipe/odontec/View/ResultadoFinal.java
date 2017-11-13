@@ -42,7 +42,6 @@ public class ResultadoFinal extends AppCompatActivity {
         tubetes = (TextView) findViewById(R.id.quantidade);
         nome = (TextView) findViewById(R.id.textnome);
         voltaInicio = (Button) findViewById(R.id.voltaInicio);
-        PacienteDao pacienteDao=new PacienteDao(this);
 
 
         voltaInicio.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +80,7 @@ public class ResultadoFinal extends AppCompatActivity {
                 paciente.setSexo(valores.getString("sexo"));
                 paciente.setQtdTubetes(Double.parseDouble(resultado));
                 paciente.setDataDeAtendimento(df.format(dataAtual));
-                pacienteDao.salvarPaciente(paciente);
+                pacienteController.cadastrar(paciente);
 
             }else{
                 pacienteController = new PacienteController(this);
@@ -104,7 +103,7 @@ public class ResultadoFinal extends AppCompatActivity {
                 paciente.setQtdTubetes(Double.parseDouble(resultado));
                 paciente.setDataDeAtendimento(df.format(dataAtual));
                 paciente.setAnestesico(valores.get("tipoAnestesico").toString());
-                pacienteDao.atualizarDadosPaciente(paciente,"finais");
+                pacienteController.atualizar(paciente,"finais");
             }
         }
 
