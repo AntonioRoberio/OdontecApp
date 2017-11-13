@@ -23,7 +23,7 @@ public class BDSqlieDao extends SQLiteOpenHelper {
         db.execSQL("create table listaPatologias(_id text primary key ,tipoPatologia text not null,tipoTratamento text not null);");
         db.execSQL("create table quiz(_id text primary key ,pergunta text not null,respostaA text not null,respostaB text not null,respostaC text not null,respostaD text not null,respostaE text not null,altCorreta text not null);");
         db.execSQL("create table pacientes(_id integer primary key autoincrement,nome text not null,idade int not null,peso double not null,sexo text not null,dataDeAtendimento text not null,alteracao text not null,anestesico not null,qtdTubetes double not null);");
-        //db.execSQL("create table placar(_id int primary key autoincrement,pontos text not null,acertos text not null,erros text not null,data text not null);");
+        db.execSQL("create table placar(_id integer primary key autoincrement,pontos text not null,acertos text not null,erros text not null,data text not null);");
     }
 
 
