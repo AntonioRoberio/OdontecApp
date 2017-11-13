@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,12 +33,12 @@ public class Quizz extends AppCompatActivity {
     private Button pular;
     private Button sair;
     private Quiz quiz;
-    private ProgressBar progressBar;
+
     private Preferencias preferencias;
-    private TextView statusProgresso;
+
     private Timer tempo;
     private int conteTempo = 0;
-    private String opc="";
+    private String opc = "";
 
     private QuizDao quizDao;
     private ArrayList<Quiz> quizzes;
@@ -60,16 +59,12 @@ public class Quizz extends AppCompatActivity {
         pular = (Button) findViewById(R.id.pular);
         ajuda = (Button) findViewById(R.id.ajuda);
         sair = (Button) findViewById(R.id.sair);
-        progressBar = (ProgressBar) findViewById(R.id.status);
-        statusProgresso = (TextView) findViewById(R.id.statusProgresso);
         quizDao = new QuizDao(Quizz.this);
         quizzes = quizDao.listarPerguntas();
 
         QuizDao quizDao = new QuizDao(Quizz.this);
         quizDao.pegarDadosBD();
         preferencias = new Preferencias(this);
-        progressBar.setProgress(preferencias.retornaPontosQuiz("status"));
-        statusProgresso.setText(preferencias.retornaPontosQuiz("status") + "%");
         perguntas(preferencias.retornaQuiz());
         pontuacao.setText(preferencias.retornaPontosQuiz("pontos") + "");
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
@@ -247,7 +242,7 @@ public class Quizz extends AppCompatActivity {
         }).setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                opc="conf";
+                opc = "conf";
                 contTempo(resposta, altCorreta, v);
             }
         });
@@ -263,19 +258,19 @@ public class Quizz extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(opc.equals("conf")){
+                        if (opc.equals("conf")) {
                             if (conteTempo == 3) {
                                 v.setBackgroundResource(R.drawable.botaoquiz);
                                 confResposta(resposta, correta, v);
                                 tempo.cancel();
-                                conteTempo=0;
-                            }else if (conteTempo % 2 == 0) {
+                                conteTempo = 0;
+                            } else if (conteTempo % 2 == 0) {
                                 v.setBackgroundResource(R.drawable.botaoquizconf);
                             } else if (conteTempo % 2 == 1) {
                                 v.setBackgroundResource(R.drawable.botaoquiz);
                             }
-                        }else{
-                            if(conteTempo == 1){
+                        } else {
+                            if (conteTempo == 1) {
                                 Intent intent = new Intent(Quizz.this, Quizz.class);
                                 startActivity(intent);
                                 finish();
@@ -304,7 +299,7 @@ public class Quizz extends AppCompatActivity {
         final Preferencias preferencias = new Preferencias(Quizz.this);
         if (quizzes.size() - 1 > (preferencias.retornaQuiz())) {
             preferencias.quiz(preferencias.retornaQuiz() + 1);
-            opc="nojaPergunta";
+            opc = "nojaPergunta";
             contTempo("", "", v);
         } else {
             AlertDialog.Builder alertaConfirmacao = new AlertDialog.Builder(Quizz.this);

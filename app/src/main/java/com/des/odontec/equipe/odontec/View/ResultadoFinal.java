@@ -1,15 +1,14 @@
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.des.odontec.equipe.odontec.Controller.PacienteController;
 import com.des.odontec.equipe.odontec.Controller.ResultadoFinalController;
-import com.des.odontec.equipe.odontec.Dao.PacienteDao;
 import com.des.odontec.equipe.odontec.Model.Paciente;
 import com.des.odontec.equipe.odontec.R;
 
@@ -61,10 +60,9 @@ public class ResultadoFinal extends AppCompatActivity {
             Date dataAtual = new Date();
             SimpleDateFormat df;
             df = new SimpleDateFormat("dd/MM/yyyy");
-            pacienteController = new PacienteController(this);
 
             valores = intent.getExtras();
-            if (valores.getInt("id") == 0) {
+            if (valores.getInt("id")==0) {
                 nome.setText("Paciente: " + valores.get("nome").toString() + " (" + valores.get("tipo").toString() + ")");
                 pesoPaciente.setText("Peso: " + valores.get("peso").toString() + "Kg");
                 tipoAlt.setText("Condições Sistêmica: " + valores.get("alt").toString());
@@ -83,27 +81,28 @@ public class ResultadoFinal extends AppCompatActivity {
                 paciente.setDataDeAtendimento(df.format(dataAtual));
                 pacienteController.cadastrar(paciente);
 
-            } else {
+            }else{
+                pacienteController = new PacienteController(this);
                 final ArrayList<Paciente> pacientes = pacienteController.listaPacientes();
                 for (Paciente p : pacientes) {
-                    if (p.getId() == valores.getInt("id")) {
-                        paciente = p;
+                    if(p.getId() == valores.getInt("id")){
+                        paciente=p;
                         break;
                     }
                 }
 
-                nome.setText("Paciente " + paciente.getNome() + " (" + valores.get("tipo").toString() + ")");
-                pesoPaciente.setText("Peso" + paciente.getPeso() + "Kg");
-                tipoAlt.setText("Condições Sistêmica : " + paciente.getAlteracao());
+                nome.setText("Paciente: " + paciente.getNome()  + " (" + valores.get("tipo").toString() + ")");
+                pesoPaciente.setText("Peso: " + paciente.getPeso() + "Kg");
+                tipoAlt.setText("Condições Sistêmica: " + paciente.getAlteracao());
                 tipoAnes.setText("Anestésico escolhido: " + valores.get("tipoAnestesico").toString());
 
                 ResultadoFinalController resultadoFinalController = new ResultadoFinalController();
-                peso = Double.parseDouble(paciente.getPeso() + "");
+                peso = Double.parseDouble(paciente.getPeso()+"");
                 resultado = resultadoFinalController.resutado(valores.get("tipoAnestesico").toString(), peso);
                 paciente.setQtdTubetes(Double.parseDouble(resultado));
                 paciente.setDataDeAtendimento(df.format(dataAtual));
                 paciente.setAnestesico(valores.get("tipoAnestesico").toString());
-                pacienteController.atualizar(paciente, "finais");
+                pacienteController.atualizar(paciente,"finais");
             }
         }
 
