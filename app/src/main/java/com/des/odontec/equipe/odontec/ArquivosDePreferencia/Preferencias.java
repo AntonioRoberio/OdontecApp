@@ -182,4 +182,25 @@ public class Preferencias {
         return preferences.getInt("contAcesso", 0);
     }
 
+    public void quantidadeDeperguntas(int valor,String tipo) {
+        SharedPreferences preferences = context.getSharedPreferences("qntPerguntas", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if(tipo.equals("tamanho")){
+            editor.putInt("tamanho", valor);
+        }else{
+            editor.putInt("atual", valor);
+        }
+
+        editor.commit();
+    }
+
+    public int retornoquantidadeDeperguntas(String tipo) {
+        SharedPreferences preferences = context.getSharedPreferences("qntPerguntas", context.MODE_PRIVATE);
+        if(tipo.equals("tamanho")){
+            return preferences.getInt("tamanho", 0);
+        }else{
+            return preferences.getInt("atual", 1);
+        }
+    }
+
 }

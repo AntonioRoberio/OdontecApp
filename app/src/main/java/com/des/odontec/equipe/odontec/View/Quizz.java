@@ -33,6 +33,7 @@ public class Quizz extends AppCompatActivity {
     private TextView alterC;
     private TextView alterD;
     private TextView alterE;
+    private TextView qntPer;
     private Button ajuda;
     private Button pular;
     private Button sair;
@@ -62,6 +63,7 @@ public class Quizz extends AppCompatActivity {
         alterC = (TextView) findViewById(R.id.alterC);
         alterD = (TextView) findViewById(R.id.alterD);
         alterE = (TextView) findViewById(R.id.alterE);
+        qntPer = (TextView) findViewById(R.id.qntPerguntas);
         pular = (Button) findViewById(R.id.pular);
         ajuda = (Button) findViewById(R.id.ajuda);
         sair = (Button) findViewById(R.id.sair);
@@ -77,6 +79,8 @@ public class Quizz extends AppCompatActivity {
         pontuacao.setText(preferencias.retornaPontosQuiz("pontos") + "");
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
         erros.setText(preferencias.retornaPontosQuiz("erros") + "");
+        preferencias.quantidadeDeperguntas(quizDao.listarPerguntas().size(),"tamanho");
+        qntPer.setText(preferencias.retornoquantidadeDeperguntas("atual")+"/"+preferencias.retornoquantidadeDeperguntas("tamanho")+"");
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,6 +283,7 @@ public class Quizz extends AppCompatActivity {
                             }
                         } else {
                             if (conteTempo == 1) {
+                                preferencias.quantidadeDeperguntas(preferencias.retornoquantidadeDeperguntas("atual")+1,"atual");
                                 Intent intent = new Intent(Quizz.this, Quizz.class);
                                 startActivity(intent);
                                 finish();
@@ -332,6 +337,8 @@ public class Quizz extends AppCompatActivity {
                     preferencias.pontosQuiz(0, "acertos");
                     preferencias.pontosQuiz(0, "erros");
                     preferencias.pontosQuiz(0, "status");
+                    preferencias.quantidadeDeperguntas(0,"tamanho");
+                    preferencias.quantidadeDeperguntas(0,"atual");
                     preferencias.statusBotoes(true, "proxima");
                     preferencias.statusBotoes(true, "altCorreta");
                 }
