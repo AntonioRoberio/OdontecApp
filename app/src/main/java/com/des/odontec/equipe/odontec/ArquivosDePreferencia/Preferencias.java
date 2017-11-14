@@ -199,7 +199,7 @@ public class Preferencias {
         if(tipo.equals("tamanho")){
             return preferences.getInt("tamanho", 0);
         }else{
-            return preferences.getInt("atual", 1);
+            return preferences.getInt("atual", 0);
         }
     }
 

@@ -80,7 +80,7 @@ public class Quizz extends AppCompatActivity {
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
         erros.setText(preferencias.retornaPontosQuiz("erros") + "");
         preferencias.quantidadeDeperguntas(quizDao.listarPerguntas().size(),"tamanho");
-        qntPer.setText(preferencias.retornoquantidadeDeperguntas("atual")+"/"+preferencias.retornoquantidadeDeperguntas("tamanho")+"");
+        qntPer.setText((preferencias.retornoquantidadeDeperguntas("atual")+1)+"/"+preferencias.retornoquantidadeDeperguntas("tamanho")+"");
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
