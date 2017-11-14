@@ -59,10 +59,16 @@ public class LayoutsAdpater extends BaseAdapter {
             case 1:
                imageView.setImageResource(R.drawable.alteracao);
                 break;
-            default:
+            case 2:
                 imageView.setImageResource(R.drawable.anestesico);
+                break;
+            default:
+                imageView.setImageResource(R.drawable.paciente);
         }
-        layout.setBackgroundResource(R.drawable.fundolayouts);
+        if(img != 3){
+            layout.setBackgroundResource(R.drawable.fundolayouts);
+
+        }
         TextView textView = (TextView) layout.findViewById(R.id.va);
         textView.setText(dados[position]);
         return layout;

@@ -35,8 +35,8 @@ public class ListaDePacientes extends AppCompatActivity {
             i++;
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_selectable_list_item, nomes);
-        listView.setAdapter(arrayAdapter);
+
+        listView.setAdapter(new LayoutsAdpater(this,nomes,3));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
