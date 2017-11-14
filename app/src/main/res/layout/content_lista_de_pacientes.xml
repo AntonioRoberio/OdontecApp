@@ -39,6 +39,7 @@
 
         <ListView
             android:id="@+id/lsvPass"
+            android:background="@drawable/paciente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
