@@ -11,8 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
+import com.des.odontec.equipe.odontec.Controller.PlacarQuizController;
+import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.QuizDao;
+import com.des.odontec.equipe.odontec.Model.PlacarQuiz;
 import com.des.odontec.equipe.odontec.Model.Quiz;
+import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 
 import java.util.ArrayList;
@@ -42,6 +46,8 @@ public class Quizz extends AppCompatActivity {
 
     private QuizDao quizDao;
     private ArrayList<Quiz> quizzes;
+    private PlacarQuizController placarQuizController;
+    private UsuarioController usuarioController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,8 @@ public class Quizz extends AppCompatActivity {
         sair = (Button) findViewById(R.id.sair);
         quizDao = new QuizDao(Quizz.this);
         quizzes = quizDao.listarPerguntas();
+        placarQuizController=new PlacarQuizController(this);
+        usuarioController=new UsuarioController(this);
 
         QuizDao quizDao = new QuizDao(Quizz.this);
         quizDao.pegarDadosBD();
@@ -312,6 +320,12 @@ public class Quizz extends AppCompatActivity {
                     Intent intent = new Intent(Quizz.this, InicialActivity.class);
                     startActivity(intent);
                     setResult(10);
+                    PlacarQuiz placarQuiz=new PlacarQuiz();
+                    placarQuiz.setNome(usuarioController.exibirDados().getNome().toString());
+                    placarQuiz.setPontos(preferencias.retornaPontosQuiz("pontos")+"");
+                    placarQuiz.setAcertos(preferencias.retornaPontosQuiz("acertos")+"");
+                    placarQuiz.setErros(preferencias.retornaPontosQuiz("erros") + "");
+                    placarQuizController.salvarPlacar(placarQuiz);
                     finish();
                     preferencias.quiz(0);
                     preferencias.pontosQuiz(0, "pontos");

@@ -82,10 +82,10 @@
             android:label="@string/title_activity_vizualizar_dados_paciente"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.quizplay"
+            android:name=".View.Quizplay"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
-            android:name=".View.PlacarQuiz"
+            android:name=".View.PlacarJogo"
             android:label="@string/title_activity_placar_quiz"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

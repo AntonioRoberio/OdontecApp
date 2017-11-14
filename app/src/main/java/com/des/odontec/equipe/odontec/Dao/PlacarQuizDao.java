@@ -31,24 +31,24 @@ public class PlacarQuizDao {
         contentValues.put("pontos", placarQuiz.getPontos());
         contentValues.put("acertos", placarQuiz.getAcertos());
         contentValues.put("erros", placarQuiz.getErros());
-        contentValues.put("data",placarQuiz.getData());
+        contentValues.put("nome",placarQuiz.getNome());
         bd.insert("placar", null, contentValues);
         bd.close();
     }
 
     public ArrayList<PlacarQuiz> exibirDadosPlacar() {
         ArrayList<PlacarQuiz> placar = new ArrayList<>();
-        String[] colunas = {"_id", "pontos", "acertos", "erros", "data"};
+        String[] colunas = {"_id","nome","pontos", "acertos", "erros"};
         Cursor cursor = bd.query("placar", colunas, null, null, null, null, "pontos ASC");
 
         if (cursor.moveToFirst()) {
             do {
                 PlacarQuiz placarQuiz = new PlacarQuiz();
                 placarQuiz.setId(cursor.getInt(0));
-                placarQuiz.setPontos(cursor.getString(1));
-                placarQuiz.setAcertos(cursor.getString(2));
-                placarQuiz.setErros(cursor.getString(3));
-                placarQuiz.setData(cursor.getString(4));
+                placarQuiz.setNome(cursor.getString(1));
+                placarQuiz.setPontos(cursor.getString(2));
+                placarQuiz.setAcertos(cursor.getString(3));
+                placarQuiz.setErros(cursor.getString(4));
                 placar.add(placarQuiz);
             } while (cursor.moveToNext());
         }

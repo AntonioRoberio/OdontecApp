@@ -8,7 +8,7 @@ public class PlacarQuiz {
     private String pontos;
     private String acertos;
     private String erros;
-    private String data;
+    private String nome;
     private int id;
 
 
@@ -39,12 +39,12 @@ public class PlacarQuiz {
         this.erros = erros;
     }
 
-    public String getData() {
-        return data;
+    public String getNome() {
+        return nome;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getId() {
