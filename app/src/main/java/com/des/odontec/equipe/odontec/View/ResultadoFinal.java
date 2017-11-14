@@ -62,6 +62,7 @@ public class ResultadoFinal extends AppCompatActivity {
             df = new SimpleDateFormat("dd/MM/yyyy");
 
             valores = intent.getExtras();
+            pacienteController = new PacienteController(this);
             if (valores.getInt("id")==0) {
                 nome.setText("Paciente: " + valores.get("nome").toString() + " (" + valores.get("tipo").toString() + ")");
                 pesoPaciente.setText("Peso: " + valores.get("peso").toString() + "Kg");
@@ -82,7 +83,7 @@ public class ResultadoFinal extends AppCompatActivity {
                 pacienteController.cadastrar(paciente);
 
             }else{
-                pacienteController = new PacienteController(this);
+
                 final ArrayList<Paciente> pacientes = pacienteController.listaPacientes();
                 for (Paciente p : pacientes) {
                     if(p.getId() == valores.getInt("id")){
