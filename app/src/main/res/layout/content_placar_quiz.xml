@@ -8,42 +8,47 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.des.odontec.equipe.odontec.View.PlacarJogo"
     tools:showIn="@layout/activity_placar_quiz">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
             android:text="Nome"
             android:textSize="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
             android:text="Pontos"
-            android:layout_marginLeft="15dp"
             android:textSize="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acertos"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:text="Acertos"
             android:textSize="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="25dp"
             android:text="Erros"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
             android:textSize="15dp" />
 
     </LinearLayout>
@@ -53,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF">
 
     </ListView>
 </LinearLayout>

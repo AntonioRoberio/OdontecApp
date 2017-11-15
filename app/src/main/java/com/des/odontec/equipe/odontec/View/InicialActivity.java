@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
@@ -21,13 +22,14 @@ import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
 
 public class InicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private TableRow botao;
-    private TableRow btnPatologia;
-    private TableRow jogo;
-    private TableRow listPacientes;
+    private LinearLayout botao;
+    private LinearLayout btnPatologia;
+    private LinearLayout jogo;
+    private LinearLayout listPacientes;
     NavigationView escolhaMenu;
     private Preferencias preferencias;
     Bundle bundle;
+    private LinearLayout botaosobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,18 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         UsuarioController usuarioController = new UsuarioController(InicialActivity.this);
-        botao = (TableRow) findViewById(R.id.btnTesteAne);
-        btnPatologia = (TableRow) findViewById(R.id.btnPatologia);
-        jogo = (TableRow) findViewById(R.id.btnQuizP);
-        listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
+        botao = (LinearLayout) findViewById(R.id.btnTesteAne);
+        btnPatologia = (LinearLayout) findViewById(R.id.btnPatologia);
+        jogo = (LinearLayout) findViewById(R.id.btnQuizP);
+        listPacientes = (LinearLayout) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
+        botaosobre = (LinearLayout) findViewById(R.id.botaosobre);
 
 
-
+        preferencias = new Preferencias(this);
+        preferencias.pontosQuiz(0, "status");
+        preferencias.statusBotoes(true, "proxima");
+        preferencias.statusBotoes(true, "altCorreta");
         if (preferencias.retornoPrimeiroAcesso() == 0) {
             Intent intent = new Intent(InicialActivity.this, SplashScreen.class);
             startActivity(intent);
@@ -56,6 +62,13 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, CadastrarPaciente.class);
+                startActivity(intent);
+            }
+        });
+        botaosobre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InicialActivity.this, Sobre_Activity.class);
                 startActivity(intent);
             }
         });

@@ -25,23 +25,30 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="4dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="50dp">
-                    <TextView
-                        android:layout_width="wrap_content"
+
+                   >
+                    <LinearLayout
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                    <TextView
                         android:id="@+id/qntPerguntas"
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
                         android:text="1/4"
                         android:textColor="#ffffff"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+
                     <View
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="1dp"
                         android:background="#ffffff" />
 
@@ -52,7 +59,8 @@
                         android:text="PERGUNTA"
                         android:textColor="#ffffff"
                         android:textSize="10dp" />
-                </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="45dp"

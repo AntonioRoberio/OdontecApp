@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/iconeodontec"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -17,6 +18,7 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+
         <activity
             android:name=".View.SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -26,68 +28,93 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".View.CadastrarUsuario"
-            android:label="                Cadastro Odontec"
+            android:label="Cadastro Odontec"
             android:windowSoftInputMode="adjustUnspecified" />
+
         <activity
             android:name=".View.ResetSenha"
-            android:label="                Resetar Senha" />
+            android:label="Resetar Senha" />
+
         <activity
             android:name=".View.AtualizarDados"
-            android:label="              Atualização de Dados" />
+            android:label="Atualização de Dados" />
+
         <activity
             android:name=".View.AtualizarSenha"
-            android:label="              Atualização de Senha" />
+            android:label="Atualização de Senha" />
+
         <activity
             android:name=".View.DeletarConta"
-            android:label="                Exclusão de Conta" />
+            android:label="Exclusão de Conta" />
+
         <activity
             android:name=".View.AlteracaoSistemica"
-            android:label="                " />
+            android:label=" " />
+
         <activity
             android:name=".View.TipoAnestesico"
-            android:label="                " />
+            android:label=" " />
+
         <activity
             android:name=".View.InicialActivity"
-            android:label="                Inicio"
+            android:label="Inicio"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".View.ResultadoFinal"
-            android:label="                " />
+            android:label="Resultado Final" />
+
         <activity
             android:name=".View.SelecionarPatologia"
             android:label="                " />
+
         <activity
             android:name=".View.SelecionarTratamento"
             android:label="                " />
+
         <activity
             android:name=".View.MainActivity_Login"
             android:label="                " />
+
         <activity
             android:name=".View.SalvarBD"
             android:label="@string/title_activity_salvar_bd"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".View.Quizz"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".View.CadastrarPaciente" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".View.CadastrarPaciente"
+            android:label="Cadastro de Paciente" />
+
         <activity
             android:name=".View.ListaDePacientes"
             android:label="@string/title_activity_lista_de_pacientes"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
         <activity android:name=".View.AlterarDadosPaciente" />
+
         <activity
             android:name=".View.VizualizarDadosPaciente"
             android:label="@string/title_activity_vizualizar_dados_paciente"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+             />
+
         <activity
             android:name=".View.Quizplay"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity
             android:name=".View.PlacarJogo"
             android:label="@string/title_activity_placar_quiz"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".View.Sobre_Activity" android:label="SOBRE"></activity>
     </application>
 
 </manifest>

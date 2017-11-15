@@ -3,129 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\b1c7e3b9d05903c898d5d2946f1de60759e146fa\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1c1acd94ac417f5786e37ed47c681976ba1fbf4d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\9423b96526c5d4cf40cca117daaa1b785e7dfb31\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="e5b429c146094a612134910688d169ec08deeefb">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7e56cdfd7d9f9de3ea29576c4e9fecde5b7934f6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\b4c7c3a1a9552ae119a0a8a1b7c13efe078ab80e\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3526ac591eb5724fac2296451ac29c38ba3842ae\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d82ea1ff4c22d08677e0e7d1fb815cdd9e07a51b">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b674b59a24534d4a4783abacf278e25c866b61c6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\cccf18d0493b571d0f53f49a70e3970e12b906b9\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7ee83971461f8f7e1e65a49129127a8f48548e31\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\b4fcba746e9aff1d36b75a6d0af9f93ec9eb6c3f\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0f83d11c674996a4bff874e5585931945d195e39\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\3436a09b00a43f6337d1f6bef7696f570d533433\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_60842a50e06f2d85d366459e35dd8c317891cf06\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\e90d9594b7782d3572654b3223b53b5fd2021063\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="b5b6af36bacf1d812cd3dc45f9dcab9ea471ed91">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_87a937e2692fa8b038a7440e09beeb9741c1052a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\46cb6cb9977ae1735ffe5c914f200026d011d2e7\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="1b12397bc9f342b29d9e9108978828f99a6da579">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_36ef9d81eae21adbb192979c2dfac66ed79462b2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\c597c3f18f8734ccf9077f3f546754b8618fda69\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6cc399266782eba76ce3ffb07c065cb9be216375\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\72b1e7459e254d515b11b4d05bfa9a027a1700cd\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="e1625e48a836779b5fa141d22e5d05563aaccc9a">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4cc793e1b047cfbd606cd948068ec7d2ed9a2831\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_306771bf4f17c550dc4cddd971bd83b2162d55c9\classes.dex" />
+        <dex dex="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_f2a4420d1e64a047b23a72a4ce45801618a8eb14\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\eb5fcd71d3f949e7d5a95c012ee2ac721420f064\output\jars\classes.jar"
+        jar="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="7c24e2e9773fb498e390ce973db382c3ddcf748e">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b2adf7f409065a48cba630d81a67424fecd7c180\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Cabral\.android\build-cache\65c5375c8bcd4cc7f75f49c3eb336f2e77f08dec\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
-        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fd910a818ac4c6b4584febb3874426992ea3b908\classes.dex" />
+        sha1="57cff371f5b2b02eab46c85cbcb260216e87cd01">
+        <dex dex="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e5025b1bc18ef3e89be10dc266864c1a8715a091\classes.dex" />
     </item>
 
 </items>

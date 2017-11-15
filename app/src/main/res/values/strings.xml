@@ -39,9 +39,10 @@
         <item>SE</item>
         <item>TO</item>
     </string-array>
+
     <string name="title_activity_salvar_bd">SalvarBD</string>
-    <string name="title_activity_lista_de_pacientes">ListaDePacientes</string>
-    <string name="title_activity_vizualizar_dados_paciente">VizualizarDadosPaciente</string>
-    <string name="title_activity_placar_quiz">PlacarQuiz</string>
+    <string name="title_activity_lista_de_pacientes">Lista De Pacientes</string>
+    <string name="title_activity_vizualizar_dados_paciente">Dados do Paciente</string>
+    <string name="title_activity_placar_quiz">Placar Quiz</string>
 
 </resources>

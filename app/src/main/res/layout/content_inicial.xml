@@ -4,183 +4,225 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#00AFEF"
     android:orientation="vertical"
     android:weightSum="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.des.odontec.equipe.odontec.View.InicialActivity"
     tools:showIn="@layout/app_bar_inicial">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="center">
 
-        <TableRow
-            android:id="@+id/btnTesteAne"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="0.2dp"
-            android:background="#Ffffff">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:src="@drawable/calculo"
-                android:text="Anestésico" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:lines="2"
-                android:text="Cálculo de Anestésico"
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="normal"
-                android:typeface="monospace"
-
-                />
-
-        </TableRow>
-
-
-        <TableRow
-
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="0.2dp"
-            android:background="#Ffffff"
-            android:id="@+id/tbPstPacientes">
-
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:lines="2"
-                android:text="Lista de Pacientes "
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="normal"
-                android:typeface="monospace" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:src="@drawable/listauser"
-                android:text="Farmacologia" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/btnPatologia"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_margin="0.2dp"
-            android:background="#Ffffff">
-
-            <ImageView
-
-                android:id="@+id/imageView3"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:src="@drawable/prescricao"
-                android:text="Farmacologia" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:lines="2"
-                android:text="Prescrição de Tratamento"
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="normal"
-                android:typeface="monospace" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/btnQuizP"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_margin="0.2dp"
-            android:background="#Ffffff">
-
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:lines="2"
-                android:text="Quiz Odontec"
-                android:textColor="#000000"
-                android:textSize="25dp" />
-
-            <ImageView
-                android:id="@+id/imageView4"
+            <LinearLayout
+                android:id="@+id/btnTesteAne"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:src="@drawable/quiz"
-                android:text="Farmacologia" />
-        </TableRow>
+                android:layout_margin="10dp"
+                android:background="@drawable/botaoinicial"
+                android:orientation="vertical">
 
-        <TableRow
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/calculo"
+                    android:text="Anestésico" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="Cálculo de Anestésico"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="normal"
+                    android:typeface="monospace"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:id="@+id/tbPstPacientes"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/botaoinicial"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/listauser"
+                        android:text="Farmacologia" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:text="Lista Pacientes"
+                        android:textColor="#000000"
+                        android:textSize="15dp"
+                        android:textStyle="normal"
+                        android:typeface="monospace" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/btnPatologia"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/botaoinicial"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:id="@+id/imageView3"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/prescricao"
+                        android:text="Farmacologia" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:text="Tratamentos"
+                        android:textColor="#000000"
+                        android:textSize="15dp"
+                        android:textStyle="normal"
+                        android:typeface="monospace" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/btnQuizP"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/botaoinicial"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/quiz"
+                        android:text="Farmacologia" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:text="Quiz Odontec"
+                        android:textColor="#000000"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/botaosobre"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/botaoinicial"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/sobre"
+                        android:text="Farmacologia" />
+
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:text="Sobre"
+                        android:textColor="#000000"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_margin="0.2dp"
-            android:background="#Ffffff">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:src="@drawable/sobre"
-                android:text="Farmacologia" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="540dp"
+            android:background="#5000AFEF">
 
             <TextView
-                android:id="@+id/textView7"
-                android:layout_width="220dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:fontFamily="monospace"
-                android:gravity="center"
-                android:lines="2"
-                android:text="Sobre"
-                android:textColor="#000000"
-                android:textSize="25dp" />
+                android:text="INOVARE"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
-
-        </TableRow>
-
-    </LinearLayout>
-
+        </FrameLayout>
+    </FrameLayout>
 </ScrollView>
