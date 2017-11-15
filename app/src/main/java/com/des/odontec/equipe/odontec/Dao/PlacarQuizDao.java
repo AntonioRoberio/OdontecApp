@@ -39,7 +39,7 @@ public class PlacarQuizDao {
     public ArrayList<PlacarQuiz> exibirDadosPlacar() {
         ArrayList<PlacarQuiz> placar = new ArrayList<>();
         String[] colunas = {"_id","nome","pontos", "acertos", "erros"};
-        Cursor cursor = bd.query("placar", colunas, null, null, null, null, "pontos ASC");
+        Cursor cursor = bd.query("placar", colunas, null, null, null, null, "pontos DESC");
 
         if (cursor.moveToFirst()) {
             do {

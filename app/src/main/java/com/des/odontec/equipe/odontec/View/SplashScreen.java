@@ -9,6 +9,7 @@ import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.AlteracaoController;
 import com.des.odontec.equipe.odontec.Controller.AnestesicoController;
 import com.des.odontec.equipe.odontec.Controller.PatologiaController;
+import com.des.odontec.equipe.odontec.Controller.QuizController;
 import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.R;
 
@@ -17,6 +18,7 @@ public class SplashScreen extends AppCompatActivity {
     private AlteracaoController alteracaoController;
     private AnestesicoController anestesicoController;
     private PatologiaController patologiaController;
+    private QuizController quizDao;
 
     private int tempo = 0;
 
@@ -24,8 +26,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        QuizDao quizDao = new QuizDao(this);
-        quizDao.pegarDadosBD();
+        quizDao = new QuizController(this);
+        quizDao.pegarPeguntas();
         alteracaoController = new AlteracaoController(this);
         alteracaoController.pegarDadosBD();
         anestesicoController = new AnestesicoController(this);

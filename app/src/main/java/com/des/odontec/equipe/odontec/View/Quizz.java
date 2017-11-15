@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.PlacarQuizController;
+import com.des.odontec.equipe.odontec.Controller.QuizController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.Model.PlacarQuiz;
@@ -45,7 +46,7 @@ public class Quizz extends AppCompatActivity {
     private int conteTempo = 0;
     private String opc = "";
 
-    private QuizDao quizDao;
+    private QuizController quizController;
     private ArrayList<Quiz> quizzes;
     private PlacarQuizController placarQuizController;
     private UsuarioController usuarioController;
@@ -67,19 +68,16 @@ public class Quizz extends AppCompatActivity {
         pular = (Button) findViewById(R.id.pular);
         ajuda = (Button) findViewById(R.id.ajuda);
         sair = (Button) findViewById(R.id.sair);
-        quizDao = new QuizDao(Quizz.this);
-        quizzes = quizDao.listarPerguntas();
+        quizController = new QuizController(Quizz.this);
+        quizzes = quizController.totalPerguntas();
         placarQuizController=new PlacarQuizController(this);
         usuarioController=new UsuarioController(this);
-
-        QuizDao quizDao = new QuizDao(Quizz.this);
-        quizDao.pegarDadosBD();
         preferencias = new Preferencias(this);
-        perguntas(preferencias.retornaQuiz());
+        perguntas(preferencias.retornaQuiz());//aqui
         pontuacao.setText(preferencias.retornaPontosQuiz("pontos") + "");
         acertos.setText(preferencias.retornaPontosQuiz("acertos") + "");
         erros.setText(preferencias.retornaPontosQuiz("erros") + "");
-        preferencias.quantidadeDeperguntas(quizDao.listarPerguntas().size(),"tamanho");
+        preferencias.quantidadeDeperguntas(quizzes.size(),"tamanho");
         qntPer.setText((preferencias.retornoquantidadeDeperguntas("atual")+1)+"/"+preferencias.retornoquantidadeDeperguntas("tamanho")+"");
 
         sair.setOnClickListener(new View.OnClickListener() {
@@ -298,8 +296,8 @@ public class Quizz extends AppCompatActivity {
     }
 
     public void confResposta(final String resposta, String correta, final View v) {
-        QuizDao quizDao = new QuizDao(Quizz.this);
-        ArrayList<Quiz> quizzes = quizDao.listarPerguntas();
+        QuizController quizController=new QuizController(Quizz.this);
+        ArrayList<Quiz> quizzes = quizController.totalPerguntas();
         if (resposta.equalsIgnoreCase(correta)) {
             v.setBackgroundResource(R.drawable.botaoquizcorreta);
             preferencias.pontosQuiz(preferencias.retornaPontosQuiz("pontos") + 100, "pontos");
@@ -351,3 +349,4 @@ public class Quizz extends AppCompatActivity {
 
     }
 }
+
