@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.R;
 
 public class Quizplay extends AppCompatActivity {
 
     private Button inicioquiz;
     private Button placar;
+    private Preferencias preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,17 @@ public class Quizplay extends AppCompatActivity {
 
         inicioquiz = (Button) findViewById(R.id.inicioquiz);
         placar =(Button) findViewById(R.id.placar);
+
+        preferencias = new Preferencias(this);
+        preferencias.quiz(0);
+        preferencias.pontosQuiz(0, "pontos");
+        preferencias.pontosQuiz(0, "acertos");
+        preferencias.pontosQuiz(0, "erros");
+        preferencias.pontosQuiz(0, "status");
+        preferencias.quantidadeDeperguntas(0,"tamanho");
+        preferencias.quantidadeDeperguntas(0,"atual");
+        preferencias.statusBotoes(true, "proxima");
+        preferencias.statusBotoes(true, "altCorreta");
 
         inicioquiz.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -42,16 +42,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         jogo = (TableRow) findViewById(R.id.btnQuizP);
         listPacientes = (TableRow) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
-        preferencias = new Preferencias(this);
-        preferencias.quiz(0);
-        preferencias.pontosQuiz(0, "pontos");
-        preferencias.pontosQuiz(0, "acertos");
-        preferencias.pontosQuiz(0, "erros");
-        preferencias.pontosQuiz(0, "status");
-        preferencias.quantidadeDeperguntas(0,"tamanho");
-        preferencias.quantidadeDeperguntas(0,"atual");
-        preferencias.statusBotoes(true, "proxima");
-        preferencias.statusBotoes(true, "altCorreta");
+
 
 
         if (preferencias.retornoPrimeiroAcesso() == 0) {
