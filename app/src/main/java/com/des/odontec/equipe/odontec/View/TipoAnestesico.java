@@ -30,6 +30,7 @@ public class TipoAnestesico extends AppCompatActivity {
     private Bundle bundle;
     private Bundle valores;
     private Intent intent;
+    private int retorno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class TipoAnestesico extends AppCompatActivity {
                     bundle.putString("sexo",valores.getString("sexo"));
                 }else{
                     bundle.putInt("id",valores.getInt("id"));
+                    retorno=valores.getInt("id");
                 }
             }else{
                 tipoPa = "sem valor";
@@ -109,8 +111,12 @@ public class TipoAnestesico extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(TipoAnestesico.this, InicialActivity.class);
-        startActivity(intent);
+        Intent intent;
+        if(retorno !=0){
+            intent= new Intent(TipoAnestesico.this, InicialActivity.class);
+            startActivity(intent);
+        }
+
         finish();
     }
 
