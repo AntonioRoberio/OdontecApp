@@ -1,3 +1,5 @@
+
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
@@ -39,6 +41,7 @@ public class Quizplay extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Quizplay.this, Quizz.class);
                 startActivityForResult(intent, 10);
+                finish();
             }
         });
         placar.setOnClickListener(new View.OnClickListener() {
@@ -49,5 +52,14 @@ public class Quizplay extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==1){
+            setResult(10,data);
+            finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -14,10 +14,8 @@ import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.PlacarQuizController;
 import com.des.odontec.equipe.odontec.Controller.QuizController;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
-import com.des.odontec.equipe.odontec.Dao.QuizDao;
 import com.des.odontec.equipe.odontec.Model.PlacarQuiz;
 import com.des.odontec.equipe.odontec.Model.Quiz;
-import com.des.odontec.equipe.odontec.Model.Usuario;
 import com.des.odontec.equipe.odontec.R;
 
 import java.util.ArrayList;
@@ -93,10 +91,7 @@ public class Quizz extends AppCompatActivity {
                         }).setPositiveButton("Sair", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Quizz.this, InicialActivity.class);
-                        startActivity(intent);
                         finish();
-                        setResult(10);
                         preferencias.quiz(0);
                         preferencias.pontosQuiz(0, "pontos");
                         preferencias.pontosQuiz(0, "acertos");
@@ -320,9 +315,8 @@ public class Quizz extends AppCompatActivity {
                     .setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(Quizz.this, InicialActivity.class);
-                    startActivity(intent);
-                    setResult(10);
+                    finish();
+
                     PlacarQuiz placarQuiz=new PlacarQuiz();
                     placarQuiz.setNome(usuarioController.exibirDados().getNome().toString());
                     placarQuiz.setPontos(preferencias.retornaPontosQuiz("pontos")+"");

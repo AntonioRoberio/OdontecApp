@@ -1,3 +1,4 @@
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
@@ -62,14 +63,14 @@ public class AlterarDadosPaciente extends AppCompatActivity {
 
 
 
-            for (int i = 0; i < alteracaos.length; i++) {
-                if (!alteracaos[i].equals(paciente.getAlteracao())) {
-                    alteracaos[0] = paciente.getAlteracao();
-                    alteracaos[j]=atual;
-                    break;
-                }
-                j++;
-           }
+        for (int i = 0; i < alteracaos.length; i++) {
+            if (!alteracaos[i].equals(paciente.getAlteracao())) {
+                alteracaos[0] = paciente.getAlteracao();
+                alteracaos[j]=atual;
+                break;
+            }
+            j++;
+        }
 
 
 
@@ -89,6 +90,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                     paciente.setIdade(Integer.parseInt(idade.getText().toString()));
                     paciente.setAlteracao(spinner.getSelectedItem().toString());
                     pacienteController.atualizar(paciente,"andamento");
+                    finish();
                     Intent intent = new Intent(AlterarDadosPaciente.this, TipoAnestesico.class);
                     bnd = new Bundle();
                     bnd.putInt("id", paciente.getId());
