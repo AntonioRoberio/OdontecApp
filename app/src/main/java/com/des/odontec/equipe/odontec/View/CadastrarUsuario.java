@@ -1,3 +1,4 @@
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
@@ -84,11 +85,7 @@ public class CadastrarUsuario extends AppCompatActivity {
             preferencias.login("odontec");
             usuarioController.pegarDados();
             Bundle bundle=new Bundle();
-            bundle.putString("VALOR", "odontec");
-            Intent intent=new Intent(CadastrarUsuario.this, MainActivity_Login.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            setResult(8,intent);
+            bundle.putString("VALOR", "odontec");;
             finish();
         } else {
             fl.setVisibility(View.GONE);

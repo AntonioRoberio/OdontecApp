@@ -1,3 +1,5 @@
+
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.DialogInterface;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
@@ -30,6 +33,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
     private Preferencias preferencias;
     Bundle bundle;
     private LinearLayout botaosobre;
+    private UsuarioController usuarioController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +42,13 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        UsuarioController usuarioController = new UsuarioController(InicialActivity.this);
+        usuarioController = new UsuarioController(InicialActivity.this);
         botao = (LinearLayout) findViewById(R.id.btnTesteAne);
         btnPatologia = (LinearLayout) findViewById(R.id.btnPatologia);
         jogo = (LinearLayout) findViewById(R.id.btnQuizP);
         listPacientes = (LinearLayout) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
-        botaosobre = (LinearLayout) findViewById(R.id.botaosobre);
-
+        botaosobre = (LinearLayout) findViewById(R.id.botaosobre);;
 
         preferencias = new Preferencias(this);
         preferencias.pontosQuiz(0, "status");
@@ -172,6 +175,8 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         } else if (id == R.id.EditarInformacoes) {
             Intent intent = new Intent(InicialActivity.this, AtualizarDados.class);
             startActivityForResult(intent, 10);
+            usuarioController.pegarDados();
+
         } else if (id == R.id.ExcluirConta) {
             Intent intent = new Intent(InicialActivity.this, DeletarConta.class);
             startActivity(intent);
