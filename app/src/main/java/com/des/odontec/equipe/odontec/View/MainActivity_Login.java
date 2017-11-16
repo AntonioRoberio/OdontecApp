@@ -198,6 +198,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
         } else {
             callbackManager.onActivityResult(requestCode, resultCode, data);
+
         }
 
         if(resultCode==8){
@@ -213,6 +214,8 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser us = aut.getCurrentUser();
+                    UsuarioController usuarioController=new UsuarioController();
+                    usuarioController.salvaDadosResesSociais(us);
                     bundle.putString("VALOR", "google");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();
@@ -239,12 +242,17 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     }
 
     private void facebooktToken(AccessToken accessToken) {
+
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+aut.signInWithCredential(credential);
         aut.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser us = aut.getCurrentUser();
+
+                    UsuarioController usuarioController=new UsuarioController();
+                    usuarioController.salvaDadosResesSociais(us);
                     bundle.putString("VALOR", "face");
                     logar(us);
                     Toast.makeText(MainActivity_Login.this, "Seja bem vindo", Toast.LENGTH_SHORT).show();

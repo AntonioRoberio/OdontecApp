@@ -191,4 +191,12 @@ public class UsuarioDao {
         return aut.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha());
     }
 
+    public void salvarDadosRedesSociais(FirebaseUser user){
+        DatabaseReference rfFire = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
+        HashMap<String,Object> has=new HashMap<>();
+        has.put("nome",user.getDisplayName());
+        has.put("email",user.getEmail());
+        rfFire.child("user").child(user.getUid()).setValue(has);
+    }
+
 }

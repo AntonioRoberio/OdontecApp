@@ -195,4 +195,8 @@ public class UsuarioController {
         });
     }
 
+    public void salvaDadosResesSociais(FirebaseUser user){
+        usuarioDao.salvarDadosRedesSociais(user);
+    }
+
 }
