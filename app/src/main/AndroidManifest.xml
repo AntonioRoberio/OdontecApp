@@ -4,24 +4,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/iconeodontec"
+        android:icon="@mipmap/iconodontec"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/iconeodontec"
+        android:roundIcon="@mipmap/iconodontec"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"
+            />
 
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.SplashScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,89 +35,110 @@
         <activity
             android:name=".View.CadastrarUsuario"
             android:label="Cadastro Odontec"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustUnspecified"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.ResetSenha"
-            android:label="Resetar Senha" />
+            android:label="Resetar Senha"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.AtualizarDados"
-            android:label="Atualização de Dados" />
+            android:label="Atualização de Dados"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.AtualizarSenha"
-            android:label="Atualização de Senha" />
+            android:label="Atualização de Senha"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.DeletarConta"
-            android:label="Exclusão de Conta" />
+            android:label="Exclusão de Conta"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.AlteracaoSistemica"
-            android:label=" " />
+            android:label=" "
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.TipoAnestesico"
-            android:label=" " />
+            android:label=" "
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.InicialActivity"
             android:label="Inicio"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.ResultadoFinal"
-            android:label="Resultado Final" />
+            android:label="Resultado Final"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.SelecionarPatologia"
-            android:label="                " />
+            android:label="                "
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.SelecionarTratamento"
-            android:label="                " />
+            android:label="                "
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.MainActivity_Login"
-            android:label="                " />
+            android:label="                "
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.SalvarBD"
             android:label="@string/title_activity_salvar_bd"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.Quizz"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".View.CadastrarPaciente"
-            android:label="Cadastro de Paciente" />
+            android:label="Cadastro de Paciente"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.ListaDePacientes"
             android:label="@string/title_activity_lista_de_pacientes"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             />
 
-        <activity android:name=".View.AlterarDadosPaciente" />
+        <activity android:name=".View.AlterarDadosPaciente"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.VizualizarDadosPaciente"
             android:label="@string/title_activity_vizualizar_dados_paciente"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
              />
 
         <activity
             android:name=".View.Quizplay"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.PlacarJogo"
             android:label="@string/title_activity_placar_quiz"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".View.Sobre_Activity" android:label="SOBRE"></activity>
+        <activity android:name=".View.Sobre_Activity" android:label="SOBRE"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

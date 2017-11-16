@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_f2a4420d1e64a047b23a72a4ce45801618a8eb14\classes.dex" />
+        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_306771bf4f17c550dc4cddd971bd83b2162d55c9\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="57cff371f5b2b02eab46c85cbcb260216e87cd01">
-        <dex dex="C:\Users\victor\StudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e5025b1bc18ef3e89be10dc266864c1a8715a091\classes.dex" />
+        sha1="f9ac9830a22a223f77554b230f99a49d9e155dde">
+        <dex dex="C:\Users\Cabral\AndroidStudioProjects\OdontecApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b674b59a24534d4a4783abacf278e25c866b61c6\classes.dex" />
     </item>
 
 </items>
