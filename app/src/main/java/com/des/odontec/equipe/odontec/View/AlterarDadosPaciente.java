@@ -111,12 +111,5 @@ public class AlterarDadosPaciente extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        Intent intent = new Intent(AlterarDadosPaciente.this, VizualizarDadosPaciente.class);
-        startActivity(intent);
-        setResult(1,intent);
-        finish();
-    }
+
 }

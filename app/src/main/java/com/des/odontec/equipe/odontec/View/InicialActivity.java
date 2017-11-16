@@ -171,7 +171,6 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         } else if (id == R.id.EditarInformacoes) {
             Intent intent = new Intent(InicialActivity.this, AtualizarDados.class);
             startActivityForResult(intent, 10);
-            usuarioController.pegarDados();
 
         } else if (id == R.id.ExcluirConta) {
             Intent intent = new Intent(InicialActivity.this, DeletarConta.class);

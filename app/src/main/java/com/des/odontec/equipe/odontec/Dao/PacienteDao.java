@@ -102,7 +102,7 @@ public class PacienteDao {
         for (int i = 0; i < pgData.length; i++) {
             c = pgData[i];
             String at = String.valueOf(c);
-            if (!at.equals("/")) {
+            if (!(at.equals("/") || at.equals(":"))) {
                 novaData += at;
             }
         }

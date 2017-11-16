@@ -61,7 +61,7 @@ public class ResultadoFinal extends AppCompatActivity {
 
             Date dataAtual = new Date();
             SimpleDateFormat df;
-            df = new SimpleDateFormat("dd/MM/yyyy");
+            df = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
 
             valores = intent.getExtras();
             pacienteController = new PacienteController(this);
