@@ -1,5 +1,3 @@
-
-
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.DialogInterface;
@@ -16,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
@@ -65,7 +61,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InicialActivity.this, CadastrarPaciente.class);
-                startActivity(intent);
+                startActivityForResult(intent,10);
             }
         });
         botaosobre.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +175,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
 
         } else if (id == R.id.ExcluirConta) {
             Intent intent = new Intent(InicialActivity.this, DeletarConta.class);
-            startActivity(intent);
+            startActivityForResult(intent,10);
         } else if (id == R.id.Sair) {
 
             AlertDialog.Builder alert = new AlertDialog.Builder(InicialActivity.this);

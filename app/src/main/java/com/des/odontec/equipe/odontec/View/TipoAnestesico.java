@@ -79,15 +79,15 @@ public class TipoAnestesico extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(bundle.containsKey("tipoAnestesico")){
-                   Intent intent=new Intent(TipoAnestesico.this,ResultadoFinal.class);
-                   bundle.putString("alt",tipoAlt);
-                   bundle.putString("tipo",tipoPa);
-                   intent.putExtras(bundle);
-                   startActivityForResult(intent,3);
-               }else{
-                   Toast.makeText(TipoAnestesico.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
-               }
+                if(bundle.containsKey("tipoAnestesico")){
+                    Intent intent=new Intent(TipoAnestesico.this,ResultadoFinal.class);
+                    bundle.putString("alt",tipoAlt);
+                    bundle.putString("tipo",tipoPa);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent,3);
+                }else{
+                    Toast.makeText(TipoAnestesico.this, "Selecione uma opção", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -104,6 +104,14 @@ public class TipoAnestesico extends AppCompatActivity {
             finish();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(TipoAnestesico.this, InicialActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

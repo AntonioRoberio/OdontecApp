@@ -1,3 +1,4 @@
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.DialogInterface;
@@ -60,12 +61,14 @@ public class DeletarConta extends AppCompatActivity {
     }
 
     public void apagar(String resultado) {
-                   if(resultado.contains("sucesso")){
-                       startActivity( new Intent(DeletarConta.this, MainActivity_Login.class));
-                       finish();
-                   }else{
-                       Toast.makeText(DeletarConta.this,resultado,Toast.LENGTH_LONG).show();
-                   }
+        if(resultado.contains("sucesso")){
+            Intent intent=new Intent(DeletarConta.this, MainActivity_Login.class);
+            startActivity( intent);
+            setResult(10,intent);
+            finish();
+        }else{
+            Toast.makeText(DeletarConta.this,resultado,Toast.LENGTH_LONG).show();
+        }
 
 
     }

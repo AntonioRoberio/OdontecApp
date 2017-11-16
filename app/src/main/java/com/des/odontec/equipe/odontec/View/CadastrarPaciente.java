@@ -69,7 +69,7 @@ public class CadastrarPaciente extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==1){
 
-            setResult(1,data);
+            setResult(10,data);
             finish();
         }
         super.onActivityResult(requestCode, resultCode, data);

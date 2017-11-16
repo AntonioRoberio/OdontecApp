@@ -50,4 +50,22 @@ public class ListaDePacientes extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==1){
+            setResult(10,data);
+            finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(ListaDePacientes.this, InicialActivity.class);
+        startActivity(intent);
+        setResult(10,intent);
+        finish();
+    }
+
 }

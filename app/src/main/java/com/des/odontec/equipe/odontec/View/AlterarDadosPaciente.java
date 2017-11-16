@@ -1,4 +1,3 @@
-
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
@@ -90,7 +89,6 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                     paciente.setIdade(Integer.parseInt(idade.getText().toString()));
                     paciente.setAlteracao(spinner.getSelectedItem().toString());
                     pacienteController.atualizar(paciente,"andamento");
-                    finish();
                     Intent intent = new Intent(AlterarDadosPaciente.this, TipoAnestesico.class);
                     bnd = new Bundle();
                     bnd.putInt("id", paciente.getId());
@@ -103,11 +101,22 @@ public class AlterarDadosPaciente extends AppCompatActivity {
                     }
                     bnd.putString("alt", paciente.getAlteracao());
                     intent.putExtras(bnd);
-                    startActivityForResult(intent, 2);
+                    startActivity(intent);
+                    setResult(1,intent);
+                    finish();
                 } else {
                     Toast.makeText(AlterarDadosPaciente.this, "Campos em branco não são permitidos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(AlterarDadosPaciente.this, VizualizarDadosPaciente.class);
+        startActivity(intent);
+        setResult(1,intent);
+        finish();
     }
 }

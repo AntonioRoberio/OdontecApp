@@ -1,3 +1,4 @@
+
 package com.des.odontec.equipe.odontec.View;
 
 import android.content.Intent;
@@ -48,6 +49,7 @@ public class ResultadoFinal extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ResultadoFinal.this, InicialActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -111,6 +113,14 @@ public class ResultadoFinal extends AppCompatActivity {
         tubetes.setText("Quantidade de Tubetes: " + resultado);
         Intent intent = getIntent();
         setResult(1, intent);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(ResultadoFinal.this, InicialActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

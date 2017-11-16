@@ -82,20 +82,42 @@ public class VizualizarDadosPaciente extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder conf=new AlertDialog.Builder(VizualizarDadosPaciente.this);
                 conf.setTitle("Deletar?").setMessage("Deseja deletar os dados desse paciente?")
-                .setCancelable(true).setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+                        .setCancelable(true).setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pacienteController.deletar(paciente.getId());
-                        finish();
-                    }
-                }).create().show();
+                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                pacienteController.deletar(paciente.getId());
+                                Intent intent = new Intent(VizualizarDadosPaciente.this, ListaDePacientes.class);
+                                startActivity(intent);
+                                setResult(1,intent);
+                                finish();
+                            }
+                        }).create().show();
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==1){
+            setResult(1,data);
+            finish();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(VizualizarDadosPaciente.this, ListaDePacientes.class);
+        startActivity(intent);
+        setResult(1,intent);
+        finish();
+    }
+
 
 }
