@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
 import com.des.odontec.equipe.odontec.Controller.UsuarioController;
 import com.des.odontec.equipe.odontec.R;
+import com.facebook.login.LoginManager;
+import com.facebook.login.widget.LoginButton;
 
 public class InicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private LinearLayout botao;
@@ -195,6 +197,11 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
                 public void onClick(DialogInterface dialog, int which) {
                     UsuarioController usuarioController = new UsuarioController();
                     usuarioController.fazerLgoutSistema();
+                    if("facebook".equals("")){
+                        LoginManager.getInstance().logOut();
+                    }else if("gmail".equals("")){
+
+                    }
                     Intent intent = new Intent(InicialActivity.this, MainActivity_Login.class);
                     startActivity(intent);
                     finish();
