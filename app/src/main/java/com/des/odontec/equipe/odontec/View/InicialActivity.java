@@ -1,5 +1,6 @@
 package com.des.odontec.equipe.odontec.View;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.des.odontec.equipe.odontec.ArquivosDePreferencia.Preferencias;
@@ -45,6 +48,8 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         listPacientes = (LinearLayout) findViewById(R.id.tbPstPacientes);
         escolhaMenu = (NavigationView) findViewById(R.id.nav_view);
         botaosobre = (LinearLayout) findViewById(R.id.botaosobre);;
+
+
 
         preferencias = new Preferencias(this);
         preferencias.pontosQuiz(0, "status");
@@ -125,6 +130,7 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
         if (arquivosDePreferencia.retornaLogin().equals("odontec")) {
             escolhaMenu.inflateMenu(R.menu.activity_inicial_drawer);
             usuarioController.exibirDados();
+
         } else {
             escolhaMenu.inflateMenu(R.menu.activity_inicio_drawer);
         }

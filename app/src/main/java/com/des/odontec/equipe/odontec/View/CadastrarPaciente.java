@@ -20,7 +20,6 @@ public class CadastrarPaciente extends AppCompatActivity {
     private EditText nome;
     private EditText idade;
     private EditText peso;
-    private RadioGroup rbSexo;
     private RadioButton masculino;
     private RadioButton feminino;
     private Button button;
@@ -33,7 +32,6 @@ public class CadastrarPaciente extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomePaciente);
         idade = (EditText) findViewById(R.id.idadePaciente);
         peso = (EditText) findViewById(R.id.psPaciente);
-        rbSexo = (RadioGroup) findViewById(R.id.gpSexo);
         masculino = (RadioButton) findViewById(R.id.rbM);
         feminino = (RadioButton) findViewById(R.id.rbF);
         button = (Button) findViewById(R.id.btPaci);

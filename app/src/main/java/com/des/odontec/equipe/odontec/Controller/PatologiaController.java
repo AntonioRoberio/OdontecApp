@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class PatologiaController {
     private PatologiaDao patologiaDao;
-    private int i=0;
     public PatologiaController(Context context){
         patologiaDao=new PatologiaDao(context);
     }

@@ -106,11 +106,5 @@ public class PatologiaDao {
         return patologias;
     }
 
-  /*
-    public void salvarBD(Patologia patologia) {
-        DatabaseReference dados = ConfiguracaoFirebaseDao.refernciaBancoFirebase();
-        dados.child("patologias").child(patologia.getId()).setValue(patologia.patologia());
-    }
-    */
 
 }

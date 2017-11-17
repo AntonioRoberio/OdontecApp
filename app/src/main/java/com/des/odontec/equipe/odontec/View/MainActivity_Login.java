@@ -79,10 +79,6 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         frama = (FrameLayout) findViewById(R.id.f2l);
 
 
-
-
-
-
         callbackManager = CallbackManager.Factory.create();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -147,7 +143,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity_Login.this, ResetSenha.class);
-                startActivityForResult(intent,8);
+                startActivityForResult(intent, 8);
             }
         });
 
@@ -155,7 +151,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity_Login.this, CadastrarUsuario.class);
-                startActivityForResult(intent,8);
+                startActivityForResult(intent, 8);
             }
         });
 
@@ -201,7 +197,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
 
         }
 
-        if(resultCode==8){
+        if (resultCode == 8) {
             finish();
         }
 
@@ -214,7 +210,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser us = aut.getCurrentUser();
-                    UsuarioController usuarioController=new UsuarioController();
+                    UsuarioController usuarioController = new UsuarioController();
                     usuarioController.salvaDadosResesSociais(us);
                     bundle.putString("VALOR", "google");
                     logar(us);
@@ -244,14 +240,14 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
     private void facebooktToken(AccessToken accessToken) {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-aut.signInWithCredential(credential);
+        aut.signInWithCredential(credential);
         aut.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser us = aut.getCurrentUser();
 
-                    UsuarioController usuarioController=new UsuarioController();
+                    UsuarioController usuarioController = new UsuarioController();
                     usuarioController.salvaDadosResesSociais(us);
                     bundle.putString("VALOR", "face");
                     logar(us);

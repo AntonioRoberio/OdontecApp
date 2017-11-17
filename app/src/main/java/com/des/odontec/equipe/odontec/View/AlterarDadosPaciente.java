@@ -30,9 +30,7 @@ public class AlterarDadosPaciente extends AppCompatActivity {
     private Bundle bnd;
     private Spinner spinner;
     private String s="";
-    private TextView textView;
     String atual="";
-    int j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +41,6 @@ public class AlterarDadosPaciente extends AppCompatActivity {
         peso = (EditText) findViewById(R.id.psPacienteEdt);
         btnAtl = (Button) findViewById(R.id.btnSalvarEd);
         spinner = (Spinner) findViewById(R.id.spnAlter);
-        textView = (TextView) findViewById(R.id.ttt);
         pacienteController = new PacienteController(this);
         alteracaoController = new AlteracaoController(this);
         String[] alteracaos = alteracaoController.listarAlteracoes();
@@ -65,10 +62,9 @@ public class AlterarDadosPaciente extends AppCompatActivity {
         for (int i = 0; i < alteracaos.length; i++) {
             if (!alteracaos[i].equals(paciente.getAlteracao())) {
                 alteracaos[0] = paciente.getAlteracao();
-                alteracaos[j]=atual;
+                alteracaos[i]=atual;
                 break;
             }
-            j++;
         }
 
 

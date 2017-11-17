@@ -14,8 +14,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String idade;
     private String estado;
+    private String cidade;
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -60,14 +60,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getIdade() {
-        return idade;
-    }
-
-    public void setIdade(String idade) {
-        this.idade = idade;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -84,7 +76,7 @@ public class Usuario {
         this.cidade = cidade;
     }
 
-    private String cidade;
+
 
     public Usuario() {
     }
