@@ -120,7 +120,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
                     usuario.setEmail(email.getText().toString());
                     frama.setVisibility(View.VISIBLE);
                     UsuarioController usuarioController = new UsuarioController();
-
+                    logar.setEnabled(false);
                     Preferencias arquivosDePreferencia = new Preferencias(MainActivity_Login.this);
                     if (!(arquivosDePreferencia.retornoAlterSenha())) {
                         senhaCript = Criptografia.md5(senha.getText().toString());
@@ -307,6 +307,7 @@ public class MainActivity_Login extends AppCompatActivity implements GoogleApiCl
         } else {
             Toast.makeText(MainActivity_Login.this, resultado, Toast.LENGTH_SHORT).show();
             frama.setVisibility(View.GONE);
+            logar.setEnabled(true);
         }
 
 

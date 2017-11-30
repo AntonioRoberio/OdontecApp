@@ -73,6 +73,7 @@ public class AtualizarDados extends AppCompatActivity {
                     usuario.setCidade(cidade.getText().toString());
                     UsuarioController usuarioController = new UsuarioController();
                     usuarioController.atualizarDados(usuario, "dados", AtualizarDados.this);
+                    atualizar.setEnabled(false);
                 }else{
                     Toast.makeText(AtualizarDados.this,"Não é permitido deixar campos em branco.", Toast.LENGTH_SHORT).show();
                 }
@@ -95,6 +96,7 @@ public class AtualizarDados extends AppCompatActivity {
             finish();
         } else {
             Toast.makeText(AtualizarDados.this, resultado, Toast.LENGTH_LONG).show();
+            atualizar.setEnabled(true);
             frame.setVisibility(View.GONE);
         }
     }

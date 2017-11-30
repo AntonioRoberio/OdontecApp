@@ -209,9 +209,6 @@ public class InicialActivity extends AppCompatActivity implements NavigationView
             });
             alert.create();
             alert.show();
-        } else if (id == R.id.quiz) {
-            Intent intent = new Intent(InicialActivity.this, SalvarBD.class);
-            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

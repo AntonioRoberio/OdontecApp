@@ -45,7 +45,7 @@ public class AtualizarSenha extends AppCompatActivity {
                 if (!(senha.getText().toString().isEmpty() || confirmar.getText().toString().isEmpty() || atual.getText().toString().isEmpty())) {
                     if (senha.getText().toString().equals(confirmar.getText().toString())) {
                         if (!(senha.getText().toString().length() < 6)) {
-
+                            enviar.setEnabled(false);
                             usuario.setSenha(Criptografia.md5(senha.getText().toString()));
                             fl.setVisibility(View.VISIBLE);
                             usuarioController = new UsuarioController();
@@ -75,6 +75,7 @@ public class AtualizarSenha extends AppCompatActivity {
             setResult(10);
             finish();
         } else {
+            enviar.setEnabled(false);
             fl.setVisibility(View.GONE);
         }
         Toast.makeText(AtualizarSenha.this, resultado, Toast.LENGTH_LONG).show();

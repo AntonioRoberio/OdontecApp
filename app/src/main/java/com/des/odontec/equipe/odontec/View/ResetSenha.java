@@ -33,6 +33,7 @@ public class ResetSenha extends AppCompatActivity {
                     usuario.setEmail(email.getText().toString());
                     UsuarioController usuarioController = new UsuarioController();
                     usuarioController.resetSenha(usuario, ResetSenha.this, ResetSenha.this);
+                    salvar.setEnabled(false);
                 } else {
                     Toast.makeText(ResetSenha.this, "Preenchimento de campo obrigatório.", Toast.LENGTH_LONG).show();
                 }
@@ -47,6 +48,8 @@ public class ResetSenha extends AppCompatActivity {
             startActivity(intent);
             setResult(8,intent);
             finish();
+        }else{
+            salvar.setEnabled(true);
         }
         Toast.makeText(ResetSenha.this, resultado, Toast.LENGTH_LONG).show();
     }
